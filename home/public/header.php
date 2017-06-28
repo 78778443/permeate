@@ -35,11 +35,11 @@ bj(zt, 0);
 <!--页眉start-->
 <div id="header">
     <a href="/">
-        <div id="banner"></div>
+        <div id="banner1"></div>
     </a>
     <div id="logo">
         <a href="/">
-            <img src="<?php echo strstr(WZ_LOGO, '../r'); ?>"/>
+            <h2>轻松渗透测试</h2>
         </a>
     </div>
     <div id="login">

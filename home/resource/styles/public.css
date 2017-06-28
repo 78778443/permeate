@@ -59,9 +59,10 @@ body {
 }
 
 #header #logo {
-    width: 130px;
+    width: 180px;
     height: 70px;
     float: left;
+    font-family: 微软雅黑;
 }
 
 #header #login {
