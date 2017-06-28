@@ -10,7 +10,7 @@
 #content .content_title{
 	height:30px;
 	padding:0 15px;
-	background:url('../images/titlebg.png') repeat-x ;
+	background-color: #ccc;
 	}
 
 #content .content_title .cont_left{
