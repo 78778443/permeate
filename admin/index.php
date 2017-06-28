@@ -1,8 +1,7 @@
 <?php
 	header('content-type:text/html;charset=utf-8');
 	session_start();//开启session
-	$username = $_SESSION['admin']['username'];
-	if(empty($username)){
+	if(empty($_SESSION['admin']['username'])){
 		echo "<script>alert('请先登录！')</script>";
 		echo "<script>window.location.href='./public/login.php'</script>";
 		exit;
