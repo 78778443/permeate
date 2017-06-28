@@ -9,8 +9,7 @@
 ### 用途：
     目前我主要用于WEB安全演示教学,也用来自己练习挖掘漏洞
     目前发下包含了以下漏洞:
-	包含sql注入、XSS跨站、CSRF等漏洞
-	包含本地包含、fuzzing等web漏洞
+	包含sql注入、XSS跨站、CSRF、本地包含等常见的web漏洞
 	包含密码找回、验证码等逻辑型漏洞
 	包含git/备份之类文件泄漏
 	包含图片附件类目录php执行权限
@@ -25,7 +24,7 @@
 
     假设安装路径为: E:\www\permeate
     
-    下载代码到目录,删除文件 /insstall/install.lock
+    下载代码到目录,删除文件 /install/install.lock
     
     在httpd.conf的最后位置添加
     <VirtualHost *:80>
