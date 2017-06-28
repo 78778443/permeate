@@ -1,0 +1,25 @@
+
+*{padding:0; margin:0; list-style:none; text-decoration:none; font-size:13px;}
+a:hover{text-decoration:underline;}
+img{border:none;}
+.clear{clear:both;}
+#main_tongyong{margin-top:40px;}
+.tiaoshi{height:10px;}
+
+
+.individual{width:960px; margin:0 auto; border:1px solid #ccc;}
+.individual_left{float:left; background:#e8f0f7; border-right:1px solid #ccc;}
+.individual_left ul li{width:138px; height:35px; line-height:35px; text-indent:1em; color:#444;}
+.individual_left ul li a{display:block; width:138px; height:35px; line-height:35px; text-indent:1em; color:#444; border-bottom:1px dashed #ccc;}
+.individual_left ul li h3{font-size:18px; }
+.individual_left .individual_left_h3{height:45px; display:block; line-height:45px;}
+.individual_left ul li a{display:block; color:#444; font-size:14px; text-decoration:none;}
+.individual_left .individual_left_li a{background:#fff; border:1px solid #ccc; border-right:1px solid #fff; border-left:none;}
+.individual_right{margin-left:150px;}
+.individual_right .individual_right_ul li a{float:right; color:#369; margin:-10px 10px 0 0;}
+.individual_right .individual_right_ul h3{font-size:14px; font-weight:bold; color:#444;}
+.individual_right .individual_right_ul{margin-top:20px;}
+.individual_right .individual_right_ul_1{margin-top:5px;}
+.individual_right .individual_right_ul_1 .individual_right_ul_1_img{margin-top:15px;}
+.individual_right .individual_right_ul_1 li h3{font-weight:bold; font-size:14px; color:#444; margin-top:15px;}
+.individual_right .individual_right_ul_1 li{margin-top:5px; color:#444;}

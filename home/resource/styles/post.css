@@ -1,0 +1,23 @@
+﻿*{padding:0;margin:0;}
+body{background:url(../images/background.png) repeat-x;}
+a{text-decoration:none;color:#333;font-size:12px;}
+img{border:0;}
+td{color:#333;font-size:12px;}
+.clear{clear:both;height:10px;}
+/*===详细列表页start===*/
+
+.content_listshow{width:960px;margin:0 auto;}
+.content_listshow table{border:1px solid #cdcdcd;}
+.list_width{height:38px;width:160px;border-right:1px solid #cdcdcd;background:#e5edf2 }
+.list_width .list_width_title{height:37px;line-height:37px;border-bottom:1px dashed #cdcdcd;border-top:2px solid #cdcdcd;font-size:14px;font-weight:700;}
+.list_width span{padding:0 4px;}
+.list_width img{width:100px;height:100px;margin-top:15px;}
+.list_width ul{width:100px;margin-top:12px;margin-bottom:50px;}
+.list_width ul li{list-style-position:inside;text-align:left;font-size:12px;color:#666;padding-left:10px;line-height:20px;}
+.list_con{padding:0 10px;font-size:12px;font-weight:700; }
+.list_con1{}
+.list_con1 .list_width_title2{height:37px;width:777px;border-bottom:1px dashed #cdcdcd;border-top:2px solid #cdcdcd;padding:0 10px;line-height:37px;}
+.list_con1 .list_width_cont{padding:20px 10px;line-height:16px;}
+.fatie{width:960px;margin:0 auto;margin-top:10px;}
+.fatie a{height:31px; float:right;padding:0px 5px;line-height:31px;border:1px solid #cdcdcd;font-weight:700;}
+.fatie a.img{float:left;border:0;}

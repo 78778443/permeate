@@ -1,0 +1,429 @@
+@charset "utf-8";
+body {
+    background: #f5f5f5;
+    font: 12px/1.5 Tahoma, Arial, "微软雅黑", Helvetica, sans-serif;
+}
+
+a.link {
+    color: #22ac69;
+}
+
+.gray-outline {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+}
+
+.tip-info {
+    display: block;
+    margin: 7px 0;
+    height: 20px;
+    color: red;
+}
+
+.text-long {
+    width: 318px;
+}
+
+.text-short {
+    width: 223px;
+}
+
+.quc-fixIe6margin {
+    display: inline-block;
+}
+
+label.quc-placeholder {
+    position: absolute;
+}
+
+.user-account {
+    color: #22ac69;
+}
+
+/*全局错误的弹窗的个性样式*/
+div.panel-t1 {
+    background: #fff;
+    border-radius: 2px;
+}
+
+div.uc-panel-content {
+    text-align: center;
+    margin-top: 30px;
+}
+
+div.uc-panel-content span {
+    display: block;
+    font-size: 14px;
+    color: #333;
+}
+
+.findpwd-fail-icon {
+    width: 42px;
+    height: 42px;
+    background: url(../../img/ico_error_intl.png) no-repeat;
+    display: block;
+    margin: 0 auto;
+}
+
+.findpwd-btn {
+    background: #22ac69;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.findpwd-btn:active {
+    background: #149a59;
+}
+
+.wrap-content {
+    margin: 5px auto 0;
+    width: 960px;
+}
+
+.content-title {
+    background: #fff;
+    border-bottom: 2px solid #f5f5f5;
+    text-align: center;
+    color: #222222;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.content-main {
+    background: #fff;
+    overflow: hidden;
+}
+
+.con-wrap {
+    margin: 0px auto;
+    padding: 50px 0;
+}
+
+.account-tip {
+    width: 370px;
+    margin: 0 auto;
+    padding-left: 5px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.check-account-form ul {
+    width: 370px;
+    margin: 0 auto;
+}
+
+.check-account-form .account-item {
+    width: 100%;
+    display: inline-block;
+    *display: inline-block;
+    *zoom: 1;
+    list-style: none
+}
+
+.check-account-form .account-icon {
+    display: inline-block;
+    *display: inline-block;
+    *zoom: 1;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    margin: 0 0 0 8px;
+    background: url(../../img/uc-account-icon.png);
+}
+
+.input-bg {
+    height: 42px;
+    *height: 40px;
+    display: inline-block;
+    *display: inline-block;
+    *zoom: 1;
+    margin: 0;
+    width: auto;
+    vertical-align: middle;
+}
+
+.outline-input {
+    outline: none;
+    border: 0;
+    margin: 4px;
+    padding: 6px 7px;
+    color: gray;
+    font-size: 14px;
+}
+
+.check-account-form .pic-refresh {
+    height: 42px;
+    width: 109px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.check-account-form .check-account {
+    margin-top: 50px;
+}
+
+/*选择找回密码方式*/
+.choose-findpwd-type {
+    margin: 0 65px;
+}
+
+.choose-findpwd-type p {
+    margin-bottom: 20px;
+}
+
+.choose-findpwd-type .user-account {
+    color: #22ac69;
+}
+
+.choose-findpwd-type li {
+    background: #f5f5f5;
+    height: 60px;
+    border: 1px solid #e8e8e8;
+    margin-bottom: 40px;
+    list-style: none
+}
+
+.choose-findpwd-type .check-icon {
+    width: 34px;
+    height: 36px;
+    display: inline-block;
+    *display: inline-block;
+    *zoom: 1;
+}
+
+.choose-findpwd-type .icon-wrap {
+    margin: 12px 0 0 18px;
+    float: left;
+}
+
+.choose-findpwd-type .go-complaint-icon {
+    background: url(../../img/go_complaint.png) no-repeat;
+}
+
+.choose-findpwd-type .check-phone-icon {
+    background: url(../../img/check_phone.png) no-repeat;
+}
+
+.choose-findpwd-type .check-email-icon {
+    background: url(../../img/check_email.png) no-repeat;
+}
+
+.choose-findpwd-type .check-question-icon {
+    background: url(../../img/check_question.png) no-repeat;
+}
+
+.choose-findpwd-type .check-secemail-icon {
+    background: url(../../img/check_secemail.png) no-repeat;
+}
+
+.choose-findpwd-type .check-type-info {
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px;
+    margin-left: 30px;
+}
+
+.choose-findpwd-type .begain-check {
+    width: 50px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    background: #22ac69;
+    color: #fff;
+    padding: 0 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin: 14px 30px;
+}
+
+.choose-findpwd-type .begain-check:active {
+    background: #149a59;
+}
+
+/*绑定密保手机号*/
+.choose-mobile-type {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.choose-mobile-type .mobile-type-tip {
+    margin-bottom: 20px;
+}
+
+.choose-mobile-type .get-sms-token {
+    width: 98px;
+    height: 42px;
+    background: #22ac69;
+    line-height: 42px;
+    text-align: center;
+    color: #fff;
+    font-weight: bolder;
+    border-radius: 5px;
+    float: right;
+    cursor: pointer;
+    border: 1px solid #22ac69;
+}
+
+.choose-mobile-type .sms-token-disabled {
+    border: 1px solid #22ac69;
+    background: #fff;
+    color: #22ac69;
+}
+
+.choose-mobile-type .sms-token-btn {
+    margin: 50px 0 10px;
+}
+
+.no-sms-token {
+    float: left;
+}
+
+.mobile-type-back {
+    float: right;
+}
+
+/*邮箱验证*/
+.choose-email-type {
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.choose-email-type .send-email-bg {
+    margin-bottom: 15px;
+}
+
+.choose-email-type .send-email-icon {
+    display: block;
+    width: 83px;
+    height: 92px;
+    background: url(../../img/uc_send_email.png) no-repeat;
+    margin: 0 auto;
+}
+
+.choose-email-type .email-type-tip {
+    font-weight: bolder;
+    color: #333;
+}
+
+.choose-email-type .send-email-tip {
+    color: #828282;
+}
+
+.choose-email-type .emal-type-btn {
+    margin-top: 70px;
+}
+
+.choose-email-type .emal-type-btn a {
+    color: #fff;
+}
+
+.choose-email-type .email-type-back {
+    margin: 25px 0 15px;
+    color: #22ac69;
+    background: #fff;
+    border: 1px solid #22ac69;
+}
+
+/*密保问题*/
+.choose-question-type {
+    width: 340px;
+    margin: 0 auto;
+}
+
+.choose-question-type .k {
+    font-weight: bolder;
+    display: inline-block;
+    *display: inline-block;
+    *zoom: 1;
+    height: 44px;
+    line-height: 44px;
+}
+
+.choose-question-type .question-tip {
+    margin-bottom: 15px;
+}
+
+.choose-question-type .question-input {
+    float: right;
+}
+
+.choose-question-type .question-text {
+    margin-left: 28px;
+}
+
+/*设置新密码*/
+.set-new-password {
+    width: 400px;
+    margin: 0 auto;
+}
+
+.set-new-password .set-password-tip {
+    margin-bottom: 15px;
+}
+
+.set-new-password .password-input {
+    width: 376px;
+}
+
+/*修改密码成功*/
+.reg-succeed-icon {
+    background: url(../../img/sign-up-succeed.png) no-repeat;
+    display: inline-block;
+    *display: inline-block;
+    *zoom: 1;
+    width: 32px;
+    height: 32px;
+    margin: 40px auto 30px;
+}
+
+.findpwd-succeed .content-main {
+    padding: 40px 0 80px;
+}
+
+.findpwd-succeed .content-main p {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+/*邮箱链接试下*/
+.validate-email-fail {
+    margin: 72px auto 0;
+    width: 700px;
+}
+
+.validate-email-fail .email-invalid {
+    display: block;
+    width: 83px;
+    height: 92px;
+    background: url(../../img/uc_email_invalid.png) no-repeat;
+    margin: 0 auto;
+}
+
+.validate-email-fail .email-invalid-tip {
+    color: #222222;
+    font-size: 14px;
+    margin: 20px 0 10px;
+    font-weight: bolder;
+}
+
+.validate-email-fail .return-homePage {
+    font-size: 18px;
+    color: #333;
+    font-weight: bolder;
+}
+
+.validate-email-fail .return-homePage .green {
+    color: #22ac69;
+}

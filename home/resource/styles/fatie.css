@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+#main {
+    width: 960px;
+    margin: 10px auto;
+}
+
+#main .main_title {
+    width: 960px;
+    height: 30px;
+    background-color: #39F;
+    margin: 0px auto 10px;;
+    line-height: 30px;
+
+}
+
+#main input {
+    margin: 5px;
+}

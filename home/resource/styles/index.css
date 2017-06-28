@@ -1,0 +1,63 @@
+#content{
+	width:960px;
+	margin:10px auto;
+	border:1px solid #c2e5d3;
+	}
+#content table{
+	width:960px;
+	}
+
+#content .content_title{
+	height:30px;
+	padding:0 15px;
+	background:url('../images/titlebg.png') repeat-x ;
+	}
+
+#content .content_title .cont_left{
+	line-height:30px;
+	float:left;
+	color:#369;
+	font-weight:700;
+	}
+	
+#content .content_title .cont_right{
+	line-height:30px;
+	float:right;
+	}
+	
+#content .content_title .cont_right b{
+	color:#369;
+	}
+
+#content .con_content .xhx{
+	border-bottom:1px dashed #ccc;
+	}
+	
+#content li{
+	list-style-type:none;
+	}
+#content .bk_title{
+	height:32px;
+	line-height:32px;
+	font-size:14px;
+	font-weight:700;
+	color:red;
+	background:url('../images/forum_new.gif') no-repeat left center;
+	padding-left:35px;
+	padding-bottom:0px;
+	}
+#content .bk_news,#content .bk_tongji{
+	padding-left:35px;
+	font-size:12px;
+	color:#444;
+	padding-top:0px;
+	}
+#content .bk_news{
+	
+	}
+#content li{
+	padding:5px;
+	}
+#content td{
+	padding:10px;
+	}

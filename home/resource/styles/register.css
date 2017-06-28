@@ -1,0 +1,28 @@
+#main {
+    height: 350px;
+    width: 960px;
+    margin: 10 auto;
+    border: 1px solid #ccc;
+}
+
+#main #main_title {
+    height: 30px;
+    background: #ccc;
+    line-height: 30px;
+    padding-left: 15px;
+    font-weight: 700;
+}
+
+#main #main_content .fri_tab {
+    width: 500px;
+    margin: 30px auto;
+}
+
+#main #main_content .fri_tab input {
+    border: 1px solid #ccc;
+}
+
+#main #main_content .fri_tab td {
+    padding: 5px 0px;
+    font-size: 12px;
+}
