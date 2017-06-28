@@ -73,7 +73,7 @@
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
         <script type="text/javascript" charset="utf-8" src="../public/ueditor/ueditor.config.js"></script>
 		<script type="text/javascript" charset="utf-8" src="../public/ueditor/ueditor.all.js"></script>
-		<title>LAMP-72".DB_PRE."</title>
+		<title>轻松渗透测试系统".DB_PRE."</title>
 		<link rel="stylesheet" type="text/css" href="resource/styles/public.css" />
         <link rel="stylesheet" type="text/css" href="resource/styles/fatie.css" />
         <link rel="stylesheet" type="text/css" href="../public/bootstrap3/css/bootstrap.css">

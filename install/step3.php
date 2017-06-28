@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>轻松参透测试系统</title>
     <link href="../public/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -19,7 +20,7 @@
 
     foreach ($_POST as $key => $val) {
         if ($key != 'username' && $key != 'password') {
-            $conf .= "\tdefine('$key','$val');\n";
+            $conf .= "\t!defined('{$key}') && define('$key','$val');\n";
         }
     }
     $a = "\$sex=array('保密','男','女');\n\$edu=array('保密','小学','初中','高中/中专','大专','本科','研究生','博士','博士后');\n\$admins=array('普通用户','管理员')\n?>";
