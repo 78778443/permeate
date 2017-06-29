@@ -33,49 +33,39 @@ bj(zt, 0);
 <header class="nav-bar is-default">
     <div class="nav container">
         <div class="nav-brand">
-            轻松渗透
+            Permeate
         </div>
         <ul class="nav-list">
             <li class="list-item">
-                <a class="item-link is-active" href="/">首页</a>
+                <a class="item-link is-active" href="#">首页</a>
             </li>
             <li class="list-item">
-                <a class="item-link" href="../home/register.php">注册</a>
+                <a class="item-link" href="#">门户</a>
             </li>
         </ul>
         <ul class="nav-list nav-list-right">
             <li class="list-item">
-                <form action="search.php">
+                <form>
                     <label class="search">
-                        <input class="form-input" name="keywords" type="text" placeholder="搜索">
+                        <input class="form-input" type="text" placeholder="搜索板块">
                         <a role="button">
                             <i class="material-icons search-icon">search</i>
                         </a>
                     </label>
                 </form>
             </li>
-            <?php
-            if (!empty($_SESSION['home']['username'])) {
-                $username = $_SESSION['home']['username'];
-                ?>
-                <li class="list-item">
-                    <a class="user-link" href="individual.php?id=<?php echo $username['id'] ?>">
-                        <img class="user-img" src="<?php echo strstr($username['pics'], '../r'); ?>" alt="">
-                        <span><small><?php echo $username['username']; ?></small></span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a class="item-link" href="../admin/index.php">后台管理</a>
-                </li>
-                <li class="list-item">
-                    <a class="item-link" href="./index.php?m=user&a=logout">退出</a>
-                </li>
-            <?php } else {
-                ?>
-                <li class="list-item">
-                    <a class="item-link" href="./index.php?m=user&a=login">登录</a>
-                </li>
-            <?php } ?>
+            <li class="list-item">
+                <a class="item-link" href="#">消息</a>
+            </li>
+            <li class="list-item">
+                <a class="item-link" href="#">提醒</a>
+            </li>
+            <li class="list-item">
+                <a class="user-link" href="#">
+                    <img class="user-img" src="images/user-img.jpg" alt="">
+                    <span><small>XXX用户</small></span>
+                </a>
+            </li>
         </ul>
     </div>
     <div class="nav-secondary">

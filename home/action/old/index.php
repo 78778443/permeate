@@ -35,9 +35,9 @@ foreach ($row as $part1) {
 
                             $i = 0;
                             foreach ($part1['cates'] as $cate) {
-
                                 //查询主题数量
                                 $sql = "select count(*) as cou from " . DB_PRE . "post where cid=" . $cate['id'];
+
                                 $row = mysql_func($sql);
                                 $x = 0;
                                 $x = $x + ($row[0]['cou']) ?>
