@@ -1,10 +1,10 @@
 <?php
 	header("content-type:text/html;charset=utf-8");
 	include "../public/demon.php";
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
-	include "../../includes/upload_func.php";
-	include "../../includes/image_func.php";
+	include "../conf/dbconfig.php";
+	include "../includes/mysql_func.php";
+	include "../includes/upload_func.php";
+	include "../includes/image_func.php";
 ?>
 <?php
 
@@ -15,9 +15,9 @@
 
 			
 		if(!empty($_FILES['pic']['name'])){
-			$data = upload($info,'pic','../../resorec/images/fri');
+			$data = upload($info,'pic','../resorec/images/fri');
 			$pic = $data['newname'];
-			$pic = suolue($pic,50,30,'../../resorec/images/fri/');
+			$pic = suolue($pic,50,30,'../resorec/images/fri/');
 			$sql = "insert into ".DB_PRE."fri(title,desc1,url,pic) values('$title','$desc1','$url','$pic')";
 
 		}else{

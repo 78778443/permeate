@@ -1,7 +1,7 @@
 <?php
 	header("content-type:text/html;charset=utf-8");
 	include "../public/demon.php";
-	include "../../conf/web_config.php";
+	include "../conf/web_config.php";
 		
 		
 ?>

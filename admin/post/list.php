@@ -1,9 +1,8 @@
 <?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
-	include "../../includes/del_func.php";
+	include_once "./public/demon.php";
+	include "../conf/dbconfig.php";
+	include "../includes/mysql_func.php";
+	include "../includes/del_func.php";
 	
 	//开始分页大小
 	$page_size = 5;
@@ -35,11 +34,6 @@
 	//exit;
 
 	$row = mysql_func($sql);
-	
-	/*echo "<pre>";
-	var_dump($row);
-	echo "</pre>";
-	exit;*/
 
 ?>
 

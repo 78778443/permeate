@@ -1,0 +1,170 @@
+/* Reset css */
+
+
+
+
+
+/* Padding - Margin */
+
+.p-0 {
+    padding: 0px !important;
+}
+.p-t-0 {
+    padding-top: 0px !important;
+}
+.p-t-10 {
+    padding-top: 10px !important;
+}
+.p-b-10 {
+    padding-bottom: 10px !important;
+}
+.m-0 {
+    margin: 0px !important;
+}
+.m-r-5 {
+    margin-right: 5px;
+}
+.m-r-10 {
+    margin-right: 10px;
+}
+.m-r-15 {
+    margin-right: 15px !important;
+}
+.m-l-10 {
+    margin-left: 10px;
+}
+.m-l-15 {
+    margin-left: 15px;
+}
+.m-t-5 {
+    margin-top: 5px !important;
+}
+.m-t-0 {
+    margin-top: 0px;
+}
+.m-t-10 {
+    margin-top: 10px !important;
+}
+.m-t-15 {
+    margin-top: 15px !important;
+}
+.m-t-20 {
+    margin-top: 20px;
+}
+.m-t-30 {
+    margin-top: 30px !important;
+}
+.m-t-40 {
+    margin-top: 40px !important;
+}
+.m-b-0 {
+    margin-bottom: 0px;
+}
+.m-b-5 {
+    margin-bottom: 5px;
+}
+.m-b-10 {
+    margin-bottom: 10px;
+}
+.m-b-15 {
+    margin-bottom: 15px;
+}
+.m-b-30 {
+    margin-bottom: 30px;
+}
+/* ---- Width-Sizes ---*/
+
+.w-xs {
+    min-width: 80px;
+}
+.w-sm {
+    min-width: 95px;
+}
+.w-md {
+    min-width: 110px;
+}
+.w-lg {
+    min-width: 140px;
+}
+/* Extra */
+
+.m-h-50 {
+    min-height: 50px;
+}
+.l-h-34 {
+    line-height: 34px;
+}
+.font-light {
+    font-weight: 300;
+}
+.wrapper-md {
+    padding: 20px;
+}
+.pull-in {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.b-0 {
+    border: none !important;
+}
+.no-border {
+    border: none;
+}
+.bx-shadow {
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.1);
+}
+.mx-box {
+    max-height: 380px;
+    min-height: 380px;
+}
+.thumb-sm {
+  height: 32px;
+  width: 32px;
+}
+.thumb-md {
+  height: 48px;
+  width: 48px;
+}
+.thumb-lg {
+  height: 88px;
+  width: 88px;
+}
+
+/* Grid-structure (Used Grid-page only) */
+
+.grid-structure .grid-container {
+    background-color: #f5f5f5;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+/* Icon-list (Used Demo Purpose only) */
+
+.icon-list div {
+    line-height: 40px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.icon-list i {
+    display: inline-block;
+    width: 40px;
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-transition: font-size .2s;
+    transition: font-size .2s;
+    -webkit-transition: all 0.2s;
+   transition: all 0.2s;
+}
+.ionicon-list i {
+    font-size: 16px;
+}
+.ionicon-list .col-md-3:hover i,
+.icon-list .col-md-3:hover i {
+    moz-transform: scale(2);
+    -webkit-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+}
