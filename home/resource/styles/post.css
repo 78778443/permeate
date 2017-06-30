@@ -6,7 +6,7 @@ td{color:#333;font-size:12px;}
 .clear{clear:both;height:10px;}
 /*===详细列表页start===*/
 
-.content_listshow{width:960px;margin:0 auto;}
+.content_listshow{width:1170px;margin:0 auto;}
 .content_listshow table{border:1px solid #cdcdcd;}
 .list_width{height:38px;width:160px;border-right:1px solid #cdcdcd;background:#e5edf2 }
 .list_width .list_width_title{height:37px;line-height:37px;border-bottom:1px dashed #cdcdcd;border-top:2px solid #cdcdcd;font-size:14px;font-weight:700;}
@@ -18,6 +18,6 @@ td{color:#333;font-size:12px;}
 .list_con1{}
 .list_con1 .list_width_title2{height:37px;width:777px;border-bottom:1px dashed #cdcdcd;border-top:2px solid #cdcdcd;padding:0 10px;line-height:37px;}
 .list_con1 .list_width_cont{padding:20px 10px;line-height:16px;}
-.fatie{width:960px;margin:0 auto;margin-top:10px;}
+.fatie{width:1170px;margin:0 auto;margin-top:10px;}
 .fatie a{height:31px; float:right;padding:0px 5px;line-height:31px;border:1px solid #cdcdcd;font-weight:700;}
 .fatie a.img{float:left;border:0;}

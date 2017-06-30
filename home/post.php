@@ -35,13 +35,13 @@ include "public/header.php";
         $row = mysql_func($sql);
         $post = $row[0];
         ?>
-        <table cellspacing="0" width="960px">
+        <table cellspacing="0" width="1170px">
             <tr>
                 <td class="list_width" align="center">回复:20<span>|</span>查看:30</td>
                 <td class="list_con"><?php echo $post['title'] ?></td>
             </tr>
         </table>
-        <table cellspacing="0" width="960px">
+        <table cellspacing="0" width="1170px">
             <tr>
                 <td class="list_width" align="center">
                     <div class="list_width_title"><?php echo $post['username'] ?></div>

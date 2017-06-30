@@ -7,7 +7,7 @@ img{border:none;}
 .tiaoshi{height:10px;}
 
 
-.individual{width:960px; margin:0 auto; border:1px solid #ccc;}
+.individual{width:1170px; margin:0 auto; border:1px solid #ccc;}
 .individual_left{float:left; background:#e8f0f7; border-right:1px solid #ccc;}
 .individual_left ul li{width:138px; height:35px; line-height:35px; text-indent:1em; color:#444;}
 .individual_left ul li a{display:block; width:138px; height:35px; line-height:35px; text-indent:1em; color:#444; border-bottom:1px dashed #ccc;}
