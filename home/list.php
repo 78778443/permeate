@@ -39,7 +39,6 @@ $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
 $sql = "select p.*,u.username from " . DB_PRE . "post as p," . DB_PRE . "user as u where  p.cid=" . $id . " and u.id=p.uid and p.cid='$bk'" . $limit;
 $row = mysql_func($sql);
 ?>
-
     <link rel="stylesheet" type="text/css" href="./resource/styles/list.css"/>
     <!--主体start-->
     <div id="main">

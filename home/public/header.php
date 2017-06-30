@@ -25,7 +25,6 @@ bj(zt, 0);
     <link rel="stylesheet" type="text/css" href="../public/Bootstrap3/css/bootstrap.min.css">
     <link href="../home/resource/dist/permeate.min.css" rel="stylesheet">
     <link href="../home/resource/material-icons.css" rel="stylesheet">
-    <!--        <link rel="stylesheet" type="text/css" href="../public/Bootstrap3/css/bootstrap.min.css">-->
     <!--    <link rel="stylesheet" type="text/css" href='../home/resource/styles/public.css'/>-->
 </head>
 
@@ -33,21 +32,24 @@ bj(zt, 0);
 <header class="nav-bar is-default">
     <div class="nav container">
         <div class="nav-brand">
-            Permeate
+            轻松渗透
         </div>
         <ul class="nav-list">
             <li class="list-item">
-                <a class="item-link is-active" href="#">首页</a>
+                <a class="item-link is-active" href="/">首页</a>
             </li>
             <li class="list-item">
-                <a class="item-link" href="#">门户</a>
+                <a class="item-link" href="/">门户</a>
+            </li>
+            <li class="list-item">
+                <a class="item-link" href="../home/register.php">注册</a>
             </li>
         </ul>
         <ul class="nav-list nav-list-right">
             <li class="list-item">
-                <form>
+                <form action="search.php">
                     <label class="search">
-                        <input class="form-input" type="text" placeholder="搜索板块">
+                        <input class="form-input" name="keywords" type="text" placeholder="搜索">
                         <a role="button">
                             <i class="material-icons search-icon">search</i>
                         </a>
@@ -61,10 +63,18 @@ bj(zt, 0);
                 <a class="item-link" href="#">提醒</a>
             </li>
             <li class="list-item">
-                <a class="user-link" href="#">
-                    <img class="user-img" src="images/user-img.jpg" alt="">
-                    <span><small>XXX用户</small></span>
-                </a>
+                <?php
+                if (!empty($_SESSION['home']['username'])) {
+                    $username = $_SESSION['home']['username'];
+                    ?>
+                    <a class="user-link" href="individual.php?id=<?php echo $username['id'] ?>">
+                        <img class="user-img" src="<?php echo strstr($username['pics'], '../r'); ?>" alt="">
+                        <span><small><?php echo $username['username']; ?></small></span>
+                    </a>
+                <?php } else {
+                    ?>
+                    <a class="item-link" href="#">登录</a>
+                <?php } ?>
             </li>
         </ul>
     </div>
