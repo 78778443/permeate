@@ -1,11 +1,11 @@
 <?php
 	header("content-type:text/html;charset=utf-8");
 	include "../public/demon.php";
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
+	include "../conf/dbconfig.php";
+	include "../includes/mysql_func.php";
 		
 ?>
-   <link rel="stylesheet" type="text/css" href="../../public/bootstrap3/css/bootstrap.css"/>
+   <link rel="stylesheet" type="text/css" href="../public/bootstrap3/css/bootstrap.css"/>
 <?php
 	$keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
 	if(!empty($keywords)){

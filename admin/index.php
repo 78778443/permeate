@@ -1,21 +1,20 @@
 <?php
-	header('content-type:text/html;charset=utf-8');
-	session_start();//开启session
-	if(empty($_SESSION['admin']['username'])){
-		echo "<script>alert('请先登录！')</script>";
-		echo "<script>window.location.href='./public/login.php'</script>";
-		exit;
-		}
+session_start();//开启session
+if (empty($_SESSION['admin']['username'])) {
+//    echo "<script>alert('请先登录！')</script>";
+//    echo "<script>window.location.href='./public/login.php'</script>";
+//    exit;
+}
+
+
+$model = !empty($_GET['m']) ? $_GET['m'] : 'post';
+$action = !empty($_GET['a']) ? $_GET['a'] : 'list';
+
+
+
+include "public/header.php";
+include "public/left.php";
+//include "$model/$action.php";
+include "public/right.php";
+include "public/footer.php";
 ?>
-<frameset rows="120,*,80" frameborder="no"> 
- 
-<frameset cols="100,*"> 
-	<frame > 
-	<frame name="header" src="public/header.php"> 
-</frameset>
-<frameset cols="200,*"> 
-	<frame name="left" src="public/left.php?id=1"> 
-	<frame name="right" src="public/right.php"> 
-</frameset>
-<frame name="footer" src="public/footer.php"> 
-</frameset><noframes></noframes> 

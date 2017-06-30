@@ -1,9 +1,9 @@
 <?php
 	header("content-type:text/html;charset=utf-8");
 	include "../public/demon.php";
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
-	include "../../includes/del_func.php";
+	include "../conf/dbconfig.php";
+	include "../includes/mysql_func.php";
+	include "../includes/del_func.php";
 
 ?>
 

@@ -1,9 +1,9 @@
 <?php
 	header("content-type:text/html;charset=utf-8");
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
-	include "../../includes/upload_func.php";
-	include "../../includes/image_func.php";
+	include "../conf/dbconfig.php";
+	include "../includes/mysql_func.php";
+	include "../includes/upload_func.php";
+	include "../includes/image_func.php";
 	include "../public/demon.php";
 ?>
 <?php
@@ -23,7 +23,7 @@
 		$QQ = $_POST['qq'];
 		$email = $_POST['email'];
 
-		$data = upload($info,'pic','../../resorec/images/userhead');
+		$data = upload($info,'pic','../resorec/images/userhead');
 		$pic = $data['newname'];
 		
 		
@@ -47,9 +47,9 @@
 		}
 	
 		if(!empty($pic)){
-		$pic = suolue($pic,200,200,'../../resorec/images/userhead/');
-		$picm = suolue($pic,100,100,'../../resorec/images/userhead/');
-		$pics = suolue($pic,48,48,'../../resorec/images/userhead/');
+		$pic = suolue($pic,200,200,'../resorec/images/userhead/');
+		$picm = suolue($pic,100,100,'../resorec/images/userhead/');
+		$pics = suolue($pic,48,48,'../resorec/images/userhead/');
 		
 			$sql = "update ".DB_PRE."user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',pic='$pic',telphone='$telphone',qq='$QQ',email='$email',picm='$picm',pics='$pics' where uid=$id";	
 
