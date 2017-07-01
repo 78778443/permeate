@@ -28,7 +28,7 @@ foreach($row as $part1){
                     foreach($part1['cates'] as $cate){
                         ?>
                         <span src></span>
-                        <td width="33%"><li class="bk_title"><a href="list.php?bk=<?php echo $cate['id'] ?>"><?php echo $cate['cname'] ?></a></li>
+                        <td width="33%"><li class="bk_title"><a href="index.php?m=tiezi&bk=<?php echo $cate['id'] ?>"><?php echo $cate['cname'] ?></a></li>
                             <?php //查询主题数量
                             $sql = "select count(*) as cou from ".DB_PRE."post where cid=".$cate['id'];  $row = mysql_func($sql); $x = 0; $x=$x+($row[0]['cou'])?>
                             <?php //查询最后发表

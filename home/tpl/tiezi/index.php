@@ -5,12 +5,6 @@ if (empty($id)) {
     exit ("参数错误！");
 }
 ?>
-<?php
-session_start();
-include "public/header.php";
-include "../conf/dbconfig.php";
-include "../includes/mysql_func.php";
-?>
     <link rel="stylesheet" type="text/css" href="./resource/styles/list.css"/>
     <div class="fatie"><a class="img" href="fatie.php?bk=<?php echo $bk ?>"><img src="resource/images/pn_post.png"/></a>
     </div>
@@ -98,9 +92,4 @@ echo "
 	</ul>
 	</div>
 	";
-?>
-
-    <!--主体end-->
-<?php
-include "public/footer.php";
 ?>

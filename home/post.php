@@ -34,10 +34,12 @@ include "public/header.php";
         $sql = "select p.*,u.*,d.* from " . DB_PRE . "post as p," . DB_PRE . "user as u," . DB_PRE . "user_detail as d where p.uid=u.id and d.uid=p.uid and p.id='$zt'";
         $row = mysql_func($sql);
         $post = $row[0];
+		$reply_count_sql = "select count(id) as count from bbs_reply where pid={$zt} ";
+		$reply_count = mysql_func($reply_count_sql)[0];
         ?>
         <table cellspacing="0" width="960px">
             <tr>
-                <td class="list_width" align="center">回复:20<span>|</span>查看:30</td>
+                <td class="list_width" align="center">回复:<?= $reply_count['count'];?><span>|</span>查看:<?= $post['click'];?></td>
                 <td class="list_con"><?php echo $post['title'] ?></td>
             </tr>
         </table>
