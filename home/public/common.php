@@ -19,6 +19,9 @@ function displayTpl($tplPath, $data = [])
         echo '模板文件' . $filePath . '不存在!';
         die;
     }
+	foreach($data as $key=>$val) {
+		$$key = $val;
+	}
     include "./public/header.php";
     require_once $filePath;
     include "./public/footer.php";
