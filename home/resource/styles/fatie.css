@@ -1,12 +1,12 @@
 @charset "utf-8";
 /* CSS Document */
 #main {
-    width: 960px;
+    width: 1170px;
     margin: 10px auto;
 }
 
 #main .main_title {
-    width: 960px;
+    width: 1170px;
     height: 30px;
     background-color: #39F;
     margin: 0px auto 10px;;

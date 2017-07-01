@@ -37,13 +37,13 @@ include "public/header.php";
 		$reply_count_sql = "select count(id) as count from bbs_reply where pid={$zt} ";
 		$reply_count = mysql_func($reply_count_sql)[0];
         ?>
-        <table cellspacing="0" width="960px">
+        <table cellspacing="0" width="1170px">
             <tr>
                 <td class="list_width" align="center">回复:<?= $reply_count['count'];?><span>|</span>查看:<?= $post['click'];?></td>
                 <td class="list_con"><?php echo $post['title'] ?></td>
             </tr>
         </table>
-        <table cellspacing="0" width="960px">
+        <table cellspacing="0" width="1170px">
             <tr>
                 <td class="list_width" align="center">
                     <div class="list_width_title"><?php echo $post['username'] ?></div>

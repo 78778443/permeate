@@ -1,6 +1,6 @@
 #main{
-	width:960px;
-	margin:10 auto;
+	width:1170px;
+	margin:0 auto;
 	border:1px solid #ccc;
 	
 	}
@@ -17,7 +17,7 @@
 	}
 #main .line_xhx{
 	border:1px dashed #ccc;
-	width:930px;
+	width:1130px;
 	margin:10px;
 	}
 #main #main_title{
@@ -40,6 +40,8 @@
 #main  .tab_zh{
 	width:150px;
 	}
-.fatie{width:960px;margin:0 auto;height:31px;line-height:31px;margin-top:10px;}
+.fatie{width:1170px;margin:0 auto;height:31px;line-height:31px;margin-top:10px;}
 .fatie a{height:31px; padding:0px 5px;line-height:31px;border:1px solid #cdcdcd;font-weight:700;}
 .fatie a.img{border:0;}
+
+.tab_bt a{font-size: large;}
