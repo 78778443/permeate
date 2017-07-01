@@ -21,11 +21,7 @@
     </li>
     <li><a href="individual.php">修改头像</a></li>
     <li ><a href="basic.php">个人资料</a></li>
-    <li><a href="">积分</a></li>
-    <li><a href="">用户组</a></li>
-    <li><a href="">隐私筛选</a></li>
     <li class="individual_left_li"><a href="safe.php">密码安全</a></li>
-    <li><a href="">访问推广</a></li>
   </ul>
 </div>
 <div class="personal_right">

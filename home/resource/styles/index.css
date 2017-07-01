@@ -1,16 +1,16 @@
 #content{
-	width:960px;
+	width:1170px;
 	margin:10px auto;
 	border:1px solid #c2e5d3;
 	}
 #content table{
-	width:960px;
+	width:1170px;
 	}
 
 #content .content_title{
 	height:30px;
 	padding:0 15px;
-	background:url('../images/titlebg.png') repeat-x ;
+	background-color: #ccc;
 	}
 
 #content .content_title .cont_left{

@@ -17,7 +17,7 @@ a {
     clear: both;
 }
 .main{
-    width: 960px;margin: 0 auto;
+    width: 1170px;margin: 0 auto;
 }
 body {
     font: 12px/1.8 Tahoma, 'Microsoft Yahei', 'Simsun';
@@ -27,7 +27,7 @@ body {
 
 #top {
     height: 24px;
-    width: 960px;
+    width: 1170px;
     margin: 0px auto;
     padding: 0 50px;
     background: url('../images/background.png') repeat-x;
@@ -45,13 +45,13 @@ body {
 }
 
 #header {
-    width: 960px;
+    width: 1170px;
     margin: 0px auto;
 
 }
 
 #header #banner {
-    width: 960px;
+    width: 1170px;
     height: 100px;
     padding-top: 10px 0px;
     background: url('../images/160051ykknktapaokiaazc.gif') no-repeat center center;
@@ -81,7 +81,7 @@ body {
 }
 
 #header #menu {
-    width: 960px;
+    width: 1170px;
     height: 33px;
     background-color: #2B7ACD;
     background: url('../images/nv.png') no-repeat;
@@ -113,7 +113,7 @@ body {
 
 #header .search {
     height: 45px;
-    width: 960px;
+    width: 1170px;
     background: url('../images/search.png') repeat-x;
 }
 
@@ -181,7 +181,7 @@ body {
 }
 
 #header .path {
-    width: 960px;
+    width: 1170px;
     height: 30px;
     margin-top: 57px;
 }
@@ -224,7 +224,7 @@ body {
 
 /*页脚css*/
 .footer {
-    width: 960px;
+    width: 1170px;
     margin: 0 auto;
 }
 
@@ -278,7 +278,7 @@ body {
 }
 
 .footer_1 {
-    width: 960px;
+    width: 1170px;
     margin: 0 auto;
     border-top: 1px solid #C2D5E3;
 }

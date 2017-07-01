@@ -1,17 +1,10 @@
-/*************
----鍙栨秷鏍峰紡---
-*************/
-*{padding:0; margin:0; list-style:none; text-decoration:none; font-size:13px;}
-a:hover{text-decoration:underline;}
+
 img{border:none;}
 .clear{clear:both;}
 #main_tongyong{margin-top:40px;}
 .tiaoshi{height:10px;}
-/**********
 
----涓汉涓績---
-**************/
-.individual{width:960px; margin:0 auto; border:1px solid #ccc;}
+.individual{width:1170px; margin:0 auto; border:1px solid #ccc;}
 .individual_left{float:left; height:695px;  background:#e8f0f7; border-right:1px solid #ccc;}
 .personal_left{height:500px;}
 .individual_left ul li{width:138px; height:35px; line-height:35px; text-indent:1em; color:#444;}
@@ -20,9 +13,7 @@ img{border:none;}
 .individual_left .individual_left_h3{height:45px; display:block; line-height:45px;}
 .individual_left ul li a{display:block; color:#444; font-size:14px; text-decoration:none;}
 .individual_left .individual_left_li a{background:#fff; border:1px solid #ccc; border-right:1px solid #fff; border-left:none;}
-/**************
----涓汉璧勬枡---
-**************/
+
 .personal_right .personal_right_ul{margin:20px 0 0 160px;}
 .personal_right .personal_right_ul li{float:left;}
 .personal_right .personal_right_ul li a{display:block; width:75px; height:30px; line-height:30px; color:#333; border:1px solid #cdcdcd; border-bottom:none; text-align:center; margin-left:5px; text-decoration:none; background:#e5edf2;}
@@ -34,4 +25,7 @@ img{border:none;}
 .personal_right .personal_right_table tr th{text-align:left; font-weight:500; color:#444;}
 .personal_right .personal_right_table .personal_right_table_text{width:340px; height:30px;}
 .personal_right_border{border-bottom:1px solid #cdcdcd; height:31px; width:790px; margin-left:150px;}
-/******************/
+
+.personal_left li{padding:0; margin:0; list-style:none; text-decoration:none; font-size:13px;}
+.personal_left{padding:0; margin:0;text-decoration:none; font-size:13px;}
+.personal_right{padding:0; margin:0;  text-decoration:none; font-size:13px;}
