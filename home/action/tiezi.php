@@ -100,6 +100,7 @@ class tiezi
         $row = mysql_func($sql);
 			
 		$data['bk'] = $bk;
+		$data['zt'] = $zt;
 		$data['post'] = $post;
 		$data['row'] = $row;
 		$data['count'] = $count;

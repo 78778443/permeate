@@ -64,7 +64,7 @@
 		//echo "<pre>";
 ?>
 
-		<script>window.location.href="./list.php?bk=<?php echo $bk ?>&zt=<?php echo $zt ?>"</script>
+		<script>window.location.href="./index.php?m=tiezi&a=index&bk=<?php echo $bk ?>&zt=<?php echo $zt ?>"</script>
 	<?php
 		}
 ?>
