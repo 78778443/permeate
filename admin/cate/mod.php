@@ -1,8 +1,8 @@
 <?php
 	header("content-type:text/html;charset=utf-8");
 	include "../public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
+	include "../../conf/dbconfig.php";
+	include "../../includes/mysql_func.php";
 ?>
 <?php
 	
@@ -42,7 +42,7 @@
 ?>
 <div class="container">
 <table >
-<form action="mod.php?id=<?php echo $id ?>" method="post" >
+<form action="imod.php?id=<?php echo $id ?>" method="POST" >
 	<tr><td>分区名称：</td><td>
 	<select name="pid"> 
 		<?php foreach($row as $part){

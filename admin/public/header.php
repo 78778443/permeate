@@ -26,7 +26,7 @@
     <div class="topbar">
         <div class="topbar-left">
             <div class="text-center">
-                <a href="/" class="logo"><i class="md md-terrain"></i> <span>轻松渗透 </span></a>
+                <a href="/" class="logo"><i class="md md-terrain"></i> <span>轻松渗透后台管理系统</span></a>
             </div>
         </div>
         <div class="navbar navbar-default" role="navigation">

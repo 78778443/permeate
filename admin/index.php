@@ -1,5 +1,6 @@
 <?php
 session_start();//开启session
+header('content-type:text/html;charset=utf-8');
 if (empty($_SESSION['admin']['username'])) {
 //    echo "<script>alert('请先登录！')</script>";
 //    echo "<script>window.location.href='./public/login.php'</script>";
@@ -7,14 +8,15 @@ if (empty($_SESSION['admin']['username'])) {
 }
 
 
-$model = !empty($_GET['m']) ? $_GET['m'] : 'post';
-$action = !empty($_GET['a']) ? $_GET['a'] : 'list';
-
-
-
+$model = @$_GET['m'];
+$action = @$_GET['a'];
 include "public/header.php";
+include "public/demon.php";
+include "public/order.php";//控制总线
 include "public/left.php";
 //include "$model/$action.php";
-include "public/right.php";
+$all = new order;
+$all->Tmp($model,$action);
+//include "public/right.php"; //作废
 include "public/footer.php";
 ?>

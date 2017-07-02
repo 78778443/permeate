@@ -15,23 +15,23 @@
 		$ipmax = ip2long($_POST['ipmax']);
 		
 
-		//æ›´æ–°æ•°æ®åˆ°USERè¯¦æƒ…è¡¨å½“ä¸­
+		//¸üĞÂÊı¾İµ½USERÏêÇé±íµ±ÖĞ
 		
 		$sql = "update ".DB_PRE."iprefuse set ipmin='$ipmin',ipmax='$ipmax' where id='$id'";
 		$row = mysql_func($sql);
 
 		if($row===false){
-			echo "<script>alert('æŠ±æ­‰ï¼å†™å…¥æ•°æ®å¤±è´¥ï¼Œè¯·ç¨åå†è¯•ï¼')</script>";
+			echo "<script>alert('±§Ç¸£¡Ğ´ÈëÊı¾İÊ§°Ü£¬ÇëÉÔºóÔÙÊÔ£¡')</script>";
 			echo "<script>window.location.href='../index.php?m=ipre&a=list'</script>";
 			exit;
 		}
 
-		//æ‰§è¡Œè¿‡ç¨‹ä¸­æ²¡æœ‰å‡ºç°ä»¥ä¸ºï¼Œå°†è·³è½¬åˆ°LISTåˆ—è¡¨å½“ä¸­
+		//Ö´ĞĞ¹ı³ÌÖĞÃ»ÓĞ³öÏÖÒÔÎª£¬½«Ìø×ªµ½LISTÁĞ±íµ±ÖĞ
 		echo "<script>window.location.href='../index.php?m=ipre&a=list'</script>";
 		exit;
 	}
 	
-	//POSTä¸å­˜åœ¨ï¼Œå°†æŸ¥è¯¢è¡¨ä¸­æ•°æ®
+	//POST²»´æÔÚ£¬½«²éÑ¯±íÖĞÊı¾İ
 	$sql = "select * from ".DB_PRE."iprefuse where  id='$id'";
 	//echo $sql;
 	//exit;
@@ -41,13 +41,3 @@
 	var_dump($fri);
 	echo "</pre>";*/
 ?>
-<div class="container">
-<table >
-<form action="imod.php?id=<?php echo $id ?>" method="post" >
-	<tr><td>å¼€å§‹IP</td><td><input type="text" name="ipmin" value="<?php echo long2ip($fri['ipmin']) ?>" /></td></tr>
-	<tr><td>ç»“æŸIP</td><td><input type="ipmax" name="ipmax" value="<?php echo long2ip($fri['ipmax']) ?>"  /></td></tr>
-	<tr><td colspan=2><input type="submit" value="ç¡®å®šä¿®æ”¹" class="btn btn-default navbar-btn" />
-	<input type="reset" value="é‡æ–°å¡«å†™"  class="btn btn-default navbar-btn"/></td></tr>
-</form>
-</table>
-</div>

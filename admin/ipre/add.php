@@ -1,6 +1,5 @@
 <?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
+	include "./public/demon.php";
 	include "../conf/dbconfig.php";
 	include "../includes/mysql_func.php";
 	include "../includes/upload_func.php";
@@ -22,19 +21,19 @@
 		
 		if(!$row){
 			echo "<script>alert('抱歉！写入数据失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='add.php'</script>";
+			echo "<script>window.location.href='../index.php?m=ipre&a=list'</script>";
 			exit;
 		}
 
 
 		//header("location:list.php");
-		echo "<script>window.location.href='./list.php'</script>";
+		echo "<script>window.location.href='../index.php?m=ipre&a=list'</script>";
 		exit;
 	}
 
 ?>
 <div class="container">
-<form action="add.php" method="post" enctype="multipart/form-data" >
+<form action="./ipre/iadd.php" method="post" enctype="multipart/form-data" >
 <table>
 	<tr><td>开始IP：</td><td><input type="text" name="ipmin" /><p /></td></tr>
 	<tr><td>结束IP：</td><td><input type="text" name="ipmax" /><p /></td></tr>

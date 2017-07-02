@@ -1,10 +1,9 @@
 <?php
 	//设置页面字符集为 UTF-8
-	header('content-type:text/html;charset=utf-8');
 	//开启session
 	session_start();
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
+	include "../../conf/dbconfig.php";
+	include "../../includes/mysql_func.php";
 	
 	if(isset($_POST['username'])){
 				$username = $_POST['username'];
@@ -24,7 +23,7 @@
 	//exit;
 	if(!$row){
 		echo "<script>alert('用户不存在！')</script>";
-		echo "<script>window.lockjation.href='../index.php'</script>";
+		echo "<script>window.lockjation.href='login.php'</script>";
 		exit;
 		}
 		

@@ -32,20 +32,3 @@
 	$row = mysql_func($sql);
 	$post = $row[0];
 ?>
-<div class='container'>
-<table >
-<form action='imod.php?id=<?php echo $id ?>' method='post' >
-		<?php $sql = 'select * from '.DB_PRE.'cate';
-		$row1 = mysql_func($sql); ?>
-   <tr><td>所属板块：</td><td><select name='cid'> 
-		<?php foreach($row1 as $cate){?>
-		<option value='<?php echo $cate['id'] ?>' >
-		<?php echo $cate['cname'] ?></option><?php } ?>
-	</select></td></tr>
-	<tr><td>主题：</td><td><input type='text' name='title' value='<?php echo $post['title'] ?>' /></td></tr>
-	<tr><td>内容：</td><td><input type='text' name='content' value='<?php echo $post['content'] ?>' /></td></tr>
-	<tr><td colspan=2><input type='submit' value='确定修改' class='btn btn-default navbar-btn' />
-	<input type='reset' value='重新填写' class='btn btn-default navbar-btn' /></td></tr>
-</form>
-</table>
-</div>

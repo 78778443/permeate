@@ -1,6 +1,5 @@
 <?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
+	include "/public/demon.php";
 	include "../conf/dbconfig.php";
 	include "../includes/mysql_func.php";
 	
@@ -59,7 +58,7 @@
 			<th>描述</th>
 			<th>管理</th>
 		<tr>
-		<form action="del.php" method="post">
+		<form action="./fri/del.php" method="post">
 <?php
 	
 	foreach($row as $user){
@@ -70,8 +69,8 @@
 			<td><?php echo $user['title'] ?></td>
 			<td><?php echo $user['desc1'] ?></td>
 
-			<td><a href="mod.php?id=<?php echo $user['id'] ?>">编辑</a>
-				<a href="del.php?id=<?php echo $user['id'] ?>&zd=id&table=fri">删除</a>
+			<td><a href="./fri/mod.php?id=<?php echo $user['id'] ?>">编辑</a>
+				<a href="./fri/del.php?id=<?php echo $user['id'] ?>&zd=id&table=fri">删除</a>
 			</td>
 		</tr>
 <?php

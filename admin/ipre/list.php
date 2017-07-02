@@ -1,6 +1,5 @@
 <?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
+	include "./public/demon.php";
 	include "../conf/dbconfig.php";
 	include "../includes/mysql_func.php";
 	
@@ -57,7 +56,7 @@
 			<th>结束IP</th>
 			<th>管理</th>
 		<tr>
-		<form action="del.php" method="post">
+		<form action="./ipre/del.php" method="post">
 <?php
 	
 	foreach($row as $ip){
@@ -68,8 +67,8 @@
 			<td><?php echo long2ip($ip['ipmin']) ?></td>
 			<td><?php echo long2ip($ip['ipmax']) ?></td>
 
-			<td><a href="mod.php?id=<?php echo $ip['id'] ?>">编辑</a>
-				<a href="del.php?id=<?php echo $ip['id'] ?>&zd=id&table=iprefuse">删除</a>
+			<td><a href="./ipre/mod.php?id=<?php echo $ip['id'] ?>">编辑</a>
+				<a href="./ipre/del.php?id=<?php echo $ip['id'] ?>&zd=id&table=iprefuse">删除</a>
 			</td>
 		</tr>
 <?php

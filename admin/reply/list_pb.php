@@ -1,10 +1,9 @@
 <?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
+	include "/public/demon.php";
 	include "../conf/dbconfig.php";
 	include "../includes/mysql_func.php";
 	
-	$keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
+	$keywords = !empty(@$_GET['keywords']) ? @$_GET['keywords'] : '';
 	if(!empty($keywords)){
 		$where = " where xx=2 id like '%$keywords%' ";
 		$link = "&keywords=".$keywords;
@@ -91,9 +90,9 @@
 			echo $user['username'] ?></td>
 			<td><?php echo date('Y-m-d H:i:s',$reply['ptime']); ?></td>
 			<td><?php echo long2ip($reply['pip']) ?></td>
-			<td><a href="mod.php?id=<?php echo $reply['id'] ?>">编辑</a>
-				<a href="del.php?id=<?php echo $reply['id'] ?>&zd=id&table=reply&cz=1">恢复</a>
-				<a href="del.php?id=<?php echo $reply['id'] ?>&zd=id&table=reply">删除</a>
+			<td><a href="./reply/mod.php?id=<?php echo $reply['id'] ?>">编辑</a>
+				<a href="./reply/del.php?id=<?php echo $reply['id'] ?>&zd=id&table=reply&cz=1">恢复</a>
+				<a href="./reply/del.php?id=<?php echo $reply['id'] ?>&zd=id&table=reply">删除</a>
 			</td>
 		</tr>
 <?php

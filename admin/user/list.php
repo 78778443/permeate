@@ -1,6 +1,5 @@
 <?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
+	include "/public/demon.php";
 	include "../conf/dbconfig.php";
 	include "../includes/mysql_func.php";
 	
@@ -44,11 +43,11 @@
 	$row = mysql_func($sql);
 	
 ?>
-
+<br /><br /><br /><br /><br /><br />
 <div class="container">
   <form>
     搜索用户名：
-    <input type='text' name='keywords'  class='input-medium search-query' />
+    <input style="float:rig;" type='text' name='keywords'  class='input-medium search-query' />
     &nbsp;&nbsp;&nbsp;
     <input type='submit' value='搜索' class='btn' />
   </form>

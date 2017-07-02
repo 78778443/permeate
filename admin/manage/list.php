@@ -1,12 +1,11 @@
 <?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
+	include "./public/demon.php";
 	include "../conf/web_config.php";
 		
 		
 ?>
 <div class="container">
-<form action="mod.php" method="post" enctype="multipart/form-data" >
+<form action="./manage/mod.php" method="post" enctype="multipart/form-data" >
 <table class="table table-bordered">
 	<tr><td>*网站标题</td><td><input type="text" name="WZ_TITLE" value="<?php echo WZ_TITLE ?>"></td></tr>
 	<tr><td>*网站标签</td><td><input type="text" name="WZ_KEY" value="<?php echo WZ_KEY ?>"></td></tr>

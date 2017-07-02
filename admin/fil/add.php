@@ -1,6 +1,5 @@
 <?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
+	include "/public/demon.php";
 	include "../conf/dbconfig.php";
 	include "../includes/mysql_func.php";
 	include "../includes/upload_func.php";
@@ -21,19 +20,19 @@
 		var_dump($row);
 		if($row===false){
 			echo "<script>alert('抱歉！写入数据失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='add.php'</script>";
+			echo "<script>window.location.href='../index.php?m=fil&a=list'</script>";
 			exit;
 		}
 
 
 		//header("location:list.php");
-		echo "<script>window.location.href='./list.php'</script>";
+		echo "<script>window.location.href='../index.php?m=fil&a=list'</script>";
 		exit;
 	}
 
 ?>
 <div class="container">
-<form action="add.php" method="post" enctype="multipart/form-data" >
+<form action="./fil/iadd.php" method="post" enctype="multipart/form-data" >
 <table>
 	<tr><td>关键字：</td><td><input type="text" name="hinge" /><p /></td></tr>
 	<tr><td><input type="submit" value="添加" class="btn btn-default navbar-btn" /></td><td>

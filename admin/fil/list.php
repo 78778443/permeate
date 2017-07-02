@@ -1,6 +1,5 @@
 <?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
+	include "/public/demon.php";
 	include "../conf/dbconfig.php";
 	include "../includes/mysql_func.php";
 	
@@ -56,7 +55,7 @@
 			<th>关键词</th>
 			<th>管理</th>
 		<tr>
-		<form action="del.php" method="post">
+		<form action="./fil/del.php" method="post">
 <?php
 	
 	foreach($row as $fil){
@@ -65,8 +64,8 @@
 			<td><input type="checkbox" name="id[]" value="<?php echo $user['id'] ?>" /></td>
 			<td><?php echo $fil['id'] ?></td>
 			<td><?php echo $fil['hinge'] ?></td>
-			<td><a href="mod.php?id=<?php echo $fil['id'] ?>">编辑</a>
-				<a href="del.php?id=<?php echo $fil['id'] ?>&zd=id&table=fil">删除</a>
+			<td><a href="./fil/mod.php?id=<?php echo $fil['id'] ?>">编辑</a>
+				<a href="./fil/del.php?id=<?php echo $fil['id'] ?>&zd=id&table=fil">删除</a>
 			</td>
 		</tr>
 <?php

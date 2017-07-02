@@ -1,9 +1,9 @@
 <?php
-	include "/public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
-	include "../includes/upload_func.php";
-	include "../includes/image_func.php";
+	include "../public/demon.php";
+	include "../../conf/dbconfig.php";
+	include "../../includes/mysql_func.php";
+	include "../../includes/upload_func.php";
+	include "../../includes/image_func.php";
 ?>
 <?php
 
@@ -39,15 +39,3 @@
 	}
 
 ?>
-<div class="container">
-<form action="./fri/iadd.php" method="post" enctype="multipart/form-data" >
-<table>
-	<tr><td>标题：</td><td><input type="text" name="title" /><p /></td></tr>
-	<tr><td>描述：</td><td><input type="text" name="desc1" /><p /></td></tr>
-	<tr><td>URL：</td><td><input type="url" name="url" /><p /></td></tr>
-	<tr><td>图片链接：</td><td><input type="file" name="pic"  /><p/></td></tr>
-	<tr><td><input type="submit" value="添加链接" class="btn btn-default navbar-btn" /></td><td>
-	<input type="reset" value="重新填写" class="btn btn-default navbar-btn" /></td></tr>
-</table>
-</form>
-</div>
