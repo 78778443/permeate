@@ -1,34 +1,79 @@
-<link rel="stylesheet" type="text/css" href="./resource/styles/register.css"/>
+<!--辅助类，垂直居中-->
+<div class="vertical-center">
+    <div class="sign paper vertical-middle">
+        <div class="sign-header">
+            <h2>Permeate</h2>
+        </div>
+        <div class="sign-body">
+            <div class="sign-controller">
+                <div class="sign-controller-item">
+                    <a class="is-active" role="button">
+                        登陆
+                    </a>
+                </div>
+                <div class="sign-controller-item">
+                    <a role="button">
+                        注册
+                    </a>
+                </div>
+            </div>
+            <div class="sign-container">
+                <div class="sign-container-item is-active">
+                    <form action="./public/login.php" method="post">
+                        <div class="form-group">
+                            <label class="form-outline-label">
+                                <span class="label-title">账号</span>
+                                <input class="form-outline-input" type="text" name="username" value="" placeholder="请输入账号">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-outline-label">
+                                <span class="label-title">密码</span>
+                                <input class="form-outline-input" type="password" name="password" value="" placeholder="请输入密码">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit" >登陆</button>
+                        </div>
 
-<!--主体start-->
-<div id="main">
-    <div id="main_title">
-        <span>用户登录</span>
-    </div>
-    <div id="main_content">
-        <div class="fri_tab">
-            <form action="./public/login.php" method="post">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">用户名</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="username" class="form-control"
-                               placeholder="用户名需要4~15位字母或数字"></div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">密码</label>
-                    <div class="col-sm-9">
-                        <input type="password" name="password" class="form-control"
-                               placeholder="密码5~15位字母或数字"></div>
-                </div>
+                <div class="sign-container-item">
+                    <form action="./public/reg.php" method="post">
+                        <div class="form-group">
+                            <label class="form-outline-label">
+                                <span class="label-title">账号</span>
+                                <input class="form-outline-input" type="text" name="username" value="" placeholder="请输入账号">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-outline-label">
+                                <span class="label-title">密码</span>
+                                <input class="form-outline-input" type="password" name="password" value="" placeholder="请输入密码">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-outline-label">
+                                <span class="label-title">确认密码</span>
+                                <input class="form-outline-input" type="password" name="repass" value="" placeholder="请再次确认密码">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-outline-label">
+                                <span class="label-title">邮箱</span>
+                                <input class="form-outline-input" type="email" name="email" value="" placeholder="请输入邮箱地址">
+                            </label>
+                        </div>
 
-                <div class="form-group">
-                    <label class="col-sm-4 control-label">&nbsp;</label>
-                    <div class="col-sm-7">
-                        <input type="submit" name="zhuce" value="登录" class="btn btn-success"/>
-                        <input type="reset" name="chongzhi" value="重置" class="btn btn-default"/>
-                    </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit" >注册</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
+
         </div>
     </div>
 </div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="resource/dist/js/sign.js"></script>

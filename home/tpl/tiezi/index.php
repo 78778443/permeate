@@ -1,56 +1,58 @@
-
-    <link rel="stylesheet" type="text/css" href="./resource/styles/list.css"/>
-    <div class="fatie"><a class="img" href="fatie.php?bk=<?php echo $bk ?>"><img src="resource/images/pn_post.png"/></a>
-    </div>
-
-    <!--主体start-->
-
-    <div id="main">
-        <div id="main_title">
-            <table class="table table-striped">
-                <tr>
-                    <td class="tab_bt">帖子标题</td>
-                    <td class="tab_zz">作者</td>
-                    <td class="tab_hf">回复/查看</td>
-                    <td class="tab_zh">最后发表</td>
-                </tr>
-            </table>
-        </div>
-        <div id="main_content">
-            <table>
-                <?php
-                foreach ($row as $post) {
-                    ?>
-                    <tr>
-                        <td class="tab_bt"><a href="index.php?m=tiezi&a=detail&bk=<?php echo $bk;
-                            echo '&zt=' . $post['id'] ?>"><?php echo $post['title'] ?>
-                                </href>
-                            </a></td>
-                        <td class="tab_zz"><a href><?php echo $post['username'] ?></a></td>
-                        <td class="tab_hf"><a href><?= $post['reply_count'];?>/<?php echo $post['click']?></a></td>
-                        <td class="tab_zh"><a href><?php echo date('Y-m-d H:i:s', $post['ptime']) ?></a></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            <div class="line_xhx"></div>
-                        </td>
-                    </tr>
-                    <?php
-                }
-                ?>
-            </table>
-        </div>
-    </div>
 <?php
-echo "
-	<ul class='pager'>
-		<li><a href='index.php?m=tiezi&bk=" . $bk . "&page=1'>首页</a></li>
-		<li><a href='index.php?m=tiezi&bk=" . $bk . "&page=" . ($page_num - 1) . "'>上一页</a></li>
-		<li><li><a href='index.php?m=tiezi&bk=" . $bk . "&page=" . ($page_num + 1) . "'>下一页</a></li>
-		<li><a href='index.php?m=tiezi&bk=" . $bk . "&page=" . $page_count . "'>尾页</a></li>
-		<li>总共" . $page_count . "页</li>
-		<li>本页" . (($page_num == $page_count && $count % $page_size != 0) ? ($count % $page_size) : $page_size) . "条</li>
-		<li>总共" . $count . "条</li>
-	</ul>
-	";
+$get = $_GET;
 ?>
+<section class="section">
+    <div class="container">
+        <div class="paper">
+            <div class="post-list">
+                <table class="table table-primary table-post-list">
+                    <thead>
+                    <tr>
+                        <th>帖子标题</th>
+                        <th>作者</th>
+                        <th>回复/查看</th>
+                        <th>最后发表</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($row as $post) { ?>
+                        <tr>
+                            <td>
+                                <a href="index.php?m=tiezi&a=detail&bk=<?= $bk ?><?= '&zt=' . $post['id'] ?>"><?= $post['title'] ?></a>
+                            </td>
+                            <td><?php echo $post['username'] ?></td>
+                            <td><?= $post['reply_count']; ?>/<?php echo $post['click'] ?></td>
+                            <td><?php echo date('Y-m-d H:i:s', $post['ptime']) ?></td>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+                <div class="post-list-controller">
+                    <div style="float: right">
+                        <a class="btn btn-primary" href="fatie.php?bk=<?php echo $bk ?>">发帖</a>
+                    </div>
+
+                    <nav class="page">
+                        <ul class='pagination'>
+                            <?php echo "
+                            <li class=\"page-item\">
+                            <a class=\"page-link\" href='/home/index.php?m=tiezi&a=index&page=1&bk=" . $get['bk'] . "'>首页</a></li>
+                            <li class=\"page-item\">
+                            <a class=\"page-link\" href='/home/index.php?m=tiezi&a=index&?page=" . ($page_num - 1) . "&bk=" . $get['bk'] . "'>上一页</a></li>
+                            <li class=\"page-item\">
+                            <a class=\"page-link\" href='/home/index.php?m=tiezi&a=index&?page=" . ($page_num + 1) . "&bk=" . $get['bk'] . "'>下一页</a></li>
+                            <li class=\"page-item\">
+                            <a class=\"page-link\" href='/home/index.php?m=tiezi&a=index&?page=" . $page_count . "&bk=" . $get['bk'] . "'>尾页</a></li>
+                            <li class=\"page-item\">总共" . $page_count . "页</li>
+                            <li class=\"page-item\">本页" . (($page_num == $page_count && $count % $page_size != 0) ? ($count % $page_size) : $page_size) . "条</li>
+                            <li class=\"page-item\">总共" . $count . "条</li>
+                            " ?>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>

@@ -22,27 +22,25 @@ bj(zt, 0);
     <meta name='description' content='<?php echo WZ_DES; ?>'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../public/Bootstrap3/css/bootstrap.min.css">
-    <link href="../home/resource/dist/permeate.min.css" rel="stylesheet">
-    <link href="../home/resource/material-icons.css" rel="stylesheet">
-    <!--    <link rel="stylesheet" type="text/css" href='../home/resource/styles/public.css'/>-->
+    <?php if( $_SERVER['PHP_SELF'] != '/home/index.php'){ ?>
+    <link rel="stylesheet" type="text/css" href="/public/Bootstrap3/css/bootstrap.min.css">
+    <?php } ?>
+    <link href="/home/resource/dist/permeate.min.css" rel="stylesheet">
+    <link href="/home/resource/font/material-icons.css" rel="stylesheet">
 </head>
 
 <body>
 <header class="nav-bar is-default">
     <div class="nav container">
         <div class="nav-brand">
-            轻松渗透
+            Permeate
         </div>
         <ul class="nav-list">
             <li class="list-item">
                 <a class="item-link is-active" href="/">首页</a>
             </li>
             <li class="list-item">
-                <a class="item-link" href="/">门户</a>
-            </li>
-            <li class="list-item">
-                <a class="item-link" href="../home/register.php">注册</a>
+                <a class="item-link" href="/home/index.php?m=user&a=login">注册</a>
             </li>
         </ul>
         <ul class="nav-list nav-list-right">
@@ -71,11 +69,22 @@ bj(zt, 0);
                         <img class="user-img" src="<?php echo strstr($username['pics'], '../r'); ?>" alt="">
                         <span><small><?php echo $username['username']; ?></small></span>
                     </a>
-                <?php } else {
-                    ?>
-                    <a class="item-link" href="#">登录</a>
-                <?php } ?>
-            </li>
+                </li>
+                <li class="list-item">
+                    <a class="item-link" href="../admin/index.php">后台管理</a>
+                </li>
+                <li class="list-item">
+                    <a class="item-link" href="./index.php?m=user&a=logout">退出</a>
+                </li>
+            <?php } else {
+                ?>
+                <li class="list-item">
+                    <a class="item-link" href="./index.php?m=user&a=login">登录</a>
+                </li>
+                <li class="list-item">
+                    <a class="item-link" href="./index.php?m=user&a=login">注册</a>
+                </li>
+            <?php } ?>
         </ul>
     </div>
     <div class="nav-secondary">

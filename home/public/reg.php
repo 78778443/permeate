@@ -8,16 +8,16 @@ include "../../conf/dbconfig.php";
 include "../../includes/mysql_func.php";
 
 
-if (!isset ($_SESSION['yzm'])) {
-    echo "<script>alert('参数错误，请稍候再试！')</script>";
-    echo "<script>window.location.href='../register.php'</script>";
-}
+//if (!isset ($_SESSION['yzm'])) {
+//    echo "<script>alert('参数错误，请稍候再试！')</script>";
+//    echo "<script>window.location.href='../register.php'</script>";
+//}
 
-if ($_POST['yzm'] != $_SESSION['yzm']) {
-    unset($_SESSION['yzm']);
-    echo "<script>alert('验证码错误！')</script>";
-    echo "<script>window.location.href='../register.php'</script>";
-}
+//if ($_POST['yzm'] != $_SESSION['yzm']) {
+//    unset($_SESSION['yzm']);
+//    echo "<script>alert('验证码错误！')</script>";
+//    echo "<script>window.location.href='../register.php'</script>";
+//}
 
 unset($_SESSION['yzm']);
 
@@ -74,6 +74,8 @@ $rip = ip2long($_SERVER['REMOTE_ADDR']);
 //加密密码、写入数据库
 $password = md5($password);
 $sql = "insert into " . DB_PRE . "user(username,password,rtime,rip,email) values('$username','$password','$rime','$rip','$email')";
+
+
 $id = mysql_func($sql);
 
 //判断是否写入数据库成功

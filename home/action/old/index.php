@@ -51,7 +51,7 @@ foreach ($row as $part1) {
                                 ?>
 
                                 <div class="col-lg-3 plate-item">
-                                    <a class="plate-body-title" href="list.php?bk=<?php echo $cate['id'] ?>">
+                                    <a class="plate-body-title" href="/home/index.php?m=tiezi&a=index&bk=<?php echo $cate['id'] ?>">
                                         <?php echo $cate['cname'] ?>
                                     </a>
                                     <p>
