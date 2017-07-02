@@ -1,7 +1,4 @@
 <?php
-	include "/public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
 	
 	$keywords = !empty(@$_GET['keywords']) ? @$_GET['keywords'] : '';
 	if(!empty($keywords)){
@@ -69,15 +66,13 @@
 			<th>管理</th>
 		<tr>
 
-<?php
-	
-	foreach($row as $reply){
+<?php foreach($row as $reply){
 ?>
 		<tr align="center">
 			<td><input type="checkbox" name="id[]" value="<?php echo $reply['id'] ?>" /></td>
 			<td><?php echo $reply['id'] ?></td>
 			<td><?php echo $reply['content'] ?></td>
-			<td><?php 
+			<td><?php
 				$sql = "select title from ".DB_PRE."post where id=".$reply['pid'];
 				$row1 = mysql_func($sql);
 				$post = $row1[0];
@@ -90,9 +85,9 @@
 			echo $user['username'] ?></td>
 			<td><?php echo date('Y-m-d H:i:s',$reply['ptime']); ?></td>
 			<td><?php echo long2ip($reply['pip']) ?></td>
-			<td><a href="./reply/mod.php?id=<?php echo $reply['id'] ?>">编辑</a>
-				<a href="./reply/del.php?id=<?php echo $reply['id'] ?>&zd=id&table=reply&cz=1">恢复</a>
-				<a href="./reply/del.php?id=<?php echo $reply['id'] ?>&zd=id&table=reply">删除</a>
+			<td><a href="./reply/mod.phpid=<?php echo $reply['id'] ?>">编辑</a>
+				<a href="./reply/del.phpid=<?php echo $reply['id'] ?>&zd=id&table=reply&cz=1">恢复</a>
+				<a href="./reply/del.phpid=<?php echo $reply['id'] ?>&zd=id&table=reply">删除</a>
 			</td>
 		</tr>
 <?php

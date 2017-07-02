@@ -1,7 +1,7 @@
 <?php
 !defined('DB_HOST') && define('DB_HOST', 'localhost');
 !defined('DB_USER') && define('DB_USER', 'root');
-!defined('DB_PASS') && define('DB_PASS', 'root');
+!defined('DB_PASS') && define('DB_PASS', '');
 !defined('DB_NAME') && define('DB_NAME', 'qingsong_bbs');
 !defined('DB_PRE') && define('DB_PRE', 'bbs_');
 !defined('DB_CHARSET') && define('DB_CHARSET', 'utf8');

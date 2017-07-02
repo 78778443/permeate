@@ -1,9 +1,9 @@
 <?php
-	include ".¡£/public/demon.php";
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
-	include "../../includes/upload_func.php";
-	include "../../includes/image_func.php";
+	include ".ï¿½ï¿½/public/demon.php";
+
+
+	include "../../core/upload_func.php";
+	include "../../core/image_func.php";
 ?>
 <?php
 
@@ -12,7 +12,7 @@
 		$ipmax = ip2long($_POST['ipmax']);
 
 		if($ipmin>$ipmax){
-			exit('¿ªÊ¼IP,²»ÄÜ´óÓÚ½áÊøIP');
+			exit('ï¿½ï¿½Ê¼IP,ï¿½ï¿½ï¿½Ü´ï¿½ï¿½Ú½ï¿½ï¿½ï¿½IP');
 		}	
 			
 		$sql = "insert into ".DB_PRE."iprefuse(ipmin,ipmax) values('$ipmin','$ipmax')";
@@ -20,14 +20,14 @@
 		$row = mysql_func($sql);
 		
 		if(!$row){
-			echo "<script>alert('±§Ç¸£¡Ð´ÈëÊý¾ÝÊ§°Ü£¬ÇëÉÔºóÔÙÊÔ£¡')</script>";
-			echo "<script>window.location.href='../index.php?m=ipre&a=list'</script>";
+			echo "<script>alert('ï¿½ï¿½Ç¸ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ô£ï¿½')</script>";
+			echo "<script>window.location.href='../index.phpm=ipre&a=list'</script>";
 			exit;
 		}
 
 
 		//header("location:list.php");
-		echo "<script>window.location.href='../index.php?m=ipre&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=ipre&a=list'</script>";
 		exit;
 	}
 

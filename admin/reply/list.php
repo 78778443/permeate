@@ -1,8 +1,4 @@
 <?php
-include "/public/demon.php";
-include "../conf/dbconfig.php";
-include "../includes/mysql_func.php";
-
 $keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
 if (!empty($keywords)) {
     $where = " where xx=1 id like '%$keywords%' ";
@@ -90,9 +86,9 @@ exit;*/
                     echo $user['username'] ?></td>
                 <td><?php echo date('Y-m-d H:i:s', $reply['ptime']); ?></td>
                 <td><?php echo long2ip($reply['pip']) ?></td>
-                <td><a href="mod.php?id=<?php echo $reply['id'] ?>">编辑</a>
-                    <a href="del.php?id=<?php echo $reply['id'] ?>&zd=id&table=reply&cz=2">屏蔽</a>
-                    <a href="del.php?id=<?php echo $reply['id'] ?>&zd=id&table=reply">删除</a>
+                <td><a href="mod.phpid=<?php echo $reply['id'] ?>">编辑</a>
+                    <a href="del.phpid=<?php echo $reply['id'] ?>&zd=id&table=reply&cz=2">屏蔽</a>
+                    <a href="del.phpid=<?php echo $reply['id'] ?>&zd=id&table=reply">删除</a>
                 </td>
             </tr>
             <?php

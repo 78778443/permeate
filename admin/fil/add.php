@@ -1,9 +1,6 @@
 <?php
-	include "/public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
-	include "../includes/upload_func.php";
-	include "../includes/image_func.php";
+	include "../core/upload_func.php";
+	include "../core/image_func.php";
 ?>
 <?php
 
@@ -20,13 +17,13 @@
 		var_dump($row);
 		if($row===false){
 			echo "<script>alert('抱歉！写入数据失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='../index.php?m=fil&a=list'</script>";
+			echo "<script>window.location.href='../index.phpm=fil&a=list'</script>";
 			exit;
 		}
 
 
 		//header("location:list.php");
-		echo "<script>window.location.href='../index.php?m=fil&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=fil&a=list'</script>";
 		exit;
 	}
 

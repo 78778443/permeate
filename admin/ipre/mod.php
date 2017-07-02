@@ -1,12 +1,4 @@
-<?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
-?>
-<?php
-	
-	if(isset($_GET['id'])){
+<?php if(isset($_GET['id'])){
 		$id = $_GET['id'];
 	}
 
@@ -22,12 +14,12 @@
 
 		if($row===false){
 			echo "<script>alert('抱歉！写入数据失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='../index.php?m=ipre&a=list'</script>";
+			echo "<script>window.location.href='../index.phpm=ipre&a=list'</script>";
 			exit;
 		}
 
 		//执行过程中没有出现以为，将跳转到LIST列表当中
-		echo "<script>window.location.href='../index.php?m=ipre&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=ipre&a=list'</script>";
 		exit;
 	}
 	
@@ -43,7 +35,7 @@
 ?>
 <div class="container">
 <table >
-<form action="imod.php?id=<?php echo $id ?>" method="post" >
+<form action="imod.phpid=<?php echo $id ?>" method="post" >
 	<tr><td>开始IP</td><td><input type="text" name="ipmin" value="<?php echo long2ip($fri['ipmin']) ?>" /></td></tr>
 	<tr><td>结束IP</td><td><input type="ipmax" name="ipmax" value="<?php echo long2ip($fri['ipmax']) ?>"  /></td></tr>
 	<tr><td colspan=2><input type="submit" value="确定修改" class="btn btn-default navbar-btn" />

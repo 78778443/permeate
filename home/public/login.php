@@ -4,7 +4,7 @@
 	//开启session
 	session_start();
 	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
+	include "../../core/mysql_func.php";
 	
 	if(isset($_POST['username'])){
 				$username = $_POST['username'];

@@ -5,7 +5,7 @@ header('cache-control:no-cache');
 session_start();//开启session
 //引用函数库mysql_function.php
 include "../../conf/dbconfig.php";
-include "../../includes/mysql_func.php";
+include "../../core/mysql_func.php";
 
 
 //if (!isset ($_SESSION['yzm'])) {

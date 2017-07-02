@@ -1,14 +1,8 @@
 <?php
-	header("content-type:text/html;charset=utf-8");
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
-	include "../includes/upload_func.php";
-	include "../includes/image_func.php";
-	include "../public/demon.php";
+	include "../core/upload_func.php";
+	include "../core/image_func.php";
 ?>
-<?php
-	
-	$id = $_GET['id'];
+<?php$id = $_GET['id'];
 
 	if(!empty($_POST['username'])){
 		$username = $_POST['username'];
@@ -78,31 +72,31 @@
 ?>
 <div class="container">
 <table >
-<form action="mod.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data" class="navbar-form navbar-left" >
+<form action="mod.phpid=<?php echo $id ?>" method="post" enctype="multipart/form-data" class="navbar-form navbar-left" >
 	<?php function edu($user,$val){if($user==$val){echo "selected";}} ?>
 
     	<tr><td>管理员：</td><td><select name="admins"   /> 
-    	<option value="0" <?php edu($user['admins'],0) ?>   />非管理员</option> 
-        <option value="1" <?php edu($user['admins'],1) ?>   />管理员</option> 
+    	<option value="0" <?php edu($user['admins'],0) ?>   />非管理员</option>
+        <option value="1" <?php edu($user['admins'],1) ?>   />管理员</option>
         </select></td></tr><p />
 	<tr><td>用户名：</td><td><input type="text" name="username" value="<?php echo $user['username'] ?>"   /></td></tr>
 	<tr><td>新密码：</td><td><input type="password" name="password"   /></td></tr>
 	<tr><td>真实姓名：</td><td><input type="text" name="t_name" value="<?php echo $user['t_name'] ?>"   /></td></tr>
 	<tr><td>年龄：</td><td><input type="text" name="age" value="<?php echo $user['age'] ?>"   /></td></tr>
 	<tr><td>性别：</td><td><select name="sex"   >
-		<option value="0" <?php edu($user['sex'],0) ?>  ><?php echo $sex['0'] ?></option> 
-		<option value="1" <?php edu($user['sex'],1) ?>  ><?php echo $sex['1'] ?></option> 
-		<option value="2" <?php edu($user['sex'],2) ?>  ><?php echo $sex['2'] ?></option> 
+		<option value="0" <?php edu($user['sex'],0) ?>  ><?php echo $sex['0'] ?></option>
+		<option value="1" <?php edu($user['sex'],1) ?>  ><?php echo $sex['1'] ?></option>
+		<option value="2" <?php edu($user['sex'],2) ?>  ><?php echo $sex['2'] ?></option>
 	</select></td></tr>
 	<tr><td>学历：</td><td><select name="edu"   >
-		<option value="0" <?php edu($user['edu'],0) ?>   ><?php echo $edu['0'] ?></option> 
-		<option value="1" <?php edu($user['edu'],1) ?>  ><?php echo $edu['1'] ?></option> 
-		<option value="2" <?php edu($user['edu'],2) ?>  ><?php echo $edu['2'] ?></option> 
-		<option value="3" <?php edu($user['edu'],3) ?>  ><?php echo $edu['3'] ?></option> 
-		<option value="4" <?php edu($user['edu'],4) ?>  ><?php echo $edu['4'] ?></option> 
-		<option value="5" <?php edu($user['edu'],5) ?>  ><?php echo $edu['5'] ?></option> 
-		<option value="6" <?php edu($user['edu'],6) ?>  ><?php echo $edu['6'] ?></option> 
-		<option value="7" <?php edu($user['edu'],7) ?>  ><?php echo $edu['7'] ?></option> 
+		<option value="0" <?php edu($user['edu'],0) ?>   ><?php echo $edu['0'] ?></option>
+		<option value="1" <?php edu($user['edu'],1) ?>  ><?php echo $edu['1'] ?></option>
+		<option value="2" <?php edu($user['edu'],2) ?>  ><?php echo $edu['2'] ?></option>
+		<option value="3" <?php edu($user['edu'],3) ?>  ><?php echo $edu['3'] ?></option>
+		<option value="4" <?php edu($user['edu'],4) ?>  ><?php echo $edu['4'] ?></option>
+		<option value="5" <?php edu($user['edu'],5) ?>  ><?php echo $edu['5'] ?></option>
+		<option value="6" <?php edu($user['edu'],6) ?>  ><?php echo $edu['6'] ?></option>
+		<option value="7" <?php edu($user['edu'],7) ?>  ><?php echo $edu['7'] ?></option>
 	</select></td></tr>
 	<tr><td>个性签名：</td><td><textarea name="signed" cols="40" rows="4"   ><?php echo $user['signed'] ?></textarea></td></tr>
 	<tr><td>头像：</td><td><input type="file" name="pic" value="<?php echo $user['pic'] ?>"/><img src="<?php echo $user['pic'] ?>" />&nbsp;<img src="<?php echo $user['picm'] ?>" />&nbsp;<img src="<?php echo $user['pics'] ?>" />&nbsp;</td></tr>

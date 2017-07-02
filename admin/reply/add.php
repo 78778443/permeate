@@ -1,8 +1,4 @@
-<?php
-	include "/public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
-?>
+
 <?php
 
 	if(!empty($_POST['pid'])){
@@ -15,10 +11,10 @@
 		$row = mysql_func($sql);
 		if(!$row){
 			echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='../index.php?m=reply&a=list'</script>";
+			echo "<script>window.location.href='../index.phpm=reply&a=list'</script>";
 			exit;
 		}
-		echo "<script>window.location.href='../index.php?m=reply&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=reply&a=list'</script>";
 		exit;
 	}
 	$sql = "select * from ".DB_PRE."post";

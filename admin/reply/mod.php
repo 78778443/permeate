@@ -1,9 +1,3 @@
-<?php 
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
-?>
 <?php
 		//接收POST参数
 	if($_POST['id']){
@@ -39,7 +33,7 @@
 		<tr><td>
         	主贴ID:
 			</td><td><select name="pid"> 
-					<?php 
+					<?php
                     $sql = "select * from ".DB_PRE."post";
                     $row = mysql_func($sql);
                     foreach($row as $post){

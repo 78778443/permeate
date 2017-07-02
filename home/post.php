@@ -13,7 +13,7 @@ if (empty($bk)) {
 
 session_start();
 include "../conf/dbconfig.php";
-include "../includes/mysql_func.php";
+include "../core/mysql_func.php";
 include "public/header.php";
 ?>
     <link rel="stylesheet" type="text/css" href="./resource/styles/post.css"/>

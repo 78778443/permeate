@@ -1,7 +1,4 @@
 <?php
-	include "/public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
 	
 	$keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
 	if(!empty($keywords)){
@@ -56,16 +53,14 @@
 			<th>管理</th>
 		<tr>
 		<form action="./fil/del.php" method="post">
-<?php
-	
-	foreach($row as $fil){
+<?php foreach($row as $fil){
 ?>
 		<tr align="center">
 			<td><input type="checkbox" name="id[]" value="<?php echo $user['id'] ?>" /></td>
 			<td><?php echo $fil['id'] ?></td>
 			<td><?php echo $fil['hinge'] ?></td>
-			<td><a href="./fil/mod.php?id=<?php echo $fil['id'] ?>">编辑</a>
-				<a href="./fil/del.php?id=<?php echo $fil['id'] ?>&zd=id&table=fil">删除</a>
+			<td><a href="./fil/mod.phpid=<?php echo $fil['id'] ?>">编辑</a>
+				<a href="./fil/del.phpid=<?php echo $fil['id'] ?>&zd=id&table=fil">删除</a>
 			</td>
 		</tr>
 <?php

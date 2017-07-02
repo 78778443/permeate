@@ -1,8 +1,5 @@
 <?php
-	include "/public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
-	include "../includes/del_func.php";
+	include "../core/del_func.php";
 
 ?>
 
@@ -35,7 +32,7 @@
         <td><?php echo $cate['cname'] ?></td>
         <td><?php echo date('Y-m-d H:i:s',$cate['pname']); ?></td>
         <td><?php echo $username ?></td>
-        <td><a href="./cate/mod.php?id=<?php echo $cate['id'] ?>">编辑</a> <a href="./cate/del.php?id=<?php echo $cate['id'] ?>&zd=id&table=cate">删除</a></td>
+        <td><a href="./cate/mod.phpid=<?php echo $cate['id'] ?>">编辑</a> <a href="./cate/del.phpid=<?php echo $cate['id'] ?>&zd=id&table=cate">删除</a></td>
       </tr>
       <?php
 	}

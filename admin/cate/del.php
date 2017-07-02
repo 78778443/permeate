@@ -1,7 +1,5 @@
 <?php
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
-	include "../../includes/del_func.php";
+	include "../../core/del_func.php";
 	if(empty($_SERVER['HTTP_REFERER'])){
 		exit('非法请求！');
 	}
@@ -11,7 +9,7 @@
 
 	if($row){
 		echo "<script>alert('分区下有帖子，删除失败！')</script>";
-		echo "<script>window.location.href='../index.php?m=cate&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=cate&a=list'</script>";
 		exit;
 	}
 	
@@ -25,9 +23,9 @@
 	
 	if(!$row){
 		echo "<script>alert('删除用户失败，请稍后再试'!)</script>";
-		echo "<script>window.location.href='../index.php?m=cate&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=cate&a=list'</script>";
 		exit;
 	}
-	echo "<script>window.location.href='../index.php?m=cate&a=list'</script>";
+	echo "<script>window.location.href='../index.phpm=cate&a=list'</script>";
 	exit;
 ?>

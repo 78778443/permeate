@@ -1,7 +1,4 @@
 <?php
-	include "/public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
 		
 ?>
    <link rel="stylesheet" type="text/css" href="../public/bootstrap3/css/bootstrap.css"/>
@@ -73,9 +70,7 @@
 			<th>分区下板块数</th>
 			<th>管理</th>
 		</tr>
-<?php
-	
-	foreach($row as $part){
+<?php foreach($row as $part){
 	$sql = "select count(*) as cou from ".DB_PRE."cate where pid='".$part['id']."' group by pid";
 	//echo $sql;
 	$row1 = mysql_func($sql);
@@ -90,8 +85,8 @@
 			<td><?php echo $part['pname'] ?></td>
 			<td><?php $sql = "select * from bbs_user where id=".$part['padmins']; $rowpadmins = mysql_func($sql);  echo $rowpadmins['0']['username'] ?></td>
 			<td><?php echo $cou ?></td>
-			<td><a href="mod.php?id=<?php echo $part['id'] ?>">编辑</a>
-				<a href="del.php?id=<?php echo $part['id'] ?>&zd=id&table=part">删除</a>
+			<td><a href="mod.phpid=<?php echo $part['id'] ?>">编辑</a>
+				<a href="del.phpid=<?php echo $part['id'] ?>&zd=id&table=part">删除</a>
 			</td>
 		</tr>
 <?php
@@ -100,7 +95,7 @@
 	</table>
 		<input type='submit'  value='批量删除' class="btn btn-default navbar-btn" />
 </form>
-<?php	
+<?php
 	echo "
 	<ul class='pager'>
 		<li><a href='?page=1".$link."'>首页</a></li>

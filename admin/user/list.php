@@ -1,7 +1,4 @@
 <?php
-	include "/public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
 	
 	$keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
 	if(!empty($keywords)){
@@ -67,9 +64,7 @@
         <th>QQ</th>
         <th>管理</th>
       <tr>
-        <?php
-	
-	foreach($row as $user){
+        <?php foreach($row as $user){
 ?>
       <tr align="center">
         <td><input type="checkbox" name="id[]" value="<?php echo $user['id'] ?>" /></td>
@@ -81,7 +76,7 @@
         <td><?php echo $user['age'] ?></td>
         <td><?php echo $sex[$user['sex']] ?></td>
         <td><?php echo $user['qq'] ?></td>
-        <td><a href="mod.php?id=<?php echo $user['id'] ?>">编辑</a> <a href="del.php?id=<?php echo $user['id'] ?>&zd=id&table=user">删除</a></td>
+        <td><a href="mod.phpid=<?php echo $user['id'] ?>">编辑</a> <a href="del.phpid=<?php echo $user['id'] ?>&zd=id&table=user">删除</a></td>
       </tr>
       <?php
 	}
@@ -90,7 +85,7 @@
     <input type='submit'  value='批量删除' class="btn btn-default navbar-btn"/>
   </form>
   
-<?php	
+<?php
 	echo "
 	<ul class='pager'>
 		<li><a href='?page=1".$link."'>首页</a></li>

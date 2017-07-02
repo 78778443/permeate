@@ -1,9 +1,8 @@
 <?php
-	include "../public/demon.php";
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
-	include "../../includes/upload_func.php";
-	include "../../includes/image_func.php";
+
+
+	include "../../core/upload_func.php";
+	include "../../core/image_func.php";
 ?>
 <?php
 
@@ -28,13 +27,13 @@
 
 		if(!$row){
 			echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='../index.php?m=fri&a=list'</script>";
+			echo "<script>window.location.href='../index.phpm=fri&a=list'</script>";
 			exit;
 		}
 
 
 		//header("location:list.php");
-		echo "<script>window.location.href='../index.php?m=fri&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=fri&a=list'</script>";
 		exit;
 	}
 

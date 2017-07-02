@@ -3,7 +3,7 @@ session_start();
 header("content-type:text/html;charset=utf-8");
 include "public/header.php";
 include "../conf/dbconfig.php";
-include "../includes/mysql_func.php";
+include "../core/mysql_func.php";
 
 $keywords = $_REQUEST['keywords'];
 if (!empty($keywords)) {

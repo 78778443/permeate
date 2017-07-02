@@ -1,8 +1,4 @@
 <?php
-		include_once "./public/demon.php";
-		include "../conf/dbconfig.php";
-		include "../includes/mysql_func.php";
-		include "../includes/del_func.php";
 		//开始分页大小
 		$page_size = 5;	
 		//获取当前页码
@@ -49,7 +45,7 @@
         <td><?php echo $post['title'] ?></td>
         <td><?php echo date('Y-m-d H:i:s',$post['ptime']) ?></td>
         <td><?php echo $post['username'] ?></td>
-        <td><a href="./post/mod.php?id=<?php echo $post['id'] ?>">编辑</a> <a href="./post/del.php?id=<?php echo $post['id'] ?>&zd=id&table=post&cz=2">删除</a></td>
+        <td><a href="./post/mod.phpid=<?php echo $post['id'] ?>">编辑</a> <a href="./post/del.phpid=<?php echo $post['id'] ?>&zd=id&table=post&cz=2">删除</a></td>
       </tr>
       <?php
 	}
@@ -58,7 +54,7 @@
     <input type='submit'  value='批量删除' class="btn btn-default navbar-btn" />
   </form>
   
-  <?php	
+  <?php
 	echo "
 	<ul class='pager'>
 		<li><a href='?page=1".$link."'>首页</a></li>

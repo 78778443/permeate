@@ -21,7 +21,7 @@
                         </ul>
                     </div>
 
-                   <p class="text-muted m-0">Admin</p>
+                    <p class="text-muted m-0">Admin</p>
                 </div>
             </div>
             <!--- Divider -->
@@ -31,89 +31,89 @@
                         <a href="../index.php"
                            class="waves-effect"><i class="md md-home"></i><span> WebSite Index </span></a>
                     </li>
-					<li class="has_sub">
+                    <li class="has_sub">
                         <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>用户管理</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
                         <ul class="list-unstyled" style="">
                             <li class="active"><a href="?m=user&a=list">用户列表</a></li>
-							<li class="active"><a href="?m=user&a=add">添加用户</a></li>
+                            <li class="active"><a href="?m=user&a=add">添加用户</a></li>
                         </ul>
                     </li>
-					<li class="has_sub">
+                    <li class="has_sub">
                         <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>分区管理</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
                         <ul class="list-unstyled" style="">
                             <li class="active"><a href="?m=part&a=list">分区列表</a></li>
-							<li class="active"><a href="?m=part&a=add">添加分区</a></li>
+                            <li class="active"><a href="?m=part&a=add">添加分区</a></li>
                         </ul>
                     </li>
-					<li class="has_sub">
+                    <li class="has_sub">
                         <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>版块管理</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
                         <ul class="list-unstyled" style="">
                             <li class="active"><a href="?m=cate&a=list">版块列表</a></li>
-							<li class="active"><a href="?m=cate&a=add">添加版块</a></li>
+                            <li class="active"><a href="?m=cate&a=add">添加版块</a></li>
                         </ul>
                     </li>
-					<li class="has_sub">
+                    <li class="has_sub">
                         <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>帖子管理</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
                         <ul class="list-unstyled" style="">
                             <li class="active"><a href="?m=post&a=list">帖子列表</a></li>
-							<li class="active"><a href="?m=post&a=add">添加主题</a></li>
-							<li class="active"><a href="?m=post&a=list_del">删除主题</a></li>
+                            <li class="active"><a href="?m=post&a=add">添加主题</a></li>
+                            <li class="active"><a href="?m=post&a=list_del">删除主题</a></li>
                         </ul>
                     </li>
-					<li class="has_sub">
+                    <li class="has_sub">
                         <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>回帖管理</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
                         <ul class="list-unstyled" style="">
                             <li class="active"><a href="?m=reply&a=list">回帖列表</a></li>
-							<li class="active"><a href="?m=reply&a=add">添加回帖</a></li>
-							<li class="active"><a href="?m=reply&a=list_pb">屏蔽回帖</a></li>
+                            <li class="active"><a href="?m=reply&a=add">添加回帖</a></li>
+                            <li class="active"><a href="?m=reply&a=list_pb">屏蔽回帖</a></li>
                         </ul>
                     </li>
-					<li class="has_sub">
+                    <li class="has_sub">
                         <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>友情链接</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
                         <ul class="list-unstyled" style="">
                             <li class="active"><a href="?m=fri&a=list">链接列表</a></li>
-							<li class="active"><a href="?m=fri&a=add">添加连接</a></li>
+                            <li class="active"><a href="?m=fri&a=add">添加连接</a></li>
                         </ul>
                     </li>
-					<li class="has_sub">
+                    <li class="has_sub">
                         <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>过滤连接</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
                         <ul class="list-unstyled" style="">
                             <li class="active"><a href="?m=ipre&a=list">过滤列表</a></li>
-							<li class="active"><a href="?m=ipre&a=add">添加过滤</a></li>
+                            <li class="active"><a href="?m=ipre&a=add">添加过滤</a></li>
                         </ul>
                     </li>
-					<li class="has_sub">
+                    <li class="has_sub">
                         <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>词语过滤</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
                         <ul class="list-unstyled" style="">
                             <li class="active"><a href="?m=fil&a=list">生效列表</a></li>
-							<li class="active"><a href="?m=fil&a=add">添加过滤</a></li>
+                            <li class="active"><a href="?m=fil&a=add">添加过滤</a></li>
                         </ul>
                     </li>
-					<li class="has_sub">
+                    <li class="has_sub">
                         <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>网站信息</span><span
@@ -122,7 +122,7 @@
                             <li class="active"><a href="?m=manage&a=list">网站信息</a></li>
                         </ul>
                     </li>
-					<li>
+                    <li>
                         <a href="./public/logout.php"
                            class="waves-effect"><i class="md md-home"></i><span> 退出后台 </span></a>
                     </li>

@@ -1,10 +1,9 @@
 <?php
+require_once __DIR__.'/../../core/common.php';
+require_once 'demon.php';
 	//设置页面字符集为 UTF-8
 	//开启session
 	session_start();
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
-	
 	if(isset($_POST['username'])){
 				$username = $_POST['username'];
 	

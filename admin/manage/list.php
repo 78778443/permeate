@@ -1,9 +1,3 @@
-<?php
-	include "./public/demon.php";
-	include "../conf/web_config.php";
-		
-		
-?>
 <div class="container">
 <form action="./manage/mod.php" method="post" enctype="multipart/form-data" >
 <table class="table table-bordered">

@@ -1,6 +1,4 @@
 <?php
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
 	
 	if(isset($_GET['id'])){
 		$id = @$_GET['id'];
@@ -10,28 +8,28 @@
 		$cname = @$_POST['cname'];
 	
 	if($_POST['cname']==""){
-		echo "¿Õ";
+		echo "ï¿½ï¿½";
 		exit;
 	}
 
 
 
-		//¸üÐÂÊý¾Ýµ½USERÏêÇé±íµ±ÖÐ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½USERï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		$sql = "update ".DB_PRE."cate set cname='$cname' where id=".$id;
 
 		$row = mysql_func($sql);
 		if(!$row===0){
-			echo "<script>alert('±§Ç¸£¡Ð´ÈëÊý¾Ý¿âÊ§°Ü£¬ÇëÉÔºóÔÙÊÔ£¡')</script>";
-			echo "<script>window.location.href='../index.php?m=cate&a=list'<script/>";
+			echo "<script>alert('ï¿½ï¿½Ç¸ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ô£ï¿½')</script>";
+			echo "<script>window.location.href='../index.phpm=cate&a=list'<script/>";
 			exit;
 		}
 
-		//Ö´ÐÐ¹ý³ÌÖÐÃ»ÓÐ³öÏÖÒÔÎª£¬½«Ìø×ªµ½LISTÁÐ±íµ±ÖÐ
-		echo "<script>window.location.href='../index.php?m=cate&a=list'</script>";
+		//Ö´ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð³ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½LISTï¿½Ð±ï¿½ï¿½ï¿½
+		echo "<script>window.location.href='../index.phpm=cate&a=list'</script>";
 		exit;
 	}
 	
-	//POST²»´æÔÚ£¬½«²éÑ¯±íÖÐÊý¾Ý
+	//POSTï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	$sql = "select p.*,c.cname from ".DB_PRE."part as p,".DB_PRE."cate as c where p.id=c.pid and c.id='$id'";
 
 	$row = mysql_func($sql);

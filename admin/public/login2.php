@@ -3,7 +3,7 @@
 	header('content-type:text/html;charset=utf-8');
 	//开启session
 	session_start();
-	include "../includes/mysql_func.php";
+
 	
 	if(isset($_POST['username'])){
 				$username = $_POST['username'];

@@ -1,12 +1,7 @@
 <?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
+
 ?>
-<?php
-	
-	if(isset($_GET['id'])){
+<?php if(isset($_GET['id'])){
 		$id = $_GET['id'];
 	}
 
@@ -42,7 +37,7 @@
 	echo "</pre>";*/
 ?>
 <div class="container">
-<form action="mod.php?id=<?php echo $id ?>" method="post" class="form-control" >
+<form action="mod.phpid=<?php echo $id ?>" method="post" class="form-control" >
 分区名称：<input type="text" name="pname" value="<?php echo $part['pname'] ?>"  /></p>
 分区版主：<input type="text" name="padmins" value="<?php echo $part['padmins'] ?>"/>(输入版主ID)</p>
 <input type="submit" value="确定修改" class="btn btn-default navbar-btn" />

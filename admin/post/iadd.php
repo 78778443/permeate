@@ -1,9 +1,7 @@
 <?php
-	include "../public/demon.php";
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
+
 	if(empty($_SERVER['HTTP_REFERER'])){
-		exit('非法请求！');
+        exit(234);
 	}
 	if(!empty($_POST['title'])){
 		$title = $_POST['title'];
@@ -19,12 +17,11 @@
 		
 
 		if(!$row){
-			echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='../index.php?m=post&a=list'</script>";
+			echo "<script>window.location.href='../index.phpm=post&a=list'</script>";
 			exit;
 		}
 
-		echo "<script>window.location.href='../index.php?m=post&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=post&a=list'</script>";
 		exit;
 	}
 ?>

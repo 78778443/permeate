@@ -1,12 +1,10 @@
 <?php
 	header("content-type:text/html;charset=utf-8");
 	include "../public/demon.php";
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
+
+
 ?>
-<?php
-	
-	if(isset($_GET['id'])){
+<?php if(isset($_GET['id'])){
 		$id = $_GET['id'];
 	}
 
@@ -42,7 +40,7 @@
 ?>
 <div class="container">
 <table >
-<form action="imod.php?id=<?php echo $id ?>" method="POST" >
+<form action="imod.phpid=<?php echo $id ?>" method="POST" >
 	<tr><td>分区名称：</td><td>
 	<select name="pid"> 
 		<?php foreach($row as $part){

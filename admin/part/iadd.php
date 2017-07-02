@@ -1,6 +1,4 @@
 <?php
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
 
 	if(!empty($_POST['pname'])){
 		$pname = $_POST['pname'];
@@ -16,11 +14,11 @@
 		
 		if(!$row){
 			echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='../index.php?m=part&a=list'</script>";
+			echo "<script>window.location.href='../index.phpm=part&a=list'</script>";
 			exit;
 		}
 
-		echo "<script>window.location.href='../index.php?m=part&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=part&a=list'</script>";
 		exit;
 	}
 

@@ -1,12 +1,10 @@
 <?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
-	include "../../includes/upload_func.php";
-	include "../../includes/image_func.php";
+	include "../../core/upload_func.php";
+	include "../../core/image_func.php";
 	
 	if(empty($_FILES['WZ_LOGO']['name'])){
 		echo "<script>alert('你没有选择图片')</script>";
-		echo "<script>window.location.href='../index.php?m=manage&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=manage&a=list'</script>";
 		exit;
 	}
 	
@@ -26,10 +24,10 @@
 	
 	if (file_put_contents('../../conf/web_config.php', $str)) {
 			echo "<script>alert('操作成功')</script>";
-			echo "<script>window.location.href='../index.php?m=manage&a=list'</script>";
+			echo "<script>window.location.href='../index.phpm=manage&a=list'</script>";
 		} else {
 			echo "<script>alert('失败')</script>";
-			echo "<script>window.location.href='../index.php?m=managet&a=list'</script>";
+			echo "<script>window.location.href='../index.phpm=managet&a=list'</script>";
 		}
 		
 

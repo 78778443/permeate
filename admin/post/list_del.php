@@ -1,8 +1,4 @@
 <?php
-include "/public/demon.php";
-include "../conf/dbconfig.php";
-include "../includes/mysql_func.php";
-include "../includes/del_func.php";
 
 //开始分页大小
 $page_size = 5;
@@ -58,8 +54,8 @@ $row = mysql_func($sql);
                 <td><?php echo $post['title'] ?></td>
                 <td><?php echo date('Y-m-d H:i:s', $post['ptime']) ?></td>
                 <td><?php echo $post['username'] ?></td>
-                <td><a href="./post/recover.php?id=<?php echo $post['id'] ?>&cz=1">还原</a>
-                    <a href="./post/del.php?id=<?php echo $post['id'] ?>&zd=id&table=post">删除</a>
+                <td><a href="./post/recover.phpid=<?php echo $post['id'] ?>&cz=1">还原</a>
+                    <a href="./post/del.phpid=<?php echo $post['id'] ?>&zd=id&table=post">删除</a>
                 </td>
             </tr>
             <?php

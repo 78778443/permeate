@@ -1,12 +1,4 @@
-<?php
-	header('content-type:text/html;charset=utf-8');
-	include '../public/demon.php';
-	include '../conf/dbconfig.php';
-	include '../includes/mysql_func.php';
-?>
-<?php
-	
-	if(isset($_GET['id'])){
+<?php if(isset($_GET['id'])){
 		$id = $_GET['id'];
 	}
 
@@ -34,7 +26,7 @@
 ?>
 <div class='container'>
 <table >
-<form action='imod.php?id=<?php echo $id ?>' method='post' >
+<form action='imod.phpid=<?php echo $id ?>' method='post' >
 		<?php $sql = 'select * from '.DB_PRE.'cate';
 		$row1 = mysql_func($sql); ?>
    <tr><td>所属板块：</td><td><select name='cid'> 

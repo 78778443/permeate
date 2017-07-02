@@ -29,7 +29,7 @@
     echo $conf;
     if (file_put_contents("../conf/dbconfig.php", $conf)) {
         include "../conf/dbconfig.php";
-        include "../includes/mysql_func.php";
+        include "../core/mysql_func.php";
         $tables = include("./table.php");
         //var_dump($table);
 

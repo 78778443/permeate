@@ -1,7 +1,4 @@
 <?php
-	include "./public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
 	
 	$keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
 	if(!empty($keywords)){
@@ -57,9 +54,7 @@
 			<th>管理</th>
 		<tr>
 		<form action="./ipre/del.php" method="post">
-<?php
-	
-	foreach($row as $ip){
+<?php foreach($row as $ip){
 ?>
 		<tr align="center">
 			<td><input type="checkbox" name="id[]" value="<?php echo $user['id'] ?>" /></td>
@@ -67,8 +62,8 @@
 			<td><?php echo long2ip($ip['ipmin']) ?></td>
 			<td><?php echo long2ip($ip['ipmax']) ?></td>
 
-			<td><a href="./ipre/mod.php?id=<?php echo $ip['id'] ?>">编辑</a>
-				<a href="./ipre/del.php?id=<?php echo $ip['id'] ?>&zd=id&table=iprefuse">删除</a>
+			<td><a href="./ipre/mod.phpid=<?php echo $ip['id'] ?>">编辑</a>
+				<a href="./ipre/del.phpid=<?php echo $ip['id'] ?>&zd=id&table=iprefuse">删除</a>
 			</td>
 		</tr>
 <?php

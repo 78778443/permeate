@@ -1,6 +1,4 @@
 <?php
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
 
 	if(!empty($_POST['cname'])){
 		$pid = $_POST['pid'];
@@ -10,12 +8,12 @@
 		$row = mysql_func($sql);
 		
 		if(!$row){
-			echo "<script>alert('±§Ç¸£¬Ìí¼Ó¼ÇÂ¼Ê§°Ü¡£Çë¼ì²é¸ñÊ½ÊÇ·ñÕýÈ·£¡')</script>";
-			echo "<script>window.location.href='../index.php?m=cate&a=list'</script>";
+			echo "<script>alert('ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½Ó¼ï¿½Â¼Ê§ï¿½Ü¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Ç·ï¿½ï¿½ï¿½È·ï¿½ï¿½')</script>";
+			echo "<script>window.location.href='../index.phpm=cate&a=list'</script>";
 			exit;
 		}
 
-		echo "<script>window.location.href='../index.php?m=cate&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=cate&a=list'</script>";
 		exit;
 	}
 ?>

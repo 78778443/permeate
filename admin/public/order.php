@@ -16,8 +16,8 @@ class order{
 	/*function Post_ListH(){
 		include_once "demon.php";
 		include "../conf/dbconfig.php";
-		include "../includes/mysql_func.php";
-		include "../includes/del_func.php";
+
+		include "../core/del_func.php";
 		//开始分页大小
 		$page_size = 5;	
 		//获取当前页码
@@ -65,7 +65,7 @@ class order{
         echo "<td>".$post['title']."</td>";
         echo "<td>".date('Y-m-d H:i:s',$post['ptime'])."</td>";
         echo "<td>".$post['username']."</td>";
-        echo "<td><a href=./post/mod.php?id=".$post['id'].">编辑</a> <a href=./post/del.php?id=".$post['id']."&zd=id&table=post&cz=2>删除</a></td>";
+        echo "<td><a href=./post/mod.phpid=".$post['id'].">编辑</a> <a href=./post/del.phpid=".$post['id']."&zd=id&table=post&cz=2>删除</a></td>";
 		echo "</tr>";
 		echo "</table>";
 		echo "<input type='submit'  value='批量删除' class='btn btn-default navbar-btn' />";

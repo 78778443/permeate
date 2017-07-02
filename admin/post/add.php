@@ -1,7 +1,4 @@
 <?php
-	include "/public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
 	$sql = "select * from ".DB_PRE."cate";
 
     $row = mysql_func($sql);

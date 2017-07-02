@@ -1,5 +1,6 @@
 <?php
-session_start();//开启session
+require_once '../core/common.php';
+require_once "./public/demon.php";
 header('content-type:text/html;charset=utf-8');
 if (empty($_SESSION['admin']['username'])) {
 //    echo "<script>alert('请先登录！')</script>";

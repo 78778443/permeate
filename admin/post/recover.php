@@ -1,8 +1,5 @@
 <?php
-	include '../public/demon.php';
-	include '../../conf/dbconfig.php';
-	include '../../includes/mysql_func.php';
-	include '../../includes/del_func.php';
+	include '../../core/del_func.php';
 	if(empty($_SERVER['HTTP_REFERER'])){
 		exit('非法请求！');
 	}
@@ -15,6 +12,6 @@
 		$row = mysql_func($sql);
 	}
 	
-	echo "<script>window.location.href='../index.php?m=post&a=list'</script>";
+	echo "<script>window.location.href='../index.phpm=post&a=list'</script>";
 	exit;
 ?>

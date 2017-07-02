@@ -1,8 +1,4 @@
-<?php
-	include "/public/demon.php";
-	include "../conf/dbconfig.php";
-	include "../includes/mysql_func.php";
-?>
+
 <div style="text-align:center;margin:0 auto;display:block;" class="container">
 <form action="./user/iadd.php" method="post" >
 	<table>

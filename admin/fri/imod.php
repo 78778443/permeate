@@ -1,12 +1,4 @@
-<?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
-?>
-<?php
-	
-	if(isset($_GET['id'])){
+<?php if(isset($_GET['id'])){
 		$id = $_GET['id'];
 	}
 
@@ -24,12 +16,12 @@
 		$row = mysql_func($sql);
 		if(!$row===0){
 			echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='../index.php?m=fri&a=list'<script/>";
+			echo "<script>window.location.href='../index.phpm=fri&a=list'<script/>";
 			exit;
 		}
 
 		//执行过程中没有出现以为，将跳转到LIST列表当中
-		echo "<script>window.location.href='../index.php?m=fri&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=fri&a=list'</script>";
 		exit;
 	}
 	

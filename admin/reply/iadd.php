@@ -1,9 +1,4 @@
 <?php
-	include "../public/demon.php";
-	include "../../conf/dbconfig.php";
-	include "../../includes/mysql_func.php";
-?>
-<?php
 
 	if(!empty($_POST['pid'])){
 		$pid = $_POST['pid'];
@@ -14,11 +9,11 @@
 		$sql = "insert into ".DB_PRE."reply(pid,content,uid,ptime,pip) values('$pid','$content',$uid,'$ptime','$pip')";
 		$row = mysql_func($sql);
 		if(!$row){
-			echo "<script>alert('±§Ç¸£¡Ð´ÈëÊý¾Ý¿âÊ§°Ü£¬ÇëÉÔºóÔÙÊÔ£¡')</script>";
-			echo "<script>window.location.href='../index.php?m=reply&a=list'</script>";
+			echo "<script>alert('ï¿½ï¿½Ç¸ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ô£ï¿½')</script>";
+			echo "<script>window.location.href='../index.phpm=reply&a=list'</script>";
 			exit;
 		}
-		echo "<script>window.location.href='../index.php?m=reply&a=list'</script>";
+		echo "<script>window.location.href='../index.phpm=reply&a=list'</script>";
 		exit;
 	}
 	$sql = "select * from ".DB_PRE."post";
