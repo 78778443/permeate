@@ -55,6 +55,7 @@
 		"CREATE TABLE `".DB_PRE."user` (
 		  `id` int(10) unsigned NOT NULL auto_increment,
 		  `username` varchar(32) NOT NULL default '72user',
+		  `email` varchar(32) NOT NULL default '',
 		  `password` char(32) NOT NULL default '72pass',
 		  `rtime` int(10) unsigned NOT NULL default '0',
 		  `rip` int(11) NOT NULL default '0',

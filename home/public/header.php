@@ -49,16 +49,10 @@ bj(zt, 0);
                     <label class="search">
                         <input class="form-input" name="keywords" type="text" placeholder="搜索">
                         <a role="button">
-                            <i class="material-icons search-icon">search</i>
+                            <button class="material-icons search-icon">search</button>
                         </a>
                     </label>
                 </form>
-            </li>
-            <li class="list-item">
-                <a class="item-link" href="#">消息</a>
-            </li>
-            <li class="list-item">
-                <a class="item-link" href="#">提醒</a>
             </li>
             <li class="list-item">
                 <?php

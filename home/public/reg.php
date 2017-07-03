@@ -29,7 +29,7 @@ $repass = $_POST['repass'];
 
 $email = $_POST['email'];
 
-$yzm = $_POST['yzm'];
+//$yzm = $_POST['yzm'];
 
 
 //通过用户名从数据库中读取记录，有记录代表用户已存在
@@ -74,7 +74,6 @@ $rip = ip2long($_SERVER['REMOTE_ADDR']);
 //加密密码、写入数据库
 $password = md5($password);
 $sql = "insert into " . DB_PRE . "user(username,password,rtime,rip,email) values('$username','$password','$rime','$rip','$email')";
-
 
 $id = mysql_func($sql);
 
