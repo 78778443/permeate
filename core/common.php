@@ -4,10 +4,15 @@ header('content-type:text/html;charset=utf-8');
 header('cache-control:no-cache');
 session_start();//开启session
 //引用函数库mysql_function.php
-require_once $_SERVER['DOCUMENT_ROOT']."/conf/dbconfig.php";
-require_once $_SERVER['DOCUMENT_ROOT']."/conf/web_config.php";
-require_once $_SERVER['DOCUMENT_ROOT']."/core/mysql_func.php";
-require_once $_SERVER['DOCUMENT_ROOT']."/core/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/conf/dbconfig.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/conf/web_config.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/core/mysql_func.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/core/db.php";
+
+$model = !empty($_GET['m']) ? $_GET['m'] : 'index';
+$action = !empty($_GET['a']) ? $_GET['a'] : 'index';
+
+
 /**
  * 加载模板文件
  * @param $tplPath
@@ -19,12 +24,13 @@ function displayTpl($tplPath, $data = [])
         echo '模板文件' . $filePath . '不存在!';
         die;
     }
-	foreach($data as $key=>$val) {
-		$$key = $val;
-	}
-    include "./public/header.php";
+
+    foreach ($data as $key => $val) {
+        $$key = $val;
+    }
+
     require_once $filePath;
-    include "./public/footer.php";
+
 }
 
 
@@ -35,15 +41,26 @@ function displayTpl($tplPath, $data = [])
  */
 function includeAction($model, $action)
 {
+    //判断控制器是否存在
     $filePath = "./action/$model.php";
-    if (!is_readable($filePath)) {
-        echo '模板文件' . $filePath . '不存在!';
-        die;
+    if (is_readable($filePath)) {
+        require_once $filePath;
+        $class = new $model;
+        if (is_callable(array($class, $action))) {
+            $class->$action();
+            return true;
+        }
     }
-    require_once $filePath;
-    $class = new $model;
 
-    $class->$action();
+    //如果没有找到对应的控制器，直接调用模板文件
+    $tplFilePath = "./tpl/$model/$action.php";
+    if (is_readable($tplFilePath)) {
+        require_once $tplFilePath;
+        return true;
+    }
+
+    echo '控制器或模板文件' . $filePath . '不存在!';
+    die;
 }
 
 /**
@@ -89,7 +106,8 @@ function errorView($errorInfo, $retLink = '/')
  * 发送邮件
  * @return bool|string
  */
-function sendEmail($to,$content) {
+function sendEmail($to, $content)
+{
     $url = 'http://api.sendcloud.net/apiv2/mail/send';
     $API_USER = 'daxia_test_VMavET';
     $API_KEY = 'un2Dx5Z9JFsDwVoQ';
@@ -109,13 +127,35 @@ function sendEmail($to,$content) {
 
     $options = array(
         'http' => array(
-            'method'  => 'POST',
-            'header'  => 'Content-Type: application/x-www-form-urlencoded',
+            'method' => 'POST',
+            'header' => 'Content-Type: application/x-www-form-urlencoded',
             'content' => $data
         ));
 
-    $context  = stream_context_create($options);
+    $context = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
 
     return $result;
+}
+
+/**
+ * 生成URL
+ * @param string $path
+ * @param array $param
+ * @return string
+ */
+function U($path= 'index/index',$param = [])
+{
+    $result = explode('/',$path);
+    $url = "index.php?m={$result[0]}&a={$result[1]}";
+
+    if (is_array($param)) {
+        foreach ($param as $key=>$value) {
+            $url .= "&$key=$value";
+        }
+    } elseif(is_string($param) && !empty($param)) {
+        $url .= $param;
+    }
+
+    return $url;
 }

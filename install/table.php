@@ -58,7 +58,7 @@
 		  `email` varchar(32) NOT NULL default '',
 		  `password` char(32) NOT NULL default '72pass',
 		  `rtime` int(10) unsigned NOT NULL default '0',
-		  `rip` int(11) NOT NULL default '0',
+		  `rip` bigint(11) NOT NULL default '0',
 		  `admins` int(1) unsigned NOT NULL default '0',
 		  PRIMARY KEY  (`id`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;",

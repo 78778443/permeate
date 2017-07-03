@@ -8,7 +8,7 @@
                 </div>
                 <div class="user-info">
                     <div class="dropdown">
-                        <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
+                        <a href="#"
                            class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">John Doe <span
                                     class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -32,7 +32,7 @@
                            class="waves-effect"><i class="md md-home"></i><span> WebSite Index </span></a>
                     </li>
                     <li class="has_sub">
-                        <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
+                        <a href="#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>用户管理</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
@@ -42,7 +42,7 @@
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
+                        <a href="#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>分区管理</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
@@ -52,7 +52,7 @@
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
+                        <a href="#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>版块管理</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
@@ -62,7 +62,7 @@
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
+                        <a href="#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>帖子管理</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
@@ -73,7 +73,7 @@
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
+                        <a href="#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>回帖管理</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
@@ -84,7 +84,7 @@
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
+                        <a href="#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>友情链接</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
@@ -94,7 +94,7 @@
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
+                        <a href="#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>过滤连接</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
@@ -104,7 +104,7 @@
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
+                        <a href="#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>词语过滤</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
@@ -114,7 +114,7 @@
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="http://view.jqueryfuns.com/%E9%A2%84%E8%A7%88-/2015/8/10/54a1afa7a6ac28c6e543abd82906c768/blue/tables.html#"
+                        <a href="#"
                            class="waves-effect"><i
                                     class="md md-view-list"></i><span>网站信息</span><span
                                     class="pull-right"><i class="md md-remove"></i></span></a>
