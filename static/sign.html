@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <title>permeate</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="dist/permeate.css" rel="stylesheet">
+    <link rel="stylesheet" href="dist/style.css">
+    <link href="font/material-icons.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="nav-bar is-default">
+        <div class="nav container">
+            <div class="nav-brand">
+                Permeate
+            </div>
+            <ul class="nav-list">
+                <li class="list-item">
+                    <a class="item-link is-active" href="#">首页</a>
+                </li>
+                <li class="list-item">
+                    <a class="item-link" href="#">门户</a>
+                </li>
+            </ul>
+            <ul class="nav-list nav-list-right">
+                <li class="list-item">
+                    <form>
+                        <label class="search">
+                            <input class="form-input" type="text" placeholder="搜索板块">
+                            <a role="button">
+                                <i class="material-icons search-icon">search</i>
+                            </a>
+                        </label>
+                    </form>
+                </li>
+                <li class="list-item">
+                    <a class="item-link" href="#">消息</a>
+                </li>
+                <li class="list-item">
+                    <a class="item-link" href="#">提醒</a>
+                </li>
+                <li class="list-item">
+                    <a class="user-link" href="#">
+                        <img class="user-img" src="images/user-img.jpg" alt="">
+                        <span><small>XXX用户</small></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-secondary">
+            <div class="container">
+                <!--路径导航-->
+                <ul class="route-guidance">
+                    <li class="guidance-item">
+                        <span>首页</span>
+                    </li>
+                    <li class="guidance-item">
+                        <a href="#">门户</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!--辅助类，垂直居中-->
+    <div class="vertical-center">
+        <div class="sign paper vertical-middle">
+            <div class="sign-header">
+                <h2>Permeate</h2>
+            </div>
+            <div class="sign-body">
+                <div class="sign-controller">
+                    <div class="sign-controller-item">
+                        <a class="is-active" role="button">
+                            登陆
+                        </a>
+                    </div>
+                    <div class="sign-controller-item">
+                        <a role="button">
+                            注册
+                        </a>
+                    </div>
+                </div>
+                <div class="sign-container">
+                    <div class="sign-container-item is-active">
+                        <form>
+                            <div class="form-group">
+                                <label class="form-outline-label">
+                                    <span class="label-title">账号</span>
+                                    <input class="form-outline-input" type="text" name="" value="" placeholder="请输入账号">
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-outline-label">
+                                    <span class="label-title">密码</span>
+                                    <input class="form-outline-input" type="text" name="" value="" placeholder="请输入密码">
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="button">登陆</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <div class="sign-container-item">
+                        <form>
+                            <div class="form-group">
+                                <label class="form-outline-label">
+                                    <span class="label-title">账号</span>
+                                    <input class="form-outline-input" type="text" name="" value="" placeholder="请输入账号">
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-outline-label">
+                                    <span class="label-title">密码</span>
+                                    <input class="form-outline-input" type="password" name="" value="" placeholder="请输入密码">
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-outline-label">
+                                    <span class="label-title">确认密码</span>
+                                    <input class="form-outline-input" type="password" name="" value="" placeholder="请再次确认密码">
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-outline-label">
+                                    <span class="label-title">邮箱</span>
+                                    <input class="form-outline-input" type="email" name="" value="" placeholder="请输入邮箱地址">
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="button">注册</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="dist/js/sign.js"></script>
+</body>
+
+</html>
