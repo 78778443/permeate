@@ -15,7 +15,7 @@
 	
 	if(!$row){
 		echo "<script>alert('删除用户失败，请稍后再试'!)</script>";
-		echo "<script>window.location.href='list.php'</script>";
+		echo "<script>window.location.href='./index.php?m=user&a=lists'</script>";
 		exit;
 	}
 
@@ -24,7 +24,7 @@
 	
 	if(!$row){
 		echo "<script>alert('删除用户失败，请稍后再试'!)</script>";
-		
+		echo "<script>window.location.href='./index.php?m=user&a=lists'</script>";
 	}
 
 		$row = del($id,'uid','post');
@@ -32,16 +32,16 @@
 	
 	if(!$row){
 		echo "<script>alert('删除用户失败，请稍后再试'!)</script>";
-	
+		echo "<script>window.location.href='./index.php?m=user&a=lists'</script>";
 	}
 	
 		$row = del($id,'uid','reply');
 
 	if(!$row){
 		echo "<script>alert('删除用户失败，请稍后再试'!)</script>";
-		
+		echo "<script>window.location.href='./index.php?m=user&a=lists'</script>";
 		exit;
 	}
 
-	echo "<script>window.location.href='list.php'</script>";
+	echo "<script>window.location.href='./index.php?m=user&a=lists'</script>";
 ?>

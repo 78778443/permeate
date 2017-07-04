@@ -1,14 +1,4 @@
 <?php
-	
-	$keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
-	if(!empty($keywords)){
-		$where = " where id like '%$keywords%' ";
-		$link = "&keywords=".$keywords;
-	}else{
-		$where = "";
-		$link = "";
-	}
-	
 	//开始分页大小
 	$page_size = 5;
 	
@@ -52,15 +42,15 @@
 			<th>关键词</th>
 			<th>管理</th>
 		<tr>
-		<form action="./fil/del.php" method="post">
+		<form action="./index.php?m=fil&a=del" method="post">
 <?php foreach($row as $fil){
 ?>
 		<tr align="center">
 			<td><input type="checkbox" name="id[]" value="<?php echo $user['id'] ?>" /></td>
 			<td><?php echo $fil['id'] ?></td>
 			<td><?php echo $fil['hinge'] ?></td>
-			<td><a href="./fil/mod.phpid=<?php echo $fil['id'] ?>">编辑</a>
-				<a href="./fil/del.phpid=<?php echo $fil['id'] ?>&zd=id&table=fil">删除</a>
+			<td><a href="./index.php?m=fil&a=mod&id=<?php echo $fil['id'] ?>">编辑</a>
+				<a href="./index.php?m=fil&a=del&id=<?php echo $fil['id'] ?>&zd=id&table=fil">删除</a>
 			</td>
 		</tr>
 <?php

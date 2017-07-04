@@ -3,7 +3,14 @@
 	include "../core/image_func.php";
 ?>
 <?php
-
+	$keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
+	if(!empty($keywords)){
+		$where = " where id like '%$keywords%' ";
+		$link = "&keywords=".$keywords;
+	}else{
+		$where = "";
+		$link = "";
+	}
 	if(!empty($_POST['hinge'])){
 		$hinge = ip2long($_POST['hinge']);
 
@@ -17,19 +24,19 @@
 		var_dump($row);
 		if($row===false){
 			echo "<script>alert('抱歉！写入数据失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='../index.phpm=fil&a=list'</script>";
+			echo "<script>window.location.href='./index.php?m=fil&a=lists'</script>";
 			exit;
 		}
 
 
 		//header("location:list.php");
-		echo "<script>window.location.href='../index.phpm=fil&a=list'</script>";
+		echo "<script>window.location.href='./index.php?m=fil&a=lists'</script>";
 		exit;
 	}
 
 ?>
 <div class="container">
-<form action="./fil/iadd.php" method="post" enctype="multipart/form-data" >
+<form action="./index.php?m=fil&a=add" method="post" enctype="multipart/form-data" >
 <table>
 	<tr><td>关键字：</td><td><input type="text" name="hinge" /><p /></td></tr>
 	<tr><td><input type="submit" value="添加" class="btn btn-default navbar-btn" /></td><td>

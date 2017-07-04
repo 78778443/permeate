@@ -8,8 +8,14 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h4 class="pull-left page-title">Basic Tables</h4>
+
                     <ol class="breadcrumb pull-right">
+
                         <li>
+                            <form>
+                                搜索ID：<input type='text' name='keywords' class='input-medium search-query'/>&nbsp;&nbsp;&nbsp;
+                                <input type='submit' value='搜索' class='btn'/>
+                            </form>
                             <a class="btn btn-success" href="/">按钮</a>
                         </li>
                     </ol>
@@ -57,8 +63,8 @@
                                                         $rowpadmins = mysql_func($sql);
                                                         echo $rowpadmins['0']['username'] ?></td>
                                                     <td><?php echo $cou ?></td>
-                                                    <td><a href="mod.phpid=<?php echo $part['id'] ?>">编辑</a>
-                                                        <a href="del.phpid=<?php echo $part['id'] ?>&zd=id&table=part">删除</a>
+                                                    <td><a href="./index.php?m=part&a=mod&id=<?php echo $part['id'] ?>">编辑</a>
+                                                        <a href="./index.php?m=part&a=del&id=<?php echo $part['id'] ?>&zd=id&table=part">删除</a>
                                                     </td>
                                                 </tr>
                                                 <?php

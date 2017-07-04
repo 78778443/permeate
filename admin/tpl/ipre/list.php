@@ -1,14 +1,4 @@
 <?php
-	
-	$keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
-	if(!empty($keywords)){
-		$where = " where id like '%$keywords%' ";
-		$link = "&keywords=".$keywords;
-	}else{
-		$where = "";
-		$link = "";
-	}
-	
 	//开始分页大小
 	$page_size = 5;
 	
@@ -30,8 +20,6 @@
 	if($page_num<=$page_count){
 		$page_num=$page_count;
 	}
-	
-	//准备SQL语句
 	$limit = " limit ".(($page_num-1)*$page_size).",".$page_size;;
 	
 	$sql = "select * from ".DB_PRE."iprefuse".$where.$limit;
@@ -53,7 +41,7 @@
 			<th>结束IP</th>
 			<th>管理</th>
 		<tr>
-		<form action="./ipre/del.php" method="post">
+		<form action="./index.php?m=ipre&a=del" method="post">
 <?php foreach($row as $ip){
 ?>
 		<tr align="center">
@@ -62,8 +50,8 @@
 			<td><?php echo long2ip($ip['ipmin']) ?></td>
 			<td><?php echo long2ip($ip['ipmax']) ?></td>
 
-			<td><a href="./ipre/mod.phpid=<?php echo $ip['id'] ?>">编辑</a>
-				<a href="./ipre/del.phpid=<?php echo $ip['id'] ?>&zd=id&table=iprefuse">删除</a>
+			<td><a href="./index.php?m=ipre&a=mod&id=<?php echo $ip['id'] ?>">编辑</a>
+				<a href="./index.php?m=ipre&a=del&id=<?php echo $ip['id'] ?>&zd=id&table=iprefuse">删除</a>
 			</td>
 		</tr>
 <?php

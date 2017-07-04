@@ -1,47 +1,9 @@
 <?php
-	
-	$keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
-	if(!empty($keywords)){
-		$where = " where username like '%$keywords%' ";
-		$link = "&keywords=".$keywords;
-	}else{
-		$where = "";
-		$link = "";
-	}
-	
-	//开始分页大小
-	$page_size = 3;
-	
-	//获取当前页码
-	$page_num = empty($_GET['page'])?1:$_GET['page'];
-	
-	//计算记录总数
-	$sql = "select count(*) as c from ".DB_PRE."user ".$where;
-	//echo $sql;
-	$row = mysql_func($sql);
-	$count= $row[0]['c'];
-
-	//计算记录总页数
-	$page_count = ceil($count/$page_size);
-	//防止越界
-	if($page_num<=0){
-		$page_num=1;
-	}
-	if($page_num>=$page_count){
-		$page_num=$page_count;
-	}
-	
-	//准备SQL语句
-	$limit = " limit ".(($page_num-1)*$page_size).",".$page_size;;
-	
 	$sql = "select u.id,u.username,u.admins,u.rtime,u.rip,d.qq,d.sex,d.age,d.email from ".DB_PRE."user as u left join ".DB_PRE."user_detail as d on u.id=d.uid".$where.$limit;
 
-	
 	$row = mysql_func($sql);
-	
 ?>
-<br /><br /><br /><br /><br /><br />
-<div class="container">
+<div>
   <form>
     搜索用户名：
     <input style="float:rig;" type='text' name='keywords'  class='input-medium search-query' />
@@ -66,7 +28,7 @@
       <tr>
         <?php foreach($row as $user){
 ?>
-      <tr align="center">
+      <tr>
         <td><input type="checkbox" name="id[]" value="<?php echo $user['id'] ?>" /></td>
         <td><?php echo $user['id'] ?></td>
         <td><?php echo $user['username'] ?></td>
@@ -76,7 +38,7 @@
         <td><?php echo $user['age'] ?></td>
         <td><?php echo $sex[$user['sex']] ?></td>
         <td><?php echo $user['qq'] ?></td>
-        <td><a href="mod.phpid=<?php echo $user['id'] ?>">编辑</a> <a href="del.phpid=<?php echo $user['id'] ?>&zd=id&table=user">删除</a></td>
+        <td><a href="./index.php?m=user&a=mod&id=<?php echo $user['id'] ?>">编辑</a> <a href="./index.php?m=user&a=del&id=<?php echo $user['id'] ?>&zd=id&table=user">删除</a></td>
       </tr>
       <?php
 	}
@@ -88,10 +50,10 @@
 <?php
 	echo "
 	<ul class='pager'>
-		<li><a href='?page=1".$link."'>首页</a></li>
-		<li><a href='?page=".($page_num-1).$link."'>上一页</a></li>
-		<li><li><a href='?page=".($page_num+1).$link."'>下一页</a></li>
-		<li><a href='?page=".$page_count.$link."'>尾页</a></li>
+		<li><a href='?m=user&a=lists&page=1".$link."'>首页</a></li>
+		<li><a href='?m=user&a=lists&?page=".($page_num-1).$link."'>上一页</a></li>
+		<li><li><a href='?m=user&a=lists&?page=".($page_num+1).$link."'>下一页</a></li>
+		<li><a href='?m=user&a=lists&?page=".$page_count.$link."'>尾页</a></li>
 		<li>总共".$page_count."页</li>
 		<li>本页".(($page_num==$page_count&&$count%$page_size!=0)?($count%$page_size):$page_size)."条</li>
 		<li>总共".$count."条</li>

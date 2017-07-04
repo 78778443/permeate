@@ -16,19 +16,19 @@
 		
 		if(!$row){
 			echo "<script>alert('抱歉！写入数据失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='../index.phpm=ipre&a=list'</script>";
+			echo "<script>window.location.href='./index.php?m=ipre&a=lists'</script>";
 			exit;
 		}
 
 
 		//header("location:list.php");
-		echo "<script>window.location.href='../index.phpm=ipre&a=list'</script>";
+		echo "<script>window.location.href='./index.php?m=ipre&a=lists'</script>";
 		exit;
 	}
 
 ?>
 <div class="container">
-<form action="./ipre/iadd.php" method="post" enctype="multipart/form-data" >
+<form action="./index.php?m=ipre&a=add" method="post" enctype="multipart/form-data" >
 <table>
 	<tr><td>开始IP：</td><td><input type="text" name="ipmin" /><p /></td></tr>
 	<tr><td>结束IP：</td><td><input type="text" name="ipmax" /><p /></td></tr>

@@ -1,7 +1,4 @@
-<?php
-include "public/header.php";
-?>
-    <link rel="stylesheet" type="text/css" href="./resource/styles/index.css"/>
+ <link rel="stylesheet" type="text/css" href="./resource/styles/index.css"/>
 <?php
 //组装成一个大数组
 $sql = "select * from " . DB_PRE . "part";

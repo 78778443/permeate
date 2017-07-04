@@ -11,9 +11,9 @@
 
 			
 		if(!empty($_FILES['pic']['name'])){
-			$data = upload($info,'pic','../resorec/images/fri');
+			$data = upload($info,'pic','../resorce/images/fri');
 			$pic = $data['newname'];
-			$pic = suolue($pic,50,30,'../resorec/images/fri/');
+			$pic = suolue($pic,50,30,'../resorce/images/fri/');
 			$sql = "insert into ".DB_PRE."fri(title,desc1,url,pic) values('$title','$desc1','$url','$pic')";
 
 		}else{
@@ -25,19 +25,19 @@
 
 		if(!$row){
 			echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='../index.phpm=fri&a=list'</script>";
+			echo "<script>window.location.href='./index.php?m=fri&a=lists'</script>";
 			exit;
 		}
 
 
 		//header("location:list.php");
-		echo "<script>window.location.href='../index.phpm=fri&a=list'</script>";
+		echo "<script>window.location.href='./index.php?m=fri&a=lists'</script>";
 		exit;
 	}
 
 ?>
 <div class="container">
-<form action="./fri/iadd.php" method="post" enctype="multipart/form-data" >
+<form action="./index.php?m=fri&a=add" method="post" enctype="multipart/form-data" >
 <table>
 	<tr><td>标题：</td><td><input type="text" name="title" /><p /></td></tr>
 	<tr><td>描述：</td><td><input type="text" name="desc1" /><p /></td></tr>

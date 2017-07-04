@@ -1,11 +1,10 @@
 <?php
-	
 	$sql = "select * from ".DB_PRE."part";
 
     $row = mysql_func($sql);
 ?>
 <div class="container">
-<form action="./cate/iadd.php" method="post" class="navbar-form navbar-left" >
+<form action="./index.php?m=cate&a=add" method="post" class="navbar-form navbar-left" >
 <table>
 	<tr><td>分区名称：</td><td><select name="pid"> 
 		<?php foreach($row as $part){echo  "<option value=".$part['id'].">".$part['pname']."</option>"; }?>

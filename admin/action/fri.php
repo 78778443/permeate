@@ -6,7 +6,7 @@
  * Date: 2017/7/3
  * Time: 21:02
  */
-class part
+class fri
 {
     public function lists()
     {
@@ -27,7 +27,7 @@ class part
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
         //计算记录总数
-        $sql = "select count(*) as c from " . DB_PRE . "part " . $where;
+        $sql = "select count(*) as c from " . DB_PRE . "user " . $where;
         $row = mysql_func($sql);
         $count = $row[0]['c'];
 
@@ -38,48 +38,44 @@ class part
         if ($page_num <= 0) {
             $page_num = 1;
         }
-
-        if ($page_num >= $page_count) {
+        if ($page_num <= $page_count) {
             $page_num = $page_count;
         }
-
-        //准备SQL语句
-        $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
-
-        $sql = "select * from " . DB_PRE . "part  " . $where . $limit;
-        $row = mysql_func($sql);
-        $data['row'] = $row;
-
-
-        displayTpl('part/list', $data);
+        displayTpl('fri/list');
     }
 
     public function add()
     {
-
-        if (!empty($_POST['pname'])) {
-
-            $pname = @$_POST['pname'];
-
-            $padmins = @$_POST['padmins'];
+        if (!empty($_POST['title'])) {
+            $title = $_POST['title'];
+            $desc1 = $_POST['desc1'];
+            $url = $_POST['url'];
 
 
-            if (empty($padmins)) {
-                $padmins = "6";
+            if (!empty($_FILES['pic']['name'])) {
+                $data = upload($info, 'pic', '../resorce/images/fri');
+                $pic = $data['newname'];
+                $pic = suolue($pic, 50, 30, '../resorce/images/fri/');
+                $sql = "insert into " . DB_PRE . "fri(title,desc1,url,pic) values('$title','$desc1','$url','$pic')";
+
+            } else {
+                $sql = "insert into " . DB_PRE . "fri(title,desc1,url) values('$title','$desc1','$url')";
             }
-            $sql = "insert into " . DB_PRE . "part(pname,padmins) values('$pname','$padmins')";
 
             $row = mysql_func($sql);
 
+
             if (!$row) {
                 echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-                echo "<script>window.location.href='./index.php?m=part&a=lists'</script>";
+                echo "<script>window.location.href='./index.php?m=fri&a=lists'</script>";
                 exit;
             }
 
-            echo "<script>window.location.href='./index.php?m=part&a=lists'</script>";
+
+            //header("location:list.php");
+            echo "<script>window.location.href='./index.php?m=fri&a=lists'</script>";
             exit;
         }
-        displayTpl('part/add');
+        displayTpl('fri/add');
     }
 }

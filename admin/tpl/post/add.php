@@ -5,7 +5,7 @@
 
 ?>
 <div class="container">
-<form action="./post/iadd.php" method="post" >
+<form action="./index.php?m=post&a=add" method="post" >
 <table>
 	<tr><td>所属主题：</td><td><select name="cid"> 
 		<?php foreach($row as $cate){echo  "<option value=".$cate['id'].">".$cate['cname']."</option>"; }?>   
@@ -17,8 +17,6 @@
 	<textarea name="content" cols="40" rows="4" wrap="VIRTUAL"> </textarea>
 	</td>
 	</tr>
-	<input type="submit" value="发表主题" class="btn btn-default navbar-btn" />
-	<input type="reset" value="重新填写" class="btn btn-default navbar-btn" />
 	<tr>
 	<td>
 	<input type="submit" value="发表主题" class="btn btn-default navbar-btn" />

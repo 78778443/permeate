@@ -1,15 +1,13 @@
 <?php
-	include "../../core/del_func.php";
-	if(empty($_SERVER['HTTP_REFERER'])){
-		exit('非法请求！');
-	}
+	include "../core/del_func.php";
 	//判断分区下是否有贴子，有帖子将不允许删除
+	$id = $_GET['id'];
 	$sql = "select * from ".DB_PRE."post where cid='$id'";
 	$row = mysql_func($sql);
 
 	if($row){
 		echo "<script>alert('分区下有帖子，删除失败！')</script>";
-		echo "<script>window.location.href='../index.phpm=cate&a=list'</script>";
+		echo "<script>window.location.href='./index.php?m=cate&a=lists'</script>";
 		exit;
 	}
 	
@@ -23,9 +21,9 @@
 	
 	if(!$row){
 		echo "<script>alert('删除用户失败，请稍后再试'!)</script>";
-		echo "<script>window.location.href='../index.phpm=cate&a=list'</script>";
+		echo "<script>window.location.href='./index.php?m=cate&a=lists'</script>";
 		exit;
 	}
-	echo "<script>window.location.href='../index.phpm=cate&a=list'</script>";
+	echo "<script>window.location.href='./index.php?m=cate&a=lists'</script>";
 	exit;
 ?>

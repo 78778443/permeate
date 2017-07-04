@@ -1,10 +1,10 @@
 <?php
 		//接收POST参数
 	if($_POST['id']){
-			$id = $_POST['id'];
-			$pid = $_POST['pid'];
-			$content = $_POST['content'];
-			$uid = $_POST['uid'];
+			$id = @$_POST['id'];
+			$pid = @$_POST['pid'];
+			$content = @$_POST['content'];
+			$uid = @$_POST['uid'];
 					
 			$sql = "update ".DB_PRE."reply set pid='$pid',content='$content',uid='$uid' where id=".$id;
 			$row = mysql_func($sql);
@@ -12,7 +12,7 @@
 			if(!$row){
 				echo "<script>alert('服务器出错，请稍候再试！')</script>";
 				}	
-			echo "<script>window.location.href='./list.php'</script>";
+			echo "<script>window.location.href='./index.php?m=reply&a=lists'</script>";
 		}
 	
 	if(!$_GET['id']){
@@ -28,7 +28,7 @@
 ?>	
 <div class="container">
 	<table>
-		<form action="mod.php" method="post";>
+		<form action="./index.php?m=reply&a=mod" method="post";>
        		<input type="hidden" name="id"  value="<?php echo $id; ?>"/><p />
 		<tr><td>
         	主贴ID:

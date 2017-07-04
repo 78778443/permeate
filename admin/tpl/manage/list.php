@@ -1,5 +1,5 @@
 <div class="container">
-<form action="./manage/mod.php" method="post" enctype="multipart/form-data" >
+<form action="./index.php?m=manage&a=mod" method="post" enctype="multipart/form-data" >
 <table class="table table-bordered">
 	<tr><td>*网站标题</td><td><input type="text" name="WZ_TITLE" value="<?php echo WZ_TITLE ?>"></td></tr>
 	<tr><td>*网站标签</td><td><input type="text" name="WZ_KEY" value="<?php echo WZ_KEY ?>"></td></tr>

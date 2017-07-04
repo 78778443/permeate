@@ -1,15 +1,15 @@
 <?php
 require_once "../conf/dbconfig.php";
 require_once "../conf/web_config.php";
-function bj($a, $b)
-{
-    if ($a == $b) {
-        echo "<script>alert('网站维护中！')</script>";
-        exit('网站维护！');
-    }
-}
+//function bj($a, $b)
+//{
+//    if ($a == $b) {
+//        echo "<script>alert('网站维护中！')</script>";
+//        exit('网站维护！');
+//    }
+//}
 
-bj(zt, 0);
+//bj(zt, 0);
 
 ?>
 <!DOCTYPE html>

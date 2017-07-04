@@ -13,9 +13,9 @@
 
 			
 		if(!empty($_FILES['pic']['name'])){
-			$data = upload($info,'pic','../resorec/images/fri');
+			$data = upload($info,'pic','../resorce/images/fri');
 			$pic = $data['newname'];
-			$pic = suolue($pic,50,30,'../resorec/images/fri/');
+			$pic = suolue($pic,50,30,'../resorce/images/fri/');
 			$sql = "insert into ".DB_PRE."fri(title,desc1,url,pic) values('$title','$desc1','$url','$pic')";
 
 		}else{

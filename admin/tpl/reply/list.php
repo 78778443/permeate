@@ -1,35 +1,34 @@
 <?php
-$keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
-if (!empty($keywords)) {
-    $where = " where xx=1 id like '%$keywords%' ";
-    $link = "&keywords=" . $keywords;
-} else {
-    $where = " where xx=1";
-    $link = "";
-}
+		$keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
+		if (!empty($keywords)) {
+			$where = " where xx=1 id like '%$keywords%' ";
+			$link = "&keywords=" . $keywords;
+		} else {
+			$where = " where xx=1";
+			$link = "";
+		}
 
-//开始分页大小
-$page_size = 5;
+		//开始分页大小
+		$page_size = 5;
 
-//获取当前页码
-$page_num = empty($_GET['page']) ? 1 : $_GET['page'];
+		//获取当前页码
+		$page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
-//计算记录总数
-$sql = "select count(*) as c from " . DB_PRE . "reply " . $where;
-$row = mysql_func($sql);
-$count = $row[0]['c'];
+		//计算记录总数
+		$sql = "select count(*) as c from " . DB_PRE . "reply " . $where;
+		$row = mysql_func($sql);
+		$count = $row[0]['c'];
 
-//计算记录总页数
-$page_count = ceil($count / $page_size);
+		//计算记录总页数
+		$page_count = ceil($count / $page_size);
 
-//防止越界
-if ($page_num <= 0) {
-    $page_num = 1;
-}
-if ($page_num >= $page_count) {
-    $page_num = $page_count;
-}
-
+		//防止越界
+		if ($page_num <= 0) {
+			$page_num = 1;
+		}
+		if ($page_num >= $page_count) {
+			$page_num = $page_count;
+		}
 //准备SQL语句
 $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
 
@@ -49,7 +48,7 @@ exit;*/
         <input type='submit' value='搜索' class='btn'/>
     </form>
 
-    <form action="del.php" method="post">
+    <form action="./index.php?m=reply&a=del" method="post">
         <input type="hidden" name="zd" value="id"/>
         <input type="hidden" name="table" value="reply"/>
         <table width="870px" border="2px" class="table table-bordered">
@@ -86,9 +85,9 @@ exit;*/
                     echo $user['username'] ?></td>
                 <td><?php echo date('Y-m-d H:i:s', $reply['ptime']); ?></td>
                 <td><?php echo long2ip($reply['pip']) ?></td>
-                <td><a href="mod.phpid=<?php echo $reply['id'] ?>">编辑</a>
-                    <a href="del.phpid=<?php echo $reply['id'] ?>&zd=id&table=reply&cz=2">屏蔽</a>
-                    <a href="del.phpid=<?php echo $reply['id'] ?>&zd=id&table=reply">删除</a>
+                <td><a href="./index.php?m=reply&a=mod&id=<?php echo $reply['id'] ?>">编辑</a>
+                    <a href="./index.php?m=reply&a=del&id=<?php echo $reply['id'] ?>&zd=id&table=reply&cz=2">屏蔽</a>
+                    <a href="./index.php?m=reply&a=del&id=<?php echo $reply['id'] ?>&zd=id&table=reply">删除</a>
                 </td>
             </tr>
             <?php

@@ -1,10 +1,5 @@
-<?php
-	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
-
-
-?>
-<?php if(isset($_GET['id'])){
+<?php 
+if(isset($_GET['id'])){
 		$id = $_GET['id'];
 	}
 
@@ -19,12 +14,12 @@
 		$row = mysql_func($sql);
 		if(!$row===0){
 			echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='list.php'<script/>";
+			echo "<script>window.location.href='./index.php?m=cate&a=lists'<script/>";
 			exit;
 		}
 
 		//执行过程中没有出现以为，将跳转到LIST列表当中
-		echo "<script>window.location.href='./list.php'</script>";
+		echo "<script>window.location.href='./index.php?m=cate&a=lists'</script>";
 		exit;
 	}
 	
@@ -40,7 +35,7 @@
 ?>
 <div class="container">
 <table >
-<form action="imod.phpid=<?php echo $id ?>" method="POST" >
+<form action="./index.php?m=cate&a=mod&id=<?php echo $id ?>" method="POST" >
 	<tr><td>分区名称：</td><td>
 	<select name="pid"> 
 		<?php foreach($row as $part){

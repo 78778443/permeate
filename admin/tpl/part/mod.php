@@ -1,6 +1,3 @@
-<?php
-
-?>
 <?php if(isset($_GET['id'])){
 		$id = $_GET['id'];
 	}
@@ -17,12 +14,12 @@
 		$row = mysql_func($sql);
 		if(!$row===0){
 			echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='list.php'<script/>";
+			echo "<script>window.location.href='./index.php?m=part&a=lists'<script/>";
 			exit;
 		}
 
 		//执行过程中没有出现以为，将跳转到LIST列表当中
-		echo "<script>window.location.href='./list.php'</script>";
+		echo "<script>window.location.href='./index.php?m=part&a=lists'</script>";
 		exit;
 	}
 	
@@ -37,7 +34,7 @@
 	echo "</pre>";*/
 ?>
 <div class="container">
-<form action="mod.phpid=<?php echo $id ?>" method="post" class="form-control" >
+<form action="./index.php?m=part&a=mod&id=<?php echo $id ?>" method="post" class="form-control" >
 分区名称：<input type="text" name="pname" value="<?php echo $part['pname'] ?>"  /></p>
 分区版主：<input type="text" name="padmins" value="<?php echo $part['padmins'] ?>"/>(输入版主ID)</p>
 <input type="submit" value="确定修改" class="btn btn-default navbar-btn" />

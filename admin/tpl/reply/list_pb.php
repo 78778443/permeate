@@ -85,9 +85,9 @@
 			echo $user['username'] ?></td>
 			<td><?php echo date('Y-m-d H:i:s',$reply['ptime']); ?></td>
 			<td><?php echo long2ip($reply['pip']) ?></td>
-			<td><a href="./reply/mod.phpid=<?php echo $reply['id'] ?>">编辑</a>
-				<a href="./reply/del.phpid=<?php echo $reply['id'] ?>&zd=id&table=reply&cz=1">恢复</a>
-				<a href="./reply/del.phpid=<?php echo $reply['id'] ?>&zd=id&table=reply">删除</a>
+			<td><a href="./index.php?m=reply&a=mod&id=<?php echo $reply['id'] ?>">编辑</a>
+				<a href="./index.php?m=reply&a=del&id=<?php echo $reply['id'] ?>&zd=id&table=reply&cz=1">恢复</a>
+				<a href="./index.php?m=reply&a=del&id=<?php echo $reply['id'] ?>&zd=id&table=reply">删除</a>
 			</td>
 		</tr>
 <?php
@@ -101,10 +101,10 @@
 <?php
 	echo "
 	<ul class='pager'>
-		<li><a href='?page=1".$link."'>首页</a></li>
-		<li><a href='?page=".($page_num-1).$link."'>上一页</a></li>
-		<li><li><a href='?page=".($page_num+1).$link."'>下一页</a></li>
-		<li><a href='?page=".$page_count.$link."'>尾页</a></li>
+		<li><a href='?m=reply&a=list_pb&page=1".$link."'>首页</a></li>
+		<li><a href='?m=reply&a=list_pb&page=".($page_num-1).$link."'>上一页</a></li>
+		<li><li><a href='?m=reply&a=list_pb&page=".($page_num+1).$link."'>下一页</a></li>
+		<li><a href='?m=reply&a=list_pb&page=".$page_count.$link."'>尾页</a></li>
 		<li>总共".$page_count."页</li>
 		<li>本页".(($page_num==$page_count&&$count%$page_size!=0)?($count%$page_size):$page_size)."条</li>
 		<li>总共".$count."条</li>
