@@ -2,84 +2,99 @@
 
 class post
 {
-    function __construct(){
+    function __construct()
+    {
 
     }
 
-    public function lists(){	
-	    //开始分页大小
-		$page_size = 5;	
-		//获取当前页码
-		$page_num = empty($_GET['page'])?1:$_GET['page'];	
-		//计算记录总数
-		$sql = "select count(*) as c from ".DB_PRE."post where del=1";
-		//echo $sql;
-		$row = mysql_func($sql);
-		$count= $row[0]['c'];
-		//计算记录总页数
-		$page_count = ceil($count/$page_size);
-		//防止越界
-		if($page_num<=0){
-			$page_num=1;
-		}
-		if($page_num>=$page_count){
-			$page_num=$page_count;
-		}	
-		//准备SQL语句
-		$limit = " limit ".(($page_num-1)*$page_size).",".$page_size;
-
-		displayTpl('post/list');
+    public function lists()
+    {
+        //开始分页大小
+        $page_size = 5;
+        //获取当前页码
+        $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
+        //计算记录总数
+        $sql = "select count(*) as c from " . DB_PRE . "post where del=1";
+        //echo $sql;
+        $row = mysql_func($sql);
+        $count = $row[0]['c'];
+        //计算记录总页数
+        $page_count = ceil($count / $page_size);
+        //防止越界
+        if ($page_num <= 0) {
+            $page_num = 1;
+        }
+        if ($page_num >= $page_count) {
+            $page_num = $page_count;
+        }
+        //准备SQL语句
+        $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;
+        $sql = "select p.*,u.username from " . DB_PRE . "post as p," . DB_PRE . "user as u where p.uid=u.id and p.del='1' " . $limit;
+        $row1 = mysql_func($sql);
+        $data['list'] = $row1;
+        displayTpl('post/list', $data);
     }
-	public function add(){	
-		if(!empty($_POST['title'])){
-			$title = $_POST['title'];
-			$content = $_POST['content'];
-			$cid = $_POST['cid'];
-			$ptime = $_SERVER['REQUEST_TIME'];
-			$pip = ip2long($_SERVER['REMOTE_ADDR']);
-			$uid = $_SESSION['admin']['username']['id'];
 
-			$sql = "insert into ".DB_PRE."post(title,content,cid,ptime,uid,pip) values('$title','$content','$cid','$ptime','$uid','$pip')";
+    public function add()
+    {
+        if (!empty($_POST['title'])) {
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            $cid = $_POST['cid'];
+            $ptime = $_SERVER['REQUEST_TIME'];
+            $pip = ip2long($_SERVER['REMOTE_ADDR']);
+            $uid = $_SESSION['admin']['username']['id'];
 
-			$row = mysql_func($sql);
-		
+            $sql = "insert into " . DB_PRE . "post(title,content,cid,ptime,uid,pip) values('$title','$content','$cid','$ptime','$uid','$pip')";
 
-			if(!$row){
-				echo "<script>window.location.href='./index.php?m=post&a=lists'</script>";
-				exit;
-			}
+            $row = mysql_func($sql);
 
-			echo "<script>window.location.href='./index.php?m=post&a=lists'</script>";
-			exit;
-		}
-		displayTpl('post/add');
-	}
-	public function list_del(){
-			//开始分页大小
-		$page_size = 5;
 
-		//获取当前页码
-		$page_num = empty($_GET['page']) ? 1 : $_GET['page'];
+            if (!$row) {
+                echo "<script>window.location.href='./index.php?m=post&a=lists'</script>";
+                exit;
+            }
 
-		//计算记录总数
-		$where = "where del=2";
-		$sql = "select count(*) as c from " . DB_PRE . "post " . $where;
+            echo "<script>window.location.href='./index.php?m=post&a=lists'</script>";
+            exit;
+        }
+        displayTpl('post/add');
+    }
 
-		$row = mysql_func($sql);
+    public function list_del()
+    {
+        //开始分页大小
+        $page_size = 5;
 
-		$count = $row[0]['c'];
+        //获取当前页码
+        $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
-		//计算记录总页数
-		$page_count = ceil($count / $page_zize);
+        //计算记录总数
+        $where = "where del=2";
+        $sql = "select count(*) as c from " . DB_PRE . "post " . $where;
 
-		//防止越界
-		if ($page_num <= 0) {
-			$page_num = 1;
-		}
-		if ($page_num <= $page_count) {
-			$page_num = $page_count;
-		}
-		displayTpl('post/list_del');
-	}
+        $row = mysql_func($sql);
+
+        $count = $row[0]['c'];
+
+        //计算记录总页数
+        $page_count = ceil($count / $page_size);
+
+        //防止越界
+        if ($page_num <= 0) {
+            $page_num = 1;
+        }
+        if ($page_num <= $page_count) {
+            $page_num = $page_count;
+        }
+
+        //准备SQL语句
+        $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
+
+        $sql = "select p.*,u.username from " . DB_PRE . "post as p," . DB_PRE . "user as u where p.uid=u.id and p.del='2' " . $limit;
+        $row = mysql_func($sql);
+        $data['list'] = $row;
+        displayTpl('post/list_del', $data);
+    }
 }
 

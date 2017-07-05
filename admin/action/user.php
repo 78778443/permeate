@@ -17,7 +17,6 @@ class user
             $where = "";
             $link = "";
         }
-
         //开始分页大小
         $page_size = 3;
 
@@ -29,7 +28,6 @@ class user
         //echo $sql;
         $row = mysql_func($sql);
         $count = $row[0]['c'];
-
         //计算记录总页数
         $page_count = ceil($count / $page_size);
         //防止越界
@@ -39,14 +37,15 @@ class user
         if ($page_num >= $page_count) {
             $page_num = $page_count;
         }
-
         //准备SQL语句
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
-
         $sql = "select u.id,u.username,u.admins,u.rtime,u.rip,d.qq,d.sex,d.age,d.email from " . DB_PRE . "user as u left join " . DB_PRE . "user_detail as d on u.id=d.uid" . $where . $limit;
         
         $row = mysql_func($sql);
-        displayTpl('user/lists');
+        $data['admins'] = array('普通会员','管理员');
+        $data['sex'] = array('保密','男','女');
+        $data['list'] = $row;
+        displayTpl('user/lists',$data);
     }
 
     public function add()

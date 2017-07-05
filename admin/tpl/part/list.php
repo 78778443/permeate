@@ -1,109 +1,34 @@
-
-
-
-<div class="content-page">
-    <!-- Start content -->
-    <div class="content">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h4 class="pull-left page-title">Basic Tables</h4>
-
-                    <ol class="breadcrumb pull-right">
-
-                        <li>
-                            <form>
-                                搜索ID：<input type='text' name='keywords' class='input-medium search-query'/>&nbsp;&nbsp;&nbsp;
-                                <input type='submit' value='搜索' class='btn'/>
-                            </form>
-                            <a class="btn btn-success" href="/">按钮</a>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">帖子数据列表</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Username</th>
-                                                <th>Age</th>
-                                                <th>City</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <?php foreach ($row as $part) {
-                                            $sql = "select count(*) as cou from " . DB_PRE . "cate where pid='" . $part['id'] . "' group by pid";
-                                            //echo $sql;
-                                            $row1 = mysql_func($sql);
-
-                                            $cou = $row1[0]['cou'];
-                                            if (empty($cou)) {
-                                                $cou = "0";
-                                            }
-                                            //var_dump($cou);
-                                            ?>
-                                                <tr>
-                                                    <td><input type="checkbox" name="id" value="<?php echo $part['id'] ?>"/></td>
-                                                    <td><?php echo $part['id'] ?></td>
-                                                    <td><?php echo $part['pname'] ?></td>
-                                                    <td><?php $sql = "select * from bbs_user where id=" . $part['padmins'];
-                                                        $rowpadmins = mysql_func($sql);
-                                                        echo $rowpadmins['0']['username'] ?></td>
-                                                    <td><?php echo $cou ?></td>
-                                                    <td><a href="./index.php?m=part&a=mod&id=<?php echo $part['id'] ?>">编辑</a>
-                                                        <a href="./index.php?m=part&a=del&id=<?php echo $part['id'] ?>&zd=id&table=part">删除</a>
-                                                    </td>
-                                                </tr>
-                                                <?php
-                                            }
-                                            ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-8">
-                        <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">Showing 1
-                            to
-                            10 of 57 entries
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
-                            <ul class="pagination">
-                                <li class="paginate_button previous disabled" aria-controls="datatable" tabindex="0"
-                                    id="datatable_previous"><a href="#">Previous</a></li>
-                                <li class="paginate_button active" aria-controls="datatable" tabindex="0"><a
-                                            href="#">1</a></li>
-                                <li class="paginate_button " aria-controls="datatable" tabindex="0"><a
-                                            href="#">2</a>
-                                </li>
-                                <li class="paginate_button " aria-controls="datatable" tabindex="0"><a
-                                            href="#">3</a>
-                                </li>
-                                <li class="paginate_button next" aria-controls="datatable" tabindex="0"
-                                    id="datatable_next"><a href="#">Next</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<main class="col-sm-9 offset-sm-3 offset-md-2 pt-3" role="main">
+    <h2>分区列表</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>多选</th>
+                <th>ID</th>
+                <th>分区名称</th>
+                <th>分区版主</th>
+                <th>分区下板块数</th>
+                <th>管理</th>
+            </thead>
+            <tbody>
+            <?php
+            foreach ($list as $k => $v) {
+                ?>
+                <tr>
+                    <td><input type="checkbox" name="id" value="<?php echo $v['id'] ?>"/></td>
+                    <td><?php echo $v['id'] ?></td>
+                    <td><?php echo $v['pname'] ?></td>
+                    <td><?php echo $v['username'] ?></td>
+                    <td><?php echo $v['cou'] ?></td>
+                    <td><a href="mod.phpid=<?php echo $v['id'] ?>">编辑</a>
+                        <a href="del.phpid=<?php echo $v['id'] ?>&zd=id&table=part">删除</a>
+                    </td>
+                </tr>
+                <?php
+            }
+            ?>
+            </tbody>
+        </table>
     </div>
+</main>

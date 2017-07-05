@@ -27,7 +27,6 @@
                 if (empty($cou)) {
                     $cou = "0";
                 }
-                //var_dump($cou);
                 ?>
                 <tr align="center">
                     <td><input type="checkbox" name="id" value="<?php echo $part['id'] ?>"/></td>

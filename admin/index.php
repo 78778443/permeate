@@ -10,7 +10,7 @@ if (empty($_SESSION['admin']['username'])) {
 
 include "public/header.php";
 include "public/left.php";
-include "public/right.php";
-//includeAction("$model","$action");
+//include "public/right.php";
+includeAction("$model","$action");
 include "public/footer.php";
 ?>

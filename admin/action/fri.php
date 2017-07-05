@@ -41,7 +41,12 @@ class fri
         if ($page_num <= $page_count) {
             $page_num = $page_count;
         }
-        displayTpl('fri/list');
+        $limit = " limit ".(($page_num-1)*$page_size).",".$page_size;;
+
+        $sql = "select * from ".DB_PRE."fri".$where.$limit;
+        $row = mysql_func($sql);
+        $data['list'] = $row;
+        displayTpl('fri/list',$data);
     }
 
     public function add()

@@ -8,7 +8,6 @@ class index
 
     public function index()
     {
-
         include "./public/right.php";
     }
 }

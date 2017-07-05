@@ -10,7 +10,6 @@ class part
 {
     public function lists()
     {
-
         $keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
         if (!empty($keywords)) {
             $where = " where id like '%$keywords%' ";
@@ -48,9 +47,18 @@ class part
 
         $sql = "select * from " . DB_PRE . "part  " . $where . $limit;
         $row = mysql_func($sql);
-        $data['row'] = $row;
-
-
+        foreach($row as $k=>$v){
+            //获取分区版主
+            $sql = "select * from bbs_user where id=" . $v['padmins'];
+            $row[$k]['username'] = mysql_func($sql)[0]['username'];
+            //获取分区下板块数
+            $sql = "select count(*) as cou from " . DB_PRE . "cate where pid='" . $v['id'] . "' group by pid";
+            $row1 = mysql_func($sql)[0]['cou'];
+            if (empty($cou)) {
+                $row[$k]['cou'] = "0";
+            }
+        }
+        $data['list'] = $row;
         displayTpl('part/list', $data);
     }
 
