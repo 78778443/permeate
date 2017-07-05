@@ -1,0 +1,15 @@
+.table{
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+}
+
+.table-primary{
+    & tr{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    & tr td,tr th {
+        padding: 0.5rem 1rem;
+        text-align: center;
+    }
+}

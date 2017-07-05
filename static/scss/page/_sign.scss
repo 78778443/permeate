@@ -1,0 +1,43 @@
+.sign {
+    width: 336px;
+}
+
+.sign .sign-header {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sign .sign-header h2 {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.sign .sign-body {
+    padding: 1rem 2rem 2rem;
+}
+
+.sign-controller {
+    margin-bottom: 2rem;
+    >.sign-controller-item {
+        display: inline-block;
+
+        a{
+            display: block;
+            padding: 0.25rem 0.5rem;
+            color: rgba(0, 0, 0, 0.54);
+
+            &.is-active{
+                color: rgba(0, 0, 0, 0.87);
+                border-bottom: 2px solid $blue;
+            }
+        }
+    }
+}
+
+.sign-container-item{
+    display: none;
+    &.is-active{
+        display: block;
+    }
+}

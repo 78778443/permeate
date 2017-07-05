@@ -1,0 +1,26 @@
+.upload {
+    padding-top: 1rem;
+    .upload-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 0.25rem;
+    }
+    .upload-btn {
+        display: inline-block;
+        margin-top: .875rem;
+        color: #fff;
+        background-color: #00a9f4;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        &:hover{
+            background-color: darken($blue, 10%);
+        }
+        input[type=file] {
+            width: 0;
+            height: 0;
+            visibility: hidden;
+        }
+    }
+}

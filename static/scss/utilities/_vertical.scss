@@ -1,0 +1,36 @@
+.text-left{
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+.text-center{
+    text-align: center;
+}
+.d-table-cell{
+    display: table-cell;
+}
+
+
+.vertical-center {
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+.vertical-center::before{
+    content: "";
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.vertical-middle{
+    vertical-align: middle;
+    display: inline-block;
+}
+.vertical-top{
+    vertical-align: top;
+}

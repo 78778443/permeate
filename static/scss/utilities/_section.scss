@@ -1,0 +1,76 @@
+.search {
+    position: relative;
+    >a[role=button] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        color: rgba(0, 0, 0, 0.54);
+        &::before {
+            content: "";
+            height: 100%;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        &:hover {
+            color: rgba(0, 0, 0, 0.87);
+        }
+    }
+}
+
+.section {
+    margin-top: 2rem;
+}
+
+// 路径导航
+.route-guidance {
+    margin-bottom: 0;
+    padding-left: 0;
+    display: inline-block;
+    vertical-align: sub;
+    list-style-type: none;
+    >.guidance-item {
+        display: inline-block;
+        font-size: 0.875rem;
+        &::before {
+            padding: 0 5px;
+            color: #ccc;
+            content: "/\00a0";
+        }
+        span {
+            color: rgba(0, 0, 0, 0.54);
+        }
+        &:first-child::before {
+            content: none;
+        }
+    }
+}
+
+.user-link {
+    display: inline-block;
+    margin-left: 1rem;
+    .user-img {
+        width: 36px;
+        height: 36px;
+        display: inline-block;
+        border: 0;
+        border-radius: 50%;
+        vertical-align: middle;
+        background-color: #9e9e9e;
+    }
+    .user-img-small{
+        width: 30px;
+        height: 30px;
+        
+    }
+    span {
+        color: rgba(0, 0, 0, 0.54);
+    }
+    &:hover {
+        span {
+            color: rgba(0, 0, 0, 0.87);
+        }
+    }
+}
+
+

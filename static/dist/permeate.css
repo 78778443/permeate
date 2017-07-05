@@ -2672,7 +2672,15 @@ html
 {
     margin-bottom: 1rem;
 }
-.form-group .btn
+.form-group .form-label
+{
+    margin-bottom: 0;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+}
+.form-group .btn,
+.form-group .form-input,
+.form-group .form-outline-input
 {
     display: block; 
 
@@ -2686,9 +2694,8 @@ html
 {
     font-size: .875rem;
 
-    display: block;
+    display: inline-block;
 
-    width: 100%;
     padding: .25rem 1rem;
 
     -webkit-transition: .3s ease all;
@@ -2741,9 +2748,8 @@ html
 {
     font-size: .875rem;
 
-    display: block;
+    display: inline-block;
 
-    width: 100%;
     padding: .25rem 1rem .25rem 4rem;
 
     -webkit-transition: .3s ease all;
@@ -2807,6 +2813,13 @@ html
 {
     width: 100%;
     height: calc(100% - 1px);
+}
+
+.form-prompt
+{
+    margin-bottom: 0;
+
+    color: rgba(0, 0, 0, .54);
 }
 
 .btn
@@ -3168,6 +3181,16 @@ html
 .footer .footer-right
 {
     float: right;
+}
+
+.text-left
+{
+    text-align: left;
+}
+
+.text-right
+{
+    text-align: right;
 }
 
 .text-center

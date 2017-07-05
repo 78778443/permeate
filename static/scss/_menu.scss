@@ -1,0 +1,28 @@
+.menu{
+    height: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+.menu-list {
+    list-style-type: none;
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+    >.menu-list-item {
+        padding-top: 1rem;
+        >.menu-list-link {
+            &.is-active {
+                position: relative;
+                color: #00a9f4;
+                &::before{
+                    position: absolute;
+                    left: -0.875rem;
+                    top:0;
+                    bottom: 0;
+                    content: "";
+                    width: 2px;
+                    background-color: #00a9f4;
+                }
+            }
+
+        }
+    }
+}

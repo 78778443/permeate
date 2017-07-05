@@ -1,0 +1,45 @@
+
+
+// 主题颜色
+
+$blue: #00a9f4 !default;
+$white: #fff !default;
+$linkColor: #333 !default;
+$linkBlur: $blue !default;
+
+$black: rgba(0,0,0,.54);
+
+
+//字体
+$font-family-base: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Hiragino Kaku Gothic Pro",Meiryo,"Malgun Gothic","Microsoft YaHei",Arial,Helvetica,sans-serif;
+
+//body
+$body-color: #616161;
+
+$body-bg: #fafafa;
+
+$font-size-base: 16px;
+
+$font-weight-base: 500;
+
+$line-height-base: 1.5;
+
+
+//dt标签
+$dt-font-weight: bold;
+
+
+//标签
+$link-color: $linkColor;
+$link-hover-color: $linkBlur;
+
+$link-decoration: none;
+$link-hover-decoration: $link-decoration;
+
+
+//表格
+$table-cell-padding:            .75rem !default;
+
+$table-sm-cell-padding:         .3rem !default;
+
+$text-muted: rgba(0,0,0,0.54) !default;

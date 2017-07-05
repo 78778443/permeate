@@ -1,0 +1,102 @@
+.form-group {
+    margin-bottom: 1rem;
+    .form-label {
+        margin-bottom: 0;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+    .btn,
+    .form-input,
+    .form-outline-input {
+        width: 100%;
+        display: block;
+    }
+}
+
+.form-input[type=text],
+.form-input[type=password],
+.form-input[type=number],
+.form-input[type=email] {
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.54);
+    border: 1px solid #e0e0e0;
+    border-radius: 0.2rem;
+    background-color: #fff;
+    outline: none;
+    transition: 0.3s ease all;
+    &:focus {
+        border-color: $blue;
+        box-shadow: 0 0 5px rgba($blue, 0.5)
+    }
+    &[disabled],
+    &.disabled {
+        cursor: not-allowed;
+        filter: alpha(opacity=45);
+        opacity: .45;
+    }
+}
+
+.form-outline-label {
+    position: relative;
+    display: block;
+    margin-bottom: 0;
+}
+
+.form-outline-input[type=text],
+.form-outline-input[type=password],
+.form-outline-input[type=number],
+.form-outline-input[type=email] {
+    display: inline-block;
+    padding: 0.25rem 1rem 0.25rem 4rem;
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.54);
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #fff;
+    transition: 0.3s ease all;
+    &:focus {
+        border-color: $blue;
+    }
+    &[disabled],
+    &.disabled {
+        cursor: not-allowed;
+        filter: alpha(opacity=45);
+        opacity: .45;
+    }
+}
+
+.form-outline-label {
+    >.label-title {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        color: rgba(0, 0, 0, .87);
+        font-size: 0.875rem;
+    } //如果是验证码
+    &.is-yzm {
+        .form-outline-input {
+            padding-right: 7rem;
+        }
+        .yzm {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 6rem;
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+            img {
+                width: 100%;
+                height: calc(100% - 1px);
+            }
+        }
+    }
+}
+
+.form-prompt{
+    margin-bottom: 0;
+    color: rgba(0, 0, 0, 0.54);
+}
+// 按钮
