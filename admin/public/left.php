@@ -45,28 +45,19 @@
 <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-faded sidebar">
     <ul class="nav nav-pills flex-column">
         <li class="nav-item"><a class="nav-link" href="../index.php">前台首页</a></li>
-        <li class="nav-item"><a class="nav-link" href="?m=user&a=lists">用户列表</a></li>
-        <li class="nav-item"><a class="nav-link" href="?m=user&a=add">添加用户</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= U('user/lists',array('title'=>'用户'))?>">用户列表</a></li>
         <li class="nav-item"><a class="nav-link" href="?m=part&a=lists">分区列表</a></li>
-        <li class="nav-item"><a class="nav-link" href="?m=part&a=add">添加分区</a></li>
         <li class="nav-item"><a class="nav-link" href="?m=cate&a=list">版块列表</a></li>
-        <li class="nav-item"><a class="nav-link" href="?m=cate&a=add">添加版块</a></li>
         <li class="nav-item"><a class="nav-link" href="?m=post&a=list">帖子列表</a></li>
         <li class="nav-item"><a class="nav-link" href="?m=post&a=add">添加主题</a></li>
-        <li class="nav-item"><a class="nav-link" href="?m=post&a=list_del">删除主题</a></li>
         <li class="nav-item"><a class="nav-link" href="?m=reply&a=list">回帖列表</a></li>
-        <li class="nav-item"><a class="nav-link" href="?m=reply&a=add">添加回帖</a></li>
         <li class="nav-item"><a class="nav-link" href="?m=reply&a=list_pb">屏蔽回帖</a></li>
         <li class="nav-item"><a class="nav-link" href="?m=fri&a=list">链接列表</a></li>
-        <li class="nav-item"><a class="nav-link" href="?m=fri&a=add">添加连接</a></li>
         <li class="nav-item"><a class="nav-link" href="?m=ipre&a=list">过滤列表</a></li>
-        <li class="nav-item"><a class="nav-link" href="?m=ipre&a=add">添加过滤</a></li>
         <li class="nav-item"><a class="nav-link" href="?m=fil&a=list">生效列表</a></li>
-        <li class="nav-item"><a class="nav-link" href="?m=fil&a=add">添加过滤</a></li>
-
         <li class="nav-item"><a class="nav-link" href="?m=manage&a=list">网站信息</a></li>
         <li>
-            <a class="nav-link" href="./public/logout.php"
+            <a class="nav-link" href="<?= U('public/logout')?>"
                class="waves-effect"><i class="md md-home"></i><span> 退出后台 </span></a>
         </li>
     </ul>
