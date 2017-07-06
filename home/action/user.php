@@ -57,8 +57,8 @@ class user
      */
     public function _upload_user_touxiang()
     {
-        require_once "../includes/upload_func.php";
-        require_once "../includes/image_func.php";
+        require_once "../core/upload_func.php";
+        require_once "../core/image_func.php";
         $user = $_SESSION['home']['username'];
         $data = upload($info, 'pic', '/home/resorec/images/userhead');
 

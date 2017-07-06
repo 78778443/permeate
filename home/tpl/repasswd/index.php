@@ -25,7 +25,7 @@
 								<input type="text" name="yzm" class="outline-input text-short"
                                        placeholder="请输入图片中的数字或字母">
 							</span>
-                            <img src="/includes/yzm_func.php"
+                            <img src="/core/yzm_func.php"
                                  class="code pic-refresh" height="34" width="95">
                         </li>
                         <span class="tip-info captcha-info"></span>
