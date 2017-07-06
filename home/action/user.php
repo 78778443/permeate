@@ -29,7 +29,8 @@ class user
             exit;
         }
 
-        displayTpl('user/individual');
+        $data['username'] = $user;
+        displayTpl('user/individual', $data);
     }
 
     public function basic()

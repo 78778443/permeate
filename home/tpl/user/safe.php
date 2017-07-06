@@ -14,7 +14,7 @@
                                     <span>旧密码</span>
                                 </label>
                                 <div class="col-9">
-                                    <input class="form-input" type="text" name="oldpassword" value="">
+                                    <input class="form-input" type="password" name="oldpassword" value="">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -22,7 +22,7 @@
                                     <span>新密码</span>
                                 </label>
                                 <div class="col-9">
-                                    <input class="form-input" type="text" name="newpassword" value="">
+                                    <input class="form-input" type="password" name="newpassword" value="">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -30,7 +30,7 @@
                                     <span>确认新密码</span>
                                 </label>
                                 <div class="col-9">
-                                    <input class="form-input" type="text" name="newpassword2" value="">
+                                    <input class="form-input" type="password" name="newpassword2" value="">
                                 </div>
                             </div>
                             <div class="text-right">
