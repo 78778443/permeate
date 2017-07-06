@@ -59,7 +59,7 @@ bj(zt, 0);
                 if (!empty($_SESSION['home']['username'])) {
                     $username = $_SESSION['home']['username'];
                     ?>
-                    <a class="user-link" href="individual.php?id=<?php echo $username['id'] ?>">
+                    <a class="user-link" href="/home/index.php?m=user&a=individual&id=<?php echo $username['id'] ?>">
                         <img class="user-img" src="<?php echo strstr($username['pics'], '../r'); ?>" alt="">
                         <span><small><?php echo $username['username']; ?></small></span>
                     </a>
@@ -81,17 +81,17 @@ bj(zt, 0);
             <?php } ?>
         </ul>
     </div>
-    <div class="nav-secondary">
-        <div class="container">
-            <!--路径导航-->
-            <ul class="route-guidance">
-                <li class="guidance-item">
-                    <span>首页</span>
-                </li>
-                <li class="guidance-item">
-                    <a href="#">门户</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+<!--    <div class="nav-secondary">-->
+<!--        <div class="container">-->
+<!--            <!--路径导航-->
+<!--            <ul class="route-guidance">-->
+<!--                <li class="guidance-item">-->
+<!--                    <span>首页</span>-->
+<!--                </li>-->
+<!--                <li class="guidance-item">-->
+<!--                    <a href="#">门户</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
 </header>
