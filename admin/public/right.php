@@ -12,19 +12,15 @@
             </tr>
             </thead>
             <tbody>
-            <?php
-                foreach($list as $k=>$v) {
-                    ?>
+
                     <tr>
-                        <td><?= $v['']?></td>
+                        <td>ID</td>
                         <td>Lorem</td>
                         <td>ipsum</td>
                         <td>dolor</td>
                         <td>sit</td>
                     </tr>
-                    <?php
-                }
-            ?>
+
             </tbody>
         </table>
     </div>
