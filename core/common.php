@@ -7,7 +7,7 @@ session_start();//开启session
 require_once $_SERVER['DOCUMENT_ROOT'] . "/conf/dbconfig.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/conf/web_config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/core/mysql_func.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/core/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/core/Db.php";
 
 $model = !empty($_GET['m']) ? $_GET['m'] : 'index';
 $action = !empty($_GET['a']) ? $_GET['a'] : 'index';
