@@ -46,18 +46,18 @@ foreach ($row as $part1) {
                                     $z = $z + $row[0]['ptime'];
                                 }
                                 ?>
-
                                 <div class="col-lg-3 plate-item">
-                                    <a class="plate-body-title" href="/home/index.php?m=tiezi&a=index&bk=<?php echo $cate['id'] ?>">
-                                        <?php echo $cate['cname'] ?>
-                                    </a>
-                                    <p>
-                                        <span>主题：<?php echo $x ?></span>
-                                        <span>帖子：12312</span>
-                                    </p>
-                                    <p>
-                                        <small>最后评论时间：<?php echo date('Y-m-d H:i:s', $z) ?></small>
-                                    </p>
+                                        <a class="plate-body-title"
+                                           href="<?php echo url('tiezi/index',array('bk'=>$cate['id']));?>">
+                                            <?php echo $cate['cname'] ?>
+                                        </a>
+                                        <p>
+                                            <span>主题：<?php echo $x ?></span>
+                                            <span>帖子：12312</span>
+                                        </p>
+                                        <p>
+                                            <small>最后评论时间：<?php echo date('Y-m-d H:i:s', $z) ?></small>
+                                        </p>
                                 </div>
 
                             <?php } ?>

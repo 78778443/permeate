@@ -18,7 +18,7 @@ $get = $_GET;
                     <?php foreach ($row as $post) { ?>
                         <tr>
                             <td>
-                                <a href="index.php?m=tiezi&a=detail&bk=<?= $bk ?><?= '&zt=' . $post['id'] ?>"><?= $post['title'] ?></a>
+                                <a href="<?= url('tiezi/detail',array('bk'=>$bk,'zt'=>$post['id']));?>"><?= $post['title'] ?></a>
                             </td>
                             <td><?php echo $post['username'] ?></td>
                             <td><?= $post['reply_count']; ?>/<?php echo $post['click'] ?></td>

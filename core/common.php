@@ -144,18 +144,23 @@ function sendEmail($to, $content)
  * @param array $param
  * @return string
  */
-function U($path= 'index/index',$param = [])
+function U($path = 'index/index', $param = [])
 {
-    $result = explode('/',$path);
+    $result = explode('/', $path);
     $url = "index.php?m={$result[0]}&a={$result[1]}";
 
     if (is_array($param)) {
-        foreach ($param as $key=>$value) {
+        foreach ($param as $key => $value) {
             $url .= "&$key=$value";
         }
-    } elseif(is_string($param) && !empty($param)) {
+    } elseif (is_string($param) && !empty($param)) {
         $url .= $param;
     }
 
     return $url;
+}
+
+function url($path = 'index/index', $param = [])
+{
+    return U($path, $param);
 }

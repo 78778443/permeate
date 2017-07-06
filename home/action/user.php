@@ -185,6 +185,32 @@ class user
         setcookie(time() - 1, '/');
         echo "<script>alert('你的密码修改成功,请用新的密码登入.')</script>";
         echo "<script>window.location.href='/'</script>";
+
+    }
+
+    public function info()
+    {
+        $id = !empty($_GET['id']) ? $_GET['id'] : $_SESSION['home']['username']['id'];
+        if (!$id)
+            exit ("参数错误！");
+        $sql = "select * from bbs_user_detail where uid = {$id}";
+        $strUserInfo = mysql_func($sql)[0];
+
+        if ($strUserInfo['sex'] == 1) {
+            $strUserInfo['sex_name'] = '男';
+        } elseif ($strUserInfo['sex'] == 2) {
+            $strUserInfo['sex_name'] = '女';
+        } else {
+            $strUserInfo['sex_name'] = '保密';
+        }
+        if (!$strUserInfo)
+            exit('用户不存在');
+        $sql = "select count(id) as count from bbs_post where uid = {$id}";
+        $strUserInfo['tiezi_count'] = mysql_func($sql)[0]['count'];
+        $sql = "select count(id) as count from bbs_reply where uid = {$id}";
+        $strUserInfo['reply_count'] = mysql_func($sql)[0]['count'];
+        $data['strUserInfo'] = $strUserInfo;
+
+        displayTpl('user/info', $data);
     }
 }
-

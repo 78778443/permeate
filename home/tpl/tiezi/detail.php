@@ -2,7 +2,7 @@
 <div class="fatie">
     <a class="img" href="fatie.php?bk=<?php echo $bk ?>">
         <img src="resource/images/pn_post.png"/></a>
-    <a class="img" href="huifu.php?bk=<?php echo $bk ?>&zt=<?php echo $zt ?>">
+    <a class="img" href="<?php echo url('tiezi/reply',array('bk'=>$bk,'zt'=>$zt))?>">
         <img src="resource/images/pn_reply.png"/></a>
     <a class="btn btn-default" href="/home/index.php?m=tiezi&a=index&bk=<?php echo $bk ?>">返回列表
     </a>
@@ -22,8 +22,10 @@
     <table cellspacing="0" width="1170px">
         <tr>
             <td class="list_width" align="center">
-                <div class="list_width_title"><?php echo $post['username'] ?></div>
-                <img src="<?php echo strstr($post['pic'], '../r'); ?>" title="" alt=""/>
+                <a href="index.php?m=user&a=info&id=<?php echo $post['id']; ?>">
+                    <div class="list_width_title"><?php echo $post['username'] ?></div>
+                    <img src="<?php echo strstr($post['pic'], '../r'); ?>" title="" alt=""/>
+                </a>
                 <ul class="list_style_none">
                     <li>UID:<?php echo $post['uid'] ?></li>
                     <li>NAME:<?php echo $post['username'] ?></li>
@@ -36,9 +38,6 @@
             </td>
         </tr>
         <?php
-        //echo $sql;
-        //echo $sql;
-        //exit;
         foreach ($row as $reply) {
             ?>
             <tr>
@@ -66,8 +65,8 @@
         }
         ?>
     </table>
-    <nav class="page" >
-        <ul class='pagination' >
+    <nav class="page">
+        <ul class='pagination'>
             <?php echo "
             <li class=\"page-item\">
             <a class=\"page-link\" href='/home/index.php?m=tiezi&a=detail&page=1&bk=$bk&zt=$zt'>首页</a></li>
@@ -82,6 +81,5 @@
             <li class=\"page-item\">总共" . $count . "条</li>
             " ?>
         </ul>
+    </nav>
 </div>
-
-</nav>
