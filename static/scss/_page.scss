@@ -1,10 +1,11 @@
 // 分页
 .page {
     .pagination {
+        margin-bottom: 0;
+        padding-left: 0;
         list-style-type: none;
         display: inline-block;
-        padding-left: 0;
-        margin-bottom: 0;
+        vertical-align: middle;
         .page-item {
             display: inline;
             .page-link {
@@ -17,19 +18,23 @@
                 text-decoration: none;
                 background-color: #fff;
                 border: 1px solid #ddd;
-
-                &:hover{
-                    background-color: darken(#fff,5%);
+                &:hover {
+                    background-color: darken(#fff, 5%);
                 }
-                &.is-active{
-                    background-color: darken(#fff,10%);
+                &.is-active {
+                    background-color: darken(#fff, 10%);
                 }
+            } // 文本
+            .page-item-text {
+                padding: 8px 12px;
+                display: inline-block;
+                font-size: 14px;
             }
-            &:first-child .page-link{
+            &:first-child .page-link {
                 border-top-left-radius: 0.25rem;
                 border-bottom-left-radius: 0.25rem;
             }
-            &:last-child .page-link{
+            &:last-child .page-link {
                 border-top-right-radius: 0.25rem;
                 border-bottom-right-radius: 0.25rem;
             }

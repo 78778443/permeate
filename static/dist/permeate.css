@@ -47,6 +47,7 @@ body
     font-weight: 500;
     line-height: 1.5;
 
+    min-height: 100vh;
     margin: 0;
 
     color: #616161;
@@ -2949,10 +2950,12 @@ html
 {
     display: inline-block;
 
-    margin-bottom: 0; 
+    margin-bottom: 0;
     padding-left: 0;
 
     list-style-type: none;
+
+    vertical-align: middle;
 }
 .page .pagination .page-item
 {
@@ -2982,6 +2985,14 @@ html
 .page .pagination .page-item .page-link.is-active
 {
     background-color: #e6e6e6;
+}
+.page .pagination .page-item .page-item-text
+{
+    font-size: 14px; 
+
+    display: inline-block;
+
+    padding: 8px 12px;
 }
 .page .pagination .page-item:first-child .page-link
 {
@@ -3209,11 +3220,7 @@ html
 
 .footer
 {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
+    margin-top: 2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
 
@@ -3231,6 +3238,14 @@ html
 .footer .footer-right
 {
     float: right;
+}
+
+.footer-absolute
+{
+    position: absolute;
+    right: 0;
+    bottom: 0; 
+    left: 0;
 }
 
 .text-left
@@ -3284,6 +3299,11 @@ html
 .vertical-top
 {
     vertical-align: top;
+}
+
+.mx-0
+{
+    margin: 0;
 }
 
 .paper
@@ -3419,4 +3439,62 @@ html
 
     width: 0;
     height: 0;
+}
+
+.post-list-user
+{
+    text-align: center; 
+
+    background-color: #eee;
+}
+
+.post-list-user-details .post-list-user-img
+{
+    width: 88px;
+    height: 88px;
+}
+
+.post-list-user .post-list-user-details
+{
+    margin-top: 2rem;
+}
+
+.post-list-details
+{
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.post-list-details .post-container-details
+{
+    min-height: 230px; 
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.post-list-details .post-container-time
+{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    text-align: right;
+}
+
+.post-controller
+{
+    padding: 1rem;
+
+    text-align: right;
+
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.post-release-container
+{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.post-release-container h4
+{
+    margin-bottom: 1rem;
 }

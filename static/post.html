@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <title>permeate</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="dist/permeate.min.css" rel="stylesheet">
+    <link href="font/material-icons.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="nav-bar is-default">
+        <div class="nav container">
+            <div class="nav-brand">
+                Permeate
+            </div>
+            <ul class="nav-list">
+                <li class="list-item">
+                    <a class="item-link is-active" href="#">首页</a>
+                </li>
+                <li class="list-item">
+                    <a class="item-link" href="#">门户</a>
+                </li>
+            </ul>
+            <ul class="nav-list nav-list-right">
+                <li class="list-item">
+                    <form>
+                        <label class="search">
+                            <input class="form-input" type="text" placeholder="搜索板块">
+                            <a role="button">
+                                <i class="material-icons search-icon">search</i>
+                            </a>
+                        </label>
+                    </form>
+                </li>
+                <li class="list-item">
+                    <a class="item-link" href="#">消息</a>
+                </li>
+                <li class="list-item">
+                    <a class="item-link" href="#">提醒</a>
+                </li>
+                <li class="list-item">
+                    <a class="user-link" href="#">
+                        <img class="user-img" src="images/user-img.jpg" alt="">
+                        <span><small>XXX用户</small></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="paper">
+                <div class="paper-header">
+                    XXXX帖子页
+                </div>
+                <div class="paper-body" style="padding: 0">
+                    <div class="post-container">
+                        <div class="post-container-item">
+                            <div class="row mx-0">
+                                <!--用户组-->
+                                <div class="post-list-user col-2">
+                                    <div class="post-list-user-details">
+                                        <img class="post-list-user-img" src="images/user-img.jpg" alt="">
+                                        <p>XXX用户名称</p>
+                                    </div>
+                                </div>
+                                <!--详情-->
+                                <div class="col-10 post-list-details">
+                                    <!--内容区-->
+                                    <div class="post-container-details">
+                                        XXXX我发表了帖子
+                                    </div>
+                                    <!--时间区-->
+                                    <div class="post-container-time">
+                                        发布时间：
+                                        <time datetime="2017/7/11">2017/7/11</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-container-item">
+                            <div class="row mx-0">
+                                <!--用户组-->
+                                <div class="post-list-user col-2">
+                                    <div class="post-list-user-details">
+                                        <img class="post-list-user-img" src="images/user-img.jpg" alt="">
+                                        <p>XXX用户名称</p>
+                                    </div>
+                                </div>
+                                <!--详情-->
+                                <div class="col-10 post-list-details">
+                                    <!--内容区-->
+                                    <div class="post-container-details">
+                                        XXXX我发表了帖子
+                                    </div>
+                                    <!--时间区-->
+                                    <div class="post-container-time">
+                                        发布时间：
+                                        <time datetime="2017/7/11">2017/7/11</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-container-item">
+                            <div class="row mx-0">
+                                <!--用户组-->
+                                <div class="post-list-user col-2">
+                                    <div class="post-list-user-details">
+                                        <img class="post-list-user-img" src="images/user-img.jpg" alt="">
+                                        <p>XXX用户名称</p>
+                                    </div>
+                                </div>
+                                <!--详情-->
+                                <div class="col-10 post-list-details">
+                                    <!--内容区-->
+                                    <div class="post-container-details">
+                                        XXXX我发表了帖子
+                                    </div>
+                                    <!--时间区-->
+                                    <div class="post-container-time">
+                                        发布时间：
+                                        <time datetime="2017/7/11">2017/7/11</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--控制器-->
+                    <div class="post-controller">
+                        <nav class="page">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" aria-label="Previous">
+                                    <span aria-hidden="true">«</span>
+                                </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link is-active">1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link">4</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link">5</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" aria-label="Previous">
+                                        <span aria-hidden="true">»</span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <span class="page-item-text">共XXX条帖子</span>
+                                </li>
+                                <li class="page-item">
+                                    <span class="page-item-text">共XXXX页</span>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--发帖-->
+                    <div class="post-release">
+                        <div class="post-release-container container-fluid">
+                            <h4>发帖回复</h4>
+                            <form>
+                                <div class="form-group row">
+                                    <label class="col-2 form-label text-right">
+                                        <span>标题</span>
+                                    </label>
+                                    <div class="col-4">
+                                        <input class="form-input" type="text" name="" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-2 form-label text-right">
+                                        <span>评论</span>
+                                    </label>
+                                    <div class="col-10">
+                                        <script id="editor" type="text/plain" style="width:100%;height:500px;"></script>
+                                    </div>
+                                </div>
+
+                                <div class="text-right">
+                                    <button class="btn btn-primary" type="button">确认修改</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-left">
+                Permeate 轻松渗透测试系统 v1.0
+            </div>
+            <div class="footer-right">
+                Archiver | 轻松渗透系统
+            </div>
+        </div>
+    </footer>
+    <script src="dist/js/ueditor/ueditor.config.js"></script>
+    <script src="dist/js/ueditor/ueditor.all.min.js"></script>
+    <script src="dist/js/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script>
+        var ue = UE.getEditor('editor');
+    </script>
+</body>
+
+</html>

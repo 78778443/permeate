@@ -52,6 +52,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 
 body {
   margin: 0; // 1
+  min-height: 100vh;
   font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-base;
