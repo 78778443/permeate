@@ -145,7 +145,7 @@ class user
 
         if (empty($oldpassword)) {
             echo "<script>alert('请输入当前密码！')</script>";
-            echo "<script>window.location.href='../safe.php'</script>";
+            echo "<script>window.location.href='/'</script>";
             exit;
         }
         if (empty($newpassword) && empty($newpassword2)) {

@@ -128,7 +128,7 @@ class tiezi
             $content = $_POST['content'];
             $username = $_SESSION['home']['username'];
             $ptime = $_SERVER['REQUEST_TIME'];
-            $pip = ip2long($_SERVER['REMOTE_ADDR']);
+            $pip = intval(ip2long($_SERVER['REMOTE_ADDR']));
 
 
             $sql = "select * from " . DB_PRE . "iprefuse";
@@ -145,7 +145,7 @@ class tiezi
             $row = mysql_func($sql);
             if (!$row) {
                 echo "请先登入！";
-                echo "<script>window.location.href='".url('user/login')."'</script>";
+                echo "<script>window.location.href='" . url('user/login') . "'</script>";
                 exit;
             }
             $uid = $row[0]['id'];
@@ -156,10 +156,10 @@ class tiezi
 
             if (!$row) {
                 echo "<script>alert('发帖失败，请稍候再试！')</script>";
-                echo "<script>window.location.href='".url('tiezi/reply',array('bk'=>$bk,'zt'=>$zt))."'</script>";
+                echo "<script>window.location.href='" . url('tiezi/reply', array('bk' => $bk, 'zt' => $zt)) . "'</script>";
             } else {
                 echo "<script>alert('回复成功')</script>";
-                echo "<script>window.location.href='".url('tiezi/detail',array('bk'=>$bk,'zt'=>$zt))."'</script>";
+                echo "<script>window.location.href='" . url('tiezi/detail', array('bk' => $bk, 'zt' => $zt)) . "'</script>";
             }
         }
 

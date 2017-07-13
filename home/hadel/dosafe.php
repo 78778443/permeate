@@ -12,17 +12,17 @@
 	
 	if(empty($oldpassword)){
 			echo "<script>alert('请输入当前密码！')</script>";
-			echo "<script>window.location.href='../safe.php'</script>";
+			echo "<script>window.location.href='/'</script>";
 			exit;
 	}
 	if(empty($newpassword)&&empty($newpassword2)){
 			echo "<script>alert('请输入新的密码！')</script>";
-			echo "<script>window.location.href='../safe.php'</script>";
+			echo "<script>window.location.href='/'</script>";
 			exit;
 	}
 	if($newpassword!==$newpassword2){
 			echo "<script>alert('两次密码不一致！')</script>";
-			echo "<script>window.location.href='../safe.php'</script>";
+			echo "<script>window.location.href='/'</script>";
 			exit;
 	}
 	
@@ -36,7 +36,7 @@
 	$row = mysql_func($sql);
 	if(!$row){
 			echo "<script>alert('请输入正确的当前密码！')</script>";
-			echo "<script>window.location.href='../safe.php'</script>";
+			echo "<script>window.location.href='/'</script>";
 			exit;
 	}
 	
@@ -45,7 +45,7 @@
 	$row = mysql_func($sql);
 	if(!$row){
 			echo "<script>alert('抱歉,密码修改失败.')</script>";
-			echo "<script>window.location.href='../safe.php'</script>";
+			echo "<script>window.location.href='/'</script>";
 			exit;
 	}
 	
