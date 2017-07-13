@@ -1,5 +1,5 @@
 <?php
-	$sql = "select * from ".DB_PRE."part";
+	$sql = "select * from bbs_part";
 
     $row = mysql_func($sql);
 ?>

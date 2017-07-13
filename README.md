@@ -57,8 +57,6 @@
     !defined('DB_PASS') && define('DB_PASS', 'root');
     //数据库名称
     !defined('DB_NAME') && define('DB_NAME', 'qingsong_bbs');
-    //前缀
-    !defined('DB_PRE') && define('DB_PRE', 'bbs_');
     !defined('DB_CHARSET') && define('DB_CHARSET', 'utf8');
     
     上面的配置文件在正常安装流程下不需要手动去编辑

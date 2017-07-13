@@ -7,7 +7,7 @@
 		$ipmax = ip2long($_POST['ipmax']);
 
 		
-		$sql = "update ".DB_PRE."iprefuse set ipmin='$ipmin',ipmax='$ipmax' where id='$id'";
+		$sql = "update bbs_iprefuse set ipmin='$ipmin',ipmax='$ipmax' where id='$id'";
 		$row = mysql_func($sql);
 
 		if($row===false){
@@ -19,7 +19,7 @@
 		exit;
 	}
 
-	$sql = "select * from ".DB_PRE."iprefuse where  id='$id'";
+	$sql = "select * from bbs_iprefuse where  id='$id'";
 	//echo $sql;
 	$row = mysql_func($sql);
 	$fri = $row[0];

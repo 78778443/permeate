@@ -164,3 +164,18 @@ function url($path = 'index/index', $param = [])
 {
     return U($path, $param);
 }
+
+function isLogin($module = 'home')
+{
+    if ($module == 'home') {
+        $user = $_SESSION['home']['username'];
+    } elseif ($module == 'admin') {
+        $user = $_SESSION['admin']['username'];
+    }
+    if (empty($user)) {
+        echo "<script>window.location.href='/home/index.php?m=user&a=login'</script>";
+        exit;
+    } else {
+        return intval($user['id']);
+    }
+}

@@ -17,7 +17,7 @@ if (isset($_POST['bk'])) {
     $username = $_SESSION['home']['username'];
     $pip = intval(ip2long($_SERVER['REMOTE_ADDR']));
 
-    $sql = "select * from " . DB_PRE . "iprefuse";
+    $sql = "select * from bbs_iprefuse";
     $row = mysql_func($sql);
     foreach ($row as $ip) {
         if ($pip >= $ip['ipmin'] && $pip <= $ip['ipmax']) {
@@ -27,7 +27,7 @@ if (isset($_POST['bk'])) {
         }
     }
 
-    $sql = "select * from " . DB_PRE . "fil";
+    $sql = "select * from bbs_fil";
     $row = mysql_func($sql);
     foreach ($row as $fil) {
         $count = substr_count($title, $fil['hinge']);
@@ -43,7 +43,7 @@ if (isset($_POST['bk'])) {
             exit;
         }
     }
-    $sql = "select u.id,u.username from " . DB_PRE . "user as u where username='" . $username['username'] . "'";
+    $sql = "select u.id,u.username from bbs_user as u where username='" . $username['username'] . "'";
     $row = mysql_func($sql);
     if (!$row) {
         echo "非法登入，用户不存在！";
@@ -52,7 +52,7 @@ if (isset($_POST['bk'])) {
     }
     $uid = $row[0]['id'];
 
-    $sql = "insert into " . DB_PRE . "post(cid,title,content,ptime,uid,pip) value('$cid','$title','$content','$ptime','$uid','$pip')";
+    $sql = "insert into bbs_post(cid,title,content,ptime,uid,pip) value('$cid','$title','$content','$ptime','$uid','$pip')";
 
     $row = mysql_func($sql);
 
@@ -73,7 +73,7 @@ if (isset($_POST['bk'])) {
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <script type="text/javascript" charset="utf-8" src="../public/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../public/ueditor/ueditor.all.js"></script>
-    <title>轻松渗透测试系统".DB_PRE."</title>
+    <title>轻松渗透测试系统bbs_</title>
     <link rel="stylesheet" type="text/css" href="resource/styles/fatie.css"/>
 </head>
 

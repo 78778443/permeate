@@ -3,7 +3,7 @@
 
 		"create database ".DB_NAME.";",
 		
-		"CREATE TABLE `".DB_PRE."cate` (
+		"CREATE TABLE `bbs_cate` (
 		  `id` int(10) unsigned NOT NULL auto_increment,
 		  `pid` int(10) unsigned NOT NULL default '0',
 		  `cname` varchar(255) NOT NULL default '默认板块',
@@ -11,7 +11,7 @@
 		  PRIMARY KEY  (`id`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;",
 
-		"CREATE TABLE `".DB_PRE."fri` (
+		"CREATE TABLE `bbs_fri` (
 		  `id` int(10) unsigned NOT NULL auto_increment,
 		  `title` varchar(255) NOT NULL default '百度',
 		  `desc1` varchar(255) NOT NULL default '百度一下,你就知道',
@@ -21,14 +21,14 @@
 		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;",
 
 
-		"CREATE TABLE `".DB_PRE."part` (
+		"CREATE TABLE `bbs_part` (
 		  `id` int(10) unsigned NOT NULL auto_increment,
 		  `pname` varchar(255) NOT NULL default '默认分区',
 		  `padmins` int(10) NOT NULL default '6',
 		  PRIMARY KEY  (`id`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;",
 
-		"CREATE TABLE `".DB_PRE."post` (
+		"CREATE TABLE `bbs_post` (
 		  `id` int(10) unsigned NOT NULL auto_increment,
 		  `cid` int(10) unsigned NOT NULL default '0',
 		  `title` varchar(32) NOT NULL default '帖子标题',
@@ -41,7 +41,7 @@
 		  PRIMARY KEY  (`id`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;",
 
-		"CREATE TABLE `".DB_PRE."reply` (
+		"CREATE TABLE `bbs_reply` (
 		  `id` int(10) unsigned NOT NULL auto_increment,
 		  `pid` int(10) unsigned NOT NULL default '0',
 		  `content` text,
@@ -52,7 +52,7 @@
 		  PRIMARY KEY  (`id`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;",
 
-		"CREATE TABLE `".DB_PRE."user` (
+		"CREATE TABLE `bbs_user` (
 		  `id` int(10) unsigned NOT NULL auto_increment,
 		  `username` varchar(32) NOT NULL default '72user',
 		  `email` varchar(32) NOT NULL default '',
@@ -63,7 +63,7 @@
 		  PRIMARY KEY  (`id`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;",
 
-		"CREATE TABLE `".DB_PRE."user_detail` (
+		"CREATE TABLE `bbs_user_detail` (
 		  `uid` int(10) unsigned NOT NULL default '0',
 		  `t_name` varchar(32) default '汤青松',
 		  `age` int(10) unsigned NOT NULL default '0',
@@ -79,17 +79,29 @@
 		  `pics` varchar(255) NOT NULL default '../../resorec/images/userhead/defaults.gif'
 		) ENGINE=MyISAM DEFAULT CHARSET=utf8;",
 		
-		"CREATE TABLE `".DB_PRE."iprefuse` (
+		"CREATE TABLE `bbs_iprefuse` (
 		  `id` int(10) unsigned NOT NULL auto_increment,
 		  `ipmin` varchar(20) NOT NULL,
 		  `ipmax` varchar(20) NOT NULL,
 		  PRIMARY KEY  (`id`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;",
 		
-		"CREATE TABLE `".DB_PRE."fil` (
+		"CREATE TABLE `bbs_fil` (
 		  `id` int(10) NOT NULL auto_increment,
 		  `hinge` varchar(32) NOT NULL,
 		  PRIMARY KEY  (`id`)
-		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;"
+		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;",
+
+        "CREATE TABLE `bbs_home_follow` (
+          `id` int(10) NOT NULL AUTO_INCREMENT,
+          `uid` int(10) NOT NULL DEFAULT '0' COMMENT '用户id',
+          `username` char(15) NOT NULL COMMENT '用户名',
+          `followuid` int(10) NOT NULL DEFAULT '0' COMMENT '被关注用户ID',
+          `fusername` char(15) NOT NULL COMMENT '被关注用户名称',
+          `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0:正常 1:特殊关注 -1:不能再关注此人',
+          `mutual` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0:单向 1:已互相关注',
+          `uptiem` int(10) NOT NULL DEFAULT '0',
+          PRIMARY KEY (`id`)
+        ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;"
 );
 ?>

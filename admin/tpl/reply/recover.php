@@ -7,7 +7,7 @@
 	
 	if(!empty($id) && !empty($cz)){
 
-		$sql = "update ".DB_PRE."reply set xx='".$cz."' where id='$id'";
+		$sql = "update bbs_reply set xx='".$cz."' where id='$id'";
 		$row = mysql_func($sql);
 	}
 	

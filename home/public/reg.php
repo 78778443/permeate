@@ -33,7 +33,7 @@ $email = $_POST['email'];
 
 
 //通过用户名从数据库中读取记录，有记录代表用户已存在
-$sql = "select username from " . DB_PRE . "user where " . DB_PRE . "user.username='$username'";
+$sql = "select username from bbs_user where bbs_user.username='$username'";
 if (mysql_func($sql)) {
     echo "<script>alert('用户已存在！')</script>";
     echo "<script>window.location.href='../register.php'</script>";
@@ -73,7 +73,7 @@ $rip = ip2long($_SERVER['REMOTE_ADDR']);
 
 //加密密码、写入数据库
 $password = md5($password);
-$sql = "insert into " . DB_PRE . "user(username,password,rtime,rip,email) values('$username','$password','$rime','$rip','$email')";
+$sql = "insert into bbs_user(username,password,rtime,rip,email) values('$username','$password','$rime','$rip','$email')";
 
 $id = mysql_func($sql);
 
@@ -84,7 +84,7 @@ if (!$id) {
     exit();
 }
 //写入数据库用户详情表
-$sql = "insert into " . DB_PRE . "user_detail(uid,email) values('$id','$email')";
+$sql = "insert into bbs_user_detail(uid,email) values('$id','$email')";
 $id = mysql_func($sql);
 //判断是否写入成功
 if (!$id === 0) {

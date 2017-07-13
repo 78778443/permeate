@@ -16,10 +16,10 @@
         <th>管理</th>
       </tr>
       <?php
-	$sql = "select c.*,p.pname from ".DB_PRE."cate as c left join ".DB_PRE."part as p on c.pid=p.id";
+	$sql = "select c.*,p.pname from bbs_cate as c left join bbs_part as p on c.pid=p.id";
 	$row = mysql_func($sql);
 	foreach($row as $cate){
-	$sql = "select username from ".DB_PRE."user where id=".$cate['uid'];
+	$sql = "select username from bbs_user where id=".$cate['uid'];
 	
 	$row1 = mysql_func($sql);
 	$username = $row1[0]['username'];

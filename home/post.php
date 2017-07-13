@@ -31,7 +31,7 @@ include "public/header.php";
     <!--内容start-->
     <div class="content_listshow">
         <?php
-        $sql = "select p.*,u.*,d.* from " . DB_PRE . "post as p," . DB_PRE . "user as u," . DB_PRE . "user_detail as d where p.uid=u.id and d.uid=p.uid and p.id='$zt'";
+        $sql = "select p.*,u.*,d.* from bbs_post as p,bbs_user as u,bbs_user_detail as d where p.uid=u.id and d.uid=p.uid and p.id='$zt'";
         $row = mysql_func($sql);
         $post = $row[0];
 		$reply_count_sql = "select count(id) as count from bbs_reply where pid={$zt} ";
@@ -67,7 +67,7 @@ include "public/header.php";
             $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
             //计算记录总数
-            $sql = "select count(*) as c from " . DB_PRE . "reply ";
+            $sql = "select count(*) as c from bbs_reply ";
             $row = mysql_func($sql);
             $count = $row[0]['c'];
 
@@ -84,7 +84,7 @@ include "public/header.php";
 
             //准备SQL语句
             $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
-            $sql = "select r.*,u.*,d.* from " . DB_PRE . "reply as r," . DB_PRE . "user as u," . DB_PRE . "user_detail as d where r.uid=u.id and d.uid=r.uid and r.pid='$zt'" . $limit;
+            $sql = "select r.*,u.*,d.* from bbs_reply as r,bbs_user as u,bbs_user_detail as d where r.uid=u.id and d.uid=r.uid and r.pid='$zt'" . $limit;
             //echo $sql;
             //echo $sql;
             //exit;

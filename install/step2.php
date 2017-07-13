@@ -18,7 +18,6 @@ if (!basename($path) == 'step1.php') {
         数据库用户名：<input class="form-control" type='text' name='DB_USER' value='root'/><br/>
         数据库密码：<input class="form-control" type='password' name='DB_PASS'/><br/>
         数据库名称：<input class="form-control" type='text' name='DB_NAME' value='qingsong_bbs'/><br/>
-        数据表前缀：<input class="form-control" type='text' name='DB_PRE' value='bbs_'/><br/>
         数据库字符集：<input class="form-control" type='text' name='DB_CHARSET' value='utf8'/><br/>
 
         <hr/>

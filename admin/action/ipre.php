@@ -27,7 +27,7 @@ class ipre
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
         //计算记录总数
-        $sql = "select count(*) as c from " . DB_PRE . "user " . $where;
+        $sql = "select count(*) as c from bbs_user " . $where;
         $row = mysql_func($sql);
         $count = $row[0]['c'];
 
@@ -43,7 +43,7 @@ class ipre
         }
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
 
-        $sql = "select * from " . DB_PRE . "iprefuse" . $where . $limit;
+        $sql = "select * from bbs_iprefuse" . $where . $limit;
         $row = mysql_func($sql);
         $data['list'] = $row;
         displayTpl('ipre/list',$data);

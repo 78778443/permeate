@@ -1,5 +1,5 @@
 <?php
-	$sql = "select * from ".DB_PRE."cate";
+	$sql = "select * from bbs_cate";
 
     $row = mysql_func($sql);
 

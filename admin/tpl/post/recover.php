@@ -8,7 +8,7 @@
 	$cz = @$_REQUEST['cz'];
 
 	if(!empty($id) && !empty($cz)){
-		$sql = "update ".DB_PRE."post set del='".$cz."' where id='$id'";
+		$sql = "update bbs_post set del='".$cz."' where id='$id'";
 		$row = mysql_func($sql);
 	}
 	

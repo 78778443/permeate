@@ -6,7 +6,7 @@
 		if(is_array($id)){
 			$id = join(",",$id);
 		}
-		$sql = "delete from ".DB_PRE.$table." where $zd in(".$id.")";
+		$sql = "delete from bbs_".$table." where $zd in(".$id.")";
 		
 		$row = mysql_func($sql);
 		if(!$row){

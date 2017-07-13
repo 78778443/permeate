@@ -1,5 +1,5 @@
 <?php
-	$sql = "select u.id,u.username,u.admins,u.rtime,u.rip,d.qq,d.sex,d.age,d.email from ".DB_PRE."user as u left join ".DB_PRE."user_detail as d on u.id=d.uid".$where.$limit;
+	$sql = "select u.id,u.username,u.admins,u.rtime,u.rip,d.qq,d.sex,d.age,d.email from bbs_user as u left join bbs_user_detail as d on u.id=d.uid".$where.$limit;
 
 	$row = mysql_func($sql);
 ?>

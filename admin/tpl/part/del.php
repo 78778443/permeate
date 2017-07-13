@@ -7,7 +7,7 @@
 	}
 	
 	//判断分区下是否有板块，有板块将不允许删除
-	$sql = "select * from ".DB_PRE."cate where pid='$id'";
+	$sql = "select * from bbs_cate where pid='$id'";
 	$row = mysql_func($sql);
 
 	if($row){

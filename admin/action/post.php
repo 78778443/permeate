@@ -14,7 +14,7 @@ class post
         //获取当前页码
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
         //计算记录总数
-        $sql = "select count(*) as c from " . DB_PRE . "post where del=1";
+        $sql = "select count(*) as c from bbs_post where del=1";
         //echo $sql;
         $row = mysql_func($sql);
         $count = $row[0]['c'];
@@ -29,7 +29,7 @@ class post
         }
         //准备SQL语句
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;
-        $sql = "select p.*,u.username from " . DB_PRE . "post as p," . DB_PRE . "user as u where p.uid=u.id and p.del='1' " . $limit;
+        $sql = "select p.*,u.username from bbs_post as p,bbs_user as u where p.uid=u.id and p.del='1' " . $limit;
         $row1 = mysql_func($sql);
         $data['list'] = $row1;
         displayTpl('post/list', $data);
@@ -45,7 +45,7 @@ class post
             $pip = ip2long($_SERVER['REMOTE_ADDR']);
             $uid = $_SESSION['admin']['username']['id'];
 
-            $sql = "insert into " . DB_PRE . "post(title,content,cid,ptime,uid,pip) values('$title','$content','$cid','$ptime','$uid','$pip')";
+            $sql = "insert into bbs_post(title,content,cid,ptime,uid,pip) values('$title','$content','$cid','$ptime','$uid','$pip')";
 
             $row = mysql_func($sql);
 
@@ -71,7 +71,7 @@ class post
 
         //计算记录总数
         $where = "where del=2";
-        $sql = "select count(*) as c from " . DB_PRE . "post " . $where;
+        $sql = "select count(*) as c from bbs_post " . $where;
 
         $row = mysql_func($sql);
 
@@ -91,7 +91,7 @@ class post
         //准备SQL语句
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
 
-        $sql = "select p.*,u.username from " . DB_PRE . "post as p," . DB_PRE . "user as u where p.uid=u.id and p.del='2' " . $limit;
+        $sql = "select p.*,u.username from bbs_post as p,bbs_user as u where p.uid=u.id and p.del='2' " . $limit;
         $row = mysql_func($sql);
         $data['list'] = $row;
         displayTpl('post/list_del', $data);

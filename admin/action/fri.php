@@ -27,7 +27,7 @@ class fri
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
         //计算记录总数
-        $sql = "select count(*) as c from " . DB_PRE . "user " . $where;
+        $sql = "select count(*) as c from bbs_user " . $where;
         $row = mysql_func($sql);
         $count = $row[0]['c'];
 
@@ -43,7 +43,7 @@ class fri
         }
         $limit = " limit ".(($page_num-1)*$page_size).",".$page_size;;
 
-        $sql = "select * from ".DB_PRE."fri".$where.$limit;
+        $sql = "select * from bbs_fri".$where.$limit;
         $row = mysql_func($sql);
         $data['list'] = $row;
         displayTpl('fri/list',$data);
@@ -61,10 +61,10 @@ class fri
                 $data = upload($info, 'pic', '../resorce/images/fri');
                 $pic = $data['newname'];
                 $pic = suolue($pic, 50, 30, '../resorce/images/fri/');
-                $sql = "insert into " . DB_PRE . "fri(title,desc1,url,pic) values('$title','$desc1','$url','$pic')";
+                $sql = "insert into bbs_fri(title,desc1,url,pic) values('$title','$desc1','$url','$pic')";
 
             } else {
-                $sql = "insert into " . DB_PRE . "fri(title,desc1,url) values('$title','$desc1','$url')";
+                $sql = "insert into bbs_fri(title,desc1,url) values('$title','$desc1','$url')";
             }
 
             $row = mysql_func($sql);

@@ -13,7 +13,7 @@
 		$pic = suolue($pic,200,200,'../../resorec/images/userhead/');
 		$picm = suolue($pic,100,100,'../../resorec/images/userhead/');
 		$pics = suolue($pic,48,48,'../../resorec/images/userhead/');
-		$sql = "update ".DB_PRE."user_detail set pic='$pic',picm='$picm',pics='$pics' where uid='".$user['id']."'";	
+		$sql = "update bbs_user_detail set pic='$pic',picm='$picm',pics='$pics' where uid='".$user['id']."'";
 		$row = mysql_func($sql);
 	}
 	
@@ -22,7 +22,7 @@
 		echo "<script>window.location.href='../individual.php'<script/>";
 		exit;
 	}
-		$sql = "select u.*,d.* from ".DB_PRE."user as u,".DB_PRE."user_detail as d where d.uid=u.id and u.username='".$user['username']."' and u.password='".$user['password']."'";
+		$sql = "select u.*,d.* from bbs_user as u,bbs_user_detail as d where d.uid=u.id and u.username='".$user['username']."' and u.password='".$user['password']."'";
 			//echo $sql;
 		$row = mysql_func($sql);
 		//var_dump($row);

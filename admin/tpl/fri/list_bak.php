@@ -2,7 +2,7 @@
 
 	$limit = " limit ".(($page_num-1)*$page_size).",".$page_size;;
 	
-	$sql = "select * from ".DB_PRE."fri".$where.$limit;
+	$sql = "select * from bbs_fri".$where.$limit;
 
 	
 	$row = mysql_func($sql);

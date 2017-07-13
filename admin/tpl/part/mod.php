@@ -8,7 +8,7 @@
 
 
 		//更新数据到USER详情表当中
-		$sql = "update ".DB_PRE."part set pname='$pname',padmins='$padmins' where id=".$id;
+		$sql = "update bbs_part set pname='$pname',padmins='$padmins' where id=".$id;
 
 
 		$row = mysql_func($sql);
@@ -24,7 +24,7 @@
 	}
 	
 	//POST不存在，将查询表中数据
-	$sql = "select * from ".DB_PRE."part as p where id='$id'";
+	$sql = "select * from bbs_part as p where id='$id'";
 
 	$row = mysql_func($sql);
 	$part = $row[0];

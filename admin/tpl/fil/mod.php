@@ -12,7 +12,7 @@
 
 		//更新数据到USER详情表当中
 		
-		$sql = "update ".DB_PRE."fil set hinge='$hinge' where id='$id'";
+		$sql = "update bbs_fil set hinge='$hinge' where id='$id'";
 		$row = mysql_func($sql);
 
 		if($row===false){
@@ -27,7 +27,7 @@
 	}
 	
 	//POST不存在，将查询表中数据
-	$sql = "select * from ".DB_PRE."fil where  id='$id'";
+	$sql = "select * from bbs_fil where  id='$id'";
 
 	$row = mysql_func($sql);
 	$fil = $row[0];

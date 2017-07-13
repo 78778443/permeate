@@ -26,7 +26,7 @@ class part
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
         //计算记录总数
-        $sql = "select count(*) as c from " . DB_PRE . "part " . $where;
+        $sql = "select count(*) as c from bbs_part " . $where;
         $row = mysql_func($sql);
         $count = $row[0]['c'];
 
@@ -45,14 +45,14 @@ class part
         //准备SQL语句
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
 
-        $sql = "select * from " . DB_PRE . "part  " . $where . $limit;
+        $sql = "select * from bbs_part  " . $where . $limit;
         $row = mysql_func($sql);
         foreach($row as $k=>$v){
             //获取分区版主
             $sql = "select * from bbs_user where id=" . $v['padmins'];
             $row[$k]['username'] = mysql_func($sql)[0]['username'];
             //获取分区下板块数
-            $sql = "select count(*) as cou from " . DB_PRE . "cate where pid='" . $v['id'] . "' group by pid";
+            $sql = "select count(*) as cou from bbs_cate where pid='" . $v['id'] . "' group by pid";
             $row1 = mysql_func($sql)[0]['cou'];
             if (empty($cou)) {
                 $row[$k]['cou'] = "0";
@@ -75,7 +75,7 @@ class part
             if (empty($padmins)) {
                 $padmins = "6";
             }
-            $sql = "insert into " . DB_PRE . "part(pname,padmins) values('$pname','$padmins')";
+            $sql = "insert into bbs_part(pname,padmins) values('$pname','$padmins')";
 
             $row = mysql_func($sql);
 

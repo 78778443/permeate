@@ -46,7 +46,7 @@
         }
 
         //创建默认分区
-        $sql = "insert into " . DB_PRE . "part(pname) values('默认分区')";
+        $sql = "insert into bbs_part(pname) values('默认分区')";
         $row = mysql_func($sql);
         if ($row) {
             echo "建立默认分区成功<p />";
@@ -55,7 +55,7 @@
         }
 
         //创建默认板块
-        $sql = "insert into " . DB_PRE . "cate(pid,cname) values('$row','默认板块')";
+        $sql = "insert into bbs_cate(pid,cname) values('$row','默认板块')";
         $row = mysql_func($sql);
         if ($row) {
             echo "建立默认板块成功<p />";
@@ -66,7 +66,7 @@
         //获取服务器当前时间、客户IP
         $rime = $_SERVER['REQUEST_TIME'];
         $rip = !empty(ip2long($_SERVER['REMOTE_ADDR'])) ? ip2long($_SERVER['REMOTE_ADDR']) : 0;
-        $sql = "insert into " . DB_PRE . "user(username,password,rtime,rip,admins) values('" . $_POST['username'] . "','" . md5($_POST['password']) . "','$rime','$rip','1')";
+        $sql = "insert into bbs_user(username,password,rtime,rip,admins) values('" . $_POST['username'] . "','" . md5($_POST['password']) . "','$rime','$rip','1')";
 
         $id = mysql_func($sql);
 
@@ -77,7 +77,7 @@
         }
 
         //写入数据库用户详情表
-        $sql = "insert into " . DB_PRE . "user_detail(uid) values('$id')";
+        $sql = "insert into bbs_user_detail(uid) values('$id')";
         $id = mysql_func($sql);
 
         if ($id !== false) {

@@ -11,7 +11,7 @@
 		$pip = ip2long($_SERVER['REMOTE_ADDR']);
 		$uid = $_SESSION['admin']['username']['id'];
 
-		$sql = "insert into ".DB_PRE."post(title,content,cid,ptime,uid,pip) values('$title','$content','$cid','$ptime','$uid','$pip')";
+		$sql = "insert into bbs_post(title,content,cid,ptime,uid,pip) values('$title','$content','$cid','$ptime','$uid','$pip')";
 
 		$row = mysql_func($sql);
 		

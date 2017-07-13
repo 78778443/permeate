@@ -26,7 +26,7 @@ class reply
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
         //计算记录总数
-        $sql = "select count(*) as c from " . DB_PRE . "reply " . $where;
+        $sql = "select count(*) as c from bbs_reply " . $where;
         $row = mysql_func($sql);
         $count = $row[0]['c'];
 
@@ -43,13 +43,13 @@ class reply
         //准备SQL语句
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
 
-        $sql = "select * from " . DB_PRE . "reply" . $where . $limit;
+        $sql = "select * from bbs_reply" . $where . $limit;
         $row = mysql_func($sql);
         foreach ($row as $k => $v) {
-            $sql = "select title from " . DB_PRE . "post where id=" . $v['pid'];
+            $sql = "select title from bbs_post where id=" . $v['pid'];
             $row[$k]['post'] = mysql_func($sql)[0];
 
-            $sql = "select username from " . DB_PRE . "user where '" . $v['pid'] . "'";
+            $sql = "select username from bbs_user where '" . $v['pid'] . "'";
             $row[$k]['username'] = mysql_func($sql)[0]['username'];
         }
         $data['list'] = $row;
@@ -65,7 +65,7 @@ class reply
             $ptime = @$_SERVER['REQUEST_TIME'];
             $pip = ip2long($_SERVER['REMOTE_ADDR']);
             $uid = $_SESSION['admin']['username']['id'];
-            $sql = "insert into " . DB_PRE . "reply(pid,content,uid,ptime,pip) values('$pid','$content',$uid,'$ptime','$pip')";
+            $sql = "insert into bbs_reply(pid,content,uid,ptime,pip) values('$pid','$content',$uid,'$ptime','$pip')";
             $row = mysql_func($sql);
             if (!$row) {
                 echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
@@ -96,7 +96,7 @@ class reply
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
         //计算记录总数
-        $sql = "select count(*) as c from " . DB_PRE . "reply " . $where;
+        $sql = "select count(*) as c from bbs_reply " . $where;
         $row = mysql_func($sql);
         $count = $row[0]['c'];
 
@@ -114,13 +114,13 @@ class reply
         //准备SQL语句
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
 
-        $sql = "select * from " . DB_PRE . "reply" . $where . $limit;
+        $sql = "select * from bbs_reply" . $where . $limit;
         $row = mysql_func($sql);
         foreach ($row as $k => $v) {
-            $sql = "select title from " . DB_PRE . "post where id=" . $v['pid'];
+            $sql = "select title from bbs_post where id=" . $v['pid'];
             $row[$k]['post'] = mysql_func($sql)[0];
 
-            $sql = "select username from " . DB_PRE . "user where '" . $v['pid'] . "'";
+            $sql = "select username from bbs_user where '" . $v['pid'] . "'";
             $row[$k]['username'] = mysql_func($sql)[0]['username'];
         }
         $data['list'] = $row;

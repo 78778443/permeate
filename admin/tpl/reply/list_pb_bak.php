@@ -16,7 +16,7 @@
 	$page_num = empty($_GET['page'])?1:$_GET['page'];
 	
 	//计算记录总数
-	$sql = "select count(*) as c from ".DB_PRE."reply ".$where;
+	$sql = "select count(*) as c from bbs_reply ".$where;
 	$row = mysql_func($sql);
 	$count= $row[0]['c'];
 	
@@ -34,7 +34,7 @@
 	//准备SQL语句
 	$limit = " limit ".(($page_num-1)*$page_size).",".$page_size;;
 	
-	$sql = "select * from ".DB_PRE."reply".$where.$limit;
+	$sql = "select * from bbs_reply".$where.$limit;
 
 
 	$row = mysql_func($sql);
@@ -73,12 +73,12 @@
 			<td><?php echo $reply['id'] ?></td>
 			<td><?php echo $reply['content'] ?></td>
 			<td><?php
-				$sql = "select title from ".DB_PRE."post where id=".$reply['pid'];
+				$sql = "select title from bbs_post where id=".$reply['pid'];
 				$row1 = mysql_func($sql);
 				$post = $row1[0];
 			echo $post['title'] ?></td>
 			<td><?php
-			$sql = "select username from ".DB_PRE."user where '".$reply['pid']."'";
+			$sql = "select username from bbs_user where '".$reply['pid']."'";
 
 				$row1 = mysql_func($sql);
 				$user = $row1[0];

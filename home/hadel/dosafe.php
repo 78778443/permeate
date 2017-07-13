@@ -31,7 +31,7 @@
 	$user = $_SESSION['home']['username'];
 	
 	
-	$sql = "select * from ".DB_PRE."user where password='$oldpassword' and id='".$user['id']."'";
+	$sql = "select * from bbs_user where password='$oldpassword' and id='".$user['id']."'";
 
 	$row = mysql_func($sql);
 	if(!$row){
@@ -40,7 +40,7 @@
 			exit;
 	}
 	
-	$sql = "update ".DB_PRE."user set password='$newpassword' where id='".$user['id']."'";
+	$sql = "update bbs_user set password='$newpassword' where id='".$user['id']."'";
 	
 	$row = mysql_func($sql);
 	if(!$row){

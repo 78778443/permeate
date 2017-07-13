@@ -24,7 +24,7 @@ class user
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
         //计算记录总数
-        $sql = "select count(*) as c from " . DB_PRE . "user " . $where;
+        $sql = "select count(*) as c from bbs_user " . $where;
         //echo $sql;
         $row = mysql_func($sql);
         $count = $row[0]['c'];
@@ -39,7 +39,7 @@ class user
         }
         //准备SQL语句
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
-        $sql = "select u.id,u.username,u.admins,u.rtime,u.rip,d.qq,d.sex,d.age,d.email from " . DB_PRE . "user as u left join " . DB_PRE . "user_detail as d on u.id=d.uid" . $where . $limit;
+        $sql = "select u.id,u.username,u.admins,u.rtime,u.rip,d.qq,d.sex,d.age,d.email from bbs_user as u left join bbs_user_detail as d on u.id=d.uid" . $where . $limit;
         
         $row = mysql_func($sql);
         $data['admins'] = array('普通会员','管理员');
@@ -73,7 +73,7 @@ class user
             }
 
 
-            $sql = "select username from " . DB_PRE . "user where " . DB_PRE . "user.username='$username'";
+            $sql = "select username from bbs_user where bbs_user.username='$username'";
 
             $row = mysql_func($sql);
 
@@ -83,7 +83,7 @@ class user
                 exit;
             }
             $password = md5($password);
-            $sql = "insert into " . DB_PRE . "user(username,password,rtime,rip) values('$username','$password','$rtime','$rip')";
+            $sql = "insert into bbs_user(username,password,rtime,rip) values('$username','$password','$rtime','$rip')";
 
             $row = mysql_func($sql);
 
@@ -94,7 +94,7 @@ class user
                 exit;
             }
 
-            $sql = "insert into " . DB_PRE . "user_detail(uid) values('$row')";
+            $sql = "insert into bbs_user_detail(uid) values('$row')";
             $row = mysql_func($sql);
 
             if (!$row === 0) {

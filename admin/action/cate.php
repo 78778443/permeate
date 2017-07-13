@@ -10,10 +10,10 @@ class cate
 {
     public function lists()
     {
-        $sql = "select c.*,p.pname from " . DB_PRE . "cate as c left join " . DB_PRE . "part as p on c.pid=p.id";
+        $sql = "select c.*,p.pname from bbs_cate as c left join bbs_part as p on c.pid=p.id";
         $row = mysql_func($sql);
         foreach ($row as $k=>$cate) {
-            $sql = "select username from " . DB_PRE . "user where id=" . $cate['uid'];
+            $sql = "select username from bbs_user where id=" . $cate['uid'];
             $row[$k]['username'] = mysql_func($sql)[0]['username'];
         }
         $data['list'] = $row;
@@ -26,7 +26,7 @@ class cate
             $pid = $_POST['pid'];
             $cname = $_POST['cname'];
 
-            $sql = "insert into " . DB_PRE . "cate(pid,cname) values('$pid','$cname')";
+            $sql = "insert into bbs_cate(pid,cname) values('$pid','$cname')";
             $row = mysql_func($sql);
 
             if (!$row) {

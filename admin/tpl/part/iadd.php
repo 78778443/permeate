@@ -8,7 +8,7 @@
 		if(empty($padmins)){
 			$padmins = "6";
 		}
-		$sql = "insert into ".DB_PRE."part(pname,padmins) values('$pname','$padmins')";
+		$sql = "insert into bbs_part(pname,padmins) values('$pname','$padmins')";
 		echo $sql;
 		$row = mysql_func($sql);
 		

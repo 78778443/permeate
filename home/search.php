@@ -21,7 +21,7 @@ $page_size = 4;
 $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
 //计算记录总数
-$sql = "select count(*) as c from " . DB_PRE . "post " . $where;
+$sql = "select count(*) as c from bbs_post " . $where;
 $row = mysql_func($sql);
 $count = $row[0]['c'];
 
@@ -40,7 +40,7 @@ if ($page_num <= 0) {
 
 //准备SQL语句
 $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
-$sql = "select * from " . DB_PRE . "post" . $where . $limit;
+$sql = "select * from bbs_post" . $where . $limit;
 $row = mysql_func($sql);
 ?>
     <div class="container ">

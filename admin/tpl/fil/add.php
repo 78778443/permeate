@@ -18,7 +18,7 @@
 			exit('请输入关键字');
 		}	
 			
-		$sql = "insert into ".DB_PRE."fil(hinge) values('$hinge')";
+		$sql = "insert into bbs_fil(hinge) values('$hinge')";
 
 		$row = mysql_func($sql);
 		var_dump($row);

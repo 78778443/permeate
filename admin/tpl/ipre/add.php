@@ -10,7 +10,7 @@
 			exit('开始IP,不能大于结束IP');
 		}	
 			
-		$sql = "insert into ".DB_PRE."iprefuse(ipmin,ipmax) values('$ipmin','$ipmax')";
+		$sql = "insert into bbs_iprefuse(ipmin,ipmax) values('$ipmin','$ipmax')";
 		echo $sql;
 		$row = mysql_func($sql);
 		

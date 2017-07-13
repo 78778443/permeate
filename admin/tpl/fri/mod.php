@@ -10,7 +10,7 @@
 
 		//更新数据到USER详情表当中
 		
-		$sql = "update ".DB_PRE."fri title='$title',desc1='desc1',url='$url',pic='$Pic'";
+		$sql = "update bbs_fri title='$title',desc1='desc1',url='$url',pic='$Pic'";
 		echo $sql;
 		exit;
 		$row = mysql_func($sql);
@@ -26,7 +26,7 @@
 	}
 	
 	//POST不存在，将查询表中数据
-	$sql = "select * from ".DB_PRE."fri where  id='$id'";
+	$sql = "select * from bbs_fri where  id='$id'";
 	//echo $sql;
 	//exit;
 	$row = mysql_func($sql);

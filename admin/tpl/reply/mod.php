@@ -6,7 +6,7 @@
 			$content = @$_POST['content'];
 			$uid = @$_POST['uid'];
 					
-			$sql = "update ".DB_PRE."reply set pid='$pid',content='$content',uid='$uid' where id=".$id;
+			$sql = "update bbs_reply set pid='$pid',content='$content',uid='$uid' where id=".$id;
 			$row = mysql_func($sql);
 
 			if(!$row){
@@ -22,7 +22,7 @@
 	//接收GET参数
 	$id=$_GET['id'];
 	
-	$sql = "select * from ".DB_PRE."reply where id=".$id;
+	$sql = "select * from bbs_reply where id=".$id;
 	$user=mysql_func($sql);
 	$reply=$user[0];
 ?>	
@@ -34,7 +34,7 @@
         	主贴ID:
 			</td><td><select name="pid"> 
 					<?php
-                    $sql = "select * from ".DB_PRE."post";
+                    $sql = "select * from bbs_post";
                     $row = mysql_func($sql);
                     foreach($row as $post){
                     echo  "<option value=".$post['id'].">".$post['title']."</option>"; }?></select> <p />

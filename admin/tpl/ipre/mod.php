@@ -10,7 +10,7 @@ if(isset($_GET['id'])){
 
 		//更新数据到USER详情表当中
 		
-		$sql = "update ".DB_PRE."iprefuse set ipmin='$ipmin',ipmax='$ipmax' where id='$id'";
+		$sql = "update bbs_iprefuse set ipmin='$ipmin',ipmax='$ipmax' where id='$id'";
 		$row = mysql_func($sql);
 
 		if($row===false){
@@ -25,7 +25,7 @@ if(isset($_GET['id'])){
 	}
 	
 	//POST不存在，将查询表中数据
-	$sql = "select * from ".DB_PRE."iprefuse where  id='$id'";
+	$sql = "select * from bbs_iprefuse where  id='$id'";
 	//echo $sql;
 	//exit;
 	$row = mysql_func($sql);

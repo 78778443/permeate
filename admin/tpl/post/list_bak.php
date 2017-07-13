@@ -1,5 +1,5 @@
 <?php
-		$sql = "select p.*,u.username from ".DB_PRE."post as p,".DB_PRE."user as u where p.uid=u.id and p.del='1' ".$limit;
+		$sql = "select p.*,u.username from bbs_post as p,bbs_user as u where p.uid=u.id and p.del='1' ".$limit;
 		//exit;
 		$row1 = mysql_func($sql);
 ?>

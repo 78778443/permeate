@@ -10,7 +10,7 @@
 				$username = $_POST['username'];
 				$password = $_POST['password'];
 				$password = md5($password);	
-				$sql = "select u.*,d.* from ".DB_PRE."user as u, ".DB_PRE."user_detail as d where d.uid=u.id and u.username='$username' and u.password='$password'";
+				$sql = "select u.*,d.* from bbs_user as u, bbs_user_detail as d where d.uid=u.id and u.username='$username' and u.password='$password'";
 //echo $sql;
 //exit;
 				$row = mysql_func($sql);

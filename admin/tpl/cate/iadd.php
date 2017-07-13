@@ -4,7 +4,7 @@
 		$pid = $_POST['pid'];
 		$cname = $_POST['cname'];
 
-		$sql = "insert into ".DB_PRE."cate(pid,cname) values('$pid','$cname')";
+		$sql = "insert into bbs_cate(pid,cname) values('$pid','$cname')";
 		$row = mysql_func($sql);
 		
 		if(!$row){

@@ -21,7 +21,7 @@
 		}
 
 		
-		$sql = "select username from ".DB_PRE."user where ".DB_PRE."user.username='$username'";
+		$sql = "select username from bbs_user where bbs_user.username='$username'";
 		
 		$row = mysql_func($sql);
 
@@ -31,7 +31,7 @@
 			exit;
 		}
 		$password = md5($password);
-		$sql = "insert into ".DB_PRE."user(username,password,rtime,rip) values('$username','$password','$rtime','$rip')";
+		$sql = "insert into bbs_user(username,password,rtime,rip) values('$username','$password','$rtime','$rip')";
 		
 		$row = mysql_func($sql);
 		
@@ -42,7 +42,7 @@
 			exit;
 		}
 		
-		$sql = "insert into ".DB_PRE."user_detail(uid) values('$row')";	
+		$sql = "insert into bbs_user_detail(uid) values('$row')";
 		$row = mysql_func($sql);
 		
 		if(!$row===0){

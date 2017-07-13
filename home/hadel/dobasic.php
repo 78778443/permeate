@@ -19,7 +19,7 @@
 	$user = $_SESSION['home']['username'];
 
 	
-	$sql = "update ".DB_PRE."user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',brithday='$brithday',telphone='$telphone',qq='$qq',email='$email' where uid=".$user['id'];
+	$sql = "update bbs_user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',brithday='$brithday',telphone='$telphone',qq='$qq',email='$email' where uid=".$user['id'];
 	
 	$row = mysql_func($sql);
 	
@@ -31,7 +31,7 @@
 	
 	echo "<script>alert('修改成功！')</script>";
 	
-	$sql = "select u.*,p.* from ".DB_PRE."user as u,".DB_PRE."user_detail as p where u.id=".$user['id'];
+	$sql = "select u.*,p.* from bbs_user as u,bbs_user_detail as p where u.id=".$user['id'];
 	
 	$row = mysql_func($sql);
 	

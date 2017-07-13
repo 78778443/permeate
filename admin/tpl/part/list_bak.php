@@ -19,7 +19,7 @@
                 <th>管理</th>
             </tr>
             <?php foreach ($row as $part) {
-                $sql = "select count(*) as cou from " . DB_PRE . "cate where pid='" . $part['id'] . "' group by pid";
+                $sql = "select count(*) as cou from bbs_cate where pid='" . $part['id'] . "' group by pid";
                 //echo $sql;
                 $row1 = mysql_func($sql);
 

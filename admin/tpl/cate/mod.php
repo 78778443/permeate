@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
 
 
 		//更新数据到USER详情表当中
-		$sql = "update ".DB_PRE."cate set cname='$cname' where id=".$id;
+		$sql = "update bbs_cate set cname='$cname' where id=".$id;
 
 		$row = mysql_func($sql);
 		if(!$row===0){
@@ -24,7 +24,7 @@ if(isset($_GET['id'])){
 	}
 	
 	//POST不存在，将查询表中数据
-	$sql = "select p.*,c.cname from ".DB_PRE."part as p,".DB_PRE."cate as c where p.id=c.pid and c.id='$id'";
+	$sql = "select p.*,c.cname from bbs_part as p,bbs_cate as c where p.id=c.pid and c.id='$id'";
 
 	$row = mysql_func($sql);
 	

@@ -42,12 +42,15 @@
             ?>
             <tr>
                 <td class="list_width" align="center">
-                    <div class="list_width_title"><?php echo $reply['username'] ?></div>
-                    <img src="<?php echo strstr($reply['pic'], '../r'); ?>" title="" alt=""/>
+					<a href="index.php?m=user&a=info&id=<?php echo $reply['id']; ?>">
+						<div class="list_width_title"><?php echo $reply['username'] ?></div>
+						<img src="<?php echo strstr($reply['pic'], '../r'); ?>" title="" alt=""/>
+					</a>
                     <ul class="list_style_none">
                         <li>UID:<?php echo $reply['uid'] ?></li>
                         <li>NAME:<?php echo $reply['username'] ?></li>
                         <li>AGE:<?php echo $reply['age'] ?></li>
+                        <li><a href=<?= url('user/follow',array('uid'=>$reply['id']))?>>关注他</a></li>
                     </ul>
                 </td>
                 <td class="list_con1" valign="top">

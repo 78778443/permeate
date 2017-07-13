@@ -8,7 +8,7 @@ if(isset($_GET['id'])){
 		$title = $_POST['title'];
 		$content = $_POST['content'];
 		
-		$sql = "update ".DB_PRE."post set cid='$cid',title='$title',content='$content' where id='$id'";
+		$sql = "update bbs_post set cid='$cid',title='$title',content='$content' where id='$id'";
 
 		$row = mysql_func($sql);
 		if(!$row===0){
@@ -21,14 +21,14 @@ if(isset($_GET['id'])){
 		exit;
 	}
 	//POST不存在，将查询表中数据
-	$sql = "select p.*,c.cname from ".DB_PRE."post as p,".DB_PRE."cate as c where p.cid=c.id and p.id='$id'";
+	$sql = "select p.*,c.cname from bbs_post as p,bbs_cate as c where p.cid=c.id and p.id='$id'";
 	$row = mysql_func($sql);
 	$post = $row[0];
 ?>
 <div class="container">
 <table >
 <form action="./index.php?m=post&a=mod&id=<?php echo $id ?>" method="post" >
-		<?php $sql = "select * from ".DB_PRE."cate";
+		<?php $sql = "select * from bbs_cate";
 		$row1 = mysql_func($sql); ?>
    <tr><td>所属板块：</td><td><select name="cid"> 
 		<?php foreach($row1 as $cate){?>

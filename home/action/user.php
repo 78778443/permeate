@@ -68,7 +68,7 @@ class user
             $pic = suolue($pic, 200, 200, '../../resorec/images/userhead/');
             $picm = suolue($pic, 100, 100, '../../resorec/images/userhead/');
             $pics = suolue($pic, 48, 48, '../../resorec/images/userhead/');
-            $sql = "update " . DB_PRE . "user_detail set pic='$pic',picm='$picm',pics='$pics' where uid='" . $user['id'] . "'";
+            $sql = "update bbs_user_detail set pic='$pic',picm='$picm',pics='$pics' where uid='" . $user['id'] . "'";
             $row = mysql_func($sql);
         }
 
@@ -77,7 +77,7 @@ class user
             echo "<script>window.location.href='../individual.php'<script/>";
             exit;
         }
-        $sql = "select u.*,d.* from " . DB_PRE . "user as u," . DB_PRE . "user_detail as d where d.uid=u.id and u.username='" . $user['username'] . "' and u.password='" . $user['password'] . "'";
+        $sql = "select u.*,d.* from bbs_user as u,bbs_user_detail as d where d.uid=u.id and u.username='" . $user['username'] . "' and u.password='" . $user['password'] . "'";
         //echo $sql;
         $row = mysql_func($sql);
         //var_dump($row);
@@ -106,7 +106,7 @@ class user
         $user = $_SESSION['home']['username'];
 
 
-        $sql = "update " . DB_PRE . "user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',brithday='$brithday',telphone='$telphone',qq='$qq',email='$email' where uid=" . $user['id'];
+        $sql = "update bbs_user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',brithday='$brithday',telphone='$telphone',qq='$qq',email='$email' where uid=" . $user['id'];
 
         $row = mysql_func($sql);
 
@@ -118,7 +118,7 @@ class user
 
         echo "<script>alert('修改成功！')</script>";
 
-        $sql = "select u.*,p.* from " . DB_PRE . "user as u," . DB_PRE . "user_detail as p where u.id=" . $user['id'];
+        $sql = "select u.*,p.* from bbs_user as u,bbs_user_detail as p where u.id=" . $user['id'];
 
         $row = mysql_func($sql);
 
@@ -145,7 +145,7 @@ class user
 
         if (empty($oldpassword)) {
             echo "<script>alert('请输入当前密码！')</script>";
-            echo "<script>window.location.href='/'</script>";
+            echo "<script>window.location.href='../safe.php'</script>";
             exit;
         }
         if (empty($newpassword) && empty($newpassword2)) {
@@ -164,7 +164,7 @@ class user
         $user = $_SESSION['home']['username'];
 
 
-        $sql = "select * from " . DB_PRE . "user where password='$oldpassword' and id='" . $user['id'] . "'";
+        $sql = "select * from bbs_user where password='$oldpassword' and id='" . $user['id'] . "'";
 
         $row = mysql_func($sql);
         if (!$row) {
@@ -173,7 +173,7 @@ class user
             exit;
         }
 
-        $sql = "update " . DB_PRE . "user set password='$newpassword' where id='" . $user['id'] . "'";
+        $sql = "update bbs_user set password='$newpassword' where id='" . $user['id'] . "'";
 
         $row = mysql_func($sql);
         if (!$row) {
@@ -213,5 +213,52 @@ class user
         $data['strUserInfo'] = $strUserInfo;
 
         displayTpl('user/info', $data);
+    }
+
+    /**
+     * 关注用户
+     */
+    public function follow()
+    {
+        $uid = intval($_GET['uid']);
+        $followuid = isLogin();
+        if ($uid == $followuid) {
+            echo "<script>alert('自己不能关注自己')</script>";
+            echo "<script>window.history.go(-1);</script>";
+            exit;
+        }
+        $sql = "select id,username from bbs_user where id=" . $uid;
+        $user = mysql_func($sql)[0];
+        $sql = "select id,username from bbs_user where id=" . $followuid;
+        $follow_user = mysql_func($sql)[0];
+        if (!$user || !$follow_user) {
+            echo "<script>alert('用户不存在')</script>";
+            echo "<script>window.history.go(-1);</script>";
+            exit;
+        }
+        $sql = "select id,mutual,uid,followuid from bbs_home_follow where (uid={$uid} and followuid={$followuid} or uid={$followuid} and followuid={$uid}) and status != -1";
+        $follow_data = mysql_func($sql)[0];
+        if ($follow_data) {//已关注
+            if ($follow_data['mutual'] || $follow_data['followuid'] == $followuid) {//已互相关注
+                echo "<script>alert('请勿重复关注')</script>";
+                echo "<script>window.history.go(-1);</script>";
+                exit;
+            } else {//本次互相关注
+                $sql = "update bbs_home_follow set mutual=1 where id=" . $follow_data['id'];
+                $res = mysql_func($sql);
+            }
+        } else {//新关注
+            $sql = "insert into bbs_home_follow(id,uid,username,followuid,fusername,status,mutual,uptiem) value(0,'$uid','" . $user['username'] . "','$followuid','{$follow_user['username']}','0',0,'" . time() . "')";
+            $res = mysql_func($sql);
+        }
+        if ($res) {
+            echo "<script>alert('关注成功')</script>";
+            echo "<script>window.history.go(-1);</script>";
+            exit;
+        } else {
+            echo "<script>alert('关注失败，请稍候重试')</script>";
+            echo "<script>window.history.go(-1);</script>";
+            exit;
+        }
     }
 }

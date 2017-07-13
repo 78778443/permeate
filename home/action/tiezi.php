@@ -22,7 +22,7 @@ class tiezi
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
         //计算记录总数
-        $sql = "select count(*) as c from " . DB_PRE . "post where cid='$bk'";
+        $sql = "select count(*) as c from bbs_post where cid='$bk'";
         $row = mysql_func($sql);
         $count = $row[0]['c'];
 
@@ -40,9 +40,9 @@ class tiezi
         //准备SQL语句
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;
 
-        $sql = "select p.*,u.username from " . DB_PRE . "post as p," . DB_PRE . "user as u where  p.cid=" . $id . " and u.id=p.uid and p.cid='$bk'" . $limit;
-        //$sql = "select * from ".DB_PRE."post where cid='$bk'".$limit;
-        //$sql = "select * from ".DB_PRE."post where cid='2'";
+        $sql = "select p.*,u.username from bbs_post as p,bbs_user as u where  p.cid=" . $id . " and u.id=p.uid and p.cid='$bk'" . $limit;
+        //$sql = "select * from bbs_post where cid='$bk'".$limit;
+        //$sql = "select * from bbs_post where cid='2'";
         $row = mysql_func($sql);
         foreach ($row as $k => $post) {
             $reply_count_sql = "select count(id) as count from bbs_reply where pid={$post['id']} ";
@@ -68,7 +68,7 @@ class tiezi
         if (empty($bk)) {
             exit ("参数2错误！");
         }
-        $sql = "select p.*,u.*,d.* from " . DB_PRE . "post as p," . DB_PRE . "user as u," . DB_PRE . "user_detail as d where p.uid=u.id and d.uid=p.uid and p.id='$zt'";
+        $sql = "select p.*,u.*,d.* from bbs_post as p,bbs_user as u,bbs_user_detail as d where p.uid=u.id and d.uid=p.uid and p.id='$zt'";
         $row = mysql_func($sql);
         $post = $row[0];
         $reply_count_sql = "select count(id) as count from bbs_reply where pid={$zt} ";
@@ -81,7 +81,7 @@ class tiezi
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
         //计算记录总数
-        $sql = "select count(*) as c from " . DB_PRE . "reply ";
+        $sql = "select count(*) as c from bbs_reply ";
         $row = mysql_func($sql);
         $count = $row[0]['c'];
 
@@ -98,7 +98,7 @@ class tiezi
 
         //准备SQL语句
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
-        $sql = "select r.*,u.*,d.* from " . DB_PRE . "reply as r," . DB_PRE . "user as u," . DB_PRE . "user_detail as d where r.uid=u.id and d.uid=r.uid and r.pid='$zt'" . $limit;
+        $sql = "select r.*,u.*,d.* from bbs_reply as r,bbs_user as u,bbs_user_detail as d where r.uid=u.id and d.uid=r.uid and r.pid='$zt'" . $limit;
         $row = mysql_func($sql);
 
         $data['bk'] = $bk;
@@ -131,7 +131,7 @@ class tiezi
             $pip = intval(ip2long($_SERVER['REMOTE_ADDR']));
 
 
-            $sql = "select * from " . DB_PRE . "iprefuse";
+            $sql = "select * from bbs_iprefuse";
             $row = mysql_func($sql);
             foreach ($row as $ip) {
                 if ($pip >= $ip['ipmin'] && $pip <= $ip['ipmax']) {
@@ -141,7 +141,7 @@ class tiezi
                 }
             }
 
-            $sql = "select u.id,u.username from " . DB_PRE . "user as u where username='" . $username['username'] . "'";
+            $sql = "select u.id,u.username from bbs_user as u where username='" . $username['username'] . "'";
             $row = mysql_func($sql);
             if (!$row) {
                 echo "请先登入！";
@@ -150,7 +150,7 @@ class tiezi
             }
             $uid = $row[0]['id'];
 
-            $sql = "insert into " . DB_PRE . "reply(pid,content,uid,ptime,pip) value('$pid','$content','$uid','$ptime','$pip')";
+            $sql = "insert into bbs_reply(pid,content,uid,ptime,pip) value('$pid','$content','$uid','$ptime','$pip')";
 
             $row = mysql_func($sql);
 
@@ -163,7 +163,7 @@ class tiezi
             }
         }
 
-        $sql = "select title from " . DB_PRE . "post where id=" . $zt;
+        $sql = "select title from bbs_post where id=" . $zt;
         $row1 = mysql_func($sql);
         $row1 = $row1[0];
         $data['title'] = $row1['title'];

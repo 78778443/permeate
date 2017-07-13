@@ -26,12 +26,12 @@ $id = $_GET['id'];
 		//更新数据到USER表
 		if(!empty($password)){
 			$password=md5($password);
-			$sql = "update ".DB_PRE."user set password='$password' where id='$id'";
+			$sql = "update bbs_user set password='$password' where id='$id'";
 			$row = mysql_func($sql);
 		}
 
 		
-		$sql = "update ".DB_PRE."user set admins='$admins' where id='$id'";
+		$sql = "update bbs_user set admins='$admins' where id='$id'";
 		$row = mysql_func($sql);
 		
 
@@ -46,10 +46,10 @@ $id = $_GET['id'];
 		$picm = suolue($pic,100,100,'../resorce/images/userhead/');
 		$pics = suolue($pic,48,48,'../resorce/images/userhead/');
 		
-			$sql = "update ".DB_PRE."user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',pic='$pic',telphone='$telphone',qq='$QQ',email='$email',picm='$picm',pics='$pics' where uid=$id";	
+			$sql = "update bbs_user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',pic='$pic',telphone='$telphone',qq='$QQ',email='$email',picm='$picm',pics='$pics' where uid=$id";
 
 			}else{
-					$sql = "update ".DB_PRE."user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',telphone='$telphone',qq='$QQ',email='$email' where uid=$id";	
+					$sql = "update bbs_user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',telphone='$telphone',qq='$QQ',email='$email' where uid=$id";
 			}
 		//更新数据到USER详情表当中
 		//echo $sql;
@@ -67,7 +67,7 @@ $id = $_GET['id'];
 	}
 	
 	//POST不存在，将查询表中数据
-	$sql = "select u.*,d.* from ".DB_PRE."user as u,".DB_PRE."user_detail as d where uid=id and id='$id'";
+	$sql = "select u.*,d.* from bbs_user as u,bbs_user_detail as d where uid=id and id='$id'";
 	$row = mysql_func($sql);
 	$user = $row[0];
 ?>
