@@ -1,0 +1,36 @@
+.btn {
+    display: inline-block;
+    padding: 0.313rem 1rem;
+    border: 0;
+    user-select: none;
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 0.25rem;
+    &:active,
+    &:focus {
+        outline: none;
+    }
+    &[disabled],
+    &.disabled {
+        cursor: not-allowed;
+        filter: alpha(opacity=45);
+        box-shadow: none;
+        opacity: .45;
+    }
+}
+
+.btn-defalute {
+    background-color: #fff;
+    &:hover {
+        background-color: #e0e0e0;
+    }
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: $blue;
+    &:hover {
+        background-color: darken($blue, 10%);
+    }
+}

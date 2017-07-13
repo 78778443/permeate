@@ -123,52 +123,44 @@ class tiezi
         }
         $bk = $_GET['bk'];
         $zt = $_GET['zt'];
-        if (isset($_POST['id'])) {
-            $pid = $_POST['id'];
-            $content = $_POST['content'];
-            $username = $_SESSION['home']['username'];
-            $ptime = $_SERVER['REQUEST_TIME'];
-            $pip = intval(ip2long($_SERVER['REMOTE_ADDR']));
+
+        $pid = $_POST['id'];
+        $content = $_POST['editorValue'];
+        $username = $_SESSION['home']['username'];
+        $ptime = $_SERVER['REQUEST_TIME'];
+        $pip = intval(ip2long($_SERVER['REMOTE_ADDR']));
 
 
-            $sql = "select * from bbs_iprefuse";
-            $row = mysql_func($sql);
-            foreach ($row as $ip) {
-                if ($pip >= $ip['ipmin'] && $pip <= $ip['ipmax']) {
-                    echo "<script>alert('你所在的IP已被禁止发帖！')</script>";
-                    echo "<script>window.location.href='post.php?bk=" . $bk . "&zt=" . $zt . "'</script>";
-                    exit;
-                }
-            }
-
-            $sql = "select u.id,u.username from bbs_user as u where username='" . $username['username'] . "'";
-            $row = mysql_func($sql);
-            if (!$row) {
-                echo "请先登入！";
-                echo "<script>window.location.href='" . url('user/login') . "'</script>";
+        $sql = "select * from bbs_iprefuse";
+        $row = mysql_func($sql);
+        foreach ($row as $ip) {
+            if ($pip >= $ip['ipmin'] && $pip <= $ip['ipmax']) {
+                echo "<script>alert('你所在的IP已被禁止发帖！')</script>";
+                echo "<script>window.location.href='post.php?bk=" . $bk . "&zt=" . $zt . "'</script>";
                 exit;
-            }
-            $uid = $row[0]['id'];
-
-            $sql = "insert into bbs_reply(pid,content,uid,ptime,pip) value('$pid','$content','$uid','$ptime','$pip')";
-
-            $row = mysql_func($sql);
-
-            if (!$row) {
-                echo "<script>alert('发帖失败，请稍候再试！')</script>";
-                echo "<script>window.location.href='" . url('tiezi/reply', array('bk' => $bk, 'zt' => $zt)) . "'</script>";
-            } else {
-                echo "<script>alert('回复成功')</script>";
-                echo "<script>window.location.href='" . url('tiezi/detail', array('bk' => $bk, 'zt' => $zt)) . "'</script>";
             }
         }
 
-        $sql = "select title from bbs_post where id=" . $zt;
-        $row1 = mysql_func($sql);
-        $row1 = $row1[0];
-        $data['title'] = $row1['title'];
-        $data['zt'] = $zt;
-        $data['bk'] = $bk;
-        displayTpl('tiezi/reply', $data);
+        $sql = "select u.id,u.username from bbs_user as u where username='" . $username['username'] . "'";
+        $row = mysql_func($sql);
+        if (!$row) {
+            echo "请先登入！";
+            echo "<script>window.location.href='" . url('user/login') . "'</script>";
+            exit;
+        }
+        $uid = $row[0]['id'];
+
+        $sql = "insert into bbs_reply(pid,content,uid,ptime,pip) value('$pid','$content','$uid','$ptime','$pip')";
+
+        $row = mysql_func($sql);
+
+        if (!$row) {
+            echo "<script>alert('发帖失败，请稍候再试！')</script>";
+            echo "<script>window.location.href='" . url('tiezi/reply', array('bk' => $bk, 'zt' => $zt)) . "'</script>";
+        } else {
+            echo "<script>alert('回复成功')</script>";
+            echo "<script>window.location.href='" . url('tiezi/detail', array('bk' => $bk, 'zt' => $zt)) . "'</script>";
+        }
+
     }
 }

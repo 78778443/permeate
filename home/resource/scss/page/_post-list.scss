@@ -1,0 +1,12 @@
+.post-list{
+    padding: 1rem;
+}
+.table-post-list{
+    & tr td:first-child,& tr th:first-child{
+        width: 460px;
+        text-align: left;
+    }
+}
+.post-list-controller{
+    margin-top: 2rem;
+}

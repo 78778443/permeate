@@ -1,0 +1,43 @@
+.post-list-user{
+    background-color: #eee;
+    text-align: center;
+}
+
+.post-list-user-details .post-list-user-img{
+    width: 88px;
+    height: 88px;
+}
+.post-list-user .post-list-user-details{
+    margin-top: 2rem;
+}
+
+// 帖子详情——左侧
+.post-list-details{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.post-list-details .post-container-details{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    min-height: 230px;
+}
+.post-list-details .post-container-time{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: right;
+}
+
+// 帖子列表控制器
+.post-controller{
+    padding: 1rem;
+    text-align: right;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+// 回帖
+.post-release-container{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.post-release-container h4{
+    margin-bottom: 1rem;
+}

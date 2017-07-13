@@ -9,8 +9,6 @@ foreach ($row as &$part) {
     $part['cates'] = $cate;
 }
 foreach ($row as $part1) {
-
-
     $sql = "select * from bbs_user where id=" . $part1['padmins'];
     $rowpart = mysql_func($sql);
     $rowpart = $rowpart[0]['username'];
@@ -68,6 +66,3 @@ foreach ($row as $part1) {
         </div>
     </section>
 <?php } ?>
-<?php
-include "public/footer.php";
-?>

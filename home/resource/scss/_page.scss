@@ -1,0 +1,55 @@
+// 分页
+.page {
+    .pagination {
+        margin-bottom: 0;
+        padding-left: 0;
+        list-style-type: none;
+        display: inline-block;
+        vertical-align: middle;
+        .page-item {
+            display: inline;
+            .page-link {
+                position: relative;
+                float: left;
+                padding: 6px 12px;
+                margin-left: -1px;
+                line-height: 1.42857143;
+                color: #337ab7;
+                text-decoration: none;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                &:hover {
+                    background-color: darken(#fff, 5%);
+                }
+                &.is-active {
+                    background-color: darken(#fff, 10%);
+                }
+            } // 文本
+            .page-item-text {
+                padding: 8px 12px;
+                display: inline-block;
+                font-size: 14px;
+            }
+            &:first-child .page-link {
+                border-top-left-radius: 0.25rem;
+                border-bottom-left-radius: 0.25rem;
+            }
+            &:last-child .page-link {
+                border-top-right-radius: 0.25rem;
+                border-bottom-right-radius: 0.25rem;
+            }
+        }
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+}
