@@ -7,7 +7,7 @@
 <body>
 <div style="width: 900px;margin: 50 auto;">
     <?php
-    $link = @mysql_connect($_POST['DB_HOST'], $_POST['DB_USER'], $_POST['DB_PASS']);
+    $link = @mysqli_connect($_POST['DB_HOST'], $_POST['DB_USER'], $_POST['DB_PASS']);
 
     if (!$link) {
         echo "<script>";
@@ -65,18 +65,21 @@
 
         //获取服务器当前时间、客户IP
         $rime = $_SERVER['REQUEST_TIME'];
-        $rip = ip2long($_SERVER['REMOTE_ADDR']);
+        $rip = !empty(ip2long($_SERVER['REMOTE_ADDR'])) ? ip2long($_SERVER['REMOTE_ADDR']) : 0;
         $sql = "insert into " . DB_PRE . "user(username,password,rtime,rip,admins) values('" . $_POST['username'] . "','" . md5($_POST['password']) . "','$rime','$rip','1')";
+
         $id = mysql_func($sql);
+
         if (!$id) {
             echo "<script>alert('数据库错误：数据库写入失败！')</script>";
-            echo "<script>window.location.href='../register.php'</script>";
+            echo "<script>window.location.href='../'</script>";
             exit();
         }
 
         //写入数据库用户详情表
         $sql = "insert into " . DB_PRE . "user_detail(uid) values('$id')";
         $id = mysql_func($sql);
+
         if ($id !== false) {
             ?>
             创建管理员成功！<p/>

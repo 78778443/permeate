@@ -3,33 +3,33 @@ function mysql_func($sql)
 {
     error_reporting(0);
     //1.连接数据库
-    $link = mysql_connect(DB_HOST, DB_USER, DB_PASS);
+    $link = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
 
     //2.判断是否连接成功
-    if (mysql_errno()) {
-        exit('数据库连接失败:' . mysql_error());
+    if (mysqli_errno($link)) {
+        exit('数据库连接失败:' . mysqli_error($link));
     }
 
     //3.选择数据库
-    mysql_select_db(DB_NAME);
+    mysqli_select_db($link,DB_NAME);
 
     //4.设置字符集
-    mysql_set_charset('utf8');
+    mysqli_set_charset($link,'utf8');
 
     //5.判断SQL语句是增删改查的哪一种
     $action = substr($sql, 0, strpos($sql, ' '));
 
 
     //6.发送sql语句
-    $res = mysql_query($sql);
+    $res = mysqli_query($link,$sql);
 
 
     //7.处理结果集
     switch ($action) {
         //插入返回主键ID
         case 'insert':
-            if ($res && Mysql_affected_rows()) {
-                $result = Mysql_insert_id();
+            if ($res && mysqli_affected_rows($link)) {
+                $result = mysqli_insert_id($link);
             } else {
                 return false;
             }
@@ -40,7 +40,7 @@ function mysql_func($sql)
         case 'delete':
         case 'update':
             if ($res !== false) {
-                $result = Mysql_affected_rows();
+                $result = mysqli_affected_rows($link);
             } else {
                 return false;
             }
@@ -48,7 +48,7 @@ function mysql_func($sql)
         //查询返回二维数组
         case 'select':
             if ($res !== false) {
-                while ($row = Mysql_fetch_assoc($res)) {
+                while ($row = mysqli_fetch_assoc($res)) {
                     $result[] = $row;
                 }
             } else {
@@ -59,7 +59,7 @@ function mysql_func($sql)
             return "错误";
     }
     //8.释放结果集，关闭数据库连接
-    mysql_close($link);
+    mysqli_close($link);
     return $result;
 }
 	
