@@ -73,9 +73,11 @@ class tiezi
         $post = $row[0];
         $reply_count_sql = "select count(id) as count from bbs_reply where pid={$zt} ";
         $post['reply_count'] = mysql_func($reply_count_sql)[0]['count'];
+        $post['content'] = html_entity_decode($post['content']);
+
 
         //开始分页大小
-        $page_size = 5;
+        $page_size = 150;
 
         //获取当前页码
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];

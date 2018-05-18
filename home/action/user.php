@@ -49,7 +49,8 @@ class user
 
     public function safe()
     {
-        $data = [];
+        $data = ['user'=>$_SESSION['home']['username']];
+
         displayTpl('user/safe', $data);
     }
 
@@ -77,7 +78,7 @@ class user
             echo "<script>window.location.href='../individual.php'<script/>";
             exit;
         }
-        $sql = "select u.*,d.* from bbs_user as u,bbs_user_detail as d where d.uid=u.id and u.username='" . $user['username'] . "' and u.password='" . $user['password'] . "'";
+        $sql = "SELECT u.*,d.* FROM bbs_user AS u,bbs_user_detail AS d WHERE d.uid=u.id AND u.username='" . $user['username'] . "' AND u.password='" . $user['password'] . "'";
         //echo $sql;
         $row = mysql_func($sql);
         //var_dump($row);
@@ -118,7 +119,7 @@ class user
 
         echo "<script>alert('修改成功！')</script>";
 
-        $sql = "select u.*,p.* from bbs_user as u,bbs_user_detail as p where u.id=" . $user['id'];
+        $sql = "SELECT u.*,p.* FROM bbs_user AS u,bbs_user_detail AS p WHERE u.id=" . $user['id'];
 
         $row = mysql_func($sql);
 
@@ -139,6 +140,9 @@ class user
 
     public function _dosafe()
     {
+        $uid = getParam('uid');
+
+
         $oldpassword = $_REQUEST['oldpassword'];
         $newpassword = $_REQUEST['newpassword'];
         $newpassword2 = $_REQUEST['newpassword2'];
@@ -161,7 +165,15 @@ class user
 
         $oldpassword = md5($oldpassword);
         $newpassword = md5($newpassword);
-        $user = $_SESSION['home']['username'];
+
+        if ($uid) {
+            $sql = "select * from bbs_user where id = $uid";
+            $userList = mysql_func($sql);
+            $user = $userList[0];
+        }
+        if (empty($user)) {
+            $user = $_SESSION['home']['username'];
+        }
 
 
         $sql = "select * from bbs_user where password='$oldpassword' and id='" . $user['id'] . "'";
@@ -227,9 +239,9 @@ class user
             echo "<script>window.history.go(-1);</script>";
             exit;
         }
-        $sql = "select id,username from bbs_user where id=" . $uid;
+        $sql = "SELECT id,username FROM bbs_user WHERE id=" . $uid;
         $user = mysql_func($sql)[0];
-        $sql = "select id,username from bbs_user where id=" . $followuid;
+        $sql = "SELECT id,username FROM bbs_user WHERE id=" . $followuid;
         $follow_user = mysql_func($sql)[0];
         if (!$user || !$follow_user) {
             echo "<script>alert('用户不存在')</script>";
@@ -244,7 +256,7 @@ class user
                 echo "<script>window.history.go(-1);</script>";
                 exit;
             } else {//本次互相关注
-                $sql = "update bbs_home_follow set mutual=1 where id=" . $follow_data['id'];
+                $sql = "UPDATE bbs_home_follow SET mutual=1 WHERE id=" . $follow_data['id'];
                 $res = mysql_func($sql);
             }
         } else {//新关注

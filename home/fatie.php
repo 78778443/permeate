@@ -51,16 +51,23 @@ if (isset($_POST['bk'])) {
         exit;
     }
     $uid = $row[0]['id'];
+    $content = htmlspecialchars($content);
 
     $sql = "insert into bbs_post(cid,title,content,ptime,uid,pip) value('$cid','$title','$content','$ptime','$uid','$pip')";
 
     $row = mysql_func($sql);
 
+
+
     if (!$row) {
         echo "<script>alert('发帖失败，请稍候再试！')</script>";
         echo "<script>window.location.href=./fatie.php?bk=" . $bk . "&zt=" . $zt . "</script>";
+        die;
     }
-    echo "<script>alert('发帖成功，即将返回列表.')</script>";
+    else {
+        echo "<script>alert('发帖成功，即将返回列表.')</script>";
+    }
+
     echo "<pre>";
     ?>
 

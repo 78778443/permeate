@@ -22,6 +22,7 @@ class repasswd
         $yzm = getParam('yzm');
         $preSrc = $_SERVER['HTTP_REFERER'];
 
+
         //判断验证码是否正确
 //        if ($yzm != $_SESSION['yzm']) {
 //            echo "<script>alert('图片验证码错误！')</script>";
