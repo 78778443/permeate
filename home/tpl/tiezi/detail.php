@@ -17,7 +17,7 @@
                                         <p><?php echo $post['username'] ?></p>
                                     </a>
                                     <p><a class="btn btn-primary btn-xs"
-                                          href=<?= url('user/follow', array('uid' => $reply['id'])) ?>>关注他</a></p>
+                                          href=<?= url('user/follow', array('uid' => $post['uid'])) ?>>关注他</a></p>
                                 </div>
                             </div>
                             <!--详情-->
@@ -26,7 +26,7 @@
                                 <div class="post-container-details">
                                     <?php echo $post['content'] ?>
                                 </div>
-                                <!--时间区-->
+
                                 <div class="post-container-time">
                                     发布时间：
                                     <time datetime="<?php echo date('Y/m/d', $post['rtime']) ?>"><?php echo date('Y-m-d H:i:s', $post['rtime']) ?></time>
@@ -46,7 +46,7 @@
                                             <p><?php echo $reply['username'] ?></p>
                                         </a>
                                         <p><a class="btn btn-primary btn-xs"
-                                              href=<?= url('user/follow', array('uid' => $reply['id'])) ?>>关注他</a></p>
+                                              href=<?= url('user/follow', array('uid' => $reply['uid'])) ?>>关注他</a></p>
                                     </div>
                                 </div>
                                 <!--详情-->
@@ -55,7 +55,7 @@
                                     <div class="post-container-details">
                                         <?php echo $reply['content'] ?>
                                     </div>
-                                    <!--时间区-->
+
                                     <div class="post-container-time">
                                         发布时间：
                                         <time datetime="<?php echo date('Y/m/d', $reply['rtime']) ?>"><?php echo date('Y-m-d H:i:s', $reply['rtime']) ?></time>

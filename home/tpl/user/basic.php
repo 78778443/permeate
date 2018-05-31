@@ -9,6 +9,7 @@
                     <?php include __DIR__ . "/left_menu.php"; ?>
                     <div class="col-lg-6">
                         <form action="/home/index.php?m=user&a=_dobasic" method="post">
+                            <input type="hidden" name="uid" value="<?= $user['id'] ?>">
                             <div class="form-group row">
                                 <label class="col-3 form-label text-right">
                                     <span>用户名</span>

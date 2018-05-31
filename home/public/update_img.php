@@ -7,12 +7,12 @@
 	include "../../core/image_func.php";
 	$user = $_SESSION['home']['username'];
 
-	$data = upload($info,'pic','../../resorec/images/userhead');
+	$data = upload($info,'pic','../../resorce/images/userhead');
 	$pic = $data['newname'];	
 	if(!empty($pic)){
-		$pic = suolue($pic,200,200,'../../resorec/images/userhead/');
-		$picm = suolue($pic,100,100,'../../resorec/images/userhead/');
-		$pics = suolue($pic,48,48,'../../resorec/images/userhead/');
+		$pic = suolue($pic,200,200,'../../resorce/images/userhead/');
+		$picm = suolue($pic,100,100,'../../resorce/images/userhead/');
+		$pics = suolue($pic,48,48,'../../resorce/images/userhead/');
 		$sql = "update bbs_user_detail set pic='$pic',picm='$picm',pics='$pics' where uid='".$user['id']."'";
 		$row = mysql_func($sql);
 	}

@@ -54,7 +54,6 @@ if (isset($_POST['bk'])) {
     $content = htmlspecialchars($content);
 
     $sql = "insert into bbs_post(cid,title,content,ptime,uid,pip) value('$cid','$title','$content','$ptime','$uid','$pip')";
-
     $row = mysql_func($sql);
 
 
@@ -91,7 +90,7 @@ include "public/header.php";
 <body>
 <div id="main">
     <div class="main_title">发表新帖</div>
-    <form action="fatie.php?bk=<?php echo $bk ?>&zt=<?php echo $zt ?>" method="post">
+    <form action="_fatie.php?bk=<?php echo $bk ?>&zt=<?php echo $zt ?>" method="post">
         <input type="hidden" name="bk" value="<?php echo $bk ?>"/>
         标题:<input type="text" name="title" class="title" size="100"/></p>
         内容:</p><textarea name="content" id="content"></textarea></p>
