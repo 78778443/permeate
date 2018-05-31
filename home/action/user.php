@@ -49,7 +49,7 @@ class user
 
     public function safe()
     {
-        $data = ['user'=>$_SESSION['home']['username']];
+        $data = ['user' => $_SESSION['home']['username']];
 
         displayTpl('user/safe', $data);
     }
@@ -59,16 +59,17 @@ class user
      */
     public function _upload_user_touxiang()
     {
+        $ROOTPATH = $_SERVER['DOCUMENT_ROOT'];
         require_once "../core/upload_func.php";
         require_once "../core/image_func.php";
         $user = $_SESSION['home']['username'];
-        $data = upload($info, 'pic', '/home/resorec/images/userhead');
+        $data = upload($info, 'pic', '/resorce/images/userhead');
 
         $pic = $data['newname'];
         if (!empty($pic)) {
-            $pic = suolue($pic, 200, 200, '../../resorec/images/userhead/');
-            $picm = suolue($pic, 100, 100, '../../resorec/images/userhead/');
-            $pics = suolue($pic, 48, 48, '../../resorec/images/userhead/');
+            $pic = suolue($pic, 200, 200, $ROOTPATH . '/resorce/images/userhead/');
+            $picm = suolue($pic, 100, 100, $ROOTPATH . '/resorce/images/userhead/');
+            $pics = suolue($pic, 48, 48, $ROOTPATH . '/resorce/images/userhead/');
             $sql = "update bbs_user_detail set pic='$pic',picm='$picm',pics='$pics' where uid='" . $user['id'] . "'";
             $row = mysql_func($sql);
         }
@@ -104,10 +105,11 @@ class user
         $telphone = $_POST['telphone'];
         $qq = $_POST['qq'];
         $email = $_POST['email'];
-        $user = $_SESSION['home']['username'];
+        $user = $this->getUserInfo();
 
 
-        $sql = "update bbs_user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',brithday='$brithday',telphone='$telphone',qq='$qq',email='$email' where uid=" . $user['id'];
+        $sql = "update bbs_user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',telphone='$telphone',qq='$qq',email='$email' where uid=" . $user['id'];
+
 
         $row = mysql_func($sql);
 
@@ -140,9 +142,6 @@ class user
 
     public function _dosafe()
     {
-        $uid = getParam('uid');
-
-
         $oldpassword = $_REQUEST['oldpassword'];
         $newpassword = $_REQUEST['newpassword'];
         $newpassword2 = $_REQUEST['newpassword2'];
@@ -165,16 +164,7 @@ class user
 
         $oldpassword = md5($oldpassword);
         $newpassword = md5($newpassword);
-
-        if ($uid) {
-            $sql = "select * from bbs_user where id = $uid";
-            $userList = mysql_func($sql);
-            $user = $userList[0];
-        }
-        if (empty($user)) {
-            $user = $_SESSION['home']['username'];
-        }
-
+        $user = $this->getUserInfo();
 
         $sql = "select * from bbs_user where password='$oldpassword' and id='" . $user['id'] . "'";
 
@@ -222,6 +212,9 @@ class user
         $strUserInfo['tiezi_count'] = mysql_func($sql)[0]['count'];
         $sql = "select count(id) as count from bbs_reply where uid = {$id}";
         $strUserInfo['reply_count'] = mysql_func($sql)[0]['count'];
+        //用户关注数
+        $sql = "select count(id) as count from bbs_home_follow  where followuid={$id}";
+        $strUserInfo['follow_count'] = mysql_func($sql)[0]['count'];
         $data['strUserInfo'] = $strUserInfo;
 
         displayTpl('user/info', $data);
@@ -239,9 +232,10 @@ class user
             echo "<script>window.history.go(-1);</script>";
             exit;
         }
-        $sql = "SELECT id,username FROM bbs_user WHERE id=" . $uid;
-        $user = mysql_func($sql)[0];
-        $sql = "SELECT id,username FROM bbs_user WHERE id=" . $followuid;
+        $sql = "SELECT id,username FROM bbs_user WHERE id = $uid";
+        $user = mysql_func($sql);
+
+        $sql = "SELECT id,username FROM bbs_user WHERE id = $followuid";
         $follow_user = mysql_func($sql)[0];
         if (!$user || !$follow_user) {
             echo "<script>alert('用户不存在')</script>";
@@ -272,5 +266,23 @@ class user
             echo "<script>window.history.go(-1);</script>";
             exit;
         }
+    }
+
+
+    private function getUserInfo()
+    {
+        $user = false;
+        $uid = getParam('uid');
+        if ($uid) {
+            $sql = "select * from bbs_user where id = $uid";
+            $userList = mysql_func($sql);
+            $user = $userList[0];
+        }
+        if (empty($user)) {
+            $user = $_SESSION['home']['username'];
+        }
+
+
+        return $user;
     }
 }

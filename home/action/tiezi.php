@@ -16,7 +16,7 @@ class tiezi
         }
 
         //开始分页大小
-        $page_size = 5;
+        $page_size = 10000;
 
         //获取当前页码
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
@@ -83,7 +83,7 @@ class tiezi
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
         //计算记录总数
-        $sql = "select count(*) as c from bbs_reply ";
+        $sql = "SELECT count(*) AS c FROM bbs_reply ";
         $row = mysql_func($sql);
         $count = $row[0]['c'];
 
@@ -126,14 +126,14 @@ class tiezi
         $bk = $_GET['bk'];
         $zt = $_GET['zt'];
 
-        $pid = $_POST['id'];
-        $content = $_POST['editorValue'];
+        $pid = getParam('id');
+        $content = getParam('editorValue');
         $username = $_SESSION['home']['username'];
         $ptime = $_SERVER['REQUEST_TIME'];
         $pip = intval(ip2long($_SERVER['REMOTE_ADDR']));
 
 
-        $sql = "select * from bbs_iprefuse";
+        $sql = "SELECT * FROM bbs_iprefuse";
         $row = mysql_func($sql);
         foreach ($row as $ip) {
             if ($pip >= $ip['ipmin'] && $pip <= $ip['ipmax']) {
@@ -143,7 +143,7 @@ class tiezi
             }
         }
 
-        $sql = "select u.id,u.username from bbs_user as u where username='" . $username['username'] . "'";
+        $sql = "SELECT u.id,u.username FROM bbs_user AS u WHERE username='" . $username['username'] . "'";
         $row = mysql_func($sql);
         if (!$row) {
             echo "请先登入！";
