@@ -1,21 +1,17 @@
 <?php
-session_start();
-header('content-type:text/html;charset=utf-8');
-include "../conf/dbconfig.php";
-include "../core/mysql_func.php";
 include "../core/common.php";
 
 if (!isset($_GET['bk'])) {
     exit ("参数错误！");
 }
 $bk = getParam('bk');
-$zt = !empty(getParam['zt']) ? getParam('zt') : 0;
+$zt = !empty(getParam('zt')) ? getParam('zt') : 0;
 
 $cid = getParam('bk');
 $title = getParam('title');
 $content = getParam('content');
 $ptime = $_SERVER['REQUEST_TIME'];
-$username = $_SESSION['home']['username'];
+$username = empty($_SESSION['home']['username']) ? '' : $_SESSION['home']['username'];
 $pip = intval(ip2long($_SERVER['REMOTE_ADDR']));
 
 $sql = "SELECT * FROM bbs_iprefuse";
@@ -48,7 +44,7 @@ $sql = "SELECT u.id,u.username FROM bbs_user AS u WHERE username='" . $username[
 $row = mysql_func($sql);
 if (!$row) {
     echo "非法登入，用户不存在！";
-    echo '<script>window.location.href=./fatie.php?bk=' . $bk . '&zt=' . $zt . '</script>';
+    echo '<script>window.location.href="./fatie.php?bk=' . $bk . '&zt=' . $zt . '";</script>';
     exit;
 }
 $uid = $row[0]['id'];

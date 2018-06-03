@@ -13,7 +13,7 @@
                                 <div class="post-list-user-details">
                                     <a class="_user-link" href="index.php?m=user&a=info&id=<?php echo $post['id']; ?>">
                                         <span class="_avatar">
-                                            <img class="post-list-user-img" src="<?php echo strstr($post['pic'], '../r'); ?>" alt=""/>
+                                            <img class="post-list-user-img" src="<?=$post['pic'] ?>" alt=""/>
                                         </span>
                                         <p><?php echo $post['username'] ?></p>
                                     </a>
@@ -43,7 +43,7 @@
                                     <div class="post-list-user-details">
                                         <a class="_user-link" href="index.php?m=user&a=info&id=<?php echo $reply['id']; ?>">
                                             <span class="_avatar">
-                                                <img class="post-list-user-img" src="<?php echo strstr($reply['pic'], '../r'); ?>" alt=""/>
+                                                <img class="post-list-user-img" src="<?=$reply['pic'] ?>" alt=""/>
                                             </span>
                                             <p><?php echo $reply['username'] ?></p>
                                         </a>
@@ -85,15 +85,15 @@
                             </li>
                             <li class="page-item">
                                 <a class="page-link"
-                                   href='/home/index.php?m=tiezi&a=detail&?page=<?=($page_num - 1)?>&bk=<?=$bk?>&zt=<?=$zt?>'>上一页</a>
+                                   href='/home/index.php?m=tiezi&a=detail&page=<?=($page_num - 1)?>&bk=<?=$bk?>&zt=<?=$zt?>'>上一页</a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link"
-                                   href='/home/index.php?m=tiezi&a=detail&?page=<?=($page_num + 1)?>&bk=<?=$bk?>&zt=<?=$zt?>'>下一页</a>
+                                   href='/home/index.php?m=tiezi&a=detail&page=<?=($page_num + 1)?>&bk=<?=$bk?>&zt=<?=$zt?>'>下一页</a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link"
-                                   href='/home/index.php?m=tiezi&a=detail&?page=<?=$page_count?>&bk=<?=$bk?>&zt=<?=$zt?>'>尾页</a>
+                                   href='/home/index.php?m=tiezi&a=detail&page=<?=$page_count?>&bk=<?=$bk?>&zt=<?=$zt?>'>尾页</a>
                             </li>
                         </ul>
                     </nav>

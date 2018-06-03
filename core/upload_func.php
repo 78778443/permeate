@@ -1,25 +1,19 @@
 <?php
 //文件上传九阳神功
 
-function upload(
-    &$info,
-    $name,
-    $dir = './uploads',
-    $mimes = array('image/jpeg', 'image/png', 'image/gif', 'image/wbmp', 'text/plain'),
-    $exts = array('txt', 'jpeg', 'jpg', 'gif', 'png', 'bmp', 'GIF'),
-    $size = 2000000
-)
+function upload(&$info, $name, $dir = './uploads', $mimes = [], $exts = [], $size = 2000000)
 {
+    //初始化结果
+    $mimes = empty($mimes) ? array('image/jpeg', 'image/png', 'image/gif', 'image/wbmp', 'text/plain') : $mimes;
+    $exts = empty($exts) ? array('txt', 'jpeg', 'jpg', 'gif', 'png', 'bmp', 'GIF') : $exts;
 
     //1.观察数组
     $upload = $_FILES[$name];
 
     //2.判断是否是post上传
     if (!is_uploaded_file($upload['tmp_name'])) {
-        //exit('非法上传！');
         $info = '非法上传！';
         return $info;
-
     }
 
     //3.判断是否上传错误
@@ -71,7 +65,10 @@ function upload(
 
     //7.新建目录，生成新的文件名称
     $dir = rtrim($dir, '/') . '/';
+    $oldDir = $dir;
+    $dir = $_SERVER['DOCUMENT_ROOT'] . $dir;
     if (!file_exists($dir)) {
+
         //新建目录
         //r 4 w 2 x 1     7 own 7 grp 7  other
         mkdir($dir, 0755, true);

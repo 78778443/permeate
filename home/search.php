@@ -1,9 +1,6 @@
 <?php
-session_start();
-header("content-type:text/html;charset=utf-8");
 include "public/header.php";
-include "../conf/dbconfig.php";
-include "../core/mysql_func.php";
+include "../core/common.php";
 
 $keywords = $_REQUEST['keywords'];
 if (!empty($keywords)) {
@@ -21,7 +18,7 @@ $page_size = 4;
 $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
 //计算记录总数
-$sql = "select count(*) as c from bbs_post " . $where;
+$sql = "SELECT count(*) AS c FROM bbs_post " . $where;
 $row = mysql_func($sql);
 $count = $row[0]['c'];
 
@@ -39,43 +36,42 @@ if ($page_num <= 0) {
 
 //准备SQL语句
 $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;
-$sql = "select * from bbs_post" . $where . $limit;
+$sql = "SELECT * FROM bbs_post" . $where . $limit;
 $row = mysql_func($sql);
 ?>
     <div class="section">
 
     <div class="container">
-        <div class="paper">
+    <div class="paper">
         <div class="main">以下是为您找到的符合 "<?php echo $keywords ?>" 的所有内容！</div>
         <ul class="list-unstyled">
-        
-        <?php
-foreach ($row as $post) {
 
-    //搜索关键字高亮设置
-    $pattern = "/$keywords/";
+            <?php
+            foreach ($row as $post) {
 
-    $title = preg_replace($pattern, "<em style='color:red;'>" . $keywords . "</em>", $post['title']);
-    $content = preg_replace($pattern, "<em style='color:red;'>" . $keywords . "</em>", $post['content']);
-    ?>
-            <!-- <div>
-                <h3>
-                    <a href="post.php?bk=<?php echo $post['cid'] ?>&zt=<?php echo $post['id'] ?>"><?php echo $title ?></em></a>
-                </h3>
-                <p><em><?php echo $title ?></em><br/></p>
-                <p>发表于：<?php echo date("Y-m-d H:i:s", $post['ptime']) ?></p>
-            </div> -->
+                //搜索关键字高亮设置
+                $pattern = "/$keywords/";
+
+                $title = preg_replace($pattern, "<em style='color:red;'>" . $keywords . "</em>", $post['title']);
+                $content = preg_replace($pattern, "<em style='color:red;'>" . $keywords . "</em>", $post['content']);
+                ?>
+
                 <li class="media" style="padding-top: 20px;border-bottom: 1px solid #ddd;">
                     <div class="media-body">
-                        <h5 class="mt-0 mb-1"><a href="post.php?bk=<?php echo $post['cid'] ?>&zt=<?php echo $post['id'] ?>"><?php echo $title ?></em></a></h5>
+                        <h5 class="mt-0 mb-1">
+
+                            <a href="<?= url('tiezi/detail', array('bk' => $post['cid'], 'zt' => $post['id'])); ?>">
+                                <em><?php echo $title ?></em>
+                            </a>
+                        </h5>
                         <p><em><?php echo $title ?></em><br/></p>
                         <p>发表于：<?php echo date("Y-m-d H:i:s", $post['ptime']) ?></p>
                     </div>
                 </li>
 
-            <?php
-}
-?>
+                <?php
+            }
+            ?>
     </div>
 <?php
 echo "

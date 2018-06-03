@@ -53,13 +53,16 @@
 		
 		//4.保存图片
 		$new_name = $pre.md5(time().mt_rand()).'.png';
+
 		imagepng($img,$new_name);
 		
 		//5.销毁资源
 		imagedestroy($img);
 		imagedestroy($dst_res);
-		
-		//返回图片路径	
+
+
+		//返回图片路径
+        $new_name = str_replace($_SERVER['DOCUMENT_ROOT'],'',$new_name);
 		return $new_name;
 	}
 	

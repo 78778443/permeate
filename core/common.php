@@ -179,3 +179,7 @@ function isLogin($module = 'home')
         return intval($user['id']);
     }
 }
+
+function isGuanzhu() {
+
+}

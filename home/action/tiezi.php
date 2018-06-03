@@ -16,7 +16,7 @@ class tiezi
         }
 
         //开始分页大小
-        $page_size = 10000;
+        $page_size = 15;
 
         //获取当前页码
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
@@ -77,13 +77,13 @@ class tiezi
 
 
         //开始分页大小
-        $page_size = 150;
+        $page_size = 15;
 
         //获取当前页码
         $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
         //计算记录总数
-        $sql = "SELECT count(*) AS c FROM bbs_reply ";
+        $sql = "SELECT count(*) AS c FROM bbs_reply where pid=$zt";
         $row = mysql_func($sql);
         $count = $row[0]['c'];
 
@@ -102,6 +102,13 @@ class tiezi
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
         $sql = "select r.*,u.*,d.* from bbs_reply as r,bbs_user as u,bbs_user_detail as d where r.uid=u.id and d.uid=r.uid and r.pid='$zt'" . $limit;
         $row = mysql_func($sql);
+
+
+        //次数+1
+
+        $sql = "update bbs_post set view_count=(view_count+1) where id=$zt";
+        mysql_func($sql);
+
 
         $data['bk'] = $bk;
         $data['zt'] = $zt;

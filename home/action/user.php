@@ -71,10 +71,10 @@ class user
 
         $pic = $data['newname'];
         if (!empty($pic)) {
-            $pic = suolue($pic, 200, 200, $ROOTPATH . '/resorce/images/userhead/');
+            $newpic = suolue($pic, 200, 200, $ROOTPATH . '/resorce/images/userhead/');
             $picm = suolue($pic, 100, 100, $ROOTPATH . '/resorce/images/userhead/');
             $pics = suolue($pic, 48, 48, $ROOTPATH . '/resorce/images/userhead/');
-            $sql = "update bbs_user_detail set pic='$pic',picm='$picm',pics='$pics' where uid='" . $user['id'] . "'";
+            $sql = "update bbs_user_detail set pic='$newpic',picm='$picm',pics='$pics' where uid='" . $user['id'] . "'";
             $row = mysql_func($sql);
         }
 
