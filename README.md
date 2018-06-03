@@ -63,7 +63,7 @@
         
 ###效果图如下：
 
-![sec](http://tuchuang.songboy.net/permeate/permeateindex.png)
+![sec](http://tuchuang.songboy.net/permeate/index.png)
 
 ### 代码更新：
 
