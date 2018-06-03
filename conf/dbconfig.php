@@ -1,7 +1,7 @@
 <?php
 	!defined('DB_HOST') && define('DB_HOST','127.0.0.1');
 	!defined('DB_USER') && define('DB_USER','root');
-	!defined('DB_PASS') && define('DB_PASS','');
+	!defined('DB_PASS') && define('DB_PASS','xiaochao1995');
 	!defined('DB_NAME') && define('DB_NAME','permeate');
 	!defined('DB_CHARSET') && define('DB_CHARSET','utf8');
 $sex=array('保密','男','女');

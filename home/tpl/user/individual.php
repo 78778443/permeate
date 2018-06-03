@@ -6,21 +6,23 @@
             </div>
             <div class="paper-body" style="min-height: 500px;">
                 <div class="row">
-                    <?php include __DIR__."/left_menu.php";?>
-                    <div class="col-lg-10">
+                    <?php include __DIR__ . "/left_menu.php";?>
+                    <div class="col-lg-10 pt-3">
                         <div class="upload">
                             <div class="d-table-cell">
                                 <form action="/home/index.php?m=user&a=_upload_user_touxiang" method="post" enctype="multipart/form-data">
                                     <div class="form-group text-center">
-                                        <div>
+                                        <div class="upload-img-content">
                                             <img class="upload-img" src="<?php echo strstr($username['pic'], '../r'); ?>" alt="">
                                         </div>
-                                        <label class="upload-btn" role="button">
+                                        <label class="upload-btn" role="button" style="text-align: left">
                                             <input type="hidden" name="MAX_FILE_SIZE" value="10000000">
-                                            上传头像
-                                            <input type="file" name="pic" value="" hidden>
+                                             <p>选择头像</p>
+                                            <input type="file" name="pic" value="">
                                         </label>
-                                        <button type="submit" class="btn btn-success btn-sm">更改头像</button>
+                                        <div style="text-align: left">
+                                            <button type="submit" class="btn btn-primary btn-sm">更改头像</button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>

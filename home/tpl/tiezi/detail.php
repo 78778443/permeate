@@ -11,17 +11,18 @@
                             <!--用户组-->
                             <div class="post-list-user col-2">
                                 <div class="post-list-user-details">
-                                    <a href="index.php?m=user&a=info&id=<?php echo $post['id']; ?>">
-                                        <img class="post-list-user-img"
-                                             src="<?php echo strstr($post['pic'], '../r'); ?>" alt=""/>
+                                    <a class="_user-link" href="index.php?m=user&a=info&id=<?php echo $post['id']; ?>">
+                                        <span class="_avatar">
+                                            <img class="post-list-user-img" src="<?php echo strstr($post['pic'], '../r'); ?>" alt=""/>
+                                        </span>
                                         <p><?php echo $post['username'] ?></p>
                                     </a>
                                     <p><a class="btn btn-primary btn-xs"
-                                          href=<?= url('user/follow', array('uid' => $post['uid'])) ?>>关注他</a></p>
+                                          href=<?=url('user/follow', array('uid' => $post['uid']))?>>关注他</a></p>
                                 </div>
                             </div>
                             <!--详情-->
-                            <div class="col-10 post-list-details">
+                            <div class="col-10 post-list-details d-flex justify-content-between flex-column">
                                 <!--内容区-->
                                 <div class="post-container-details">
                                     <?php echo $post['content'] ?>
@@ -34,23 +35,24 @@
                             </div>
                         </div>
                     </div>
-                    <?php foreach ($row as $reply) { ?>
+                    <?php foreach ($row as $reply) {?>
                         <div class="post-container-item">
                             <div class="row mx-0">
                                 <!--用户组-->
                                 <div class="post-list-user col-2">
                                     <div class="post-list-user-details">
-                                        <a href="index.php?m=user&a=info&id=<?php echo $reply['id']; ?>">
-                                            <img class="post-list-user-img"
-                                                 src="<?php echo strstr($reply['pic'], '../r'); ?>" alt=""/>
+                                        <a class="_user-link" href="index.php?m=user&a=info&id=<?php echo $reply['id']; ?>">
+                                            <span class="_avatar">
+                                                <img class="post-list-user-img" src="<?php echo strstr($reply['pic'], '../r'); ?>" alt=""/>
+                                            </span>
                                             <p><?php echo $reply['username'] ?></p>
                                         </a>
                                         <p><a class="btn btn-primary btn-xs"
-                                              href=<?= url('user/follow', array('uid' => $reply['uid'])) ?>>关注他</a></p>
+                                              href=<?=url('user/follow', array('uid' => $reply['uid']))?>>关注他</a></p>
                                     </div>
                                 </div>
                                 <!--详情-->
-                                <div class="col-10 post-list-details">
+                                <div class="col-10 post-list-details d-flex justify-content-between flex-column">
                                     <!--内容区-->
                                     <div class="post-container-details">
                                         <?php echo $reply['content'] ?>
@@ -63,42 +65,44 @@
                                 </div>
                             </div>
                         </div>
-                    <?php } ?>
+                    <?php }?>
                 </div>
                 <!--控制器-->
                 <div class="post-controller">
-                    <nav class="page">
-                        <ul class='pagination'>
+                    <nav class="page" style="margin-top: 20px;">
+                        <ul class='pagination justify-content-end'>
+                            <li class="page-item"><span class='page-text'>总共<?=$page_count?>页</span></li>
+                            <li class="page-item">
+                                <span class='page-text'>
+                                    本页<?=(($page_num == $page_count && $count % $page_size != 0) ? ($count % $page_size) : $page_size)?>
+                                    条
+                                </span>
+                            </li>
+                            <li class="page-item"><span class='page-text'>总共<?=$count?>条</span></li>
                             <li class="page-item">
                                 <a class="page-link"
-                                   href='/home/index.php?m=tiezi&a=detail&page=1&bk=<?= $bk ?>&zt=<?= $zt ?>'>首页</a>
+                                   href='/home/index.php?m=tiezi&a=detail&page=1&bk=<?=$bk?>&zt=<?=$zt?>'>首页</a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link"
-                                   href='/home/index.php?m=tiezi&a=detail&?page=<?= ($page_num - 1) ?>&bk=<?= $bk ?>&zt=<?= $zt ?>'>上一页</a>
+                                   href='/home/index.php?m=tiezi&a=detail&?page=<?=($page_num - 1)?>&bk=<?=$bk?>&zt=<?=$zt?>'>上一页</a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link"
-                                   href='/home/index.php?m=tiezi&a=detail&?page=<?= ($page_num + 1) ?>&bk=<?= $bk ?>&zt=<?= $zt ?>'>下一页</a>
+                                   href='/home/index.php?m=tiezi&a=detail&?page=<?=($page_num + 1)?>&bk=<?=$bk?>&zt=<?=$zt?>'>下一页</a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link"
-                                   href='/home/index.php?m=tiezi&a=detail&?page=<?= $page_count ?>&bk=<?= $bk ?>&zt=<?= $zt ?>'>尾页</a>
+                                   href='/home/index.php?m=tiezi&a=detail&?page=<?=$page_count?>&bk=<?=$bk?>&zt=<?=$zt?>'>尾页</a>
                             </li>
-                            <li class="page-item">总共<?= $page_count ?>页</li>
-                            <li class="page-item">
-                                本页<?= (($page_num == $page_count && $count % $page_size != 0) ? ($count % $page_size) : $page_size) ?>
-                                条
-                            </li>
-                            <li class="page-item">总共<?= $count ?>条</li>
                         </ul>
                     </nav>
                 </div>
                 <!--发帖-->
                 <div class="post-release">
-                    <div class="post-release-container container-fluid">
+                    <div class="post-release-container">
                         <h4>发帖回复</h4>
-                        <form method="post" action="<?= url('tiezi/reply', array('bk' => $bk, 'zt' => $zt)) ?>">
+                        <form method="post" action="<?=url('tiezi/reply', array('bk' => $bk, 'zt' => $zt))?>">
                             <input type="hidden" name="id" value="<?php echo $zt ?>"/>
                             <div class="form-group row">
                                 <div class="col-12">

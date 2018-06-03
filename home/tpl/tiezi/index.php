@@ -5,7 +5,7 @@ $get = $_GET;
     <div class="container">
         <div class="paper">
             <div class="post-list">
-                <table class="table table-primary table-post-list">
+                <table class="table table-post-list">
                     <thead>
                     <tr>
                         <th>帖子标题</th>
@@ -43,9 +43,9 @@ $get = $_GET;
                             <a class=\"page-link\" href='/home/index.php?m=tiezi&a=index&?page=" . ($page_num + 1) . "&bk=" . $get['bk'] . "'>下一页</a></li>
                             <li class=\"page-item\">
                             <a class=\"page-link\" href='/home/index.php?m=tiezi&a=index&?page=" . $page_count . "&bk=" . $get['bk'] . "'>尾页</a></li>
-                            <li class=\"page-item\">总共" . $page_count . "页</li>
-                            <li class=\"page-item\">本页" . (($page_num == $page_count && $count % $page_size != 0) ? ($count % $page_size) : $page_size) . "条</li>
-                            <li class=\"page-item\">总共" . $count . "条</li>
+                            <li class=\"page-item\"><span class='page-text'>总共" . $page_count . "页</span></li>
+                            <li class=\"page-item\"><span class='page-text'>本页" . (($page_num == $page_count && $count % $page_size != 0) ? ($count % $page_size) : $page_size) . "条</span></li>
+                            <li class=\"page-item\"><span class='page-text'>总共" . $count . "条</span></li>
                             " ?>
                         </ul>
                     </nav>
