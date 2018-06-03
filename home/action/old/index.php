@@ -27,23 +27,40 @@ foreach ($row as $part1) {
                         <div class="plate-body">
                             <div class="row">
                                 <?php $i = 0;
-                                foreach ($part1['cates'] as $cate) {
-                                    //查询主题数量
-                                    $sql = "select count(*) as cou from bbs_post where cid=" . $cate['id'];
+    foreach ($part1['cates'] as $cate) {
+        //查询主题数量
+        $sql = "select count(*) as cou from bbs_post where cid=" . $cate['id'];
 
-                                    $row = mysql_func($sql);
-                                    $x = 0;
-                                    $x = $x + ($row[0]['cou'])?>
+        $row = mysql_func($sql);
+        $x = 0;
+        $x = $x + ($row[0]['cou'])?>
                                 <?php //查询最后发表
-                                    $sql = "select ptime from bbs_post";
-                                    $row = mysql_func($sql);
-                                    $z = 0;
-                                    if ($row[0]['ptime'] != false) {
-                                        $z = $z + $row[0]['ptime'];
-                                    }
-                                    ?>
+        $sql = "select ptime from bbs_post";
+        $row = mysql_func($sql);
+        $z = 0;
+        if ($row[0]['ptime'] != false) {
+            $z = $z + $row[0]['ptime'];
+        }
+        ?>
                                 <div class="col col-lg-3">
-                                    <a class="plate-link" href="<?php echo url('tiezi/index', array('bk' => $cate['id'])); ?>">
+                                    <a class="card plate-link" href="<?php echo url('tiezi/index', array('bk' => $cate['id'])); ?>">
+                                        <div class="card-header">
+                                            <?php echo $cate['cname'] ?>
+                                        </div>
+                                        <div class="card-body">
+                                                <p>
+                                                    <span>主题：<?php echo $x ?></span>
+                                                </p>
+                                                <p>
+                                                    <span>帖子：63</span>
+                                                </p>
+                                                <p>
+                                                    <small>最后评论时间：<?php echo date('Y-m-d H:i:s', $z) ?></small>
+                                                </p>
+                                        </div>
+                                    </a>
+
+                                    <!-- <a class="plate-link" href="<?php echo url('tiezi/index', array('bk' => $cate['id'])); ?>">
                                         <p class="plate-body-title">
                                             <?php echo $cate['cname'] ?>
                                         </p>
@@ -54,7 +71,7 @@ foreach ($row as $part1) {
                                         <p>
                                             <small>最后评论时间：<?php echo date('Y-m-d H:i:s', $z) ?></small>
                                         </p>
-                                    </a>
+                                    </a> -->
                                 </div>
                                 <?php }?>
                             </div>
