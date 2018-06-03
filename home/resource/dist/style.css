@@ -27,7 +27,7 @@
 
 .navbar-search .form-control {
     border-color: transparent;
-    background-color: #ddd;
+    background-color: #eee;
     transition: .3s all ease;
 }
 
@@ -126,7 +126,7 @@
     right: 1px;
     width: 100px;
     height: 33px;
-    background-color: #ddd;
+    background-color: #eee;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }
@@ -142,7 +142,7 @@
 
 .footer {
     max-height: 60px;
-    background-color: #ddd;
+    background-color: #eee;
     padding-top: 20px;
     padding-bottom: 20px;
     color: #333;
@@ -156,7 +156,7 @@
 
 .plate .plate-item {
     margin-bottom: 10px;
-    border-bottom: 1px solid #ddd;
+    /* border-bottom: 1px solid #eee; */
 }
 
 .plate .plate-header {
@@ -166,25 +166,13 @@
     font-weight: bold;
 }
 
-.plate-body .row{
-    overflow: hidden;
-}
-.plate-body .col-lg-3{
-    border-left: 1px solid #ddd;
-    margin-left: -1px;
-}   
 
 .plate-link {
     height: 100%;
-    padding: 20px 10px 0px;
     display: block;
     color: #333;
-    transition: .3s background-color;
 }
 
-.plate-link:hover {
-    background-color: #ddd;
-}
 
 .paper {
     background-color: #fff;
@@ -196,7 +184,7 @@
     margin:-10px -20px 0;
     padding: 0 20px 10px;
     font-size: 16px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
 }
 
 .post-list-details {
@@ -208,7 +196,7 @@
 }
 
 .post-container-item {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
 }
 
 .post-list-user-details {
@@ -224,7 +212,7 @@
     display: inline-block;
     width: 66px;
     height: 66px;
-    background-color: #ddd;
+    background-color: #eee;
 }
 
 .page-text {
@@ -235,7 +223,7 @@
 }
 
 .menu{
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #eee;
 }
 .menu-list{
     list-style-type: none;
@@ -255,6 +243,13 @@
     height: 100px;
     background-color: #e0e0e0;
     border-radius: .25rem;
+}
+
+.card{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+}
+.card:hover{
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.16);
 }
 
 /* 第一版本样式 */
@@ -399,7 +394,7 @@
 
 .post-list-user {
     text-align: center;
-    background-color: #ddd;
+    background-color: #eee;
 }
 
 .post-list-user-details .post-list-user-img {
