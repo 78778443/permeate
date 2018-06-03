@@ -12,6 +12,10 @@ class user
         displayTpl('user/login');
     }
 
+    public function register(){
+        displayTpl('user/register');
+    }
+
 
     public function logout()
     {
