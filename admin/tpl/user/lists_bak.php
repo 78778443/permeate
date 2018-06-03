@@ -51,9 +51,9 @@
 	echo "
 	<ul class='pager'>
 		<li><a href='?m=user&a=lists&page=1".$link."'>首页</a></li>
-		<li><a href='?m=user&a=lists&?page=".($page_num-1).$link."'>上一页</a></li>
-		<li><li><a href='?m=user&a=lists&?page=".($page_num+1).$link."'>下一页</a></li>
-		<li><a href='?m=user&a=lists&?page=".$page_count.$link."'>尾页</a></li>
+		<li><a href='?m=user&a=lists&page=".($page_num-1).$link."'>上一页</a></li>
+		<li><li><a href='?m=user&a=lists&page=".($page_num+1).$link."'>下一页</a></li>
+		<li><a href='?m=user&a=lists&page=".$page_count.$link."'>尾页</a></li>
 		<li>总共".$page_count."页</li>
 		<li>本页".(($page_num==$page_count&&$count%$page_size!=0)?($count%$page_size):$page_size)."条</li>
 		<li>总共".$count."条</li>

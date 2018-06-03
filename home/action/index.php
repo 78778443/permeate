@@ -8,7 +8,7 @@ class index
 
     public function index()
     {
-        include "old/index.php";
+        displayTpl('index/index', []);
     }
 
 }

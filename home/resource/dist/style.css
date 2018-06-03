@@ -137,7 +137,6 @@
     min-height: calc(100vh - 60px);
     min-height: -webkit-calc(100vh - 60px);
     min-height: -moz-calc(100vh - 60px);
-    min-height: -ms-calc(100vh - 60px);
 }
 
 .footer {
@@ -152,6 +151,10 @@
     background-color: #fff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
     padding: 20px;
+}
+
+.plate .col{
+    margin-bottom: 20px;
 }
 
 .plate .plate-item {
@@ -250,6 +253,12 @@
 }
 .card:hover{
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.16);
+}
+
+.post-list-user-details .post-list-user-img {
+    width: 100%;
+    height:100%;
+
 }
 
 /* 第一版本样式 */
@@ -397,10 +406,7 @@
     background-color: #eee;
 }
 
-.post-list-user-details .post-list-user-img {
-    width: 88px;
-    height: 88px;
-}
+
 
 .post-list-user .post-list-user-details {
     margin-top: 2rem;
