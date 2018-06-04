@@ -32,7 +32,7 @@
 		<input type='submit' value='搜索' class='btn' />
 		</form>
         
-	<table width="870px" border="2px" class="table table-bordered">
+	<table border="2px" class="table table-bordered">
 	
 		<tr >
 			<th>多选</th>

@@ -36,7 +36,7 @@
 	echo "</pre>";*/
 ?>
 <div class="container">
-<table >
+<table class="table">
 <form action="imod.phpid=<?php echo $id ?>" method="post" >
 	<?php function edu($fri,$val){if($fri==$val){echo "selected";}} ?>
 	<tr><td>标题：</td><td><input type="text" name="title" value="<?php echo $fri['title'] ?>" /></td></tr>

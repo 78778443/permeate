@@ -37,7 +37,7 @@
 ?>
 <div class="container">
 <form action="./index.php?m=fil&a=add" method="post" enctype="multipart/form-data" >
-<table>
+<table class="table">
 	<tr><td>关键字：</td><td><input type="text" name="hinge" /><p /></td></tr>
 	<tr><td><input type="submit" value="添加" class="btn btn-info navbar-btn" /></td><td>
 	<input type="reset" value="重新填写" class="btn btn-info navbar-btn" /></td></tr>

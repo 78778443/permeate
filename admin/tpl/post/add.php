@@ -6,7 +6,7 @@
 ?>
 <div class="container">
 <form action="./index.php?m=post&a=add" method="post" >
-<table>
+<table class="table">
 	<tr><td>所属主题：</td><td><select name="cid"> 
 		<?php foreach($row as $cate){echo  "<option value=".$cate['id'].">".$cate['cname']."</option>"; }?>   
 		</select ></td></tr>

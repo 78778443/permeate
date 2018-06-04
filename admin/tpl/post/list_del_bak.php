@@ -6,7 +6,7 @@
     <form action="./index.php?m=post&a=del" method="post">
         <input type="hidden" name="zd" value="id"/>
         <input type="hidden" name="table" value="post"/>
-        <table width="870px" border="2px" class="table table-bordered">
+        <table border="2px" class="table table-bordered">
             <tr>
                 <th>多选</th>
                 <th>ID</th>

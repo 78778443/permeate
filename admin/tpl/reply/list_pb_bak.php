@@ -53,7 +53,7 @@
 	<form action="del.php" method="post">
 		<input type="hidden" name="zd" value="id" />
 		<input type="hidden" name="table" value="reply" />
-	<table width="870px" border="2px"  class="table table-bordered">
+	<table border="2px"  class="table table-bordered">
 	
 		<tr >
 			<th>多选</th>

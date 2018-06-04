@@ -37,12 +37,12 @@ if(isset($_GET['id'])){
 <table class="table">
 <form action="./index.php?m=cate&a=mod&id=<?php echo $id ?>" method="POST" >
 	<tr><td>分区名称：</td><td>
-	<select name="pid"> 
+	<select class="form-control" name="pid"> 
 		<?php foreach($row as $part){
 			echo "<option value=".$part['id'].">".$part['pname']."</option>"; 
 		}?>
 	</select> </td></tr>
-	<tr><td>分区名称：</td><td><input type="text" name="cname" value="<?php echo $part['cname'] ?>" /></td></tr>
+	<tr><td>分区名称：</td><td><input class="form-control" type="text" name="cname" value="<?php echo $part['cname'] ?>" /></td></tr>
 
 	
 	<tr><td colspan=2><input type="submit" value="确定修改" class="btn btn-info navbar-btn"/></td></tr>

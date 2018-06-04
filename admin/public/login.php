@@ -57,7 +57,7 @@ if (isset($_POST['username'])) {
 <body>
 
 <form action="login.php" method="post" id="login_form">
-    <table id="login">
+    <table class="table" id="login">
 
         <span class="label label-info">轻松参透测试系统后后台管理</span>
         <tr>
