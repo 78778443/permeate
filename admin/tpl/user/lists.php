@@ -1,4 +1,4 @@
-<main class="col-sm-10 p-4" role="main">
+<main class="col-sm-12 p-4" role="main">
     <h2>用户列表</h2>
     <div class="table-responsive">
         <table class="table table-striped">
@@ -39,5 +39,8 @@
             ?>
             </tbody>
         </table>
+        <div class="text-right">
+            <a href="#" class="btn btn-info">添加</a>
+        </div>
     </div>
 </main>

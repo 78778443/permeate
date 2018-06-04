@@ -1,4 +1,4 @@
-<main class="col-sm-9 p-4" role="main">
+<main class="col-sm-12 p-4" role="main">
     <h2>过滤列表</h2>
     <div class="table-responsive">
         <table class="table table-striped">

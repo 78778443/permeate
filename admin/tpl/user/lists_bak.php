@@ -11,7 +11,7 @@
     <input type='submit' value='搜索' class='btn' />
   </form>
   <form action="del.php" method="post">
-    <table width="870px" border="2px" class="table table-bordered">
+    <table border="2px" class="table table-bordered">
       <input type="hidden" name="zd" value="id" />
       <input type="hidden" name="table" value="user" />
       <tr >

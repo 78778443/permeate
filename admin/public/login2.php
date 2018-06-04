@@ -102,7 +102,7 @@ function reset_form()
 <div id="title"><img src="../resorce/images/login_title_bg.gif" /></div>
 <div id="main">
 <form action="login.php" method="post" id="login_form">
-<table id="login">
+<table class="table" id="login">
   <tr>
     <td>用户名： </td>
     <td><input type="text" name="username" id="username" size="32" style="background:url(images/username_bg.gif) left no-repeat #FFF; border:1px #ccc solid;height: 20px; font-family:Arial, Helvetica, sans-serif; font-size:14px; font-weight: 800; margin:0; padding-left: 24px;" /></td>

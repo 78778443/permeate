@@ -26,7 +26,7 @@ if(isset($_GET['id'])){
 	$post = $row[0];
 ?>
 <div class="container">
-<table >
+<table class="table">
 <form action="./index.php?m=post&a=mod&id=<?php echo $id ?>" method="post" >
 		<?php $sql = "select * from bbs_cate";
 		$row1 = mysql_func($sql); ?>

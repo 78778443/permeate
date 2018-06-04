@@ -35,7 +35,7 @@ if(isset($_GET['id'])){
 	echo "</pre>";*/
 ?>
 <div class="container">
-<table >
+<table class="table">
 <form action="./index.php?m=ipre&a=mod&id=<?php echo $id ?>" method="post" >
 	<tr><td>开始IP</td><td><input type="text" name="ipmin" value="<?php echo long2ip($fri['ipmin']) ?>" /></td></tr>
 	<tr><td>结束IP</td><td><input type="ipmax" name="ipmax" value="<?php echo long2ip($fri['ipmax']) ?>"  /></td></tr>

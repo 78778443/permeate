@@ -29,7 +29,7 @@
 ?>
 <div class="container">
 <form action="./index.php?m=ipre&a=add" method="post" enctype="multipart/form-data" >
-<table>
+<table class="table">
 	<tr><td>开始IP：</td><td><input type="text" name="ipmin" /><p /></td></tr>
 	<tr><td>结束IP：</td><td><input type="text" name="ipmax" /><p /></td></tr>
 	<tr><td><input type="submit" value="添加链接" class="btn btn-info navbar-btn" /></td><td>

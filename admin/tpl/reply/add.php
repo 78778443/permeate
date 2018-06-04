@@ -7,7 +7,7 @@
 
 <div class="container">
   <form action="./index.php?m=reply&a=add" method="post" >
-    <table>
+    <table class="table">
       <tr>
         <td>所属板块：</td>
         <td><select name="pid">

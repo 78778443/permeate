@@ -38,7 +38,7 @@
 ?>
 <div class="container">
 <form action="./index.php?m=fri&a=add" method="post" enctype="multipart/form-data" >
-<table>
+<table class="table">
 	<tr><td>标题：</td><td><input type="text" name="title" /><p /></td></tr>
 	<tr><td>描述：</td><td><input type="text" name="desc1" /><p /></td></tr>
 	<tr><td>URL：</td><td><input type="url" name="url" /><p /></td></tr>
