@@ -7,4 +7,3 @@ if (empty($_SESSION['admin']['username'])) {
     exit;
 }
 ?>
-<link rel="stylesheet" type="text/css" href="../public/Bootstrap2/bootstrap.css"/>

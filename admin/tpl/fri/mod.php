@@ -43,8 +43,8 @@
 	<tr><td>描述：</td><td><input type="desc1" name="desc1" value="<?php echo $fri['desc1'] ?>"  /></td></tr>
 	<tr><td>URL：</td><td><input type="text" name="url" value="<?php echo $fri['url'] ?>" /></td></tr>
 	<tr><td>图片：</td><td><input type="text" name="pic" value="<?php echo $fri['pic'] ?>" /></td></tr>
-	<tr><td colspan=2><input type="submit" value="确定修改" class="btn btn-default navbar-btn" />
-	<input type="reset" value="重新填写"  class="btn btn-default navbar-btn"/></td></tr>
+	<tr><td colspan=2><input type="submit" value="确定修改" class="btn btn-info navbar-btn" />
+	<input type="reset" value="重新填写"  class="btn btn-info navbar-btn"/></td></tr>
 </form>
 </table>
 </div>

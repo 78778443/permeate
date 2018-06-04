@@ -19,7 +19,7 @@
         <td><textarea name="content" cols="40" rows="4" wrap="VIRTUAL"> </textarea></td>
       </tr>
       <tr>
-        <td><input type="submit" value="注册" class="btn btn-default navbar-btn" /></td>
+        <td><input type="submit" value="注册" class="btn btn-info navbar-btn" /></td>
       </tr>
     </table>
   </form>

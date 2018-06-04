@@ -44,7 +44,7 @@
 	}
 ?>
     </table>
-    <input type='submit'  value='批量删除' class="btn btn-default navbar-btn"/>
+    <input type='submit'  value='批量删除' class="btn btn-info navbar-btn"/>
   </form>
   
 <?php

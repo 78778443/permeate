@@ -37,8 +37,8 @@ if(isset($_GET['id'])){
 	</select></td></tr>
 	<tr><td>主题：</td><td><input type="text" name="title" value="<?php echo $post['title'] ?>" /></td></tr>
 	<tr><td>内容：</td><td><input type="text" name="content" value="<?php echo $post['content'] ?>" /></td></tr>
-	<tr><td colspan=2><input type="submit" value="确定修改" class="btn btn-default navbar-btn" />
-	<input type="reset" value="重新填写" class="btn btn-default navbar-btn" /></td></tr>
+	<tr><td colspan=2><input type="submit" value="确定修改" class="btn btn-info navbar-btn" />
+	<input type="reset" value="重新填写" class="btn btn-info navbar-btn" /></td></tr>
 </form>
 </table>
 </div>
