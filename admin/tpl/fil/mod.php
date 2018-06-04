@@ -37,8 +37,8 @@
 <table >
 <form action="imod.phpid=<?php echo $id ?>" method="post" >
 	<tr><td>关键词：</td><td><input type="text" name="hinge" value="<?php echo $fil['hinge'] ?>" /></td></tr>
-	<tr><td colspan=2><input type="submit" value="确定修改" class="btn btn-default navbar-btn" />
-	<input type="reset" value="重新填写"  class="btn btn-default navbar-btn"/></td></tr>
+	<tr><td colspan=2><input type="submit" value="确定修改" class="btn btn-info navbar-btn" />
+	<input type="reset" value="重新填写"  class="btn btn-info navbar-btn"/></td></tr>
 </form>
 </table>
 </div>

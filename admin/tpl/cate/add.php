@@ -10,7 +10,7 @@
 		<?php foreach($row as $part){echo  "<option value=".$part['id'].">".$part['pname']."</option>"; }?>
     </select > </td></tr>
 	<tr><td>板块名称：</td><td><input type="text" name="cname" /></td></tr>
-	<tr><td><input type="submit" value="添加板块" class="btn btn-default navbar-btn"/></td></tr>
+	<tr><td><input type="submit" value="添加板块" class="btn btn-info navbar-btn"/></td></tr>
    </table>
 </form>
 </div>

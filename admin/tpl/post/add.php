@@ -19,10 +19,10 @@
 	</tr>
 	<tr>
 	<td>
-	<input type="submit" value="发表主题" class="btn btn-default navbar-btn" />
+	<input type="submit" value="发表主题" class="btn btn-info navbar-btn" />
 	</td>
 	<td>
-	<input type="reset" value="重新填写" class="btn btn-default navbar-btn" />
+	<input type="reset" value="重新填写" class="btn btn-info navbar-btn" />
 	</td>
 	</tr>
  </table>

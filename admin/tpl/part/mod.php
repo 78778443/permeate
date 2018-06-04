@@ -37,7 +37,7 @@
 <form action="./index.php?m=part&a=mod&id=<?php echo $id ?>" method="post" class="form-control" >
 分区名称：<input type="text" name="pname" value="<?php echo $part['pname'] ?>"  /></p>
 分区版主：<input type="text" name="padmins" value="<?php echo $part['padmins'] ?>"/>(输入版主ID)</p>
-<input type="submit" value="确定修改" class="btn btn-default navbar-btn" />
+<input type="submit" value="确定修改" class="btn btn-info navbar-btn" />
 </form>
 </table>
 </div>

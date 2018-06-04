@@ -34,7 +34,7 @@ if(isset($_GET['id'])){
 	exit;*/
 ?>
 <div class="container">
-<table >
+<table class="table">
 <form action="./index.php?m=cate&a=mod&id=<?php echo $id ?>" method="POST" >
 	<tr><td>分区名称：</td><td>
 	<select name="pid"> 
@@ -45,7 +45,7 @@ if(isset($_GET['id'])){
 	<tr><td>分区名称：</td><td><input type="text" name="cname" value="<?php echo $part['cname'] ?>" /></td></tr>
 
 	
-	<tr><td colspan=2><input type="submit" value="确定修改" class="btn btn-default navbar-btn"/></td></tr>
+	<tr><td colspan=2><input type="submit" value="确定修改" class="btn btn-info navbar-btn"/></td></tr>
 </form>
 </table>
 </div>

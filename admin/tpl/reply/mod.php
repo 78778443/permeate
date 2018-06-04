@@ -27,22 +27,22 @@
 	$reply=$user[0];
 ?>	
 <div class="container">
-	<table>
+	<table class="table">
 		<form action="./index.php?m=reply&a=mod" method="post";>
        		<input type="hidden" name="id"  value="<?php echo $id; ?>"/><p />
 		<tr><td>
         	主贴ID:
-			</td><td><select name="pid"> 
+			</td><td><select class="form-control" name="pid"> 
 					<?php
                     $sql = "select * from bbs_post";
                     $row = mysql_func($sql);
                     foreach($row as $post){
                     echo  "<option value=".$post['id'].">".$post['title']."</option>"; }?></select> <p />
 			</td></tr>
-		<tr><td> 内容：</td><td><textarea name="content" cols="40" rows="4"  ><?php echo $reply['content'];?></textarea><p /></td></tr>
+		<tr><td> 内容：</td><td><textarea  class="form-control" name="content" cols="40" rows="4"  ><?php echo $reply['content'];?></textarea><p /></td></tr>
 		<tr><td colspan=2>
-            <input type="submit" value="确认提交" class="btn btn-default navbar-btn" />
-            <input type="reset" value="重置表单" class="btn btn-default navbar-btn" />
+            <input type="submit" value="确认提交" class="btn btn-info navbar-btn" />
+            <input type="reset" value="重置表单" class="btn btn-info navbar-btn" />
 		</td></tr>
 		</form>
 	</table>

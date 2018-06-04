@@ -43,8 +43,8 @@
 	<tr><td>描述：</td><td><input type="text" name="desc1" /><p /></td></tr>
 	<tr><td>URL：</td><td><input type="url" name="url" /><p /></td></tr>
 	<tr><td>图片链接：</td><td><input type="file" name="pic"  /><p/></td></tr>
-	<tr><td><input type="submit" value="添加链接" class="btn btn-default navbar-btn" /></td><td>
-	<input type="reset" value="重新填写" class="btn btn-default navbar-btn" /></td></tr>
+	<tr><td><input type="submit" value="添加链接" class="btn btn-info navbar-btn" /></td><td>
+	<input type="reset" value="重新填写" class="btn btn-info navbar-btn" /></td></tr>
 </table>
 </form>
 </div>

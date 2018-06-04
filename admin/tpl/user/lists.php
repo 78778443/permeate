@@ -1,4 +1,4 @@
-<main class="col-sm-9 offset-sm-3 offset-md-2 pt-3" role="main">
+<main class="col-sm-10 p-4" role="main">
     <h2>用户列表</h2>
     <div class="table-responsive">
         <table class="table table-striped">

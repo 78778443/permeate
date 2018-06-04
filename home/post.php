@@ -22,7 +22,7 @@ include "public/header.php";
             <img src="resource/images/pn_post.png"/></a>
         <a class="img" href="huifu.php?bk=<?php echo $bk ?>&zt=<?php echo $zt ?>">
             <img src="resource/images/pn_reply.png"/></a>
-        <a class="btn btn-default" href="list.php?bk=<?php echo $bk ?>">返回列表
+        <a class="btn btn-info" href="list.php?bk=<?php echo $bk ?>">返回列表
         </a>
     </div>
     </div>
