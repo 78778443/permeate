@@ -103,7 +103,6 @@ class tiezi
         $sql = "select r.*,u.*,d.* from bbs_reply as r,bbs_user as u,bbs_user_detail as d where r.uid=u.id and d.uid=r.uid and r.pid='$zt'" . $limit;
         $row = mysql_func($sql);
 
-
         //次数+1
 
         $sql = "update bbs_post set view_count=(view_count+1) where id=$zt";
