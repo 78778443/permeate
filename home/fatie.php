@@ -1,8 +1,5 @@
 <?php
-session_start();
-header('content-type:text/html;charset=utf-8');
-include "../conf/dbconfig.php";
-include "../core/mysql_func.php";
+require_once "../core/common.php";
 
 if (!isset($_GET['bk'])) {
     exit("参数错误！");

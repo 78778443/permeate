@@ -55,6 +55,7 @@ require_once "../conf/web_config.php";
                                      src="<?=$username['pic'] ?>" alt="头像">
                             </a>
                             <div class="dropdown-menu">
+                                <a class="dropdown-item" href="<?= url('user/individual',['uid'=>$username['id']]) ?>">个人资料</a>
                                 <a class="dropdown-item" href="../admin/index.php">后台管理</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="./index.php?m=user&a=logout">登出</a>

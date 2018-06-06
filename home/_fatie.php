@@ -44,7 +44,8 @@ $sql = "SELECT u.id,u.username FROM bbs_user AS u WHERE username='" . $username[
 $row = mysql_func($sql);
 if (!$row) {
     echo "非法登入，用户不存在！";
-    echo '<script>window.location.href="./fatie.php?bk=' . $bk . '&zt=' . $zt . '";</script>';
+    $url = url('user/login');
+    echo '<script>window.location.href="'.$url.'";</script>';
     exit;
 }
 $uid = $row[0]['id'];

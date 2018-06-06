@@ -60,7 +60,7 @@
 
                                     <div class="post-container-time">
                                         发布时间：
-                                        <time datetime="<?php echo date('Y/m/d', $reply['rtime']) ?>"><?php echo date('Y-m-d H:i:s', $reply['rtime']) ?></time>
+                                        <time datetime="<?php echo date('Y/m/d', $reply['ptime']) ?>"><?php echo date('Y-m-d H:i:s', $reply['ptime']) ?></time>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                             <li class="page-item"><span class='page-text'>总共<?=$page_count?>页</span></li>
                             <li class="page-item">
                                 <span class='page-text'>
-                                    本页<?=(($page_num == $page_count && $count % $page_size != 0) ? ($count % $page_size) : $page_size)?>
+                                    本页<?= count($row)?>
                                     条
                                 </span>
                             </li>
