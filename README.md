@@ -1,4 +1,4 @@
-## 轻松渗透测试系统
+## 一、轻松渗透测试系统
 
    轻松渗透测试系统是我刚学PHP的时候开发的一个基于lamp环境的web应用。
     
@@ -6,7 +6,7 @@
     
     现在开源出来，遵从MIT许可协议。如果大家有什么建议和想法，欢迎和我一起完善。
 
-### 用途：
+## 二、用途：
     目前我主要用于WEB安全演示教学,也用来自己练习挖掘漏洞
     目前发下包含了以下漏洞:
 	包含sql注入、XSS跨站、CSRF、本地包含等常见的web漏洞
@@ -15,12 +15,12 @@
 	包含图片附件类目录php执行权限
 	包含webshell上传漏洞
 
-### 推荐安装:
+## 三、推荐安装:
 
     项目在lamp环境下开发,建议在wampserver下安装
 
 
-### 使用说明：
+### 3.1 传统安装：
 
     假设安装路径为: E:\www\permeate
     
@@ -41,11 +41,8 @@
     修改文件: C:\Windows\System32\drivers\etc\hosts
     加入 127.0.0.1 permeate.localhost
     然后重启wampserver
-    访问permeate.localhost/install/  进入界面安装
-    
 
-
-### 配置文件详细说明：
+#### 配置文件详细说明：
 
     RulePath = "/conf/dbconf.php"
 
@@ -60,12 +57,20 @@
     !defined('DB_CHARSET') && define('DB_CHARSET', 'utf8');
     
     上面的配置文件在正常安装流程下不需要手动去编辑
+    
+### 3.2 Dodcker安装
+
+permeate支持采用docker安装，这样安装起来更加简洁，安装教程文档如下
+
+https://segmentfault.com/a/1190000017151621
+    
+    
         
-###效果图如下：
+###  3.3 运行效果
 
 ![sec](http://tuchuang.songboy.net/permeate/index.png)
 
-### 代码更新：
+### 四、后期维护：
 
     考虑到目前的逻辑漏洞还不是太多，之后会继续添加更多功能，更新后会同步到GitHub
 
