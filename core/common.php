@@ -1,4 +1,5 @@
 <?php
+
 date_default_timezone_set('PRC');
 //设置页面字符集为 UTF-8
 header('content-type:text/html;charset=utf-8');
@@ -30,8 +31,9 @@ function displayTpl($tplPath, $data = [])
         $$key = $val;
     }
 
+    require_once "./public/header.php";
     require_once $filePath;
-
+    require_once "./public/footer.php";
 }
 
 
@@ -72,6 +74,7 @@ function includeAction($model, $action)
 function getParam($paramName)
 {
     $value = isset($_GET[$paramName]) ? $_GET[$paramName] : $_POST[$paramName];
+//    $value = htmlspecialchars($value);
 
     return $value;
 }
@@ -117,11 +120,11 @@ function sendEmail($to, $content)
     $param = array(
         'apiUser' => $API_USER,
         'apiKey' => $API_KEY,
-        'from' => 'service@sendcloud.im',
-        'fromName' => 'SendCloud测试邮件',
-        'to' => 'soupqingsong@foxmail.com',
+        'from' => '78778443@qq.com',
+        'fromName' => 'permeate渗透测试系统',
+        'to' => $to,
         'subject' => '来自SendCloud的第一封邮件！',
-        'html' => '你太棒了！你已成功的从SendCloud发送了一封测试邮件，接下来快登录前台去完善账户信息吧！',
+        'html' => $content,
         'respEmailId' => 'true');
 
     $data = http_build_query($param);

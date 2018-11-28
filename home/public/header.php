@@ -1,8 +1,6 @@
 <?php
 require_once "../conf/dbconfig.php";
 require_once "../conf/web_config.php";
-
-
 ?>
 <!DOCTYPE html>
 <html lang="zh-cn">

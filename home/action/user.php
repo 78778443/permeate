@@ -12,7 +12,8 @@ class user
         displayTpl('user/login');
     }
 
-    public function register(){
+    public function register()
+    {
         displayTpl('user/register');
     }
 
@@ -288,5 +289,85 @@ class user
 
 
         return $user;
+    }
+
+    //输入邮箱页面
+    public function re_passwd_step1()
+    {
+        displayTpl('user/re_passwd_step1');
+    }
+
+    //提示提交成功页面
+    public function re_passwd_step2()
+    {
+        displayTpl('user/re_passwd_step2');
+    }
+
+    //修改密码页面
+    public function re_passwd_step3()
+    {
+        displayTpl('user/re_passwd_step3');
+    }
+
+    //修改密码成功页面
+    public function re_passwd_step4()
+    {
+        displayTpl('user/re_passwd_step4');
+    }
+
+
+    //发送邮件
+    public function _re_passwd_step1()
+    {
+        $email = getParam('email');
+
+        //写入token到session
+        $token = md5(time());
+        $_SESSION[$token] = $email;
+
+        //发送邮件
+        $uri = U('user/re_passwd_step3');
+        $content = <<<data
+
+你好，这是<a = "http://{$_SERVER['SERVER_NAME']}{$uri}">找回密码的链接,链接15分钟有效，请不要告诉他人！
+    
+data;
+        var_dump($content);
+        die;
+
+
+        sendEmail($email, $content);
+
+    }
+
+
+    //修改密码
+    public function _re_passwd_step3()
+    {
+        //接收参数
+        $email = getParam('email');
+        $password = getParam('password');
+        $repassword = getParam('repassword');
+        $verifyCode = getParam('code');
+
+
+        //进行安全验证
+        if (!empty($_SESSION[$verifyCode]) && $_SESSION[$verifyCode] != $email) {
+            die('请求不合法');
+        }
+        if ($password != $repassword) {
+            die('两次密码不一致');
+        }
+
+        //修改密码
+        $password = md5($password);
+        $sql = "update bbs_user  set password='$password' where email='{$email}'";
+
+        $result = mysql_func($sql);
+        if ($result) {
+            $url = U('user/login');
+            header("location:$url");
+        }
+
     }
 }

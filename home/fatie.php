@@ -67,6 +67,9 @@ if (isset($_POST['bk'])) {
     <script>window.location.href = "./index.php?m=tiezi&a=index&bk=<?php echo $bk ?>&zt=<?php echo $zt ?>"</script>
     <?php
 }
+
+$rand_a = rand(100,10000);
+$_SESSION['fatie'] = $rand_a;
 ?>
 
 
@@ -80,6 +83,7 @@ include "public/header.php";
         <div class="paper">
             <div class="paper-header">发表新帖</div>
             <form action="_fatie.php?bk=<?php echo $bk ?>&zt=<?php echo $zt ?>" method="post" style="padding-top: 20px;">
+				<input type="hidden" name="csrf_token" value="<?php echo $rand_a ?>" />
                 <input type="hidden" name="bk" value="<?php echo $bk ?>"/>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-1 col-form-label">标题：</label>
