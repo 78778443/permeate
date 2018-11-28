@@ -6,10 +6,15 @@ if (!isset($_GET['bk'])) {
 }
 $bk = getParam('bk');
 $zt = !empty(getParam('zt')) ? getParam('zt') : 0;
-
+$csrf_token = getParam('csrf_token');
+if($csrf_token != $_SESSION['fatie']) {
+	echo 'csrf不合法';die;
+}
 $cid = getParam('bk');
 $title = getParam('title');
 $content = getParam('content');
+
+
 $ptime = $_SERVER['REQUEST_TIME'];
 $username = empty($_SESSION['home']['username']) ? '' : $_SESSION['home']['username'];
 $pip = intval(ip2long($_SERVER['REMOTE_ADDR']));
@@ -49,7 +54,6 @@ if (!$row) {
     exit;
 }
 $uid = $row[0]['id'];
-$content = htmlspecialchars($content);
 
 $sql = "insert into bbs_post(cid,title,content,ptime,uid,pip) value('$cid','$title','$content','$ptime','$uid','$pip')";
 $row = mysql_func($sql);
