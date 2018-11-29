@@ -1,7 +1,7 @@
 <?php
 function mysql_func($sql)
 {
-    error_reporting(0);
+    error_reporting(8192);
     //1.连接数据库
     $link = mysqli_connect(DB_HOST, DB_USER, DB_PASS);
 
