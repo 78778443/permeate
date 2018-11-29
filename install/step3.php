@@ -7,7 +7,7 @@
 <body>
 <div style="width: 900px;margin: 50 auto;">
     <?php
-    $link = @mysqli_connect($_POST['DB_HOST'], $_POST['DB_USER'], $_POST['DB_PASS']);
+    $link = mysqli_connect($_POST['DB_HOST'], $_POST['DB_USER'], $_POST['DB_PASS']);
 
     if (!$link) {
         echo "<script>";
@@ -45,54 +45,34 @@
             }
         }
 
-        //创建默认分区
-        $sql = "insert into bbs_part(pname) values('默认分区')";
-        $row = mysql_func($sql);
-        if ($row) {
-            echo "建立默认分区成功<p />";
-        } else {
-            echo "建立默认分区失败<p />";
-        }
-
-        //创建默认板块
-        $sql = "insert into bbs_cate(pid,cname) values('$row','默认板块')";
-        $row = mysql_func($sql);
-        if ($row) {
-            echo "建立默认板块成功<p />";
-        } else {
-            echo "建立默认板块失败<p />";
-        }
-
-        //获取服务器当前时间、客户IP
-        $rime = $_SERVER['REQUEST_TIME'];
-        $rip = !empty(ip2long($_SERVER['REMOTE_ADDR'])) ? ip2long($_SERVER['REMOTE_ADDR']) : 0;
-        $sql = "insert into bbs_user(username,password,rtime,rip,admins) values('" . $_POST['username'] . "','" . md5($_POST['password']) . "','$rime','$rip','1')";
-
-        $id = mysql_func($sql);
-
-        if (!$id) {
-            echo "<script>alert('数据库错误：数据库写入失败！')</script>";
-            echo "<script>window.location.href='../'</script>";
-            exit();
-        }
-
-        //写入数据库用户详情表
-        $sql = "insert into bbs_user_detail(uid) values('$id')";
-        $id = mysql_func($sql);
-
-        if ($id !== false) {
-            ?>
-            创建管理员成功！<p/>
-            <form action='../index.php'>
-                <input class="btn btn-success" type='submit' value='进入首页'/>
-            </form>
-            <?php
-            //生成一个锁文件
-            file_put_contents('install.lock', '');
-        } else {
-            echo "管理员创建失败！<p />";
-        }
+        //导入数据
+        addOldData($link);
     } ?>
 </div>
 </body>
 </html>
+
+<?php
+
+function addOldData($link)
+{
+
+    $password = md5($_POST['password']);
+    //导入最新的数据格式
+    $sql = "use " . DB_NAME . ";\n";
+    $sql .= file_get_contents("{$_SERVER['DOCUMENT_ROOT']}/doc/bbs_cate.sql") . "\n";
+    $sql .= "UPDATE {$_POST['DB_NAME']}.bbs_user SET username='{$_POST['username']}',password='$password' ORDER BY id ASC LIMIT 1";
+
+    //批量插入用户名
+    mysqli_multi_query($link, $sql);
+    if (mysqli_errno($link)) {
+        exit("导入数据失败:" . mysqli_error($link));
+    } else {
+        echo "导入数据成功!" . PHP_EOL;
+        echo "<form action='../index.php'>
+                <input class=\"btn btn-success\" type='submit' value='进入首页'/>
+              </form>";
+
+        file_put_contents('install.lock', '');
+    }
+}

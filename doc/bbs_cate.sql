@@ -1,19 +1,3 @@
-/*
- Navicat Premium Data Transfer
-
- Source Server         : mysql_local
- Source Server Type    : MySQL
- Source Server Version : 50638
- Source Host           : localhost:3306
- Source Schema         : permeate
-
- Target Server Type    : MySQL
- Target Server Version : 50638
- File Encoding         : 65001
-
- Date: 03/06/2018 23:57:20
-*/
-
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -161,13 +145,16 @@ CREATE TABLE `bbs_post` (
   `del` int(1) unsigned NOT NULL DEFAULT '1',
   `view_count` int(11) NOT NULL DEFAULT '0' COMMENT '显示数量',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=814 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=822 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bbs_post
 -- ----------------------------
 BEGIN;
-INSERT INTO `bbs_post` VALUES (801, 5, '这是帖子标题', '这是帖子内容', 1528040134, 6, '2130706433', 0, 1, 0);
+INSERT INTO `bbs_post` VALUES (801, 5, '这是帖子标题', '这是帖子内容', 1528040134, 6, '2130706433', 0, 1, 5);
+INSERT INTO `bbs_post` VALUES (816, 6, '111<script >alert(123)</script>', '&lt;p&gt;111&amp;lt;script &amp;gt;alert(123)&amp;lt;/script&amp;gt;&lt;/p&gt;', 1534836270, 6, '2130706433', 0, 1, 1);
+INSERT INTO `bbs_post` VALUES (817, 6, '222<script >alert(123)</script>', '&lt;p&gt;222&amp;lt;script &amp;gt;alert(123)&amp;lt;/script&amp;gt;&lt;/p&gt;', 1534837204, 6, '2130706433', 0, 1, 0);
+INSERT INTO `bbs_post` VALUES (821, 6, '222<script >alert(123)</script>', '222<script >alert(123)</script>', 1534838162, 6, '2130706433', 0, 1, 1);
 COMMIT;
 
 -- ----------------------------
