@@ -71,7 +71,7 @@ https://segmentfault.com/a/1190000017151621
         
 ###  3.3 运行效果
 
-![sec](http://tuchuang.songboy.net/permeate/index.png)
+![sec](http://tuchuang.songboy.net/permeate/index.png?v=1)
 
 ### 四、后期维护：
 
