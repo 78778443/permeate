@@ -17,10 +17,13 @@
 
 ## 三、推荐安装:
 
-    项目在lamp环境下开发,建议在wampserver下安装
+很多人在安装环境出现问题，因此我提供了两种安装方式，docker安装和传统安装，最简单的是用docker安装，具体安装方法如下
+
 
 
 ### 3.1 传统安装：
+
+    项目在lamp环境下开发,建议在wampserver下安装
 
     假设安装路径为: E:\www\permeate
     
@@ -72,7 +75,8 @@ https://segmentfault.com/a/1190000017151621
 
 ### 四、后期维护：
 
-    考虑到目前的逻辑漏洞还不是太多，之后会继续添加更多功能，更新后会同步到GitHub
+考虑到目前的逻辑漏洞还不是太多，之后会继续添加更多功能，更新后会同步到GitHub，同时欢迎搭建加入qq群进行交流
+![sec](http://tuchuang.songboy.net/permeate.jpg)
 
 ## Copyright
 
@@ -81,7 +85,7 @@ https://segmentfault.com/a/1190000017151621
     <td>Weibo</td><td>汤清松</td>
   </tr>
   <tr>
-    <td>QQ交流群</td><td>374254526</td>
+    <td>QQ交流群</td><td>832677177</td>
   </tr>
   <tr>
     <td>Copyright</td><td>Copyright (c) 2017- daxia</td>
