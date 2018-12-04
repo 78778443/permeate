@@ -19,17 +19,21 @@
 
 很多人在安装环境出现问题，因此我提供了两种安装方式，docker安装和传统安装，最简单的是用docker安装，具体安装方法如下
 
+### 3.1 Dodcker安装
+
+permeate支持采用docker安装，这样安装起来更加简洁，安装教程文档如下
+
+https://segmentfault.com/a/1190000017151621
+    
 
 
-### 3.1 传统安装：
+### 3.2 传统安装：
 
-项目在lamp环境下开发,建议在wampserver下安装
+项目在lamp环境下开发,建议在wampserver下安装,安装主要有两个要点，首先是添加一个虚拟主机，然后修改hosts文件
 
-假设安装路径为: E:\www\permeate
 
-下载代码到目录,删除文件 /install/install.lock
-
-在httpd.conf的最后位置添加
+#### 增加虚拟主机
+首先来看增加虚拟主机的方法，假设安装路径为: E:\www\permeate，在httpd.conf的最后位置添加
 
 ```
 <VirtualHost *:80>
@@ -42,18 +46,20 @@ ServerName permeate.localhost
     </Directory>
 </VirtualHost>
 ```
-绝对路径如有变动，需对应修改
+
+在修改并保存之后，还需要重启wampserver，让配置文件生效。
 
 
-修改文件: C:\Windows\System32\drivers\etc\hosts
+#### 修改hosts文件
+新增虚拟主机之后，现在需要修改hosts文件，windows系统hosts位置是 `C:\Windows\System32\drivers\etc\hosts` 
+
 ```
 127.0.0.1 permeate.localhost
 ```
-然后重启wampserver
 
-#### 配置文件详细说明：
 
-配置文件位置 `/conf/dbconf.php`
+#### 开始安装
+permeate系统提供在线安装功能，但很多人会报错，因此这里的安装方法是通过直接导入数据库，并修改配置文件的方式，导入数据库这里不做过讲解，主要提一下如何修改配置文件，配置文件位置是 `/conf/dbconf.php`
 ```
 //数据库位置
 !defined('DB_HOST') && define('DB_HOST', 'localhost');
@@ -68,12 +74,7 @@ ServerName permeate.localhost
     
 上面的配置文件在正常安装流程下不需要手动去编辑
     
-### 3.2 Dodcker安装
 
-permeate支持采用docker安装，这样安装起来更加简洁，安装教程文档如下
-
-https://segmentfault.com/a/1190000017151621
-    
     
         
 ###  3.3 运行效果
