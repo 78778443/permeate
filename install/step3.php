@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>轻松参透测试系统</title>
+    <title>轻松渗透测试系统</title>
     <link href="../public/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
