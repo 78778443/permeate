@@ -8,7 +8,7 @@
             </div>
             <div class="form-group"><input class="form-control" type="password" name="repass" maxlength="16" placeholder="请再一次确认密码" value="">
             </div>
-            <div class="form-group"><input class="form-control" type="email" name="repass" maxlength="16" placeholder="请输入邮箱" value="">
+            <div class="form-group"><input class="form-control" type="email" name="email" maxlength="16" placeholder="请输入邮箱" value="">
             </div>
             <div class="form-group"><button class="btn btn-primary" style="width: 100%;">
                 <span>注册账号</span></button>Or 
