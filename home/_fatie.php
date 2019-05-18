@@ -8,7 +8,7 @@ $bk = getParam('bk');
 $zt = !empty(getParam('zt')) ? getParam('zt') : 0;
 $csrf_token = getParam('csrf_token');
 if($csrf_token != $_SESSION['fatie']) {
-	echo 'csrf不合法';die;
+//	echo 'csrf不合法';die;
 }
 $cid = getParam('bk');
 $title = getParam('title');
