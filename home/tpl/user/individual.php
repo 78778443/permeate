@@ -13,7 +13,7 @@
                                 <form action="/home/index.php?m=user&a=_upload_user_touxiang" method="post" enctype="multipart/form-data">
                                     <div class="form-group text-center">
                                         <div class="upload-img-content">
-                                            <img class="upload-img" src="<?php echo strstr($username['pic'], '../r'); ?>" alt="">
+                                            <img class="upload-img" src="<?php echo $username['pic']; ?>" alt="">
                                         </div>
                                         <label class="upload-btn" role="button" style="text-align: left">
                                             <input type="hidden" name="MAX_FILE_SIZE" value="10000000">
