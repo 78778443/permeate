@@ -3,7 +3,7 @@
         <div class="sidebar-inner slimscrollleft" style="overflow: hidden; width: auto; height: 874px;">
             <div class="user-details">
                 <div class="pull-left">
-                    <img src="./resorce/moltran/avatar-1(1).jpg" alt=""
+                    <img src="./resources/moltran/avatar-1(1).jpg" alt=""
                          class="thumb-md img-circle">
                 </div>
                 <div class="user-info">

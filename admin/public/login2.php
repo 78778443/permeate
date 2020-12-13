@@ -99,7 +99,7 @@ function reset_form()
 
 <body>
 <div id="all">
-<div id="title"><img src="../resorce/images/login_title_bg.gif" /></div>
+<div id="title"><img src="../resources/images/login_title_bg.gif" /></div>
 <div id="main">
 <form action="login.php" method="post" id="login_form">
 <table class="table" id="login">
@@ -121,9 +121,9 @@ function reset_form()
   </tr>
   <tr>
     <td></td>
-    <td style="text-align: left; padding-top: 32px;"><input type="image" src="../resorce/images/login.gif" name="submit" onClick="javascript:document.getElementById('login_form').submit();" />
+    <td style="text-align: left; padding-top: 32px;"><input type="image" src="../resources/images/login.gif" name="submit" onClick="javascript:document.getElementById('login_form').submit();" />
       &nbsp;&nbsp;&nbsp;
-      <input type="image" src="../resorce/images/cancel.gif" name="cancel" onClick="reset_form();" /></td>
+      <input type="image" src="../resources/images/cancel.gif" name="cancel" onClick="reset_form();" /></td>
   </tr>
 </table>
 </div>

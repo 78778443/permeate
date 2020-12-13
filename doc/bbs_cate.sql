@@ -322,13 +322,13 @@ CREATE TABLE `bbs_user_detail` (
   `sex` int(10) unsigned NOT NULL DEFAULT '0',
   `edu` int(10) unsigned NOT NULL DEFAULT '0',
   `signed` text,
-  `pic` varchar(255) NOT NULL DEFAULT '../../resorec/images/userhead/default.gif',
+  `pic` varchar(255) NOT NULL DEFAULT '../../resources/images/userhead/default.gif',
   `telphone` varchar(32) NOT NULL DEFAULT '13888888888',
   `qq` int(10) unsigned NOT NULL DEFAULT '888888',
   `email` varchar(255) NOT NULL DEFAULT 'soupqingsong@foxmail.com',
   `brithday` int(10) unsigned NOT NULL DEFAULT '0',
-  `picm` varchar(255) NOT NULL DEFAULT '../../resorec/images/userhead/defaultm.gif',
-  `pics` varchar(255) NOT NULL DEFAULT '../../resorec/images/userhead/defaults.gif',
+  `picm` varchar(255) NOT NULL DEFAULT '../../resources/images/userhead/defaultm.gif',
+  `pics` varchar(255) NOT NULL DEFAULT '../../resources/images/userhead/defaults.gif',
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -336,19 +336,19 @@ CREATE TABLE `bbs_user_detail` (
 -- Records of bbs_user_detail
 -- ----------------------------
 BEGIN;
-INSERT INTO `bbs_user_detail` VALUES (6, '汤青松', 0, 0, 0, '23', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, 'soupqingsong@foxmail.com', 0, '/resorce/images/userhead/ad9f521aa6e50cbc13617e243e0b74b7.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
-INSERT INTO `bbs_user_detail` VALUES (7, '汤青松', 0, 0, 0, NULL, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
-INSERT INTO `bbs_user_detail` VALUES (8, '汤青松333', 0, 0, 0, '23', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, 'soupqingsong@foxmail.com', 0, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
-INSERT INTO `bbs_user_detail` VALUES (9, '汤青松', 0, 0, 0, NULL, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
-INSERT INTO `bbs_user_detail` VALUES (10, '汤青松', 0, 0, 0, '555555', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
-INSERT INTO `bbs_user_detail` VALUES (11, '汤青松', 0, 0, 0, '555555', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 860400, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
-INSERT INTO `bbs_user_detail` VALUES (12, 'Tony', 0, 0, 0, '', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 10000, '776070848@qq.com', 270774000, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
-INSERT INTO `bbs_user_detail` VALUES (13, '汤青松', 0, 0, 0, NULL, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
-INSERT INTO `bbs_user_detail` VALUES (14, '汤青松', 0, 0, 0, NULL, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
-INSERT INTO `bbs_user_detail` VALUES (15, '汤青松', 0, 0, 0, NULL, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
-INSERT INTO `bbs_user_detail` VALUES (16, '汤青松', 0, 0, 0, NULL, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
-INSERT INTO `bbs_user_detail` VALUES (17, '汤青松', 0, 0, 0, NULL, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
-INSERT INTO `bbs_user_detail` VALUES (18, '汤青松', 0, 0, 0, NULL, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resorce/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (6, '汤青松', 0, 0, 0, '23', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, 'soupqingsong@foxmail.com', 0, '/resources/images/userhead/ad9f521aa6e50cbc13617e243e0b74b7.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (7, '汤青松', 0, 0, 0, NULL, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (8, '汤青松333', 0, 0, 0, '23', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, 'soupqingsong@foxmail.com', 0, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (9, '汤青松', 0, 0, 0, NULL, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (10, '汤青松', 0, 0, 0, '555555', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (11, '汤青松', 0, 0, 0, '555555', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 860400, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (12, 'Tony', 0, 0, 0, '', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 10000, '776070848@qq.com', 270774000, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (13, '汤青松', 0, 0, 0, NULL, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (14, '汤青松', 0, 0, 0, NULL, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (15, '汤青松', 0, 0, 0, NULL, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (16, '汤青松', 0, 0, 0, NULL, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (17, '汤青松', 0, 0, 0, NULL, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
+INSERT INTO `bbs_user_detail` VALUES (18, '汤青松', 0, 0, 0, NULL, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '13888888888', 888888, '776070848@qq.com', 0, '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png', '/resources/images/userhead/216bb6cc72448bfbf807912cc0719f4f.png');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

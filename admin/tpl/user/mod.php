@@ -18,7 +18,7 @@ if (!empty($_POST['username'])) {
     $QQ = $_POST['qq'];
     $email = $_POST['email'];
 
-    $data = upload($info, 'pic', '../resorce/images/userhead');
+    $data = upload($info, 'pic', '../resources/images/userhead');
     $pic = $data['newname'];
 
     //更新数据到USER表
@@ -38,9 +38,9 @@ if (!empty($_POST['username'])) {
     }
 
             if (!empty($pic)) {
-                $pic = suolue($pic, 200, 200, '../resorce/images/userhead/');
-                $picm = suolue($pic, 100, 100, '../resorce/images/userhead/');
-                $pics = suolue($pic, 48, 48, '../resorce/images/userhead/');
+                $pic = suolue($pic, 200, 200, '../resources/images/userhead/');
+                $picm = suolue($pic, 100, 100, '../resources/images/userhead/');
+                $pics = suolue($pic, 48, 48, '../resources/images/userhead/');
 
                 $sql = "update bbs_user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',pic='$pic',telphone='$telphone',qq='$QQ',email='$email',picm='$picm',pics='$pics' where uid=$id";
 

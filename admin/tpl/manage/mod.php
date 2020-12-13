@@ -8,10 +8,10 @@
 		exit;
 	}
 	
-	$data = upload($info,'WZ_LOGO','../resorce/images/web_logo');
+	$data = upload($info,'WZ_LOGO','../resources/images/web_logo');
 	$pic = $data['newname'];
 	
-	$pic = suolue($pic,129,66,'../resorce/images/userhead/');
+	$pic = suolue($pic,129,66,'../resources/images/userhead/');
 	$str="<?php\n";
 	
 	//echo $str;

@@ -68,13 +68,13 @@ class user
         require_once "../core/upload_func.php";
         require_once "../core/image_func.php";
         $user = $_SESSION['home']['username'];
-        $data = upload($info, 'pic', '/resorce/images/userhead');
+        $data = upload($info, 'pic', '/resources/images/userhead');
 
         $pic = $data['newname'];
         if (!empty($pic)) {
-            $newpic = suolue($pic, 200, 200, $ROOTPATH . '/resorce/images/userhead/');
-            $picm = suolue($pic, 100, 100, $ROOTPATH . '/resorce/images/userhead/');
-            $pics = suolue($pic, 48, 48, $ROOTPATH . '/resorce/images/userhead/');
+            $newpic = suolue($pic, 200, 200, $ROOTPATH . '/resources/images/userhead/');
+            $picm = suolue($pic, 100, 100, $ROOTPATH . '/resources/images/userhead/');
+            $pics = suolue($pic, 48, 48, $ROOTPATH . '/resources/images/userhead/');
             $sql = "update bbs_user_detail set pic='$newpic',picm='$picm',pics='$pics' where uid='" . $user['id'] . "'";
             $row = mysql_func($sql);
         }

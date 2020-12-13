@@ -13,9 +13,9 @@
 
 			
 		if(!empty($_FILES['pic']['name'])){
-			$data = upload($info,'pic','../resorce/images/fri');
+			$data = upload($info,'pic','../resources/images/fri');
 			$pic = $data['newname'];
-			$pic = suolue($pic,50,30,'../resorce/images/fri/');
+			$pic = suolue($pic,50,30,'../resources/images/fri/');
 			$sql = "insert into bbs_fri(title,desc1,url,pic) values('$title','$desc1','$url','$pic')";
 
 		}else{

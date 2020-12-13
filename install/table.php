@@ -70,13 +70,13 @@
 		  `sex` int(10) unsigned NOT NULL default '0',
 		  `edu` int(10) unsigned NOT NULL default '0',
 		  `signed` text,
-		  `pic` varchar(255) NOT NULL default '../../resorec/images/userhead/default.gif',
+		  `pic` varchar(255) NOT NULL default '../../resources/images/userhead/default.gif',
 		  `telphone` varchar(32) NOT NULL default '13888888888',
 		  `qq` int(10) unsigned NOT NULL default '888888',
 		  `email` varchar(255) NOT NULL default 'soupqingsong@foxmail.com',
 		  `brithday` int(10) unsigned NOT NULL default '0',
-		  `picm` varchar(255) NOT NULL default '../../resorec/images/userhead/defaultm.gif',
-		  `pics` varchar(255) NOT NULL default '../../resorec/images/userhead/defaults.gif'
+		  `picm` varchar(255) NOT NULL default '../../resources/images/userhead/defaultm.gif',
+		  `pics` varchar(255) NOT NULL default '../../resources/images/userhead/defaults.gif'
 		) ENGINE=MyISAM DEFAULT CHARSET=utf8;",
 		
 		"CREATE TABLE `bbs_iprefuse` (
