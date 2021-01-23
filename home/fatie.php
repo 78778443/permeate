@@ -11,7 +11,7 @@ if (isset($_POST['bk'])) {
     $title = $_POST['title'];
     $content = $_POST['content'];
     $ptime = $_SERVER['REQUEST_TIME'];
-    $username = $_SESSION['home']['username'];
+    $username = getCurrentUser();
     $pip = intval(ip2long($_SERVER['REMOTE_ADDR']));
 
     $sql = "select * from bbs_iprefuse";

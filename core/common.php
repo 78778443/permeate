@@ -44,7 +44,32 @@ function getAdminUid()
 
 function getAdminUser()
 {
-    return $_SESSION['admin']['username']['username'];
+    return $_SESSION['admin']['username'];
+}
+
+function unsetAdminUser()
+{
+    unset($_SESSION['admin']['username']);
+}
+
+function saveAdminUser($userInfo)
+{
+    $_SESSION['admin']['username'] = $userInfo;
+}
+
+function getCurrentUser()
+{
+    return $_SESSION['home']['username'];
+}
+
+function unsetUser()
+{
+    unset($_SESSION['home']['username']);
+}
+
+function saveCurrentUser($userInfo)
+{
+    $_SESSION['home']['username'] = $userInfo;
 }
 
 
@@ -183,7 +208,7 @@ function url($path = 'index/index', $param = [])
 function isLogin($module = 'home')
 {
     if ($module == 'home') {
-        $user = $_SESSION['home']['username'];
+        $user = getCurrentUser();
     } elseif ($module == 'admin') {
         $user = getAdminUser();
     }

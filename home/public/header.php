@@ -44,8 +44,8 @@ require_once "../conf/web_config.php";
             <div class="navbar-user">
                 <div class="d-flex">
                     <?php
-                    if (!empty($_SESSION['home']['username'])) {
-                        $username = $_SESSION['home']['username'];
+                    if (!empty(getCurrentUser())) {
+                        $username = getCurrentUser();
                         ?>
                         <div class="user-link">
                             <a href="/home/index.php?m=user&a=individual&id=<?php echo $username['id'] ?>">

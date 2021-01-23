@@ -28,7 +28,7 @@
 	
 	$oldpassword = md5($oldpassword);
 	$newpassword = md5($newpassword);
-	$user = $_SESSION['home']['username'];
+	$user = getCurrentUser();
 	
 	
 	$sql = "select * from bbs_user where password='$oldpassword' and id='".$user['id']."'";
@@ -49,7 +49,7 @@
 			exit;
 	}
 	
-	unset($_SESSION['home']['username']);
+	unsetUser();
 	setcookie(time()-1,'/');
 	echo "<script>alert('你的密码修改成功,请用新的密码登入.')</script>";
 			echo "<script>window.location.href='../index.php'</script>";

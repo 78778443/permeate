@@ -134,7 +134,7 @@ class tiezi
 
         $pid = getParam('id');
         $content = getParam('editorValue');
-        $username = $_SESSION['home']['username'];
+        $username = getCurrentUser();
         $ptime = $_SERVER['REQUEST_TIME'];
         $pip = intval(ip2long($_SERVER['REMOTE_ADDR']));
 

@@ -10,7 +10,7 @@ class user
     public function logout()
     {
         session_start();
-        unset($_SESSION['admin']['username']);
+        unsetAdminUser();
         setcookie('adminusername', '', time() - 1, '/');
         //session_destroy();
         header("location:../index.php");

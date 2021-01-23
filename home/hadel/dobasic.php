@@ -16,7 +16,7 @@
 	$qq = $_REQUEST['qq'];
 	$email = $_REQUEST['email'];
 
-	$user = $_SESSION['home']['username'];
+	$user = getCurrentUser();
 
 	
 	$sql = "update bbs_user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',brithday='$brithday',telphone='$telphone',qq='$qq',email='$email' where uid=".$user['id'];
@@ -43,7 +43,7 @@
 	$username = $row[0];
 	//执行登陆操作
 	//session的写入直接去给$_SESSION赋值
-	$_SESSION['home']['username'] = $username;
+saveCurrentUser($username);
 	//告诉浏览器将保存sessionid的cookie文件保存一个小时
 	setcookie(session_name(),session_id(),time()+3600,"/");
 	echo "<script>window.location.href='../index.php'</script>";

@@ -16,7 +16,7 @@ $content = getParam('content');
 
 
 $ptime = $_SERVER['REQUEST_TIME'];
-$username = empty($_SESSION['home']['username']) ? '' : $_SESSION['home']['username'];
+$username = empty(getCurrentUser()) ? '' : getCurrentUser();
 $pip = intval(ip2long($_SERVER['REMOTE_ADDR']));
 
 $sql = "SELECT * FROM bbs_iprefuse";

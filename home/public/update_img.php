@@ -5,7 +5,7 @@
 	include "../../core/mysql_func.php";
 	include "../../core/upload_func.php";
 	include "../../core/image_func.php";
-	$user = $_SESSION['home']['username'];
+	$user = getCurrentUser();
 
 	$data = upload($info,'pic','../../resources/images/userhead');
 	$pic = $data['newname'];	
@@ -32,7 +32,7 @@
 		}
 			//echo "执行到这粒了";
 		//session的写入直接去给$_SESSION赋值
-		$_SESSION['home']['username'] = $row[0];
+        saveCurrentUser($row[0]);
 		//告诉浏览器将保存sessionid的cookie文件保存一个小时
 		setcookie(session_name(),session_id(),time()+3600,"/");
 		

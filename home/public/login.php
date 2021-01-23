@@ -22,7 +22,7 @@
 				$username = $row[0];
 				//执行登陆操作
 					//session的写入直接去给$_SESSION赋值
-					$_SESSION['home']['username'] = $username;
+					saveCurrentUser($username);
 					$_SESSION['home']['last_ip'] = $_SERVER["REMOTE_ADDR"];
 					//告诉浏览器将保存sessionid的cookie文件保存一个小时
 					setcookie(session_name(),session_id(),time()+3600,"/");

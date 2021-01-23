@@ -20,7 +20,7 @@ class user
 
     public function logout()
     {
-        unset($_SESSION['home']['username']);
+        unsetUser();
         setcookie('adminusername', '', time() - 1, '/');
         session_destroy();
         header("location:../index.php");
@@ -28,7 +28,7 @@ class user
 
     public function individual()
     {
-        $user = $_SESSION['home']['username'];
+        $user = getCurrentUser();
         if (empty($user)) {
             echo "<script>window.location.href='/home/index.php?m=user&a=login'</script>";
             exit;
@@ -42,7 +42,7 @@ class user
     {
         $edu = $sex = [];
         require "../conf/dbconfig.php";
-        $user = $_SESSION['home']['username'];
+        $user = getCurrentUser();
         if (empty($user)) {
             echo "<script>window.location.href='/home/index.php?m=user&a=login'</script>";
             exit;
@@ -54,7 +54,7 @@ class user
 
     public function safe()
     {
-        $data = ['user' => $_SESSION['home']['username']];
+        $data = ['user' => getCurrentUser()];
 
         displayTpl('user/safe', $data);
     }
@@ -67,7 +67,7 @@ class user
         $ROOTPATH = $_SERVER['DOCUMENT_ROOT'];
         require_once "../core/upload_func.php";
         require_once "../core/image_func.php";
-        $user = $_SESSION['home']['username'];
+        $user = getCurrentUser();
         $data = upload($info, 'pic', '/resources/images/userhead');
 
         $pic = $data['newname'];
@@ -94,7 +94,7 @@ class user
         }
 
         //session的写入直接去给$_SESSION赋值
-        $_SESSION['home']['username'] = $row[0];
+        saveCurrentUser($row[0]);
         //告诉浏览器将保存sessionid的cookie文件保存一个小时
         setcookie(session_name(), session_id(), time() + 3600, "/");
 
@@ -140,7 +140,7 @@ class user
         $username = $row[0];
         //执行登陆操作
         //session的写入直接去给$_SESSION赋值
-        $_SESSION['home']['username'] = $username;
+        saveCurrentUser($username);
         //告诉浏览器将保存sessionid的cookie文件保存一个小时
         setcookie(session_name(), session_id(), time() + 3600, "/");
 
@@ -191,7 +191,7 @@ class user
             exit;
         }
 
-        unset($_SESSION['home']['username']);
+        unsetUser();
         setcookie(time() - 1, '/');
         echo "<script>alert('你的密码修改成功,请用新的密码登入.')</script>";
         echo "<script>window.location.href='/'</script>";
@@ -200,7 +200,8 @@ class user
 
     public function info()
     {
-        $id = !empty($_GET['id']) ? $_GET['id'] : $_SESSION['home']['username']['id'];
+        $userInfo = getCurrentUser();
+        $id = !empty($_GET['id']) ? $_GET['id'] : $userInfo['id'];
         if (!$id)
             exit ("参数错误！");
         $sql = "select * from bbs_user_detail where uid = {$id}";
@@ -286,7 +287,7 @@ class user
             $user = $userList[0];
         }
         if (empty($user)) {
-            $user = $_SESSION['home']['username'];
+            $user = getCurrentUser();
         }
 
 
