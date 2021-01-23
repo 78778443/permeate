@@ -75,7 +75,7 @@ $_SESSION['fatie'] = $rand_a;
 
 <?php
 //引用函数库mysql_function.php
-include "public/header.php";
+require_once "public/header.php";
 ?>
 
 <section class="section">
@@ -108,7 +108,7 @@ include "public/header.php";
 </section>
 
 <?php //引用函数库mysql_function.php
-include "public/footer.php";
+require_once "public/footer.php";
 ?>
 <script type="text/javascript" charset="utf-8" src="../public/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="../public/ueditor/ueditor.all.js"></script>

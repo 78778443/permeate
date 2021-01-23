@@ -3,8 +3,9 @@
 	header('content-type:text/html;charset=utf-8');
 	//开启session
 	session_start();
-	include "../../conf/dbconfig.php";
-	include "../../core/mysql_func.php";
+	require_once "../../conf/dbconfig.php";
+	require_once "../../core/mysql_func.php";
+	require_once "../../core/common.php";
 
 	$oldpassword = $_REQUEST['oldpassword'];
 	$newpassword = $_REQUEST['newpassword'];

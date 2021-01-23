@@ -1,6 +1,6 @@
 <?php
-include "../core/upload_func.php";
-include "../core/image_func.php";
+require_once "../core/upload_func.php";
+require_once "../core/image_func.php";
 ?>
 <?php
 $id = $_GET['id'];
@@ -63,7 +63,7 @@ if (!empty($_POST['username'])) {
 }
 
 //POST不存在，将查询表中数据
-$sql = "select u.*,d.* from bbs_user as u,bbs_user_detail as d where uid=id and id='$id'";
+$sql = "select u.*,d.* from bbs_user as u,bbs_user_detail as d where d.uid=u.id and id='$id'";
 $row = mysql_func($sql);
 $user = $row[0];
 ?>

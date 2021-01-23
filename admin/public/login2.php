@@ -11,7 +11,7 @@
 	$password = $_POST['password'];
 	$password = md5($password);
 	
-	$sql = "select u.*,d.* from bbs_user as u,bbs_user_detail as d where u.username='$username' and u.password='$password' and u.admins='1'";
+	$sql = "select u.*,d.* from bbs_user as u,bbs_user_detail as d where  d.uid = u.id and  u.username='$username' and u.password='$password' and u.admins='1'";
 //	echo $sql;
 	//exit;
 	//$sql = "select * from bbs_user as u where username='$username' and password='$password' and admin='1'";

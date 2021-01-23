@@ -5,8 +5,9 @@ header('cache-control:no-cache');
 session_start();//开启session
 $referer = $_SERVER['HTTP_REFERER'];
 //引用函数库mysql_function.php
-include "../../conf/dbconfig.php";
-include "../../core/mysql_func.php";
+require_once "../../conf/dbconfig.php";
+require_once "../../core/mysql_func.php";
+require_once "../../core/common.php";
 
 
 //if (!isset ($_SESSION['yzm'])) {
@@ -94,7 +95,16 @@ if (!$id === 0) {
     exit();
 }
 //自动登录
-$_SESSION['username'] = $username;
+
+$sql = "select u.*,d.* from bbs_user as u, bbs_user_detail as d where d.uid=u.id and u.username='$username'";
+//echo $sql;
+//exit;
+$row = mysql_func($sql);
+$username = $row[0];
+//执行登陆操作
+//session的写入直接去给$_SESSION赋值
+saveCurrentUser($username);
+
 setcookie();
 //跳转
 echo "<script>alert('注册成功！')</script>";

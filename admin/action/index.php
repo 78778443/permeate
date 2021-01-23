@@ -8,7 +8,7 @@ class index
 
     public function index()
     {
-        include "./public/right.php";
+        require_once "./public/right.php";
     }
 }
 

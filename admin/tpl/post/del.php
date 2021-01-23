@@ -1,5 +1,5 @@
 <?php
-	include '../core/del_func.php';
+	require_once '../core/del_func.php';
 	
 	$id = @$_REQUEST['id'];
 	$zd = @$_REQUEST['zd'];

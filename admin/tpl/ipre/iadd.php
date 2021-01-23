@@ -1,9 +1,9 @@
 <?php
-	include ".��/public/demon.php";
+	require_once ".��/public/demon.php";
 
 
-	include "../../core/upload_func.php";
-	include "../../core/image_func.php";
+	require_once "../../core/upload_func.php";
+	require_once "../../core/image_func.php";
 ?>
 <?php
 

@@ -6,7 +6,7 @@
             </div>
             <div class="paper-body" style="min-height: 500px;">
                 <div class="row">
-                    <?php include __DIR__ . "/left_menu.php";?>
+                    <?php require_once __DIR__ . "/left_menu.php";?>
                     <div class="col-lg-10 pt-3">
                         <div class="upload">
                             <div class="d-table-cell">

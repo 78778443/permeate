@@ -1,6 +1,6 @@
 <?php
-	include "../core/upload_func.php";
-	include "../core/image_func.php";
+	require_once "../core/upload_func.php";
+	require_once "../core/image_func.php";
 	
 	if(empty($_FILES['WZ_LOGO']['name'])){
 		echo "<script>alert('你没有选择图片')</script>";

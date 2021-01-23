@@ -8,9 +8,9 @@ if (empty(getAdminUser())) {
 }
 
 
-include "public/header.php";
-include "public/left.php";
-//include "public/right.php";
+require_once "public/header.php";
+require_once "public/left.php";
+//require_once "public/right.php";
 includeAction($model,$action);
-include "public/footer.php";
+require_once "public/footer.php";
 ?>

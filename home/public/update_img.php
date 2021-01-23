@@ -1,10 +1,11 @@
 <?php 
 	//开启session
 	session_start();
-	include "../../conf/dbconfig.php";
-	include "../../core/mysql_func.php";
-	include "../../core/upload_func.php";
-	include "../../core/image_func.php";
+	require_once "../../conf/dbconfig.php";
+	require_once "../../core/mysql_func.php";
+	require_once "../../core/upload_func.php";
+	require_once "../../core/image_func.php";
+	require_once "../../core/common.php";
 	$user = getCurrentUser();
 
 	$data = upload($info,'pic','../../resources/images/userhead');

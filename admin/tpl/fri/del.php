@@ -1,8 +1,8 @@
 <?php
-	include "../demon.php";
+	require_once "../demon.php";
 
 
-	include "../../core/del_func.php";
+	require_once "../../core/del_func.php";
 
 
 	if(empty($_SERVER['HTTP_REFERER'])){

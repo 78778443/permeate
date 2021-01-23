@@ -12,9 +12,9 @@ if (empty($bk)) {
 <?php
 
 session_start();
-include "../conf/dbconfig.php";
-include "../core/mysql_func.php";
-include "public/header.php";
+require_once "../conf/dbconfig.php";
+require_once "../core/mysql_func.php";
+require_once "public/header.php";
 ?>
     <link rel="stylesheet" type="text/css" href="./resource/styles/post.css"/>
     <div class="fatie">
@@ -131,5 +131,5 @@ echo "
 ?>
     <!--内容end-->
 <?php
-include "public/footer.php";
+require_once "public/footer.php";
 ?>

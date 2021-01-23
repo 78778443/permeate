@@ -1,6 +1,7 @@
 <?php
 require_once "../conf/dbconfig.php";
 require_once "../conf/web_config.php";
+require_once __DIR__."/../../core/common.php";
 ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -54,7 +55,9 @@ require_once "../conf/web_config.php";
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="<?= url('user/individual',['uid'=>$username['id']]) ?>">个人资料</a>
+                                <?php if($username['admins']) {?>
                                 <a class="dropdown-item" href="../admin/index.php">后台管理</a>
+                                <?php } ?>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="./index.php?m=user&a=logout">登出</a>
                             </div>

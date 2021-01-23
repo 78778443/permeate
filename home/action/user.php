@@ -128,7 +128,7 @@ class user
 
         echo "<script>alert('修改成功！')</script>";
 
-        $sql = "SELECT u.*,p.* FROM bbs_user AS u,bbs_user_detail AS p WHERE u.id=" . $user['id'];
+        $sql = "SELECT u.*,p.* FROM bbs_user AS u,bbs_user_detail AS p WHERE p.uid = u.id and u.id=" . $user['id'];
 
         $row = mysql_func($sql);
 

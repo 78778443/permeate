@@ -1,5 +1,5 @@
 <?php
-include "../core/common.php";
+require_once "../core/common.php";
 
 if (!isset($_GET['bk'])) {
     exit ("参数错误！");

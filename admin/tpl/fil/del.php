@@ -1,9 +1,9 @@
 <?php
 	header("content-type:text/html;charset=utf-8");
-	include "../public/demon.php";
+	require_once "../public/demon.php";
 
 
-	include "../../core/del_func.php";
+	require_once "../../core/del_func.php";
 	if(empty($_SERVER['HTTP_REFERER'])){
 		exit('非法请求！');
 	}

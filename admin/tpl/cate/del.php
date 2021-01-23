@@ -1,5 +1,5 @@
 <?php
-	include "../core/del_func.php";
+	require_once "../core/del_func.php";
 	//判断分区下是否有贴子，有帖子将不允许删除
 	$id = $_GET['id'];
 	$sql = "select * from bbs_post where cid='$id'";

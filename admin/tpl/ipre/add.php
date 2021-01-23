@@ -1,6 +1,6 @@
 <?php
-	include "../core/upload_func.php";
-	include "../core/image_func.php";
+	require_once "../core/upload_func.php";
+	require_once "../core/image_func.php";
 
 	if(!empty($_POST['ipmin'])){
 		$ipmin = ip2long($_POST['ipmin']);
