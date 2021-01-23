@@ -7,6 +7,15 @@ class user
 
     }
 
+    public function logout()
+    {
+        session_start();
+        unset($_SESSION['admin']['username']);
+        setcookie('adminusername', '', time() - 1, '/');
+        //session_destroy();
+        header("location:../index.php");
+    }
+
     public function lists()
     {
         $keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
@@ -40,12 +49,12 @@ class user
         //准备SQL语句
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
         $sql = "select u.id,u.username,u.admins,u.rtime,u.rip,d.qq,d.sex,d.age,d.email from bbs_user as u left join bbs_user_detail as d on u.id=d.uid" . $where . $limit;
-        
+
         $row = mysql_func($sql);
-        $data['admins'] = array('普通会员','管理员');
-        $data['sex'] = array('保密','男','女');
+        $data['admins'] = array('普通会员', '管理员');
+        $data['sex'] = array('保密', '男', '女');
         $data['list'] = $row;
-        displayTpl('user/lists',$data);
+        displayTpl('user/lists', $data);
     }
 
     public function add()
