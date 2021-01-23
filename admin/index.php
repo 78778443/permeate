@@ -1,7 +1,7 @@
 <?php
 require_once '../core/common.php';
 require_once "./public/demon.php";
-if (empty($_SESSION['admin']['username'])) {
+if (empty(getAdminUser())) {
     echo "<script>alert('请先登录！')</script>";
     echo "<script>window.location.href='./public/login.php'</script>";
     exit;

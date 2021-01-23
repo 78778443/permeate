@@ -64,7 +64,7 @@ class reply
             $content = @$_POST['content'];
             $ptime = @$_SERVER['REQUEST_TIME'];
             $pip = ip2long($_SERVER['REMOTE_ADDR']);
-            $uid = $_SESSION['admin']['username']['id'];
+            $uid = getAdminUid();
             $sql = "insert into bbs_reply(pid,content,uid,ptime,pip) values('$pid','$content',$uid,'$ptime','$pip')";
             $row = mysql_func($sql);
             if (!$row) {

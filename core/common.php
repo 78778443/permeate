@@ -36,6 +36,17 @@ function displayTpl($tplPath, $data = [])
     require_once "./public/footer.php";
 }
 
+function getAdminUid()
+{
+    $user = getAdminUser();
+    return $user['id'];
+}
+
+function getAdminUser()
+{
+    return $_SESSION['admin']['username']['username'];
+}
+
 
 /**
  * 加载类文件
@@ -174,7 +185,7 @@ function isLogin($module = 'home')
     if ($module == 'home') {
         $user = $_SESSION['home']['username'];
     } elseif ($module == 'admin') {
-        $user = $_SESSION['admin']['username'];
+        $user = getAdminUser();
     }
     if (empty($user)) {
         echo "<script>window.location.href='/home/index.php?m=user&a=login'</script>";
@@ -184,6 +195,7 @@ function isLogin($module = 'home')
     }
 }
 
-function isGuanzhu() {
+function isGuanzhu()
+{
 
 }

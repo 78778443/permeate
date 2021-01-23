@@ -17,7 +17,7 @@ if (isset($_POST['username'])) {
 
     //执行登陆操作
     //session的写入直接去给$_SESSION赋值
-    $_SESSION['admin']['username'] = $row[0];
+    $_SESSION['admin']['username']['username'] = $row[0];
 
 
     //告诉浏览器将保存sessionid的cookie文件保存一个小时
@@ -36,6 +36,7 @@ if (isset($_POST['username'])) {
             margin-top: 120px;
             text-align: center;
         }
+
         #login {
             margin-top: 32px;
             width: 420px;
@@ -78,14 +79,17 @@ if (isset($_POST['username'])) {
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" class="btn" value="立即登录"/><input type="reset" class="btn" value="重新填写"/></td>
+            <td><input type="submit" class="btn" value="立即登录"/>
+                <input type="reset" class="btn" value="重新填写"/>
+            </td>
         </tr>
     </table>
-    </div>
-    <div id="btm">
-        <div id="btm_left"></div>
-        <div id="btm_mid"></div>
-        <div id="btm_right"></div>
-    </div>
-    </div>
+</form>
+</div>
+<div id="btm">
+    <div id="btm_left"></div>
+    <div id="btm_mid"></div>
+    <div id="btm_right"></div>
+</div>
+</div>
 </body>

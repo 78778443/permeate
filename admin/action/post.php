@@ -43,7 +43,7 @@ class post
             $cid = $_POST['cid'];
             $ptime = $_SERVER['REQUEST_TIME'];
             $pip = ip2long($_SERVER['REMOTE_ADDR']);
-            $uid = $_SESSION['admin']['username']['id'];
+            $uid = getAdminUid();
 
             $sql = "insert into bbs_post(title,content,cid,ptime,uid,pip) values('$title','$content','$cid','$ptime','$uid','$pip')";
 
