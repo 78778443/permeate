@@ -20,7 +20,7 @@
 	
 	if(!$row){
 		echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-		echo "<script>window.location.href='../individual.php'<script/>";
+		echo "<script>window.location.href='/home/index.php?m=user&a=individual'<script/>";
 		exit;
 	}
 		$sql = "select u.*,d.* from bbs_user as u,bbs_user_detail as d where d.uid=u.id and u.username='".$user['username']."' and u.password='".$user['password']."'";
@@ -28,7 +28,7 @@
 		$row = mysql_func($sql);
 		//var_dump($row);
 		if(!$row){
-			echo "<script>window.location.href='../individual.php'<script/>";
+			echo "<script>window.location.href='/home/index.php?m=user&a=individual'<script/>";
 			exit;
 		}
 			//echo "执行到这粒了";
@@ -37,7 +37,7 @@
 		//告诉浏览器将保存sessionid的cookie文件保存一个小时
 		setcookie(session_name(),session_id(),time()+3600,"/");
 		
-		echo "<script>window.location.href='../individual.php'</script>";
+		echo "<script>window.location.href='/home/index.php?m=user&a=individual'</script>";
 
 	exit;
 ?>

@@ -81,7 +81,7 @@ class user
 
         if (!$row) {
             echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-            echo "<script>window.location.href='../individual.php'</script>";
+            echo "<script>window.location.href='/home/index.php?m=user&a=individual'</script>";
             exit;
         }
         $sql = "SELECT u.*,d.* FROM bbs_user AS u,bbs_user_detail AS d WHERE d.uid=u.id AND u.username='" . $user['username'] . "' AND u.password='" . $user['password'] . "'";
@@ -89,7 +89,7 @@ class user
         $row = mysql_func($sql);
         //var_dump($row);
         if (!$row) {
-            echo "<script>window.location.href='../individual.php'</script>";
+            echo "<script>window.location.href='/home/index.php?m=user&a=individual'</script>";
             exit;
         }
 
