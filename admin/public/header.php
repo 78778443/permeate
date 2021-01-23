@@ -32,7 +32,7 @@
         <div class="my-lg-0">
             <div class="navbar-user">
                 <div class="d-flex">
-                <a class="dropdown-item" href="./index.php?m=user&a=logout">登出</a>
+                <a class="dropdown-item" target="_parent" href="./index.php?m=user&a=logout">登出</a>
                 </div>
             </div>
         </div>
