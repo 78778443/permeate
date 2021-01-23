@@ -1,3 +1,5 @@
 /.idea
 /conf/dbconfig.php
 /resources/images/
+/install/install.lock
+/conf/dbconfig_bak.php

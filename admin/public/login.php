@@ -5,13 +5,20 @@ if (isset($_POST['username'])) {
 
     $password = $_POST['password'];
     $password = md5($password);
+    $yzm = $_POST['yzm'];
+
+    if ($_SESSION['yzm'] != $yzm) {
+        echo "<script>alert('验证码错误！')</script>";
+        echo "<script>window.location.href='/admin/public/login.php'</script>";
+        exit;
+    }
 
     $sql = "select u.*,d.* from bbs_user as u,bbs_user_detail as d where  d.uid = u.id and  u.username='$username' and u.password='$password' and u.admins='1'";
 
     $row = mysql_func($sql);
     if (!$row) {
         echo "<script>alert('用户不存在！')</script>";
-        echo "<script>window.lockjation.href='login.php'</script>";
+        echo "<script>window.location.href='/admin/public/login.php'</script>";
         exit;
     }
 
@@ -30,7 +37,7 @@ if (isset($_POST['username'])) {
 ?>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>无标题文档</title>
+    <title>Permeate 后台登录</title>
     <style type="text/css">
         body {
             margin-top: 120px;
@@ -44,7 +51,10 @@ if (isset($_POST['username'])) {
             margin-right: auto;
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="../public/Bootstrap2/bootstrap.css">
+    <link href="/home/resource/dist/bootstrap.css" rel="stylesheet">
+    <link href="/home/resource/dist/style.css" rel="stylesheet">
+    <!--    <link rel="stylesheet" href="/home/resource/fonts/css/fontawesome-all.min.css">-->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" language="javascript">
         function reset_form() {
             document.getElementById('username').value = '';
@@ -56,40 +66,47 @@ if (isset($_POST['username'])) {
 </head>
 
 <body>
+<H1 class="text-center" style="margin: 50px ">轻松渗透测试系统-后台管理</H1>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-5">
+        <form class="form-horizontal" action="login.php" method="post" id="login_form">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
+                <div class="col-sm-10">
+                    <input type="text" name="username" id="username" class="form-control" placeholder="用户名">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">密码：</label>
+                <div class="col-sm-10">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">
+                    验证码：
+                    <img id="yzm-img" src="/core/yzm_func.php?=<?php echo rand(1000, 3000) ?>">
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" name="yzm" class="form-control" placeholder="密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">点击登录</button>
+                    <input type="reset" class="btn btn-warning" value="重新填写"/>
+                </div>
+            </div>
 
-<form action="login.php" method="post" id="login_form">
-    <table class="table" id="login">
-
-        <span class="label label-info">轻松渗透测试系统后后台管理</span>
-        <tr>
-            <td>用户名：</td>
-            <td><input type="text" name="username" id="username" size="32"/></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>密　码：</td>
-            <td><input type="password" name="password" id="password" size="32"/></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" class="btn" value="立即登录"/>
-                <input type="reset" class="btn" value="重新填写"/>
-            </td>
-        </tr>
-    </table>
-</form>
-</div>
-<div id="btm">
-    <div id="btm_left"></div>
-    <div id="btm_mid"></div>
-    <div id="btm_right"></div>
-</div>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
 </div>
 </body>
+<script>
+
+    $("#yzm-img").click(function () {
+        $(this)[0].src = '/core/yzm_func.php?=?' + Math.random()
+    })
+</script>

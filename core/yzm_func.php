@@ -1,6 +1,6 @@
 <?php
 session_start();//开启session
-function yzm($width = 100, $height = 30, $type = 1, $length = 4)
+function yzm($width = 200, $height = 60, $type = 1, $length = 4)
 {
 
     //1.创建画布
@@ -41,7 +41,7 @@ function yzm($width = 100, $height = 30, $type = 1, $length = 4)
     $_SESSION['yzm'] = $str;
     //c.写字符串
     for ($i = 0; $i < $length; $i++) {
-        imagettftext($img, 18, mt_rand(-30, 30), $i * ($width / $length), mt_rand(15, $height - 15), $scolor, 'C:/Windows/Fonts/arial.TTF', $str[$i]);
+        imagettftext($img, $width / 5, mt_rand(-5, 5), 15 + $i * ($width / $length), mt_rand($height - 5, $height + 5) - 15, $scolor, __DIR__ . '/../static/font/arial.ttf', $str[$i]);
     }
 
     //d.加干扰素
@@ -49,7 +49,7 @@ function yzm($width = 100, $height = 30, $type = 1, $length = 4)
         imagesetpixel($img, mt_rand(0, $width), mt_rand(0, $height), $scolor);
     }
     for ($i = 0; $i < 5; $i++) {
-        imageline($img, mt_rand(0, $width), mt_rand(0, $height), mt_rand(0, $width), mt_rand(0, $height), $scolor);
+//        imageline($img, mt_rand(0, $width), mt_rand(0, $height), mt_rand(0, $width), mt_rand(0, $height), $scolor);
     }
 
     //4.定义header头

@@ -11,6 +11,6 @@ if (empty(getAdminUser())) {
 require_once "public/header.php";
 require_once "public/left.php";
 //require_once "public/right.php";
-includeAction($model,$action);
+includeAction($model, $action);
 require_once "public/footer.php";
 ?>
