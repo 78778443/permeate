@@ -17,13 +17,13 @@
 包含密码找回、验证码等逻辑型漏洞
 包含git/备份之类文件泄漏
 包含图片附件类目录php执行权限
-包含webshell上传漏洞
+包含webShell上传漏洞
 
 ## 三、推荐安装:
 
 很多人在安装环境出现问题，因此我提供了两种安装方式，docker安装和传统安装，最简单的是用docker安装，具体安装方法如下
 
-### 3.1 Dodcker安装
+### 3.1 Docker安装
 
 permeate支持采用docker安装，这样安装起来更加简洁，安装教程文档如下
 
@@ -33,11 +33,11 @@ https://segmentfault.com/a/1190000017151621
 
 ### 3.2 传统安装：
 
-项目在lamp环境下开发,建议在wampserver下安装,安装主要有两个要点，首先是添加一个虚拟主机，然后修改hosts文件
+项目在lamp环境下开发,建议在WampServer下安装,安装主要有两个要点，首先是添加一个虚拟主机，然后修改hosts文件
 
 
 #### 增加虚拟主机
-首先来看增加虚拟主机的方法，假设安装路径为: E:\www\permeate，在httpd.conf的最后位置添加
+首先来看增加虚拟主机的方法，假设安装路径为: E:\www\permeate，在`httpd.conf`的最后位置添加
 
 ```
 <VirtualHost *:80>
@@ -51,7 +51,7 @@ ServerName permeate.localhost
 </VirtualHost>
 ```
 
-在修改并保存之后，还需要重启wampserver，让配置文件生效。
+在修改并保存之后，还需要重启WampServer，让配置文件生效。
 
 
 #### 修改hosts文件
@@ -100,7 +100,7 @@ permeate系统提供在线安装功能，但很多人会报错，因此这里的
     <td>QQ交流群</td><td>832677177</td>
   </tr>
   <tr>
-    <td>Copyright</td><td>Copyright (c) 2017- daxia</td>
+    <td>Copyright</td><td>Copyright (c) 2017-2021 DaXia</td>
   </tr>
   <tr>
     <td>License</td><td>MIT License</td>
