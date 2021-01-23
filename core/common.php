@@ -45,7 +45,7 @@ function getAdminUid()
 function getAdminUser()
 {
     return getCurrentUser();
-//    return $_SESSION['admin']['username'];
+//    return $_SESSION['admin']['username'] ?? [];
 }
 
 function unsetAdminUser()
@@ -62,7 +62,7 @@ function saveAdminUser($userInfo)
 
 function getCurrentUser()
 {
-    return $_SESSION['home']['username'];
+    return $_SESSION['home']['username'] ?? [];
 }
 
 function unsetUser()

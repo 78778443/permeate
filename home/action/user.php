@@ -75,7 +75,7 @@ class user
             $newpic = suolue($pic, 200, 200, $ROOTPATH . '/resources/images/userhead/');
             $picm = suolue($pic, 100, 100, $ROOTPATH . '/resources/images/userhead/');
             $pics = suolue($pic, 48, 48, $ROOTPATH . '/resources/images/userhead/');
-            $sql = "update bbs_user_detail set pic='$newpic',picm='$picm',pics='$pics' where uid='" . $user['id'] . "'";
+            $sql = "update bbs_user_detail set pic='$newpic',picm='$picm',pics='$pics' where uid='{$user['id']}'";
             $row = mysql_func($sql);
         }
 
