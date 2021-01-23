@@ -83,12 +83,12 @@ permeate系统提供在线安装功能，但很多人会报错，因此这里的
         
 ###  3.3 运行效果
 
-![sec](http://tuchuang.songboy.net/permeate/index.png?v=1)
+![sec](http://tuchuang.songboy.site/permeate/index.png?v=1)
 
 ### 四、后期维护：
 
 考虑到目前的逻辑漏洞还不是太多，之后会继续添加更多功能，更新后会同步到GitHub，同时欢迎搭建加入qq群进行交流
-![sec](http://tuchuang.songboy.net/permeate.jpg)
+![sec](http://tuchuang.songboy.site/permeate.jpg)
 
 ## Copyright
 
