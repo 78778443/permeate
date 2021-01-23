@@ -44,17 +44,20 @@ function getAdminUid()
 
 function getAdminUser()
 {
-    return $_SESSION['admin']['username'];
+    return getCurrentUser();
+//    return $_SESSION['admin']['username'];
 }
 
 function unsetAdminUser()
 {
-    unset($_SESSION['admin']['username']);
+    unsetUser();
+//    unset($_SESSION['admin']['username']);
 }
 
 function saveAdminUser($userInfo)
 {
-    $_SESSION['admin']['username'] = $userInfo;
+    saveCurrentUser($userInfo);
+//    $_SESSION['admin']['username'] = $userInfo;
 }
 
 function getCurrentUser()
