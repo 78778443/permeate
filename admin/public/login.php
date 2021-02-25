@@ -54,7 +54,7 @@ if (isset($_POST['username'])) {
     <link href="/home/resource/dist/bootstrap.css" rel="stylesheet">
     <link href="/home/resource/dist/style.css" rel="stylesheet">
     <!--    <link rel="stylesheet" href="/home/resource/fonts/css/fontawesome-all.min.css">-->
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/static/dist/js/jquery.min.js"></script>
     <script type="text/javascript" language="javascript">
         function reset_form() {
             document.getElementById('username').value = '';

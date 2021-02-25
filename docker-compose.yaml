@@ -1,0 +1,18 @@
+version: "3"
+services:
+  mysqlserver:
+    image: mysql:5.6
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    ports:
+      - "3309:3306"
+  permeate:
+    image: daxia/websafe:v1.0
+    ports:
+      - "8888:80"
+    links:
+      - "mysqlserver:db"
+
+#  docker run --name mysqlserver -e MYSQL_ROOT_PASSWORD=123 -d -i -p 3309:3306 mysql:5.6
+#  docker run --name permeate_test --link mysqlserver:db -d -i -p 8888:80 daxia/websafe:latest
+#  docker exec permeate_test zsh -c "php /root/start.php"
