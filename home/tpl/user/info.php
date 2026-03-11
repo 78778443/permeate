@@ -22,7 +22,7 @@
                     <img class="mr-3" src="<?= $strUserInfo['pic'] ?>" alt="头像" style="width: 88px;height: 88px;border-radius: .25rem;">
                 </span>
                 <div class="media-body">
-                    <h5 class="mt-0">汤青松</h5>
+                    <h5 class="mt-0"><?php echo $strUserInfo['t_name']; ?></h5>
                     <p>
                         <a href="index.php?m=user&a=info&id=<?php echo $strUserInfo['uid']; ?>" class="xg1">
                             <?php echo $_SERVER['SERVER_NAME'] . '/index.php/?m=user&a=info&id=' . $strUserInfo['uid']; ?>

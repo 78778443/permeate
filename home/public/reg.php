@@ -89,7 +89,7 @@ if (!$id) {
 $sql = "insert into bbs_user_detail(uid,email) values('$id','$email')";
 $id = mysql_func($sql);
 //判断是否写入成功
-if (!$id === 0) {
+if ($id === false) {
     echo "<script>alert('数据库错误：数据库写入邮件失败！')</script>";
     echo "<script>window.location.href='{$referer}'</script>";
     exit();
@@ -105,7 +105,8 @@ $username = $row[0];
 //session的写入直接去给$_SESSION赋值
 saveCurrentUser($username);
 
-setcookie();
+//告诉浏览器将保存sessionid的cookie文件保存一个小时
+setcookie(session_name(), session_id(), time() + 3600, "/");
 //跳转
 echo "<script>alert('注册成功！')</script>";
 echo "<script>window.location.href='../index.php'</script>";

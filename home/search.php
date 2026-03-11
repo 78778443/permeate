@@ -2,10 +2,11 @@
 include "public/header.php";
 include "../core/common.php";
 
-$keywords = $_REQUEST['keywords'];
+$keywords = isset($_REQUEST['keywords']) ? $_REQUEST['keywords'] : '';
+$keywords_html = htmlspecialchars($keywords, ENT_QUOTES, 'UTF-8');
 if (!empty($keywords)) {
     $where = " where title like '%$keywords%' ";
-    $link = "&keywords=" . $keywords;
+    $link = "&keywords=" . urlencode($keywords);
 } else {
     $where = "";
     $link = "";
@@ -16,15 +17,15 @@ if (!empty($keywords)) {
 $page_size = 4;
 
 //获取当前页码
-$page_num = empty($_GET['page']) ? 1 : $_GET['page'];
+$page_num = empty($_GET['page']) ? 1 : (int)$_GET['page'];
 
 //计算记录总数
 $sql = "SELECT count(*) AS c FROM bbs_post " . $where;
 $row = mysql_func($sql);
-$count = $row[0]['c'];
+$count = isset($row[0]['c']) ? $row[0]['c'] : 0;
 
 //计算记录总页数
-$page_count = ceil($count / $page_size);
+$page_count = $count > 0 ? ceil($count / $page_size) : 1;
 //防止越界
 
 if ($page_num >= $page_count) {
@@ -44,17 +45,17 @@ $row = mysql_func($sql);
 
     <div class="container">
     <div class="paper">
-        <div class="main">以下是为您找到的符合 "<?php echo $keywords ?>" 的所有内容！</div>
+        <div class="main">以下是为您找到的符合 "<?php echo $keywords_html ?>" 的所有内容！</div>
         <ul class="list-unstyled">
 
             <?php
             foreach ($row as $post) {
 
                 //搜索关键字高亮设置
-                $pattern = "/$keywords/";
+                $pattern = "/" . preg_quote($keywords, '/') . "/";
 
-                $title = preg_replace($pattern, "<em style='color:red;'>" . $keywords . "</em>", $post['title']);
-                $content = preg_replace($pattern, "<em style='color:red;'>" . $keywords . "</em>", $post['content']);
+                $title = preg_replace($pattern, "<em style='color:red;'>" . $keywords_html . "</em>", htmlspecialchars($post['title']));
+                $content = preg_replace($pattern, "<em style='color:red;'>" . $keywords_html . "</em>", htmlspecialchars($post['content']));
                 ?>
 
                 <li class="media" style="padding-top: 20px;border-bottom: 1px solid #ddd;">

@@ -63,8 +63,10 @@ CREATE TABLE `bbs_home_follow` (
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0:正常 1:特殊关注 -1:不能再关注此人',
   `mutual` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0:单向 1:已互相关注',
   `uptiem` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `idx_uid` (`uid`),
+  KEY `idx_followuid` (`followuid`)
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bbs_home_follow
@@ -317,18 +319,18 @@ COMMIT;
 DROP TABLE IF EXISTS `bbs_user_detail`;
 CREATE TABLE `bbs_user_detail` (
   `uid` int(10) unsigned NOT NULL DEFAULT '0',
-  `t_name` varchar(32) DEFAULT '汤青松',
+  `t_name` varchar(32) DEFAULT '',
   `age` int(10) unsigned NOT NULL DEFAULT '0',
   `sex` int(10) unsigned NOT NULL DEFAULT '0',
   `edu` int(10) unsigned NOT NULL DEFAULT '0',
   `signed` text,
-  `pic` varchar(255) NOT NULL DEFAULT '../../resources/images/userhead/default.gif',
-  `telphone` varchar(32) NOT NULL DEFAULT '13888888888',
-  `qq` int(10) unsigned NOT NULL DEFAULT '888888',
-  `email` varchar(255) NOT NULL DEFAULT 'soupqingsong@foxmail.com',
+  `pic` varchar(255) NOT NULL DEFAULT '/resources/images/userhead/default.gif',
+  `telphone` varchar(32) NOT NULL DEFAULT '',
+  `qq` int(10) unsigned NOT NULL DEFAULT '0',
+  `email` varchar(255) NOT NULL DEFAULT '',
   `brithday` int(10) unsigned NOT NULL DEFAULT '0',
-  `picm` varchar(255) NOT NULL DEFAULT '../../resources/images/userhead/defaultm.gif',
-  `pics` varchar(255) NOT NULL DEFAULT '../../resources/images/userhead/defaults.gif',
+  `picm` varchar(255) NOT NULL DEFAULT '/resources/images/userhead/defaultm.gif',
+  `pics` varchar(255) NOT NULL DEFAULT '/resources/images/userhead/defaults.gif',
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

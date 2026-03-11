@@ -36,7 +36,7 @@ function mysql_func($sql)
             }
             break;
         //删除和修改返回 受影响的记录条数
-        case 'craate':
+        case 'create':
         case 'CREATE':
         case 'delete':
         case 'DELETE':

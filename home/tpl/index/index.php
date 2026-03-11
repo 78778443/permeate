@@ -4,53 +4,74 @@
         <div class="plate">
 
             <?php
-            //组装成一个大数组
+            // 一次性获取所有分区
             $sql = "SELECT * FROM bbs_part";
-            $row = mysql_func($sql);
-            foreach ($row as &$part) {
-                $sql = "SELECT * FROM bbs_cate WHERE pid=" . $part['id'];
-                $cate = mysql_func($sql);
-                $part['cates'] = $cate;
+            $parts = mysql_func($sql);
+
+            // 一次性获取所有分类
+            $sql = "SELECT * FROM bbs_cate";
+            $allCates = mysql_func($sql);
+
+            // 按分区ID分组
+            $catesByPart = array();
+            foreach ($allCates as $cate) {
+                $catesByPart[$cate['pid']][] = $cate;
             }
-            foreach ($row as $part1) {
-                $sql = "SELECT * FROM bbs_user WHERE id=" . $part1['padmins'];
-                $rowpart = mysql_func($sql);
-                $rowName = $rowpart[0]['username'];
-                $rowId = $rowpart[0]['id'];
+
+            // 一次性获取帖子统计
+            $sql = "SELECT cid, COUNT(*) as cou, MAX(ptime) as last_ptime FROM bbs_post GROUP BY cid";
+            $postStats = mysql_func($sql);
+            $postStatsByCid = array();
+            foreach ($postStats as $stat) {
+                $postStatsByCid[$stat['cid']] = $stat;
+            }
+
+            // 一次性获取回复统计
+            $sql = "SELECT p.cid, COUNT(r.id) as num FROM bbs_reply r
+                    LEFT JOIN bbs_post p ON r.pid = p.id
+                    GROUP BY p.cid";
+            $replyStats = mysql_func($sql);
+            $replyStatsByCid = array();
+            foreach ($replyStats as $stat) {
+                $replyStatsByCid[$stat['cid']] = $stat['num'];
+            }
+
+            // 一次性获取所有管理员用户
+            $adminIds = array_column($parts, 'padmins');
+            $adminIds = array_unique($adminIds);
+            $sql = "SELECT id, username FROM bbs_user WHERE id IN (" . implode(',', $adminIds) . ")";
+            $admins = mysql_func($sql);
+            $adminsById = array();
+            foreach ($admins as $admin) {
+                $adminsById[$admin['id']] = $admin;
+            }
+
+            foreach ($parts as $part1) {
+                $rowName = isset($adminsById[$part1['padmins']]) ? $adminsById[$part1['padmins']]['username'] : '未知';
+                $rowId = $part1['padmins'];
                 ?>
                 <div class="plate-item">
                     <div class="plate-content">
                         <div class="plate-header">
-                            <?= $part1['pname'] ?>
+                            <?= htmlspecialchars($part1['pname']) ?>
                             <span>|</span>
-                            <span>版主：<a href="<?= url('user/info', array('id' => $rowId)) ?>"><?= $rowName ?></a></span>
+                            <span>版主：<a href="<?= url('user/info', array('id' => $rowId)) ?>"><?= htmlspecialchars($rowName) ?></a></span>
                         </div>
                         <div class="plate-body">
                             <div class="row">
-                                <?php $i = 0;
-                                foreach ($part1['cates'] as $cate) {
-                                    //查询主题数量
-                                    $sql = "SELECT count(*) AS cou FROM bbs_post WHERE cid=" . $cate['id'];
-
-                                    $row = mysql_func($sql);
-                                    $x = 0;
-                                    $x = $x + ($row[0]['cou']);
-                                    //查询最后发表
-                                    $sql = "SELECT ptime FROM bbs_post";
-                                    $row = mysql_func($sql);
-                                    $z = 0;
-                                    if ($row[0]['ptime'] != false) {
-                                        $z = $z + $row[0]['ptime'];
-                                    }
-                                    //查询回复数量
-                                    $sql = "select count(*) as num from bbs_reply where pid in (select id from bbs_post where cid={$cate['id']})";
-                                    $replyNum = mysql_func($sql)[0]['num'];
+                                <?php
+                                $cates = isset($catesByPart[$part1['id']]) ? $catesByPart[$part1['id']] : array();
+                                foreach ($cates as $cate) {
+                                    $cid = $cate['id'];
+                                    $x = isset($postStatsByCid[$cid]) ? $postStatsByCid[$cid]['cou'] : 0;
+                                    $z = isset($postStatsByCid[$cid]) ? $postStatsByCid[$cid]['last_ptime'] : 0;
+                                    $replyNum = isset($replyStatsByCid[$cid]) ? $replyStatsByCid[$cid] : 0;
                                     ?>
                                     <div class="col col-lg-3">
                                         <a class="card plate-link"
-                                           href="<?php echo url('tiezi/index', array('bk' => $cate['id'])); ?>">
+                                           href="<?php echo url('tiezi/index', array('bk' => $cid)); ?>">
                                             <div class="card-header">
-                                                <?php echo $cate['cname'] ?>
+                                                <?php echo htmlspecialchars($cate['cname']) ?>
                                             </div>
                                             <div class="card-body">
                                                 <p>
@@ -60,7 +81,7 @@
                                                     <span>回复数量：<?=$replyNum ?></span>
                                                 </p>
                                                 <p>
-                                                    <small>更新时间：<?php echo date('Y-m-d H:i', $z) ?></small>
+                                                    <small>更新时间：<?php echo $z ? date('Y-m-d H:i', $z) : '暂无'; ?></small>
                                                 </p>
                                             </div>
                                         </a>

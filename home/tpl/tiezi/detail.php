@@ -110,7 +110,7 @@
                                 </div>
                             </div>
                             <div class="text-right">
-                                <button class="btn btn-primary" type="submit">确认修改</button>
+                                <button class="btn btn-primary" type="submit">发表回复</button>
                             </div>
                         </form>
                     </div>

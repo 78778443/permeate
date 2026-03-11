@@ -87,7 +87,7 @@ class user
             $row = mysql_func($sql);
 
             if ($row) {
-                echo "<script>alter('用户已存在！')</script>";
+                echo "<script>alert('用户已存在！')</script>";
                 echo "<script>window.location.href='./index.php?m=user&a=lists'</script>";
                 exit;
             }
@@ -108,7 +108,7 @@ class user
 
             if (!$row === 0) {
                 echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-                echo "<script>window.location.href='./index.php?m=user&a=lists'<script/>";
+                echo "<script>window.location.href='./index.php?m=user&a=lists'</script>";
                 exit;
             }
 

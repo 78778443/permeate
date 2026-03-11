@@ -31,14 +31,18 @@
 		"CREATE TABLE `bbs_post` (
 		  `id` int(10) unsigned NOT NULL auto_increment,
 		  `cid` int(10) unsigned NOT NULL default '0',
-		  `title` varchar(32) NOT NULL default '帖子标题',
+		  `title` varchar(1000) NOT NULL default '帖子标题',
 		  `content` text,
 		  `ptime` int(10) unsigned NOT NULL default '0',
 		  `uid` int(10) unsigned NOT NULL default '0',
-		  `pip` int(11) NOT NULL default '0',
+		  `pip` varchar(1000) NOT NULL default '0',
 		  `count` int(10) unsigned NOT NULL default '0',
 		  `del` int(1) unsigned NOT NULL default '1',
-		  PRIMARY KEY  (`id`)
+		  `view_count` int(11) NOT NULL default '0' COMMENT '浏览次数',
+		  PRIMARY KEY  (`id`),
+		  KEY `idx_cid` (`cid`),
+		  KEY `idx_uid` (`uid`),
+		  KEY `idx_del` (`del`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;",
 
 		"CREATE TABLE `bbs_reply` (
@@ -49,7 +53,9 @@
 		  `ptime` int(10) unsigned NOT NULL default '0',
 		  `pip` int(10) unsigned NOT NULL default '0',
 		  `xx` int(1) unsigned NOT NULL default '1',
-		  PRIMARY KEY  (`id`)
+		  PRIMARY KEY  (`id`),
+		  KEY `idx_pid` (`pid`),
+		  KEY `idx_uid` (`uid`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;",
 
 		"CREATE TABLE `bbs_user` (
@@ -65,18 +71,19 @@
 
 		"CREATE TABLE `bbs_user_detail` (
 		  `uid` int(10) unsigned NOT NULL default '0',
-		  `t_name` varchar(32) default '汤青松',
+		  `t_name` varchar(32) default '',
 		  `age` int(10) unsigned NOT NULL default '0',
 		  `sex` int(10) unsigned NOT NULL default '0',
 		  `edu` int(10) unsigned NOT NULL default '0',
 		  `signed` text,
-		  `pic` varchar(255) NOT NULL default '../../resources/images/userhead/default.gif',
-		  `telphone` varchar(32) NOT NULL default '13888888888',
-		  `qq` int(10) unsigned NOT NULL default '888888',
-		  `email` varchar(255) NOT NULL default 'soupqingsong@foxmail.com',
+		  `pic` varchar(255) NOT NULL default '/resources/images/userhead/default.gif',
+		  `telphone` varchar(32) NOT NULL default '',
+		  `qq` int(10) unsigned NOT NULL default '0',
+		  `email` varchar(255) NOT NULL default '',
 		  `brithday` int(10) unsigned NOT NULL default '0',
-		  `picm` varchar(255) NOT NULL default '../../resources/images/userhead/defaultm.gif',
-		  `pics` varchar(255) NOT NULL default '../../resources/images/userhead/defaults.gif'
+		  `picm` varchar(255) NOT NULL default '/resources/images/userhead/defaultm.gif',
+		  `pics` varchar(255) NOT NULL default '/resources/images/userhead/defaults.gif',
+		  PRIMARY KEY (`uid`)
 		) ENGINE=MyISAM DEFAULT CHARSET=utf8;",
 		
 		"CREATE TABLE `bbs_iprefuse` (
@@ -101,7 +108,9 @@
           `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0:正常 1:特殊关注 -1:不能再关注此人',
           `mutual` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0:单向 1:已互相关注',
           `uptiem` int(10) NOT NULL DEFAULT '0',
-          PRIMARY KEY (`id`)
-        ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;"
+          PRIMARY KEY (`id`),
+          KEY `idx_uid` (`uid`),
+          KEY `idx_followuid` (`followuid`)
+        ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;"
 );
 ?>
