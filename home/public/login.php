@@ -5,7 +5,7 @@
 	session_start();
 	require_once "../../conf/dbconfig.php";
 	require_once "../../core/common.php";
-	require_once "../../core/mysql_func.php";
+	require_once "../../core/db_func.php";
 	
 	if(isset($_POST['username'])){
 				$username = $_POST['username'];

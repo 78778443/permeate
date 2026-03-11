@@ -2,7 +2,7 @@
 
 ### 自定义SQL注入
 require_once  "../../conf/dbconfig.php";
-require_once "../../core/mysql_func.php";
+require_once "../../core/db_func.php";
 
 $id = $_GET['id'];
 

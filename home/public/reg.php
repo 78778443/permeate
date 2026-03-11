@@ -6,7 +6,7 @@ session_start();//开启session
 $referer = $_SERVER['HTTP_REFERER'];
 //引用函数库mysql_function.php
 require_once "../../conf/dbconfig.php";
-require_once "../../core/mysql_func.php";
+require_once "../../core/db_func.php";
 require_once "../../core/common.php";
 
 

@@ -7,7 +7,7 @@
  */
 
 require_once __DIR__ . '/../conf/dbconfig.php';
-require_once __DIR__ . '/../core/mysql_func.php';
+require_once __DIR__ . '/../core/db_func.php';
 
 echo "开始数据库迁移...\n\n";
 

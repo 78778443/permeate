@@ -13,7 +13,7 @@ if (empty($bk)) {
 
 session_start();
 require_once "../conf/dbconfig.php";
-require_once "../core/mysql_func.php";
+require_once "../core/db_func.php";
 require_once "public/header.php";
 ?>
     <link rel="stylesheet" type="text/css" href="./resource/styles/post.css"/>

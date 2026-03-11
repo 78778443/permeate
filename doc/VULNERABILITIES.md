@@ -2,6 +2,21 @@
 
 本文档详细说明了BBS论坛系统中存在的安全漏洞，供安全学习和测试使用。
 
+## 系统环境要求
+
+- PHP 7.0+ (需要PDO SQLite扩展)
+- 无需MySQL数据库，系统使用SQLite
+
+## 安装说明
+
+1. 将代码部署到Web目录
+2. 访问 `/install/index.php` 进行安装
+3. 或运行命令行初始化：`php install/init_sqlite.php`
+
+默认账号：
+- 管理员：admin / 123456
+- 测试用户：test / 123456
+
 ---
 
 ## 一、SQL注入漏洞

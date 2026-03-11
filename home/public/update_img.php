@@ -2,7 +2,7 @@
 	//开启session
 	session_start();
 	require_once "../../conf/dbconfig.php";
-	require_once "../../core/mysql_func.php";
+	require_once "../../core/db_func.php";
 	require_once "../../core/upload_func.php";
 	require_once "../../core/image_func.php";
 	require_once "../../core/common.php";

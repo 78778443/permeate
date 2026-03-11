@@ -5,10 +5,10 @@ date_default_timezone_set('PRC');
 header('content-type:text/html;charset=utf-8');
 header('cache-control:no-cache');
 session_start();//开启session
-//引用函数库mysql_function.php
+//引用函数库和配置文件
 require_once $_SERVER['DOCUMENT_ROOT'] . "/conf/dbconfig.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/conf/web_config.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/core/mysql_func.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/core/db_func.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/core/Db.php";
 
 $model = !empty($_GET['m']) ? $_GET['m'] : 'index';

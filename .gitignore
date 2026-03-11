@@ -1,6 +1,8 @@
 /.idea
-/conf/dbconfig.php
 /resources/images/
 /install/install.lock
-/conf/dbconfig_bak.php
 /claude_auto_iterate.php
+/data/*.db
+/data/*.db-journal
+/uploads/*
+!uploads/.gitkeep
