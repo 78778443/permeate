@@ -3,3 +3,4 @@
 /resources/images/
 /install/install.lock
 /conf/dbconfig_bak.php
+/claude_auto_iterate.php

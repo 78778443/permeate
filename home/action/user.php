@@ -42,11 +42,20 @@ class user
     {
         $edu = $sex = [];
         require "../conf/dbconfig.php";
-        $user = getCurrentUser();
-        if (empty($user)) {
+        $currentUser = getCurrentUser();
+        if (empty($currentUser)) {
             echo "<script>window.location.href='/home/index.php?m=user&a=login'</script>";
             exit;
         }
+
+        // 越权漏洞：如果传入uid参数，可以查看/编辑其他用户的资料
+        // 漏洞利用：?m=user&a=basic&uid=1 (修改uid为其他用户ID)
+        $uid = isset($_GET['uid']) ? $_GET['uid'] : $currentUser['id'];
+
+        // 漏洞：未验证当前用户是否有权限修改该uid的用户资料
+        $sql = "SELECT u.*, d.* FROM bbs_user u LEFT JOIN bbs_user_detail d ON u.id=d.uid WHERE u.id={$uid}";
+        $result = mysql_func($sql);
+        $user = $result ? $result[0] : $currentUser;
 
         $data = ['edu' => $edu, 'sex' => $sex, 'user' => $user];
         displayTpl('user/basic', $data);
@@ -57,6 +66,161 @@ class user
         $data = ['user' => getCurrentUser()];
 
         displayTpl('user/safe', $data);
+    }
+
+    /**
+     * 远程头像设置页面 - SSRF漏洞入口
+     */
+    public function avatar_remote()
+    {
+        $user = getCurrentUser();
+        if (empty($user)) {
+            echo "<script>window.location.href='/home/index.php?m=user&a=login'</script>";
+            exit;
+        }
+        $data['user'] = $user;
+        displayTpl('user/avatar_remote', $data);
+    }
+
+    /**
+     * SSRF漏洞：远程头像获取
+     * 漏洞利用：url=http://127.0.0.1:6379/ (探测内网Redis)
+     *          url=http://169.254.169.254/latest/meta-data/ (AWS元数据)
+     *          url=file:///etc/passwd (读取本地文件)
+     */
+    public function _set_remote_avatar()
+    {
+        $user = getCurrentUser();
+        if (empty($user)) {
+            echo "<script>alert('请先登录');window.location.href='/home/index.php?m=user&a=login'</script>";
+            exit;
+        }
+
+        $url = isset($_POST['avatar_url']) ? $_POST['avatar_url'] : '';
+
+        if (empty($url)) {
+            echo "<script>alert('请输入头像URL');history.go(-1);</script>";
+            exit;
+        }
+
+        // 漏洞代码：未对URL进行任何过滤，允许访问任意协议和地址
+        // 支持 http://, https://, file://, gopher://, dict:// 等协议
+
+        $ch = curl_init();
+
+        // 漏洞配置：允许访问任意协议
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        // 危险：不验证SSL证书
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        // 危险：允许所有协议
+        curl_setopt($ch, CURLOPT_PROTOCOLS, CURLPROTO_ALL);
+
+        $response = curl_exec($ch);
+        $error = curl_error($ch);
+        $info = curl_getinfo($ch);
+        curl_close($ch);
+
+        if ($error) {
+            echo "<script>alert('获取头像失败: " . addslashes($error) . "');history.go(-1);</script>";
+            exit;
+        }
+
+        // 如果获取成功，尝试保存为头像
+        $content_type = isset($info['content_type']) ? $info['content_type'] : '';
+        $save_path = $_SERVER['DOCUMENT_ROOT'] . '/resources/images/userhead/';
+        $filename = uniqid() . '.jpg';
+        $full_path = $save_path . $filename;
+
+        // 保存文件
+        file_put_contents($full_path, $response);
+
+        // 更新数据库
+        $pic_url = '/resources/images/userhead/' . $filename;
+        $sql = "update bbs_user_detail set pic='$pic_url' where uid='{$user['id']}'";
+        mysql_func($sql);
+
+        // 更新session
+        $user['pic'] = $pic_url;
+        saveCurrentUser($user);
+
+        echo "<script>alert('头像设置成功！');window.location.href='/home/index.php?m=user&a=individual'</script>";
+    }
+
+    /**
+     * 文件上传页面入口
+     */
+    public function upload_file()
+    {
+        $user = getCurrentUser();
+        if (empty($user)) {
+            echo "<script>window.location.href='/home/index.php?m=user&a=login'</script>";
+            exit;
+        }
+        $data['user'] = $user;
+        displayTpl('user/upload_vuln', $data);
+    }
+
+    /**
+     * 文件上传漏洞：多种绕过方式
+     * 漏洞1：MIME类型验证可绕过（修改Content-Type为image/jpeg）
+     * 漏洞2：黑名单不完整（允许.php3, .php5, .phtml, .phar等）
+     * 漏洞3：未重命名文件（保留原始文件名）
+     */
+    public function _upload_file()
+    {
+        $user = getCurrentUser();
+        if (empty($user)) {
+            echo "<script>alert('请先登录');history.go(-1);</script>";
+            exit;
+        }
+
+        if (!isset($_FILES['file']) || $_FILES['file']['error'] !== UPLOAD_ERR_OK) {
+            echo "<script>alert('请选择要上传的文件');history.go(-1);</script>";
+            exit;
+        }
+
+        $file = $_FILES['file'];
+        $filename = $file['name'];
+        $tmp_name = $file['tmp_name'];
+        $file_size = $file['size'];
+        $file_type = $file['type']; // MIME类型，可被客户端修改
+
+        // 漏洞1：仅通过MIME类型验证，可被绕过
+        $allowed_mime = ['image/jpeg', 'image/png', 'image/gif', 'text/plain', 'application/pdf'];
+        if (!in_array($file_type, $allowed_mime)) {
+            echo "<script>alert('不允许上传此类型的文件（MIME验证失败）');history.go(-1);</script>";
+            exit;
+        }
+
+        // 获取文件后缀
+        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+
+        // 漏洞2：黑名单不完整，可使用.php3, .php5, .phtml, .phar, .php.jpg等绕过
+        $blacklist = ['php', 'asp', 'aspx', 'jsp', 'exe', 'bat', 'cmd', 'sh'];
+        if (in_array($ext, $blacklist)) {
+            echo "<script>alert('不允许上传此类型的文件（黑名单验证失败）');history.go(-1);</script>";
+            exit;
+        }
+
+        // 漏洞3：未对文件内容进行检测
+        // 漏洞4：未重命名文件，保留原始文件名
+        $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
+        if (!is_dir($upload_dir)) {
+            mkdir($upload_dir, 0777, true);
+        }
+
+        // 危险：直接使用原始文件名
+        $destination = $upload_dir . $filename;
+
+        if (move_uploaded_file($tmp_name, $destination)) {
+            echo "<script>alert('文件上传成功！');window.location.href='/home/index.php?m=user&a=upload_file'</script>";
+        } else {
+            echo "<script>alert('文件上传失败');history.go(-1);</script>";
+        }
     }
 
     /**
@@ -112,37 +276,32 @@ class user
         $telphone = $_POST['telphone'];
         $qq = $_POST['qq'];
         $email = $_POST['email'];
-        $user = $this->getUserInfo();
 
+        // 越权漏洞：从POST参数获取uid，未验证是否有权限修改该用户
+        // 漏洞利用：修改表单中的隐藏字段uid为其他用户ID
+        $uid = isset($_POST['uid']) ? $_POST['uid'] : '';
 
-        $sql = "update bbs_user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',telphone='$telphone',qq='$qq',email='$email' where uid=" . $user['id'];
+        // 如果没有uid参数，使用当前登录用户
+        if (empty($uid)) {
+            $user = getCurrentUser();
+            $uid = $user['id'];
+        }
+
+        // 漏洞：未验证当前用户是否有权限修改该uid的用户
+        $sql = "update bbs_user_detail set t_name='$t_name',age='$age',sex='$sex',edu='$edu',signed='$signed',telphone='$telphone',qq='$qq',email='$email' where uid=" . $uid;
 
 
         $row = mysql_func($sql);
 
-        if (!$row) {
-            echo "<script>alert('你没有修改，或修改失败')</script>";
-            echo "<script>window.location.href='/home/'</script>";
-            exit;
-        }
+        echo "<script>alert('修改成功！');</script>";
 
-        echo "<script>alert('修改成功！')</script>";
-
-        $sql = "SELECT u.*,p.* FROM bbs_user AS u,bbs_user_detail AS p WHERE p.uid = u.id and u.id=" . $user['id'];
-
+        // 刷新当前用户session
+        $currentUser = getCurrentUser();
+        $sql = "SELECT u.*,p.* FROM bbs_user AS u,bbs_user_detail AS p WHERE p.uid = u.id and u.id=" . $currentUser['id'];
         $row = mysql_func($sql);
-
-        if (!$row) {
-            echo "<script>alert('请重新登入')</script>";
-            echo "<script>window.location.href='/home/'</script>";
-            exit;
+        if ($row) {
+            saveCurrentUser($row[0]);
         }
-        $username = $row[0];
-        //执行登陆操作
-        //session的写入直接去给$_SESSION赋值
-        saveCurrentUser($username);
-        //告诉浏览器将保存sessionid的cookie文件保存一个小时
-        setcookie(session_name(), session_id(), time() + 3600, "/");
 
         echo "<script>window.location.href='/home/'</script>";
     }
@@ -319,32 +478,45 @@ class user
     }
 
 
-    //发送邮件
+    //发送重置密码邮件
     public function _re_passwd_step1()
     {
         $email = getParam('email');
+        $captcha = getParam('captcha');
 
-        //写入token到session
+        // 漏洞1：验证码验证被注释掉，可绕过
+        // 原本应该验证验证码，但被注释了
+        // if (empty($captcha) || $captcha != $_SESSION['yzm']) {
+        //     echo "<script>alert('验证码错误');history.go(-1);</script>";
+        //     exit;
+        // }
+
+        // 检查邮箱是否存在
+        $sql = "SELECT * FROM bbs_user WHERE email='{$email}'";
+        $user = mysql_func($sql);
+        if (!$user) {
+            echo "<script>alert('该邮箱未注册');history.go(-1);</script>";
+            exit;
+        }
+
+        // 漏洞2：Token可预测，使用时间戳MD5
         $token = md5(time());
         $_SESSION[$token] = $email;
 
-        //发送邮件
-        $uri = U('user/re_passwd_step3');
-        $content = <<<data
+        // 显示重置链接（实际环境中应该发送邮件）
+        $reset_url = "http://{$_SERVER['SERVER_NAME']}/home/index.php?m=user&a=re_passwd_step3&email=" . urlencode($email) . "&code={$token}";
 
-你好，这是<a = "http://{$_SERVER['SERVER_NAME']}{$uri}">找回密码的链接,链接15分钟有效，请不要告诉他人！
-    
-data;
-        var_dump($content);
-        die;
-
-
-        sendEmail($email, $content);
-
+        echo "<div style='padding:50px;text-align:center;'>";
+        echo "<h3>密码重置链接已生成</h3>";
+        echo "<p>邮箱：{$email}</p>";
+        echo "<p>Token：{$token}</p>";
+        echo "<p><a href='{$reset_url}'>点击此处重置密码</a></p>";
+        echo "<p class='text-muted'>注意：Token使用时间戳MD5生成，可预测！</p>";
+        echo "</div>";
     }
 
 
-    //修改密码
+    //重置密码处理
     public function _re_passwd_step3()
     {
         //接收参数
@@ -353,24 +525,33 @@ data;
         $repassword = getParam('repassword');
         $verifyCode = getParam('code');
 
-
-        //进行安全验证
+        // 漏洞3：Token验证逻辑缺陷
+        // 如果传入空的code参数，$_SESSION[$verifyCode]为空，条件为false，不会die
+        // 利用方式：直接访问 ?m=user&a=re_passwd_step3&email=target@example.com&code=
         if (!empty($_SESSION[$verifyCode]) && $_SESSION[$verifyCode] != $email) {
             die('请求不合法');
         }
+
         if ($password != $repassword) {
             die('两次密码不一致');
         }
 
-        //修改密码
+        if (empty($password)) {
+            die('密码不能为空');
+        }
+
+        // 漏洞4：可通过email参数修改任意用户密码
+        // 修改密码
         $password = md5($password);
-        $sql = "update bbs_user  set password='$password' where email='{$email}'";
+        $sql = "update bbs_user set password='$password' where email='{$email}'";
 
         $result = mysql_func($sql);
         if ($result) {
-            $url = U('user/login');
-            header("location:$url");
+            // 清除token
+            unset($_SESSION[$verifyCode]);
+            echo "<script>alert('密码重置成功，请使用新密码登录');window.location.href='/home/index.php?m=user&a=login'</script>";
+        } else {
+            echo "<script>alert('密码重置失败，请检查邮箱是否正确');history.go(-1);</script>";
         }
-
     }
 }

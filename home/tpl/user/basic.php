@@ -8,6 +8,14 @@
                 <div class="row">
                     <?php require_once __DIR__ . "/left_menu.php"; ?>
                     <div class="col-lg-6 pt-3">
+                        <div class="alert alert-warning">
+                            <strong>漏洞说明：</strong>此功能存在水平越权漏洞：
+                            <ul>
+                                <li>可通过修改URL参数uid访问其他用户的资料编辑页面</li>
+                                <li>可通过修改表单隐藏字段uid修改其他用户资料</li>
+                            </ul>
+                            利用方式：<code>?m=user&a=basic&uid=1</code> (修改uid为其他用户ID)
+                        </div>
                         <form action="/home/index.php?m=user&a=_dobasic" method="post">
                             <input type="hidden" name="uid" value="<?= $user['id'] ?>">
                             <div class="form-group row">

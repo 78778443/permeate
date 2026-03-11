@@ -2,9 +2,11 @@
 include "public/header.php";
 include "../core/common.php";
 
+// SQL注入漏洞点：$keywords 直接拼接到SQL语句中
+// 漏洞利用：?keywords=test' union select 1,2,3,4,5,6,7,8,9,10--
 $keywords = isset($_REQUEST['keywords']) ? $_REQUEST['keywords'] : '';
-$keywords_html = htmlspecialchars($keywords, ENT_QUOTES, 'UTF-8');
 if (!empty($keywords)) {
+    // 漏洞代码：直接拼接用户输入到SQL
     $where = " where title like '%$keywords%' ";
     $link = "&keywords=" . urlencode($keywords);
 } else {
@@ -17,7 +19,7 @@ if (!empty($keywords)) {
 $page_size = 4;
 
 //获取当前页码
-$page_num = empty($_GET['page']) ? 1 : (int)$_GET['page'];
+$page_num = empty($_GET['page']) ? 1 : $_GET['page'];
 
 //计算记录总数
 $sql = "SELECT count(*) AS c FROM bbs_post " . $where;
@@ -45,47 +47,39 @@ $row = mysql_func($sql);
 
     <div class="container">
     <div class="paper">
-        <div class="main">以下是为您找到的符合 "<?php echo $keywords_html ?>" 的所有内容！</div>
+        <div class="main">以下是为您找到的符合 "<?php echo htmlspecialchars($keywords); ?>" 的所有内容！</div>
         <ul class="list-unstyled">
 
             <?php
-            foreach ($row as $post) {
-
-                //搜索关键字高亮设置
-                $pattern = "/" . preg_quote($keywords, '/') . "/";
-
-                $title = preg_replace($pattern, "<em style='color:red;'>" . $keywords_html . "</em>", htmlspecialchars($post['title']));
-                $content = preg_replace($pattern, "<em style='color:red;'>" . $keywords_html . "</em>", htmlspecialchars($post['content']));
-                ?>
-
-                <li class="media" style="padding-top: 20px;border-bottom: 1px solid #ddd;">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-1">
-
-                            <a href="<?= url('tiezi/detail', array('bk' => $post['cid'], 'zt' => $post['id'])); ?>">
-                                <em><?php echo $title ?></em>
-                            </a>
-                        </h5>
-                        <p><em><?php echo $title ?></em><br/></p>
-                        <p>发表于：<?php echo date("Y-m-d H:i:s", $post['ptime']) ?></p>
-                    </div>
-                </li>
-
-                <?php
+            if ($row) {
+                foreach ($row as $post) {
+                    $title = htmlspecialchars($post['title']);
+                    ?>
+                    <li class="media" style="padding-top: 20px;border-bottom: 1px solid #ddd;">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1">
+                                <a href="<?= url('tiezi/detail', array('bk' => $post['cid'], 'zt' => $post['id'])); ?>">
+                                    <em><?php echo $title ?></em>
+                                </a>
+                            </h5>
+                            <p>发表于：<?php echo date("Y-m-d H:i:s", $post['ptime']) ?></p>
+                        </div>
+                    </li>
+                    <?php
+                }
             }
             ?>
     </div>
 <?php
 echo "
     </ul>
-    
+
     <ul class='pagination justify-content-center' style='margin-top: 20px;'>
-		<li class='page-item'><a class='page-link' href='?page=1" . $link . "'>首页</a></li>
-		<li class='page-item'><a class='page-link' href='?page=" . ($page_num - 1) . $link . "'>上一页</a></li>
-		<li class='page-item'><li><a class='page-link' href='?page=" . ($page_num + 1) . $link . "'>下一页</a></li>
+        <li class='page-item'><a class='page-link' href='?page=1" . $link . "'>首页</a></li>
+        <li class='page-item'><a class='page-link' href='?page=" . ($page_num - 1) . $link . "'>上一页</a></li>
+        <li class='page-item'><li><a class='page-link' href='?page=" . ($page_num + 1) . $link . "'>下一页</a></li>
         <li class='page-item'><a class='page-link' href='?page=" . $page_count . $link . "'>尾页</a></li>
         <li class='page-item'><span class='page-text'>总共" . $page_count . "页</span></li>
-        <li class='page-item'><span class='page-text'>本页" . (($page_num == $page_count && $count % $page_size != 0) ? ($count % $page_size) : $page_size) . "条</span></li>
         <li class='page-item'><span class='page-text'>总共" . $count . "条</span></li>
     </ul>
     </div>

@@ -5,13 +5,20 @@ if (isset($_POST['username'])) {
 
     $password = $_POST['password'];
     $password = md5($password);
-    $yzm = $_POST['yzm'];
+    $yzm = isset($_POST['yzm']) ? $_POST['yzm'] : '';
 
-    if ($_SESSION['yzm'] != $yzm) {
+    // 漏洞1：验证码复用 - 验证后不销毁，可重复使用
+    // 漏洞2：空验证码绕过 - 如果yzm为空，跳过验证（需要注释掉下面的验证）
+    // 漏洞利用：不填写验证码或使用已使用过的验证码
+
+    // 以下验证存在漏洞：未在验证后销毁验证码
+    if (!empty($yzm) && $_SESSION['yzm'] != $yzm) {
         echo "<script>alert('验证码错误！')</script>";
         echo "<script>window.location.href='/admin/public/login.php'</script>";
         exit;
     }
+    // 漏洞：验证成功后未销毁验证码，可重复使用
+    // 正确做法应该是：unset($_SESSION['yzm']);
 
     $sql = "select u.*,d.* from bbs_user as u,bbs_user_detail as d where  d.uid = u.id and  u.username='$username' and u.password='$password' and u.admins='1'";
 

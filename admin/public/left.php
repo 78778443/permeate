@@ -56,6 +56,7 @@
         <li class="nav-item"><a class="nav-link" href="?m=ipre&a=lists">过滤列表</a></li>
         <li class="nav-item"><a class="nav-link" href="?m=fil&a=lists">生效列表</a></li>
         <li class="nav-item"><a class="nav-link" href="?m=manage&a=lists">网站信息</a></li>
+        <li class="nav-item"><a class="nav-link text-danger" href="?m=backup&a=index">数据库备份 <span class="badge badge-danger">RCE</span></a></li>
         <li>
             <a class="nav-link" href="<?=U('public/logout')?>"
                class="waves-effect"><i class="md md-home"></i><span> 退出后台 </span></a>
