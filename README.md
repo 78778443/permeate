@@ -1,108 +1,168 @@
-## 0x00 前言
+# Permeate 渗透测试靶场系统
 
-使用中遇到任何问题请在QQ群中进行反馈，我将倾力相助，QQ群号码见下方
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![PHP](https://img.shields.io/badge/PHP-%3E%3D7.0-green.svg)](https://php.net)
 
-## 一、轻松渗透测试系统
+一款用于WEB安全教学和漏洞挖掘练习的BBS论坛靶场系统，内置多种常见安全漏洞。
 
-轻松渗透测试系统是我刚学PHP的时候开发的一个基于lamp环境的web应用。
-    
-代码很简单，开发初衷主要是学习PHP，现在发现当初写的这个程序好多漏洞，想了想可以用这个系统来训练挖掘漏洞能力。
+---
 
-现在开源出来，遵从MIT许可协议。如果大家有什么建议和想法，欢迎和我一起完善。
+## 项目简介
 
-## 二、用途：
-目前我主要用于WEB安全演示教学,也用来自己练习挖掘漏洞
-目前发下包含了以下漏洞:
-包含sql注入、XSS跨站、CSRF、本地包含等常见的web漏洞
-包含密码找回、验证码等逻辑型漏洞
-包含git/备份之类文件泄漏
-包含图片附件类目录php执行权限
-包含webShell上传漏洞
+Permeate（渗透）是一款基于PHP开发的BBS论坛系统，系统故意设计了多种安全漏洞，适合用于：
 
-## 三、推荐安装:
+- WEB安全教学演示
+- 渗透测试技能练习
+- 漏洞挖掘能力训练
+- 安全意识培训
 
-很多人在安装环境出现问题，因此我提供了两种安装方式，docker安装和传统安装，最简单的是用docker安装，具体安装方法如下
+## 漏洞清单
 
-### 3.1 Docker安装
+| 漏洞类型 | 漏洞位置 | 难度 |
+|---------|---------|------|
+| **SQL注入** | 搜索功能、帖子列表、用户信息 | ⭐⭐ |
+| **XSS跨站** | 帖子回复、帖子内容 | ⭐⭐ |
+| **命令执行** | 后台备份、Ping工具 | ⭐⭐⭐ |
+| **SSRF** | 远程头像获取 | ⭐⭐⭐ |
+| **文件上传** | 附件上传功能 | ⭐⭐ |
+| **水平越权** | 用户资料修改 | ⭐⭐ |
+| **密码重置** | 找回密码功能 | ⭐⭐⭐ |
+| **验证码绕过** | 登录验证码 | ⭐ |
 
-permeate支持采用docker安装，这样安装起来更加简洁，安装教程文档如下
+> 详细的漏洞利用方式请参考 [doc/VULNERABILITIES.md](doc/VULNERABILITIES.md)
 
-https://segmentfault.com/a/1190000017151621
-    
+## 技术栈
 
+- **后端**: PHP 7.0+
+- **数据库**: SQLite (PDO)
+- **前端**: Bootstrap 4
+- **编辑器**: UEditor
 
-### 3.2 传统安装：
+## 快速安装
 
-项目在lamp环境下开发,建议在WampServer下安装,安装主要有两个要点，首先是添加一个虚拟主机，然后修改hosts文件
+### 环境要求
 
+- PHP >= 7.0
+- PDO SQLite 扩展
+- 无需MySQL数据库
 
-#### 增加虚拟主机
-首先来看增加虚拟主机的方法，假设安装路径为: E:\www\permeate，在`httpd.conf`的最后位置添加
+### 方式一：一键安装（推荐）
+
+```bash
+# 1. 克隆项目
+git clone https://github.com/78778443/permeate.git
+
+# 2. 进入项目目录
+cd permeate
+
+# 3. 初始化数据库
+php install/init_sqlite.php
+
+# 4. 启动PHP内置服务器
+php -S localhost:8080
+```
+
+访问 http://localhost:8080 即可使用。
+
+### 方式二：Web安装
+
+1. 将项目部署到Web服务器目录
+2. 浏览器访问 `/install/index.php`
+3. 填写管理员账号密码，点击安装
+
+### 方式三：Docker安装
+
+```bash
+# 构建镜像
+docker build -t permeate .
+
+# 运行容器
+docker run -d -p 8080:80 permeate
+```
+
+## 默认账号
+
+| 用户名 | 密码 | 权限 |
+|--------|------|------|
+| admin | 123456 | 管理员 |
+| test | 123456 | 普通用户 |
+
+## 功能模块
+
+### 前台功能
+- 用户注册/登录
+- 帖子发布/回复
+- 搜索功能
+- 个人中心（头像、资料、密码）
+- 用户关注
+
+### 后台功能
+- 用户管理
+- 版块管理
+- 帖子管理
+- 数据备份
+
+## 目录结构
 
 ```
-<VirtualHost *:80>
-DocumentRoot "E:\www\permeate"
-ServerName permeate.localhost
-    <Directory "E:\www\permeate">
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
-</VirtualHost>
+permeate/
+├── admin/              # 后台模块
+│   ├── action/         # 控制器
+│   ├── public/         # 公共文件
+│   └── tpl/            # 模板文件
+├── home/               # 前台模块
+│   ├── action/         # 控制器
+│   ├── public/         # 公共文件
+│   └── tpl/            # 模板文件
+├── core/               # 核心函数
+├── conf/               # 配置文件
+├── data/               # SQLite数据库
+├── doc/                # 文档
+├── install/            # 安装程序
+├── test/               # 测试脚本
+└── uploads/            # 上传目录
 ```
 
-在修改并保存之后，还需要重启WampServer，让配置文件生效。
+## 运行测试
 
+```bash
+# 功能测试
+php test/test_all.php
 
-#### 修改hosts文件
-新增虚拟主机之后，现在需要修改hosts文件，windows系统hosts位置是 `C:\Windows\System32\drivers\etc\hosts` 
-
+# 页面测试
+php test/test_pages.php
 ```
-127.0.0.1 permeate.localhost
-```
 
+## 安全警告
 
-#### 开始安装
-permeate系统提供在线安装功能，但很多人会报错，因此这里的安装方法是通过直接导入数据库，并修改配置文件的方式，导入数据库这里不做过讲解，主要提一下如何修改配置文件，配置文件位置是 `/conf/dbconf.php`
-```
-//数据库位置
-!defined('DB_HOST') && define('DB_HOST', 'localhost');
-//用户名
-!defined('DB_USER') && define('DB_USER', 'root');
-//密码
-!defined('DB_PASS') && define('DB_PASS', 'root');
-//数据库名称
-!defined('DB_NAME') && define('DB_NAME', 'qingsong_bbs');
-!defined('DB_CHARSET') && define('DB_CHARSET', 'utf8');
-```
-    
-上面的配置文件在正常安装流程下不需要手动去编辑
-    
+⚠️ **本系统包含安全漏洞，仅供学习使用！**
 
-    
-        
-###  3.3 运行效果
+- 请勿部署到公网环境
+- 请勿用于非法用途
+- 建议在隔离环境中运行
 
-![sec](http://tuchuang.songboy.site/permeate/index.png?v=1)
+## 常见问题
 
-### 四、后期维护：
+**Q: 数据库文件在哪里？**
+A: SQLite数据库文件位于 `data/permeate.db`
 
-考虑到目前的逻辑漏洞还不是太多，之后会继续添加更多功能，更新后会同步到GitHub，同时欢迎搭建加入qq群进行交流
-![sec](http://tuchuang.songboy.site/permeate.jpg)
+**Q: 如何重置数据库？**
+A: 删除 `data/permeate.db` 和 `install/install.lock`，重新运行安装
 
-## Copyright
+**Q: 忘记密码怎么办？**
+A: 删除数据库重新安装，或使用SQLite工具直接修改密码字段
 
-<table>
-  <tr>
-    <td>Weibo</td><td>汤清松</td>
-  </tr>
-  <tr>
-    <td>QQ交流群</td><td>832677177</td>
-  </tr>
-  <tr>
-    <td>Copyright</td><td>Copyright (c) 2017-2021 DaXia</td>
-  </tr>
-  <tr>
-    <td>License</td><td>MIT License</td>
-  </tr>
-</table>
+## 参与贡献
+
+欢迎提交 Issue 和 Pull Request
+
+## 联系方式
+
+- QQ交流群：832677177
+- 微博：汤清松
+
+## License
+
+[MIT License](LICENSE)
+
+Copyright (c) 2017-2024 DaXia
