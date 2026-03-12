@@ -1,51 +1,69 @@
-<?php 
+<?php
 if(isset($_GET['id'])){
-		$id = $_GET['id'];
-	}
+    $id = $_GET['id'];
+}
 
-	if(!empty($_POST['cname'])){
-		$name = $_POST['cname'];
+if(!empty($_POST['cname'])){
+    $cname = $_POST['cname'];
+    $pid = $_POST['pid'];
 
+    $sql = "update bbs_cate set cname='$cname',pid='$pid' where id=".$id;
+    $row = mysql_func($sql);
 
+    if(!$row===0){
+        echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
+        echo "<script>window.location.href='./index.php?m=cate&a=lists'</script>";
+        exit;
+    }
 
-		//更新数据到USER详情表当中
-		$sql = "update bbs_cate set cname='$cname' where id=".$id;
+    echo "<script>window.location.href='./index.php?m=cate&a=lists'</script>";
+    exit;
+}
 
-		$row = mysql_func($sql);
-		if(!$row===0){
-			echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='./index.php?m=cate&a=lists'<script/>";
-			exit;
-		}
+$sql = "select c.*, p.pname from bbs_cate as c left join bbs_part as p on c.pid=p.id where c.id='$id'";
+$row = mysql_func($sql);
+$cate = $row[0];
 
-		//执行过程中没有出现以为，将跳转到LIST列表当中
-		echo "<script>window.location.href='./index.php?m=cate&a=lists'</script>";
-		exit;
-	}
-	
-	//POST不存在，将查询表中数据
-	$sql = "select p.*,c.cname from bbs_part as p,bbs_cate as c where p.id=c.pid and c.id='$id'";
-
-	$row = mysql_func($sql);
-	
-	/*echo "<pre>";
-	var_dump($row);
-	echo "</pre>";
-	exit;*/
+$sql_parts = "select * from bbs_part";
+$parts = mysql_func($sql_parts);
 ?>
-<div class="container">
-<table class="table">
-<form action="./index.php?m=cate&a=mod&id=<?php echo $id ?>" method="POST" >
-	<tr><td>分区名称：</td><td>
-	<select class="form-control" name="pid"> 
-		<?php foreach($row as $part){
-			echo "<option value=".$part['id'].">".$part['pname']."</option>"; 
-		}?>
-	</select> </td></tr>
-	<tr><td>分区名称：</td><td><input class="form-control" type="text" name="cname" value="<?php echo $part['cname'] ?>" /></td></tr>
 
-	
-	<tr><td colspan=2><input type="submit" value="确定修改" class="btn btn-info navbar-btn"/></td></tr>
-</form>
-</table>
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-th-large me-2"></i>编辑版块
+        <a href="./index.php?m=cate&a=lists" class="btn btn-outline-secondary btn-sm float-end">
+            <i class="fas fa-arrow-left me-1"></i>返回列表
+        </a>
+    </div>
+    <div class="card-body">
+        <form action="./index.php?m=cate&a=mod&id=<?= $id ?>" method="post">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label"><i class="fas fa-folder text-muted me-1"></i>所属分区</label>
+                <div class="col-sm-6">
+                    <select class="form-select" name="pid">
+                        <?php foreach($parts as $part){ ?>
+                        <option value="<?= $part['id'] ?>" <?= ($part['id'] == $cate['pid']) ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($part['pname']) ?>
+                        </option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label"><i class="fas fa-tag text-muted me-1"></i>版块名称</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" name="cname" value="<?= htmlspecialchars($cate['cname']) ?>">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 offset-sm-2">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="fas fa-save me-1"></i>保存修改
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

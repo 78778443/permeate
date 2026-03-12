@@ -6,7 +6,7 @@ $get = $_GET;
         <div class="paper">
             <div class="paper-header d-flex justify-content-between align-items-center">
                 <span><i class="fas fa-list me-2"></i>帖子列表</span>
-                <a class="btn btn-primary btn-sm" href="fatie.php?bk=<?php echo $bk ?>">
+                <a class="btn btn-primary btn-sm" href="fatie.php?bk=<?= h($bk) ?>">
                     <i class="fas fa-edit me-1"></i>发帖
                 </a>
             </div>
@@ -23,21 +23,21 @@ $get = $_GET;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($row as $post) { ?>
+                        <?php if (!empty($row)) foreach ($row as $post) { ?>
                         <tr>
                             <td>
                                 <a href="<?= url('tiezi/detail', array('bk' => $bk, 'zt' => $post['id'])); ?>">
-                                    <?= htmlspecialchars($post['title']) ?>
+                                    <?= h($post['title']) ?>
                                 </a>
                             </td>
                             <td>
-                                <i class="fas fa-user-circle text-muted me-1"></i><?= htmlspecialchars($post['username']) ?>
+                                <i class="fas fa-user-circle text-muted me-1"></i><?= h($post['username']) ?>
                             </td>
                             <td>
-                                <span class="badge bg-info"><?= $post['reply_count']; ?></span>
+                                <span class="badge bg-info"><?= h($post['reply_count']) ?></span>
                             </td>
                             <td>
-                                <span class="badge bg-secondary"><?= $post['view_count'] ?></span>
+                                <span class="badge bg-secondary"><?= h($post['view_count']) ?></span>
                             </td>
                             <td>
                                 <small class="text-muted">
@@ -54,30 +54,30 @@ $get = $_GET;
                 <nav class="page">
                     <ul class="pagination mb-0">
                         <li class="page-item">
-                            <a class="page-link" href='/home/index.php?m=tiezi&a=index&page=1&bk=<?= $get['bk'] ?>'>
+                            <a class="page-link" href='/home/index.php?m=tiezi&a=index&page=1&bk=<?= h($get['bk']) ?>'>
                                 <i class="fas fa-angle-double-left"></i>
                             </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href='/home/index.php?m=tiezi&a=index&page=<?= ($page_num - 1) ?>&bk=<?= $get['bk'] ?>'>
+                            <a class="page-link" href='/home/index.php?m=tiezi&a=index&page=<?= ($page_num - 1) ?>&bk=<?= h($get['bk']) ?>'>
                                 <i class="fas fa-angle-left"></i>
                             </a>
                         </li>
                         <li class="page-item">
-                            <span class="page-text">第 <?= $page_num ?> / <?= $page_count ?> 页</span>
+                            <span class="page-text">第 <?= h($page_num) ?> / <?= h($page_count) ?> 页</span>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href='/home/index.php?m=tiezi&a=index&page=<?= ($page_num + 1) ?>&bk=<?= $get['bk'] ?>'>
+                            <a class="page-link" href='/home/index.php?m=tiezi&a=index&page=<?= ($page_num + 1) ?>&bk=<?= h($get['bk']) ?>'>
                                 <i class="fas fa-angle-right"></i>
                             </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href='/home/index.php?m=tiezi&a=index&page=<?= $page_count ?>&bk=<?= $get['bk'] ?>'>
+                            <a class="page-link" href='/home/index.php?m=tiezi&a=index&page=<?= h($page_count) ?>&bk=<?= h($get['bk']) ?>'>
                                 <i class="fas fa-angle-double-right"></i>
                             </a>
                         </li>
                         <li class="page-item ms-3">
-                            <span class="page-text">共 <?= $count ?> 条</span>
+                            <span class="page-text">共 <?= h($count) ?> 条</span>
                         </li>
                     </ul>
                 </nav>

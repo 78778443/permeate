@@ -14,7 +14,7 @@
                                     <form action="/home/index.php?m=user&a=_upload_user_touxiang" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="MAX_FILE_SIZE" value="10000000">
                                         <div class="upload-img-content mb-3">
-                                            <img class="upload-img" src="<?php echo $username['pic']; ?>" alt="头像">
+                                            <img class="upload-img" src="<?= getAvatar($username['pic'], $username['username']) ?>" alt="头像">
                                         </div>
                                         <label class="upload-btn d-block mb-3" role="button">
                                             <input type="file" name="pic" accept="image/*">

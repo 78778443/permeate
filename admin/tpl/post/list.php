@@ -1,34 +1,38 @@
-<main class="col-sm-12 p-4" role="main">
-    <h2>分区列表</h2>
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-file-alt me-2"></i>帖子列表</span>
+    </div>
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-hover align-middle mb-0">
             <thead>
-            <tr>
-                <th>多选</th>
-                <th>ID</th>
-                <th>主题</th>
-                <th>发帖时间</th>
-                <th>发帖人</th>
-                <th>管理</th>
+                <tr>
+                    <th style="width: 40px"><input type="checkbox"></th>
+                    <th>ID</th>
+                    <th>主题</th>
+                    <th>发帖时间</th>
+                    <th>发帖人</th>
+                    <th style="width: 120px">操作</th>
+                </tr>
             </thead>
             <tbody>
-            <?php
-            foreach ($list as $k => $v) {
-                ?>
+                <?php if (!empty($list)) foreach ($list as $v) { ?>
                 <tr>
-                    <td><input type="checkbox" name="id[]" value="<?php echo $v['id'] ?>"/></td>
-                    <td><?php echo $v['id'] ?></td>
-                    <td><?php echo $v['title'] ?></td>
-                    <td><?php echo date('Y-m-d H:i:s', $v['ptime']) ?></td>
-                    <td><?php echo $v['username'] ?></td>
-                    <td><a href="./index.php?m=post&a=mod&id=<?php echo $v['id'] ?>">编辑</a> <a
-                                href="./index.php?m=post&a=del&id=<?php echo $v['id'] ?>&zd=id&table=post&cz=2">删除</a>
+                    <td><input type="checkbox" name="id[]" value="<?= h($v['id']) ?>"></td>
+                    <td><?= h($v['id']) ?></td>
+                    <td><span class="fw-bold"><?= h($v['title']) ?></span></td>
+                    <td><small class="text-muted"><?= date('Y-m-d H:i', $v['ptime']) ?></small></td>
+                    <td><?= h($v['username']) ?></td>
+                    <td>
+                        <a href="./index.php?m=post&a=mod&id=<?= h($v['id']) ?>" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="./index.php?m=post&a=del&id=<?= h($v['id']) ?>&zd=id&table=post&cz=2" class="btn btn-sm btn-outline-danger" onclick="return confirm('确定要删除吗？')">
+                            <i class="fas fa-trash"></i>
+                        </a>
                     </td>
                 </tr>
-                <?php
-            }
-            ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>
-</main>
+</div>

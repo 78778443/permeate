@@ -1,33 +1,37 @@
-<main class="col-sm-12 p-4" role="main">
-    <h2>过滤列表</h2>
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-ban me-2"></i>IP黑名单</span>
+        <a href="?m=ipre&a=add" class="btn btn-primary btn-sm"><i class="fas fa-plus me-1"></i>添加IP</a>
+    </div>
     <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-hover align-middle mb-0">
             <thead>
-            <tr>
-                <th>多选</th>
-                <th>ID</th>
-                <th>开始IP</th>
-                <th>结束IP</th>
-                <th>管理</th>
+                <tr>
+                    <th style="width: 40px"><input type="checkbox"></th>
+                    <th>ID</th>
+                    <th>开始IP</th>
+                    <th>结束IP</th>
+                    <th style="width: 120px">操作</th>
+                </tr>
             </thead>
             <tbody>
-            <?php
-            foreach ($list as $k => $v) {
-                ?>
+                <?php if (!empty($list)) foreach ($list as $v) { ?>
                 <tr>
-                    <td><input type="checkbox" name="id[]" value="<?php echo $v['id'] ?>"/></td>
-                    <td><?php echo $ip['id'] ?></td>
-                    <td><?php echo long2ip($ip['ipmin']) ?></td>
-                    <td><?php echo long2ip($ip['ipmax']) ?></td>
-
-                    <td><a href="./index.php?m=ipre&a=mod&id=<?php echo $ip['id'] ?>">编辑</a>
-                        <a href="./index.php?m=ipre&a=del&id=<?php echo $ip['id'] ?>&zd=id&table=iprefuse">删除</a>
+                    <td><input type="checkbox" name="id[]" value="<?= h($v['id']) ?>"></td>
+                    <td><?= h($v['id']) ?></td>
+                    <td><code><?= long2ip($v['ipmin']) ?></code></td>
+                    <td><code><?= long2ip($v['ipmax']) ?></code></td>
+                    <td>
+                        <a href="./index.php?m=ipre&a=mod&id=<?= h($v['id']) ?>" class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="./index.php?m=ipre&a=del&id=<?= h($v['id']) ?>&zd=id&table=iprefuse" class="btn btn-sm btn-outline-danger" onclick="return confirm('确定要删除吗？')">
+                            <i class="fas fa-trash"></i>
+                        </a>
                     </td>
                 </tr>
-                <?php
-            }
-            ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>
-</main>
+</div>

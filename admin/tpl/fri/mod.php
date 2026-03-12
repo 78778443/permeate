@@ -1,50 +1,79 @@
-<?php if(isset($_GET['id'])){
-		$id = $_GET['id'];
-	}
+<?php
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+}
 
-	if(!empty($_POST['title'])){
-		$title = $_POST['title'];
-		$desc1 = $_POST['desc1'];
-		$url = $_POST['url'];
-		$pic = $_POST['pic'];
+if(!empty($_POST['title'])){
+    $title = $_POST['title'];
+    $desc1 = $_POST['desc1'];
+    $url = $_POST['url'];
+    $pic = $_POST['pic'];
 
-		//更新数据到USER详情表当中
-		
-		$sql = "update bbs_fri title='$title',desc1='desc1',url='$url',pic='$Pic'";
-		echo $sql;
-		exit;
-		$row = mysql_func($sql);
-		if(!$row===0){
-			echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-			echo "<script>window.location.href='../index.phpm=fri&a=list'<script/>";
-			exit;
-		}
+    $sql = "update bbs_fri set title='$title',desc1='$desc1',url='$url',pic='$pic' where id='$id'";
+    $row = mysql_func($sql);
 
-		//执行过程中没有出现以为，将跳转到LIST列表当中
-		echo "<script>window.location.href='../index.phpm=fri&a=list'</script>";
-		exit;
-	}
-	
-	//POST不存在，将查询表中数据
-	$sql = "select * from bbs_fri where  id='$id'";
-	//echo $sql;
-	//exit;
-	$row = mysql_func($sql);
-	$fri = $row[0];
-	/*echo "<pre>";
-	var_dump($fri);
-	echo "</pre>";*/
+    if(!$row===0){
+        echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
+        echo "<script>window.location.href='./index.php?m=fri&a=lists'</script>";
+        exit;
+    }
+
+    echo "<script>window.location.href='./index.php?m=fri&a=lists'</script>";
+    exit;
+}
+
+$sql = "select * from bbs_fri where id='$id'";
+$row = mysql_func($sql);
+$fri = $row[0];
 ?>
-<div class="container">
-<table class="table">
-<form action="imod.phpid=<?php echo $id ?>" method="post" >
-	<?php function edu($fri,$val){if($fri==$val){echo "selected";}} ?>
-	<tr><td>标题：</td><td><input type="text" name="title" value="<?php echo $fri['title'] ?>" /></td></tr>
-	<tr><td>描述：</td><td><input type="desc1" name="desc1" value="<?php echo $fri['desc1'] ?>"  /></td></tr>
-	<tr><td>URL：</td><td><input type="text" name="url" value="<?php echo $fri['url'] ?>" /></td></tr>
-	<tr><td>图片：</td><td><input type="text" name="pic" value="<?php echo $fri['pic'] ?>" /></td></tr>
-	<tr><td colspan=2><input type="submit" value="确定修改" class="btn btn-info navbar-btn" />
-	<input type="reset" value="重新填写"  class="btn btn-info navbar-btn"/></td></tr>
-</form>
-</table>
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-link me-2"></i>编辑友情链接
+        <a href="./index.php?m=fri&a=lists" class="btn btn-outline-secondary btn-sm float-end">
+            <i class="fas fa-arrow-left me-1"></i>返回列表
+        </a>
+    </div>
+    <div class="card-body">
+        <form action="./index.php?m=fri&a=mod&id=<?= $id ?>" method="post">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label"><i class="fas fa-heading text-muted me-1"></i>标题</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" name="title" value="<?= htmlspecialchars($fri['title']) ?>">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label"><i class="fas fa-align-left text-muted me-1"></i>描述</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" name="desc1" value="<?= htmlspecialchars($fri['desc1']) ?>">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label"><i class="fas fa-globe text-muted me-1"></i>URL</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="url" name="url" value="<?= htmlspecialchars($fri['url']) ?>">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label"><i class="fas fa-image text-muted me-1"></i>图片</label>
+                <div class="col-sm-6">
+                    <input class="form-control" type="text" name="pic" value="<?= htmlspecialchars($fri['pic']) ?>">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 offset-sm-2">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="fas fa-save me-1"></i>保存修改
+                    </button>
+                    <button type="reset" class="btn btn-outline-secondary btn-lg ms-2">
+                        <i class="fas fa-undo me-1"></i>重置
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

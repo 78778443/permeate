@@ -2,17 +2,11 @@
 
 class user
 {
-    function __construct()
-    {
-
-    }
-
     public function logout()
     {
         session_start();
         unsetAdminUser();
         setcookie('adminusername', '', time() - 1, '/');
-        //session_destroy();
         header("location:../index.php");
     }
 
@@ -26,40 +20,35 @@ class user
             $where = "";
             $link = "";
         }
-        //开始分页大小
-        $page_size = 3;
 
-        //获取当前页码
-        $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
+        $page_size = 10;
+        $page_num = empty($_GET['page']) ? 1 : intval($_GET['page']);
 
-        //计算记录总数
         $sql = "select count(*) as c from bbs_user " . $where;
-        //echo $sql;
         $row = mysql_func($sql);
-        $count = $row[0]['c'];
-        //计算记录总页数
-        $page_count = ceil($count / $page_size);
-        //防止越界
+        $count = !empty($row[0]['c']) ? $row[0]['c'] : 0;
+
+        $page_count = $count > 0 ? ceil($count / $page_size) : 1;
+
         if ($page_num <= 0) {
             $page_num = 1;
         }
         if ($page_num >= $page_count) {
             $page_num = $page_count;
         }
-        //准备SQL语句
-        $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
+
+        $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;
         $sql = "select u.id,u.username,u.admins,u.rtime,u.rip,d.qq,d.sex,d.age,d.email from bbs_user as u left join bbs_user_detail as d on u.id=d.uid" . $where . $limit;
 
         $row = mysql_func($sql);
         $data['admins'] = array('普通会员', '管理员');
         $data['sex'] = array('保密', '男', '女');
-        $data['list'] = $row;
+        $data['list'] = !empty($row) ? $row : [];
         displayTpl('user/lists', $data);
     }
 
     public function add()
     {
-
         if (!empty($_POST['username'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
@@ -81,9 +70,7 @@ class user
                 exit;
             }
 
-
             $sql = "select username from bbs_user where bbs_user.username='$username'";
-
             $row = mysql_func($sql);
 
             if ($row) {
@@ -91,32 +78,23 @@ class user
                 echo "<script>window.location.href='./index.php?m=user&a=lists'</script>";
                 exit;
             }
+
             $password = md5($password);
             $sql = "insert into bbs_user(username,password,rtime,rip) values('$username','$password','$rtime','$rip')";
-
             $row = mysql_func($sql);
-
 
             if (!$row) {
-                echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
-                echo "<script>window.location.href='./index.php？m=user&a=lists'</script>";
-                exit;
-            }
-
-            $sql = "insert into bbs_user_detail(uid) values('$row')";
-            $row = mysql_func($sql);
-
-            if (!$row === 0) {
                 echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
                 echo "<script>window.location.href='./index.php?m=user&a=lists'</script>";
                 exit;
             }
 
-            //header("location:list.php");
+            $sql = "insert into bbs_user_detail(uid) values('$row')";
+            mysql_func($sql);
+
             echo "<script>window.location.href='./index.php?m=user&a=lists'</script>";
             exit;
         }
         displayTpl('user/add');
     }
 }
-

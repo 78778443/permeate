@@ -14,6 +14,7 @@ if (empty($bk)) {
 session_start();
 require_once "../conf/dbconfig.php";
 require_once "../core/db_func.php";
+require_once "../core/common.php";
 require_once "public/header.php";
 ?>
     <link rel="stylesheet" type="text/css" href="./resource/styles/post.css"/>
@@ -47,7 +48,7 @@ require_once "public/header.php";
             <tr>
                 <td class="list_width" align="center">
                     <div class="list_width_title"><?php echo $post['username'] ?></div>
-                    <img src="<?php echo strstr($post['pic'], '../r'); ?>" title="" alt=""/>
+                    <img src="<?php echo getAvatar(strstr($post['pic'], '../r'), $post['username']); ?>" title="" alt=""/>
                     <ul class="list_style_none">
                         <li>UID:<?php echo $post['uid'] ?></li>
                         <li>NAME:<?php echo $post['username'] ?></li>
@@ -94,7 +95,7 @@ require_once "public/header.php";
                 <tr>
                     <td class="list_width" align="center">
                         <div class="list_width_title"><?php echo $reply['username'] ?></div>
-                        <img src="<?php echo strstr($reply['pic'], '../r'); ?>" title="" alt=""/>
+                        <img src="<?php echo getAvatar(strstr($reply['pic'], '../r'), $reply['username']); ?>" title="" alt=""/>
                         <ul class="list_style_none">
                             <li>UID:<?php echo $reply['uid'] ?></li>
                             <li>NAME:<?php echo $reply['username'] ?></li>

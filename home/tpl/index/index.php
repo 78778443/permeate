@@ -1,4 +1,31 @@
-<link rel="stylesheet" type="text/css" href="./resource/styles/index.css"/>
+<?php
+// 板块图标映射
+$icons = [
+    'SQL注入' => ['icon' => 'fa-database', 'class' => 'sql'],
+    'XSS跨站' => ['icon' => 'fa-code', 'class' => 'xss'],
+    '命令执行' => ['icon' => 'fa-terminal', 'class' => 'cmd'],
+    '文件上传' => ['icon' => 'fa-cloud-upload-alt', 'class' => 'upload'],
+    '密码找回' => ['icon' => 'fa-key', 'class' => 'auth'],
+    '越权访问' => ['icon' => 'fa-user-lock', 'class' => 'auth'],
+    'SSRF漏洞' => ['icon' => 'fa-network-wired', 'class' => 'ssrf'],
+    '验证码绕过' => ['icon' => 'fa-unlock', 'class' => 'csrf'],
+];
+
+// 分区图标映射
+$partIcons = [
+    '常规漏洞' => ['icon' => 'fa-bug', 'class' => 'cmd'],
+    '逻辑漏洞' => ['icon' => 'fa-sitemap', 'class' => 'auth'],
+];
+
+function getIconConfig($name, $icons) {
+    foreach ($icons as $key => $config) {
+        if (strpos($name, $key) !== false) {
+            return $config;
+        }
+    }
+    return ['icon' => 'fa-shield-alt', 'class' => 'other'];
+}
+?>
 <section class="section">
     <div class="container">
         <?php
@@ -47,15 +74,18 @@
         foreach ($parts as $part1) {
             $rowName = isset($adminsById[$part1['padmins']]) ? $adminsById[$part1['padmins']]['username'] : '未知';
             $rowId = $part1['padmins'];
+            $partIcon = getIconConfig($part1['pname'], $partIcons);
         ?>
         <div class="plate">
             <div class="plate-header">
-                <i class="fas fa-folder me-2"></i><?= htmlspecialchars($part1['pname']) ?>
-                <span class="ms-3">|</span>
-                <span class="ms-3">版主：<a href="<?= url('user/info', array('id' => $rowId)) ?>"><?= htmlspecialchars($rowName) ?></a></span>
+                <span class="plate-icon <?= $partIcon['class'] ?>">
+                    <i class="fas <?= $partIcon['icon'] ?>"></i>
+                </span>
+                <span><?= htmlspecialchars($part1['pname']) ?></span>
+                <span class="plate-meta">版主：<a href="<?= url('user/info', array('id' => $rowId)) ?>"><?= htmlspecialchars($rowName) ?></a></span>
             </div>
             <div class="plate-body">
-                <div class="row g-3">
+                <div class="row g-4">
                     <?php
                     $cates = isset($catesByPart[$part1['id']]) ? $catesByPart[$part1['id']] : array();
                     foreach ($cates as $cate) {
@@ -63,16 +93,27 @@
                         $x = isset($postStatsByCid[$cid]) ? $postStatsByCid[$cid]['cou'] : 0;
                         $z = isset($postStatsByCid[$cid]) ? $postStatsByCid[$cid]['last_ptime'] : 0;
                         $replyNum = isset($replyStatsByCid[$cid]) ? $replyStatsByCid[$cid] : 0;
+                        $iconConfig = getIconConfig($cate['cname'], $icons);
                     ?>
                     <div class="col-12 col-sm-6 col-lg-3">
                         <a class="plate-link" href="<?php echo url('tiezi/index', array('bk' => $cid)); ?>">
                             <div class="card-header">
-                                <i class="fas fa-comments me-2"></i><?= htmlspecialchars($cate['cname']) ?>
+                                <span class="icon"><i class="fas <?= $iconConfig['icon'] ?>"></i></span>
+                                <span><?= htmlspecialchars($cate['cname']) ?></span>
                             </div>
                             <div class="card-body">
-                                <p><i class="fas fa-file-alt me-2 text-muted"></i>帖子：<?php echo $x ?></p>
-                                <p><i class="fas fa-comment-dots me-2 text-muted"></i>回复：<?=$replyNum ?></p>
-                                <p><i class="fas fa-clock me-2 text-muted"></i><small><?php echo $z ? date('Y-m-d H:i', $z) : '暂无更新'; ?></small></p>
+                                <div class="stat-item">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>帖子：<strong><?= $x ?></strong></span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-comment-dots"></i>
+                                    <span>回复：<strong><?= $replyNum ?></strong></span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span><small><?= $z ? date('Y-m-d H:i', $z) : '暂无更新'; ?></small></span>
+                                </div>
                             </div>
                         </a>
                     </div>

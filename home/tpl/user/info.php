@@ -16,7 +16,7 @@
             <div class="paper-body">
                 <div class="row align-items-center mb-4">
                     <div class="col-auto">
-                        <img src="<?= htmlspecialchars($strUserInfo['pic']) ?>" alt="头像" class="rounded-circle" style="width: 88px; height: 88px; object-fit: cover; border: 3px solid #e1e8ed;">
+                        <img src="<?= getAvatar($strUserInfo['pic'], $strUserInfo['t_name']) ?>" alt="头像" class="rounded-circle" style="width: 88px; height: 88px; object-fit: cover; border: 3px solid #e1e8ed;">
                     </div>
                     <div class="col">
                         <h4 class="mb-1"><?= htmlspecialchars($strUserInfo['t_name']) ?></h4>

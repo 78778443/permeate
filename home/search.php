@@ -1,6 +1,5 @@
 <?php
-include "public/header.php";
-include "../core/common.php";
+require_once "public/header.php";
 
 // SQL注入漏洞点：$keywords 直接拼接到SQL语句中
 // 漏洞利用：?keywords=test' union select 1,2,3,4,5,6,7,8,9,10--

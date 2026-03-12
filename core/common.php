@@ -227,3 +227,79 @@ function isGuanzhu()
 {
 
 }
+
+/**
+ * 安全的HTML转义函数，处理null值
+ * @param mixed $string
+ * @return string
+ */
+function h($string)
+{
+    if ($string === null) {
+        return '';
+    }
+    return htmlspecialchars((string)$string, ENT_QUOTES, 'UTF-8');
+}
+
+/**
+ * 安全获取数组值
+ * @param array $arr
+ * @param string|int $key
+ * @param mixed $default
+ * @return mixed
+ */
+function arr_get($arr, $key, $default = '')
+{
+    return isset($arr[$key]) && $arr[$key] !== null ? $arr[$key] : $default;
+}
+
+/**
+ * 获取用户头像，如果不存在则返回默认头像
+ * @param string|null $pic 头像URL
+ * @param string $username 用户名，用于生成首字母头像
+ * @return string
+ */
+function getAvatar($pic, $username = '')
+{
+    // 检查头像是否存在且有效
+    if (!empty($pic) && $pic !== 'null') {
+        // 检查是否是有效的URL或路径
+        if (filter_var($pic, FILTER_VALIDATE_URL) !== false ||
+            file_exists($_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($pic, './'))) {
+            return htmlspecialchars($pic, ENT_QUOTES, 'UTF-8');
+        }
+    }
+
+    // 生成首字母头像
+    return generateInitialAvatar($username);
+}
+
+/**
+ * 生成基于首字母的SVG头像
+ * @param string $username
+ * @return string data URI
+ */
+function generateInitialAvatar($username)
+{
+    // 获取首字母
+    $initial = mb_substr($username ?: 'U', 0, 1, 'UTF-8');
+    $initial = strtoupper($initial);
+
+    // 根据用户名生成颜色
+    $colors = [
+        '#6366f1', '#8b5cf6', '#ec4899', '#ef4444',
+        '#f59e0b', '#10b981', '#06b6d4', '#3b82f6'
+    ];
+    $colorIndex = ord($initial) % count($colors);
+    $bgColor = $colors[$colorIndex];
+
+    // 生成SVG
+    $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">' .
+           '<rect width="100" height="100" fill="' . $bgColor . '"/>' .
+           '<text x="50" y="50" dominant-baseline="central" text-anchor="middle" ' .
+           'fill="white" font-family="Arial, sans-serif" font-size="45" font-weight="600">' .
+           htmlspecialchars($initial, ENT_QUOTES, 'UTF-8') .
+           '</text></svg>';
+
+    return 'data:image/svg+xml;base64,' . base64_encode($svg);
+}

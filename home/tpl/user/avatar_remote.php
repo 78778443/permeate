@@ -19,7 +19,7 @@
                         <form action="/home/index.php?m=user&a=_set_remote_avatar" method="post">
                             <div class="mb-4 text-center">
                                 <div class="upload-img-content mx-auto mb-3" style="width: 150px; height: 150px;">
-                                    <img src="<?= htmlspecialchars($user['pic']) ?>" alt="当前头像" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <img src="<?= getAvatar($user['pic'], $user['username'] ?? '') ?>" alt="当前头像" style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
                                 <p class="text-muted">当前头像</p>
                             </div>

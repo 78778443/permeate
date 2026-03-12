@@ -1,72 +1,64 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Administrator
- * Date: 2017/7/3
- * Time: 21:02
- */
 class reply
 {
     public function lists()
     {
         $keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
         if (!empty($keywords)) {
-            $where = " where xx=1 id like '%$keywords%' ";
-            $link = "&keywords=" . $keywords;
+            $where = " where xx=1 and content like '%$keywords%' ";
         } else {
             $where = " where xx=1";
-            $link = "";
         }
 
-        //开始分页大小
-        $page_size = 5;
+        $page_size = 10;
+        $page_num = empty($_GET['page']) ? 1 : intval($_GET['page']);
 
-        //获取当前页码
-        $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
-
-        //计算记录总数
         $sql = "select count(*) as c from bbs_reply " . $where;
         $row = mysql_func($sql);
-        $count = $row[0]['c'];
+        $count = !empty($row[0]['c']) ? $row[0]['c'] : 0;
 
-        //计算记录总页数
-        $page_count = ceil($count / $page_size);
+        $page_count = $count > 0 ? ceil($count / $page_size) : 1;
 
-        //防止越界
         if ($page_num <= 0) {
             $page_num = 1;
         }
         if ($page_num >= $page_count) {
             $page_num = $page_count;
         }
-        //准备SQL语句
-        $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
 
+        $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;
         $sql = "select * from bbs_reply" . $where . $limit;
         $row = mysql_func($sql);
-        foreach ($row as $k => $v) {
-            $sql = "select title from bbs_post where id=" . $v['pid'];
-            $row[$k]['post'] = mysql_func($sql)[0];
 
-            $sql = "select username from bbs_user where '" . $v['pid'] . "'";
-            $row[$k]['username'] = mysql_func($sql)[0]['username'];
+        if (!empty($row)) {
+            foreach ($row as $k => $v) {
+                $sql = "select title,cid from bbs_post where id=" . intval($v['pid']);
+                $postRow = mysql_func($sql);
+                $row[$k]['post'] = !empty($postRow[0]) ? $postRow[0] : ['title' => '未知', 'cid' => 0];
+
+                $sql = "select username from bbs_user where id=" . intval($v['uid']);
+                $userRow = mysql_func($sql);
+                $row[$k]['username'] = !empty($userRow[0]['username']) ? $userRow[0]['username'] : '未知';
+            }
         }
-        $data['list'] = $row;
+
+        $data['list'] = !empty($row) ? $row : [];
         displayTpl('reply/list', $data);
     }
 
     public function add()
     {
-
         if (!empty($_POST['pid'])) {
-            $pid = @$_POST['pid'];
-            $content = @$_POST['content'];
-            $ptime = @$_SERVER['REQUEST_TIME'];
+            $pid = intval($_POST['pid']);
+            $content = $_POST['content'];
+            $ptime = $_SERVER['REQUEST_TIME'];
             $pip = ip2long($_SERVER['REMOTE_ADDR']);
             $uid = getAdminUid();
+
             $sql = "insert into bbs_reply(pid,content,uid,ptime,pip) values('$pid','$content',$uid,'$ptime','$pip')";
             $row = mysql_func($sql);
+
             if (!$row) {
                 echo "<script>alert('抱歉！写入数据库失败，请稍后再试！')</script>";
                 echo "<script>window.location.href='./index.php?m=reply&a=lists'</script>";
@@ -80,30 +72,22 @@ class reply
 
     public function list_pb()
     {
-        $keywords = !empty(@$_GET['keywords']) ? @$_GET['keywords'] : '';
+        $keywords = !empty($_GET['keywords']) ? $_GET['keywords'] : '';
         if (!empty($keywords)) {
-            $where = " where xx=2 id like '%$keywords%' ";
-            $link = "&keywords=" . $keywords;
+            $where = " where xx=2 and content like '%$keywords%' ";
         } else {
             $where = " where xx=2";
-            $link = "";
         }
 
-        //开始分页大小
-        $page_size = 5;
+        $page_size = 10;
+        $page_num = empty($_GET['page']) ? 1 : intval($_GET['page']);
 
-        //获取当前页码
-        $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
-
-        //计算记录总数
         $sql = "select count(*) as c from bbs_reply " . $where;
         $row = mysql_func($sql);
-        $count = $row[0]['c'];
+        $count = !empty($row[0]['c']) ? $row[0]['c'] : 0;
 
-        //计算记录总页数
-        $page_count = ceil($count / $page_size);
+        $page_count = $count > 0 ? ceil($count / $page_size) : 1;
 
-        //防止越界
         if ($page_num <= 0) {
             $page_num = 1;
         }
@@ -111,19 +95,23 @@ class reply
             $page_num = $page_count;
         }
 
-        //准备SQL语句
-        $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;;
-
+        $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;
         $sql = "select * from bbs_reply" . $where . $limit;
         $row = mysql_func($sql);
-        foreach ($row as $k => $v) {
-            $sql = "select title from bbs_post where id=" . $v['pid'];
-            $row[$k]['post'] = mysql_func($sql)[0];
 
-            $sql = "select username from bbs_user where '" . $v['pid'] . "'";
-            $row[$k]['username'] = mysql_func($sql)[0]['username'];
+        if (!empty($row)) {
+            foreach ($row as $k => $v) {
+                $sql = "select title,cid from bbs_post where id=" . intval($v['pid']);
+                $postRow = mysql_func($sql);
+                $row[$k]['post'] = !empty($postRow[0]) ? $postRow[0] : ['title' => '未知', 'cid' => 0];
+
+                $sql = "select username from bbs_user where id=" . intval($v['uid']);
+                $userRow = mysql_func($sql);
+                $row[$k]['username'] = !empty($userRow[0]['username']) ? $userRow[0]['username'] : '未知';
+            }
         }
-        $data['list'] = $row;
-        displayTpl('reply/list_pb',$data);
+
+        $data['list'] = !empty($row) ? $row : [];
+        displayTpl('reply/list_pb', $data);
     }
 }

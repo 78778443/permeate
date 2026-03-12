@@ -40,16 +40,18 @@ class tiezi
         //准备SQL语句
         $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;
 
-        $sql = "select p.*,u.username from bbs_post as p,bbs_user as u where  p.cid=" . $id . " and u.id=p.uid and p.cid='$bk'" . $limit;
+        $sql = "select p.*,u.username from bbs_post as p,bbs_user as u where  p.cid=" . intval($id) . " and u.id=p.uid and p.cid='$bk'" . $limit;
         //$sql = "select * from bbs_post where cid='$bk'".$limit;
         //$sql = "select * from bbs_post where cid='2'";
         $row = mysql_func($sql);
-        foreach ($row as $k => $post) {
-            $reply_count_sql = "select count(id) as count from bbs_reply where pid={$post['id']} ";
-            $row[$k]['reply_count'] = mysql_func($reply_count_sql)[0]['count'];
-
+        if (!empty($row)) {
+            foreach ($row as $k => $post) {
+                $reply_count_sql = "select count(id) as count from bbs_reply where pid={$post['id']} ";
+                $replyResult = mysql_func($reply_count_sql);
+                $row[$k]['reply_count'] = !empty($replyResult[0]['count']) ? $replyResult[0]['count'] : 0;
+            }
         }
-        $data['row'] = $row;
+        $data['row'] = !empty($row) ? $row : [];
         $data['bk'] = $bk;
         $data['count'] = $count;
         $data['page_size'] = $page_size;
@@ -60,35 +62,37 @@ class tiezi
 
     public function detail()
     {
-        $zt = $_GET['zt'];
+        $zt = isset($_GET['zt']) ? intval($_GET['zt']) : 0;
         if (empty($zt)) {
             exit ("参数1错误！");
         }
-        $bk = $_GET['bk'];
+        $bk = isset($_GET['bk']) ? intval($_GET['bk']) : 0;
         if (empty($bk)) {
             exit ("参数2错误！");
         }
         $sql = "select p.*,u.*,d.* from bbs_post as p,bbs_user as u,bbs_user_detail as d where p.uid=u.id and d.uid=p.uid and p.id='$zt'";
         $row = mysql_func($sql);
-        $post = $row[0];
+        $post = !empty($row[0]) ? $row[0] : [];
+
         $reply_count_sql = "select count(id) as count from bbs_reply where pid={$zt} ";
-        $post['reply_count'] = mysql_func($reply_count_sql)[0]['count'];
-        $post['content'] = html_entity_decode($post['content']);
+        $replyResult = mysql_func($reply_count_sql);
+        $post['reply_count'] = !empty($replyResult[0]['count']) ? $replyResult[0]['count'] : 0;
+        $post['content'] = isset($post['content']) ? html_entity_decode($post['content']) : '';
 
 
         //开始分页大小
         $page_size = 15;
 
         //获取当前页码
-        $page_num = empty($_GET['page']) ? 1 : $_GET['page'];
+        $page_num = empty($_GET['page']) ? 1 : intval($_GET['page']);
 
         //计算记录总数
         $sql = "SELECT count(*) AS c FROM bbs_reply where pid=$zt";
         $row = mysql_func($sql);
-        $count = $row[0]['c'];
+        $count = !empty($row[0]['c']) ? $row[0]['c'] : 0;
 
         //计算记录总页数
-        $page_count = ceil($count / $page_size);
+        $page_count = $count > 0 ? ceil($count / $page_size) : 1;
         //防止越界
         if ($page_num >= $page_count) {
             $page_num = $page_count;
@@ -112,7 +116,7 @@ class tiezi
         $data['bk'] = $bk;
         $data['zt'] = $zt;
         $data['post'] = $post;
-        $data['row'] = $row;
+        $data['row'] = !empty($row) ? $row : [];
         $data['count'] = $count;
         $data['page_size'] = $page_size;
         $data['page_count'] = $page_count;
