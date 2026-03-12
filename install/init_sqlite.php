@@ -211,4 +211,10 @@ echo "\n=== 数据库初始化完成 ===\n";
 echo "数据库文件: " . DB_PATH . "\n";
 echo "管理员账号: admin / 123456\n";
 echo "测试账号: test / 123456\n";
+
+// 创建安装锁文件
+$lockFile = ROOT_PATH . '/install/install.lock';
+file_put_contents($lockFile, date('Y-m-d H:i:s'));
+echo "\n已创建安装锁文件: install/install.lock\n";
+echo "现在可以访问系统首页了！\n";
 ?>
