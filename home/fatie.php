@@ -72,46 +72,49 @@ $rand_a = rand(100,10000);
 $_SESSION['fatie'] = $rand_a;
 ?>
 
-
 <?php
-//引用函数库mysql_function.php
 require_once "public/header.php";
 ?>
 
 <section class="section">
     <div class="container">
         <div class="paper">
-            <div class="paper-header">发表新帖</div>
-            <form action="_fatie.php?bk=<?php echo $bk ?>&zt=<?php echo $zt ?>" method="post" style="padding-top: 20px;">
-				<input type="hidden" name="csrf_token" value="<?php echo $rand_a ?>" />
-                <input type="hidden" name="bk" value="<?php echo $bk ?>"/>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-1 col-form-label">标题：</label>
-                    <div class="col-sm-11">
-                    <input type="text" class="form-control" name="title">
+            <div class="paper-header">
+                <i class="fas fa-edit me-2"></i>发表新帖
+            </div>
+            <div class="paper-body">
+                <form action="_fatie.php?bk=<?php echo $bk ?>&zt=<?php echo $zt ?>" method="post">
+                    <input type="hidden" name="csrf_token" value="<?php echo $rand_a ?>" />
+                    <input type="hidden" name="bk" value="<?php echo $bk ?>"/>
+
+                    <div class="mb-4">
+                        <label class="form-label"><i class="fas fa-heading me-1"></i>帖子标题</label>
+                        <input type="text" class="form-control form-control-lg" name="title" placeholder="请输入帖子标题" required>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-1 col-form-label">内容：</label>
-                    <div class="col-sm-11">
+
+                    <div class="mb-4">
+                        <label class="form-label"><i class="fas fa-content me-1"></i>帖子内容</label>
                         <textarea name="content" id="content"></textarea>
                     </div>
-                </div>
-                <div class="text-right">
-                    <button type="submit" class="btn btn-primary">发表</button>
-                </div>
-                <!-- 标题:<input type="text" name="title" class="title" size="100"/></p>
-                内容:</p><textarea name="content" id="content"></textarea></p> -->
-            </form>
+
+                    <div class="text-end">
+                        <a href="./index.php?m=tiezi&a=index&bk=<?php echo $bk ?>" class="btn btn-outline-secondary me-2">
+                            <i class="fas fa-arrow-left me-1"></i>返回
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane me-1"></i>发表帖子
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </section>
 
-<?php //引用函数库mysql_function.php
-require_once "public/footer.php";
-?>
+<?php require_once "public/footer.php"; ?>
+
 <script type="text/javascript" charset="utf-8" src="../public/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../public/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" charset="utf-8" src="../public/ueditor/ueditor.all.js"></script>
 <script type="text/javascript">
     UE.getEditor('content');
 </script>

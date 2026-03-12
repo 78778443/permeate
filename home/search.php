@@ -14,7 +14,6 @@ if (!empty($keywords)) {
     $link = "";
 }
 
-
 //开始分页大小
 $page_size = 4;
 
@@ -29,11 +28,9 @@ $count = isset($row[0]['c']) ? $row[0]['c'] : 0;
 //计算记录总页数
 $page_count = $count > 0 ? ceil($count / $page_size) : 1;
 //防止越界
-
 if ($page_num >= $page_count) {
     $page_num = $page_count;
 }
-
 if ($page_num <= 0) {
     $page_num = 1;
 }
@@ -43,48 +40,68 @@ $limit = " limit " . (($page_num - 1) * $page_size) . "," . $page_size;
 $sql = "SELECT * FROM bbs_post" . $where . $limit;
 $row = mysql_func($sql);
 ?>
-    <div class="section">
 
+<div class="section">
     <div class="container">
-    <div class="paper">
-        <div class="main">以下是为您找到的符合 "<?php echo htmlspecialchars($keywords); ?>" 的所有内容！</div>
-        <ul class="list-unstyled">
+        <div class="paper p-4">
+            <div class="main mb-4">
+                <i class="fas fa-search me-2"></i>
+                为您找到符合 "<strong><?php echo htmlspecialchars($keywords); ?></strong>" 的结果共 <?= $count ?> 条
+            </div>
 
-            <?php
-            if ($row) {
-                foreach ($row as $post) {
+            <?php if ($row) { ?>
+            <div class="list-group list-group-flush">
+                <?php foreach ($row as $post) {
                     $title = htmlspecialchars($post['title']);
-                    ?>
-                    <li class="media" style="padding-top: 20px;border-bottom: 1px solid #ddd;">
-                        <div class="media-body">
-                            <h5 class="mt-0 mb-1">
-                                <a href="<?= url('tiezi/detail', array('bk' => $post['cid'], 'zt' => $post['id'])); ?>">
-                                    <em><?php echo $title ?></em>
-                                </a>
-                            </h5>
-                            <p>发表于：<?php echo date("Y-m-d H:i:s", $post['ptime']) ?></p>
-                        </div>
-                    </li>
-                    <?php
-                }
-            }
-            ?>
-    </div>
-<?php
-echo "
-    </ul>
+                ?>
+                <a href="<?= url('tiezi/detail', array('bk' => $post['cid'], 'zt' => $post['id'])); ?>" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1">
+                            <i class="fas fa-file-alt text-muted me-2"></i><?= $title ?>
+                        </h6>
+                        <small class="text-muted">
+                            <i class="far fa-clock me-1"></i><?= date("Y-m-d H:i", $post['ptime']) ?>
+                        </small>
+                    </div>
+                </a>
+                <?php } ?>
+            </div>
+            <?php } else { ?>
+            <div class="text-center py-5 text-muted">
+                <i class="fas fa-search fa-3x mb-3"></i>
+                <p>没有找到相关内容</p>
+            </div>
+            <?php } ?>
 
-    <ul class='pagination justify-content-center' style='margin-top: 20px;'>
-        <li class='page-item'><a class='page-link' href='?page=1" . $link . "'>首页</a></li>
-        <li class='page-item'><a class='page-link' href='?page=" . ($page_num - 1) . $link . "'>上一页</a></li>
-        <li class='page-item'><li><a class='page-link' href='?page=" . ($page_num + 1) . $link . "'>下一页</a></li>
-        <li class='page-item'><a class='page-link' href='?page=" . $page_count . $link . "'>尾页</a></li>
-        <li class='page-item'><span class='page-text'>总共" . $page_count . "页</span></li>
-        <li class='page-item'><span class='page-text'>总共" . $count . "条</span></li>
-    </ul>
+            <nav class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href='?page=1<?= $link ?>'>
+                            <i class="fas fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href='?page=<?= ($page_num - 1) ?><?= $link ?>'>
+                            <i class="fas fa-angle-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <span class="page-text">第 <?= $page_num ?> / <?= $page_count ?> 页</span>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href='?page=<?= ($page_num + 1) ?><?= $link ?>'>
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href='?page=<?= $page_count ?><?= $link ?>'>
+                            <i class="fas fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
-    </div>";
-?>
-<?php
-include "public/footer.php";
-?>
+</div>
+
+<?php include "public/footer.php"; ?>

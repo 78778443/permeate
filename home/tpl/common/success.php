@@ -1,12 +1,24 @@
-<link rel="stylesheet" href="./resource/styles/repasswd.css">
-<div id="doc3">
-    <div class="wrap-content findpwd-succeed none" style="z-index:110001;">
-        <div class="content-title">修改密码成功
-        </div>
-        <div class="content-main">
-            <p><span class="reg-succeed-icon"></span></p>
-            <p>恭喜！您已成功修改了帐号的登录密码</p>
-            <p><a href="/" class="btn btn-success btn-lg">返回首页</a></p>
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="paper">
+                    <div class="paper-body text-center py-5">
+                        <div class="mb-4">
+                            <i class="fas fa-check-circle fa-5x text-success mb-3"></i>
+                            <h3>操作成功</h3>
+                        </div>
+
+                        <p class="text-muted mb-4">
+                            <?= !empty($data['msg']) ? htmlspecialchars($data['msg']) : '操作已成功完成'; ?>
+                        </p>
+
+                        <a href="<?= !empty($data['link']) ? htmlspecialchars($data['link']) : '/'; ?>" class="btn btn-success btn-lg">
+                            <i class="fas fa-home me-2"></i>返回
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>

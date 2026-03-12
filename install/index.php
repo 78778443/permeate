@@ -85,49 +85,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Permeate 渗透测试系统 - 安装向导</title>
-    <link href="../home/resource/dist/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
     <style>
-        body { background: #f5f5f5; padding: 50px 0; }
-        .install-box { max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .install-box h2 { margin-bottom: 30px; color: #333; }
-        .alert { margin-bottom: 20px; }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .install-box {
+            max-width: 500px;
+            width: 100%;
+            background: #fff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .install-box h2 {
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
     <div class="install-box">
-        <h2 class="text-center">Permeate 渗透测试系统安装</h2>
+        <h2 class="text-center mb-4">
+            <i class="fas fa-shield-alt text-primary me-2"></i>Permeate
+        </h2>
+        <p class="text-center text-muted mb-4">渗透测试靶场系统安装向导</p>
 
-        <div class="alert alert-info">
-            <strong>数据库类型：</strong>SQLite (无需额外配置)
+        <div class="alert alert-info border-0">
+            <i class="fas fa-database me-2"></i><strong>数据库类型：</strong>SQLite (无需额外配置)
         </div>
 
-        <div class="alert alert-warning">
-            <strong>注意：</strong>本系统包含安全漏洞，仅供学习使用，请勿部署到公网环境！
+        <div class="alert alert-warning border-0">
+            <i class="fas fa-exclamation-triangle me-2"></i><strong>警告：</strong>本系统包含安全漏洞，仅供学习使用，请勿部署到公网环境！
         </div>
 
         <form id="installForm">
-            <div class="form-group">
-                <label>管理员用户名</label>
-                <input type="text" class="form-control" name="username" value="admin" required>
+            <div class="mb-3">
+                <label class="form-label"><i class="fas fa-user me-1"></i>管理员用户名</label>
+                <input type="text" class="form-control form-control-lg" name="username" value="admin" required>
             </div>
-            <div class="form-group">
-                <label>管理员密码</label>
-                <input type="password" class="form-control" name="password" value="123456" required>
+            <div class="mb-4">
+                <label class="form-label"><i class="fas fa-lock me-1"></i>管理员密码</label>
+                <input type="password" class="form-control form-control-lg" name="password" value="123456" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">开始安装</button>
+            <button type="submit" class="btn btn-primary btn-lg w-100">
+                <i class="fas fa-rocket me-2"></i>开始安装
+            </button>
         </form>
 
-        <div id="result" style="margin-top: 20px;"></div>
+        <div id="result" class="mt-4"></div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
     document.getElementById('installForm').onsubmit = function(e) {
         e.preventDefault();
         var formData = new FormData(this);
+        var btn = this.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>安装中...';
 
         fetch('', {
             method: 'POST',
@@ -137,10 +165,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .then(data => {
             var resultDiv = document.getElementById('result');
             if (data.success) {
-                resultDiv.innerHTML = '<div class="alert alert-success">' + data.message + '</div>' +
-                    '<a href="../index.php" class="btn btn-success btn-block">进入首页</a>';
+                resultDiv.innerHTML = '<div class="alert alert-success border-0"><i class="fas fa-check-circle me-2"></i>' + data.message + '</div>' +
+                    '<a href="../index.php" class="btn btn-success btn-lg w-100 mt-3"><i class="fas fa-home me-2"></i>进入首页</a>';
             } else {
-                resultDiv.innerHTML = '<div class="alert alert-danger">' + data.message + '</div>';
+                resultDiv.innerHTML = '<div class="alert alert-danger border-0"><i class="fas fa-times-circle me-2"></i>' + data.message + '</div>';
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-rocket me-2"></i>开始安装';
             }
         });
     };

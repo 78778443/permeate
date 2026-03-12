@@ -1,24 +1,26 @@
 <div class="col-lg-2">
-    <menu class="menu">
-        <ul class="menu-list">
-            <li class="menu-list-item">
-                <a class="menu-list-link" href="/home/index.php?m=user&a=individual">修改头像</a>
-            </li>
-            <li class="menu-list-item">
-                <a class="menu-list-link" href="/home/index.php?m=user&a=basic">个人资料 <span class="badge badge-danger">越权</span></a>
-            </li>
-            <li class="menu-list-item">
-                <a class="menu-list-link" href="/home/index.php?m=user&a=safe">密码安全</a>
-            </li>
-            <li class="menu-list-item">
-                <a class="menu-list-link" href="/home/index.php?m=user&a=avatar_remote">远程头像 <span class="badge badge-warning">SSRF</span></a>
-            </li>
-            <li class="menu-list-item">
-                <a class="menu-list-link" href="/home/index.php?m=user&a=upload_file">文件上传 <span class="badge badge-info">上传</span></a>
-            </li>
-            <li class="menu-list-item">
-                <a class="menu-list-link" href="/home/index.php?m=user&a=re_passwd_step1">找回密码 <span class="badge badge-danger">密码重置</span></a>
-            </li>
-        </ul>
-    </menu>
+    <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action" href="/home/index.php?m=user&a=individual">
+            <i class="fas fa-camera me-2"></i>修改头像
+        </a>
+        <a class="list-group-item list-group-item-action" href="/home/index.php?m=user&a=basic">
+            <i class="fas fa-user-edit me-2"></i>个人资料
+            <span class="badge bg-danger float-end">越权</span>
+        </a>
+        <a class="list-group-item list-group-item-action" href="/home/index.php?m=user&a=safe">
+            <i class="fas fa-lock me-2"></i>密码安全
+        </a>
+        <a class="list-group-item list-group-item-action" href="/home/index.php?m=user&a=avatar_remote">
+            <i class="fas fa-globe me-2"></i>远程头像
+            <span class="badge bg-warning text-dark float-end">SSRF</span>
+        </a>
+        <a class="list-group-item list-group-item-action" href="/home/index.php?m=user&a=upload_file">
+            <i class="fas fa-upload me-2"></i>文件上传
+            <span class="badge bg-info float-end">上传</span>
+        </a>
+        <a class="list-group-item list-group-item-action" href="/home/index.php?m=user&a=re_passwd_step1">
+            <i class="fas fa-key me-2"></i>找回密码
+            <span class="badge bg-danger float-end">密码重置</span>
+        </a>
+    </div>
 </div>

@@ -39,81 +39,69 @@ if (isset($_POST['username'])) {
 
     echo "<script>window.location.href='../index.php'</script>";
 }
-
-
 ?>
+<!DOCTYPE html>
+<html lang="zh-cn">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Permeate 后台登录</title>
-    <style type="text/css">
-        body {
-            margin-top: 120px;
-            text-align: center;
-        }
-
-        #login {
-            margin-top: 32px;
-            width: 420px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
-    <link href="/home/resource/dist/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+    <!-- Custom Styles -->
     <link href="/home/resource/dist/style.css" rel="stylesheet">
-    <!--    <link rel="stylesheet" href="/home/resource/fonts/css/fontawesome-all.min.css">-->
-    <script src="/static/dist/js/jquery.min.js"></script>
-    <script type="text/javascript" language="javascript">
-        function reset_form() {
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-            return false;
-        }
-
-    </script>
 </head>
 
-<body>
-<H1 class="text-center" style="margin: 50px ">轻松渗透测试系统-后台管理</H1>
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-5">
-        <form class="form-horizontal" action="login.php" method="post" id="login_form">
-            <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">用户名：</label>
-                <div class="col-sm-10">
-                    <input type="text" name="username" id="username" class="form-control" placeholder="用户名">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">密码：</label>
-                <div class="col-sm-10">
-                    <input type="password" name="password" id="password" class="form-control" placeholder="密码">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">
-                    验证码：
-                    <img id="yzm-img" src="/core/yzm_func.php?=<?php echo rand(1000, 3000) ?>">
-                </label>
-                <div class="col-sm-10">
-                    <input type="text" name="yzm" class="form-control" placeholder="密码">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">点击登录</button>
-                    <input type="reset" class="btn btn-warning" value="重新填写"/>
+<body class="bg-light">
+<div class="access">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h2><i class="fas fa-shield-alt me-2"></i>Permeate</h2>
+            <p class="text-muted mb-0">后台管理系统</p>
+        </div>
+
+        <form action="login.php" method="post">
+            <div class="form-group mb-3">
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                        <i class="fas fa-user text-muted"></i>
+                    </span>
+                    <input class="form-control border-start-0" type="text" name="username" placeholder="请输入管理员账号" required>
                 </div>
             </div>
 
+            <div class="form-group mb-3">
+                <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                        <i class="fas fa-lock text-muted"></i>
+                    </span>
+                    <input class="form-control border-start-0" type="password" name="password" placeholder="请输入密码" required>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="yzm" placeholder="请输入验证码" style="max-width: 200px;">
+                    <img id="yzm-img" src="/core/yzm_func.php?=<?php echo rand(1000, 3000) ?>" class="rounded" style="cursor: pointer; height: 38px;" alt="验证码">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary w-100" type="submit">
+                    <i class="fas fa-sign-in-alt me-2"></i>登录
+                </button>
+            </div>
         </form>
     </div>
-    <div class="col-md-3"></div>
 </div>
-</body>
-<script>
 
-    $("#yzm-img").click(function () {
-        $(this)[0].src = '/core/yzm_func.php?=?' + Math.random()
-    })
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('yzm-img').onclick = function() {
+        this.src = '/core/yzm_func.php?=' + Math.random();
+    }
 </script>
+</body>
+</html>

@@ -7,70 +7,86 @@ require_once __DIR__."/../../core/common.php";
 <html lang="zh-cn">
 
 <head>
-    <title>
-        <?php echo WZ_TITLE; ?>
-    </title>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title><?php echo WZ_TITLE; ?></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name='keywords' content='<?php echo WZ_KEY; ?>'>
     <meta name='description' content='<?php echo WZ_DES; ?>'>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/home/resource/dist/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+    <!-- Custom Styles -->
     <link href="/home/resource/dist/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="/home/resource/fonts/css/fontawesome-all.min.css">
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg">
     <div class="container">
-        <button class="navbar-toggler" type="button">
+        <a class="navbar-brand" href="/">
+            <i class="fas fa-shield-alt me-2"></i>Permeate
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand active" aria-current="true" href="/">Permeate</a>
-        <div class="collapse navbar-collapse">
-            <form action="search.php">
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <!-- 搜索框 -->
+            <form action="search.php" class="d-flex mx-lg-3">
                 <div class="navbar-search">
-                    <input class="form-control mr-sm-2" type="search" name="keywords" placeholder="搜索"
-                           aria-label="Search">
-                    <button class="search" aria-label="Search"><i class="fas fa-search"></i>
+                    <input class="form-control" type="search" name="keywords" placeholder="搜索帖子..." aria-label="Search">
+                    <button class="search-btn" type="submit" aria-label="Search">
+                        <i class="fas fa-search"></i>
                     </button>
                 </div>
             </form>
 
-            <ul class="navbar-nav mt-lg-0">
-                <li class="nav-item"><a class="nav-link" aria-current="true" href="/">首页</a></li>
+            <!-- 导航链接 -->
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><i class="fas fa-home me-1"></i>首页</a>
+                </li>
             </ul>
         </div>
-        <div class="my-lg-0">
-            <div class="navbar-user">
-                <div class="d-flex">
-                    <?php
-                    if (!empty(getCurrentUser())) {
-                        $username = getCurrentUser();
-                        ?>
-                        <div class="user-link">
-                            <a href="/home/index.php?m=user&a=individual&id=<?php echo $username['id'] ?>">
-                                <img class="rounded-circle border-light"
-                                     src="<?=$username['pic'] ?>" alt="头像">
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?= url('user/individual',['uid'=>$username['id']]) ?>">个人资料</a>
-                                <?php if($username['admins']) {?>
-                                <a class="dropdown-item" href="../admin/index.php">后台管理</a>
-                                <?php } ?>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="./index.php?m=user&a=logout">登出</a>
-                            </div>
-                        </div>
-                    <?php } else { ?>
-                        <div class="nav-sign">
-                            <a class="nav-link sign-link" href="./index.php?m=user&a=login">登陆</a>
-                            <span>|</span>
-                            <a class="nav-link sign-link" href="./index.php?m=user&a=register">注册</a>
-                        </div>
-                    <?php } ?>
+
+        <!-- 用户区域 -->
+        <div class="d-flex align-items-center">
+            <?php
+            if (!empty(getCurrentUser())) {
+                $username = getCurrentUser();
+            ?>
+                <div class="user-link">
+                    <a href="/home/index.php?m=user&a=individual&id=<?php echo $username['id'] ?>">
+                        <img src="<?=$username['pic'] ?>" alt="头像">
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="<?= url('user/individual',['uid'=>$username['id']]) ?>">
+                            <i class="fas fa-user me-2"></i>个人资料
+                        </a>
+                        <?php if($username['admins']) {?>
+                        <a class="dropdown-item" href="../admin/index.php">
+                            <i class="fas fa-cog me-2"></i>后台管理
+                        </a>
+                        <?php } ?>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="./index.php?m=user&a=logout">
+                            <i class="fas fa-sign-out-alt me-2"></i>退出登录
+                        </a>
+                    </div>
                 </div>
-            </div>
+            <?php } else { ?>
+                <div class="nav-sign">
+                    <a class="nav-link sign-link" href="./index.php?m=user&a=login">
+                        <i class="fas fa-sign-in-alt me-1"></i>登录
+                    </a>
+                    <span class="text-muted">|</span>
+                    <a class="nav-link sign-link" href="./index.php?m=user&a=register">
+                        <i class="fas fa-user-plus me-1"></i>注册
+                    </a>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </nav>
