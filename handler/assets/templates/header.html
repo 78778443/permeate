@@ -1,0 +1,50 @@
+{{define "_header"}}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{.SiteTitle}}{{if .PageTitle}} - {{.PageTitle}}{{end}}</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+</head>
+{{if .Admin}}<body class="admin">
+{{else}}<body>
+{{end}}
+{{if .Admin}}
+<header class="adm-top"><div class="adm-top-in">
+  <a class="adm-brand" href="/admin/index.php">
+    <span class="adm-logo">P</span>
+    <span class="adm-bt"><b>Permeate</b><em>管理控制台</em></span>
+  </a>
+  <div class="adm-top-right">
+    {{with .CurrentUser}}
+    <span class="adm-user"><span class="adm-av">{{slice (index . "username") 0 1}}</span><span class="adm-uname">{{index . "username"}}</span></span>
+    {{end}}
+    <a class="adm-btn" href="/">← 返回前台</a>
+    <a class="adm-btn ghost" href="/home/index.php?m=user&a=logout">退出登录</a>
+  </div>
+</div></header>
+{{else}}
+<header class="topbar"><div class="inner">
+  <a class="brand" href="/">
+    <span class="brand-mark">🛡️</span>
+    <span class="brand-text"><b>{{.SiteTitle}}</b><span>Web 安全练习 · 一场沉浸式实验</span></span>
+  </a>
+  <nav class="nav">
+    <a href="/">首页</a>
+    {{with .CurrentUser}}
+      <span class="chip"><span class="av">{{slice (index . "username") 0 1}}</span>
+        <span>（{{print (index . "username")}}）</span><span class="dot"></span></span>
+      <a href="/home/index.php?m=user&a=individual">个人中心</a>
+      {{if eq (index . "admins" | printf "%v") "1"}}<a href="/admin/index.php">后台</a>{{end}}
+      <a href="/home/index.php?m=user&a=logout">退出</a>
+    {{else}}
+      <a href="/home/index.php?m=user&a=register">注册</a>
+      <a class="cta" href="/home/index.php?m=user&a=login">登录</a>
+    {{end}}
+    {{if .ShowAdmin}}<a href="/admin/index.php">后台管理</a>{{end}}
+  </nav>
+</div></header>
+{{end}}
+{{end}}

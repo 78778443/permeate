@@ -1,0 +1,53 @@
+{{define "tiezi_detail"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card">
+    <div class="body" style="padding:24px 26px;">
+      <div class="post-meta">
+        <span class="av">{{slice .PostAuthor 0 1}}</span>
+        <div>
+          <h2 style="padding:0;border:none;background:none;font-size:19px;margin:0 0 4px;">{{.PostTitle}}</h2>
+          <div class="muted-sm">作者：{{.PostAuthor}} · 发表于 {{field .Post "ptime" | date}}</div>
+        </div>
+      </div>
+      <div class="post-content">{{.PostRaw}}</div>
+      <div class="form-actions" style="flex-wrap:wrap;">
+        <a class="btn" href="/home/index.php?m=tiezi&a=index&bk={{.Bk}}">← 返回列表</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💬 评论（{{.Total}}）</h2>
+    <div class="body" style="padding:10px 22px;">
+      {{range .Replies}}
+      <div class="reply">
+        <span class="av">{{slice .username 0 1}}</span>
+        <div class="rbody">
+          <div class="rhead"><span class="rname">{{.username}}</span><span class="rtime">{{.ptime | date}}</span></div>
+          <div class="rtext">{{.content}}</div>
+        </div>
+      </div>
+      {{else}}
+      <p class="empty">还没有回复 · 沙发留给你 🙂</p>
+      {{end}}
+
+      <form method="post" action="/home/index.php?m=tiezi&a=reply&bk={{.Bk}}&zt={{.Zt}}" class="mt">
+        <label>发表回复（支持 HTML，教学 XSS 用）</label>
+        <textarea name="editorValue" placeholder="&lt;script&gt;alert(1)&lt;/script&gt;"></textarea>
+        <input type="hidden" name="id" value="{{.Zt}}">
+        <div class="form-actions"><button class="btn primary" type="submit">回复</button></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="pager">
+    <a href="?a=detail&bk={{.Bk}}&zt={{.Zt}}&page=1">首页</a>
+    <a href="?a=detail&bk={{.Bk}}&zt={{.Zt}}&page={{sub .PageNum 1}}">上一页</a>
+    <a href="?a=detail&bk={{.Bk}}&zt={{.Zt}}&page={{add .PageNum 1}}">下一页</a>
+    <a href="?a=detail&bk={{.Bk}}&zt={{.Zt}}&page={{.PageCount}}">尾页</a>
+    <span>共 {{.Total}} 条评论</span>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

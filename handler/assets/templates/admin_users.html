@@ -1,0 +1,25 @@
+{{define "admin_users"}}
+{{template "_header" .}}
+<div class="wrap">
+  {{template "_adminnav" .}}
+  <div class="card"><h2>👥 用户管理
+    <a class="btn sm" style="float:right;margin-top:-4px;" href="/admin/index.php?m=user&a=add">添加用户</a></h2>
+    <div class="body">
+      <form method="get" action="/admin/index.php" class="mb">
+        <input type="hidden" name="m" value="user"><input type="hidden" name="a" value="lists">
+        <input type="text" name="keywords" style="width:220px;" value="{{.Keywords}}" placeholder="按用户名搜索">
+        <button class="btn sm" type="submit">搜索</button>
+      </form>
+      <table><thead><tr><th>ID</th><th>用户名</th><th>性别</th><th>年龄</th><th>QQ</th><th>邮箱</th><th>权限</th></tr></thead>
+      <tbody>
+      {{range .Rows}}<tr>
+        <td>{{printf "%v" .id}}</td><td>{{printf "%v" .username}}</td>
+        <td>{{if eq (printf "%v" .sex) "1"}}男{{else if eq (printf "%v" .sex) "2"}}女{{else}}保密{{end}}</td>
+        <td>{{printf "%v" .age}}</td><td>{{printf "%v" .qq}}</td><td>{{printf "%v" .email}}</td>
+        <td>{{if eq (printf "%v" .admins) "1"}}管理员{{else}}普通用户{{end}}</td>
+      </tr>{{else}}<tr><td colspan="7" class="empty">暂无数据</td></tr>{{end}}
+      </tbody></table>
+    </div></div>
+</div>
+{{template "_footer" .}}
+{{end}}

@@ -1,9 +1,12 @@
-.DS_Store
-/.idea
-/resources/images/
-/install/install.lock
-/claude_auto_iterate.php
-/data/*.db
-/data/*.db-journal
-/uploads/*
-!uploads/.gitkeep
+# 运行时数据
+data/
+uploads/
+backup/
+*.db
+*.db-wal
+*.db-shm
+
+# 构建产物
+permeate.exe
+permeate_new.exe
+permeate

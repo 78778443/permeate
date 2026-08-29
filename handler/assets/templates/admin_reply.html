@@ -1,0 +1,12 @@
+{{define "admin_reply"}}
+{{template "_header" .}}
+<div class="wrap">{{template "_adminnav" .}}
+<div class="card"><h2>💬 回复管理（最新 100 条）</h2><div class="body">
+<table><thead><tr><th>ID</th><th>作者</th><th>内容</th><th>操作</th></tr></thead>
+<tbody>{{range .Rows}}<tr>
+<td>{{printf "%v" .id}}</td><td>{{printf "%v" .username}}</td><td>{{.content}}</td>
+<td><a class="btn sm danger" href="/admin/index.php?m=reply&a=del&id={{printf "%v" .id}}">删除</a></td>
+</tr>{{else}}<tr><td colspan="4" class="empty">暂无数据</td></tr>{{end}}</tbody></table>
+</div></div></div>
+{{template "_footer" .}}
+{{end}}

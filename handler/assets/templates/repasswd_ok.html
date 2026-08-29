@@ -1,0 +1,13 @@
+{{define "repasswd_ok"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card" style="max-width:480px;margin:40px auto;text-align:center;">
+    <h2>✔️ 提示</h2>
+    <div class="body">
+      <p>{{.Msg}}</p>
+      <a class="btn primary" href="{{.Link}}">继续</a>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

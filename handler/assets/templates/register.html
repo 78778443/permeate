@@ -1,0 +1,29 @@
+{{define "register"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="auth-card">
+    <div class="auth-head">
+      <span class="brand-mark">📝</span>
+      <h2>创建账号</h2>
+      <p>加入 Permeate 安全练习</p>
+    </div>
+    <div class="auth-body">
+      <form method="post" action="/home/index.php?m=user&a=register">
+        <label>用户名（字母开头，4-15 位）</label>
+        <input type="text" name="username" required autofocus>
+        <label>密码（6-15 位）</label>
+        <input type="password" name="password" required>
+        <label>确认密码</label>
+        <input type="password" name="repass" required>
+        <label>邮箱</label>
+        <input type="email" name="email" required>
+        <div class="form-actions">
+          <button class="btn primary" type="submit" style="flex:1;">注册</button>
+        </div>
+        <p class="mt ta-center muted" style="font-size:13px;">已有账号？<a href="/home/index.php?m=user&a=login">直接登录</a></p>
+      </form>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

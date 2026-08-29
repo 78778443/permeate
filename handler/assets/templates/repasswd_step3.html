@@ -1,0 +1,19 @@
+{{define "repasswd_step3"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card" style="max-width:440px;margin:0 auto;">
+    <h2>🔑 重置密码</h2>
+    <div class="body">
+      {{if eq .Code ""}}<div class="alert info">教学提示：当前未携带 code（<code>?email=xx&code=</code>），因后端校验缺陷仍可重置该邮箱账号密码（任意用户改密）。</div>{{end}}
+      <form method="post" action="/home/index.php?m=user&a=_re_passwd_step3">
+        <input type="hidden" name="email" value="{{.Email}}">
+        <input type="hidden" name="code" value="{{.Code}}">
+        <label>新密码</label><input type="password" name="password" required>
+        <label>确认新密码</label><input type="password" name="repassword" required>
+        <div class="form-actions"><button class="btn primary" type="submit">重置密码</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

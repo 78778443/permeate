@@ -1,0 +1,31 @@
+{{define "basic"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card" style="max-width:560px;margin:0 auto;">
+    <h2>📋 编辑资料</h2>
+    <div class="body">
+      {{$isVuln := ne (print (index .User "id")) (print (index .CurrentUser "id"))}}
+      {{if $isVuln}}<div class="alert info">⚠️ 你正在编辑 UID {{print (index .User "id")}} 的账号资料（当前登录 UID {{print (index .CurrentUser "id")}}）—— 水平越权！</div>{{end}}
+      <form method="post" action="/home/index.php?m=user&a=_dobasic">
+        <input type="hidden" name="uid" value="{{print (index .User "id")}}">
+        <label>昵称</label><input type="text" name="t_name" value="{{with .User.t_name}}{{.}}{{end}}">
+        <label>年龄</label><input type="number" name="age" value="{{with .User.age}}{{.}}{{end}}">
+        <label>性别</label>
+        <select name="sex">
+          <option value="0" {{if eq (print .User.sex) "0"}}selected{{end}}>保密</option>
+          <option value="1" {{if eq (print .User.sex) "1"}}selected{{end}}>男</option>
+          <option value="2" {{if eq (print .User.sex) "2"}}selected{{end}}>女</option>
+        </select>
+        <label>学历</label><input type="text" name="edu" value="{{with .User.edu}}{{.}}{{end}}">
+        <label>个性签名</label><textarea name="signed">{{with .User.signed}}{{.}}{{end}}</textarea>
+        <label>电话</label><input type="text" name="telphone" value="{{with .User.telphone}}{{.}}{{end}}">
+        <label>QQ</label><input type="text" name="qq" value="{{with .User.qq}}{{.}}{{end}}">
+        <label>邮箱</label><input type="email" name="email" value="{{with .User.email}}{{.}}{{end}}">
+        <div class="form-actions"><button class="btn primary" type="submit">保存</button>
+          <a class="btn" href="/home/index.php?m=user&a=individual">返回</a></div>
+      </form>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

@@ -1,0 +1,12 @@
+{{define "admin_parts"}}
+{{template "_header" .}}
+<div class="wrap">{{template "_adminnav" .}}
+<div class="card"><h2>📌 分区管理
+<a class="btn sm" style="float:right;margin-top:-4px;" href="/admin/index.php?m=part&a=add">添加分区</a></h2><div class="body">
+<table><thead><tr><th>ID</th><th>分区名</th><th>管理员</th></tr></thead>
+<tbody>{{range .Rows}}<tr>
+<td>{{printf "%v" .id}}</td><td>{{printf "%v" .pname}}</td><td>{{printf "%v" .moderator}}</td>
+</tr>{{else}}<tr><td colspan="3" class="empty">暂无数据</td></tr>{{end}}</tbody></table>
+</div></div></div>
+{{template "_footer" .}}
+{{end}}

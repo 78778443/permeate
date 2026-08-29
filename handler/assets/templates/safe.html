@@ -1,0 +1,17 @@
+{{define "safe"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card" style="max-width:440px;margin:0 auto;">
+    <h2>🔒 修改密码</h2>
+    <div class="body">
+      <form method="post" action="/home/index.php?m=user&a=_dosafe">
+        <label>当前密码</label><input type="password" name="oldpassword" required>
+        <label>新密码</label><input type="password" name="newpassword" required>
+        <label>确认新密码</label><input type="password" name="newpassword2" required>
+        <div class="form-actions"><button class="btn primary" type="submit">修改</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

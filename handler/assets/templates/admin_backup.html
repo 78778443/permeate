@@ -1,0 +1,14 @@
+{{define "admin_backup"}}
+{{template "_header" .}}
+<div class="wrap">{{template "_adminnav" .}}
+<div class="card" style="max-width:560px;margin:0 auto;"><h2>💾 数据库备份</h2><div class="body">
+<div class="alert info">教学警告：备份文件名参数会直接拼接到系统命令（命令执行漏洞）。<br>
+<span class="muted">可尝试：<code>anything;whoami</code> 或 <code>anything||id</code></span></div>
+<form method="post" action="/admin/index.php?m=backup&a=_do_backup">
+<label>备份文件名</label><input type="text" name="filename" value="backup_20240101">
+<div class="form-actions"><button class="btn primary" type="submit">执行备份</button></div>
+</form>
+{{if .Output}}<pre>{{.Output}}</pre>{{end}}
+</div></div></div>
+{{template "_footer" .}}
+{{end}}

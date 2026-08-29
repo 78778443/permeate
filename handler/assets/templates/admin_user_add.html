@@ -1,0 +1,13 @@
+{{define "admin_user_add"}}
+{{template "_header" .}}
+<div class="wrap">{{template "_adminnav" .}}
+<div class="card" style="max-width:460px;margin:0 auto;"><h2>➕ 添加用户</h2><div class="body">
+<form method="post" action="/admin/index.php?m=user&a=add">
+<label>用户名（字母开头，4-15位）</label><input type="text" name="username">
+<label>密码</label><input type="password" name="password">
+<label>确认密码</label><input type="password" name="repass">
+<div class="form-actions"><button class="btn primary" type="submit">添加</button></div>
+</form>
+</div></div></div>
+{{template "_footer" .}}
+{{end}}

@@ -1,0 +1,16 @@
+{{define "admin_manage"}}
+{{template "_header" .}}
+<div class="wrap">{{template "_adminnav" .}}
+<div class="card"><h2>🔐 用户权限管理</h2><div class="body">
+<table><thead><tr><th>ID</th><th>用户名</th><th>邮箱</th><th>当前权限</th><th>操作</th></tr></thead>
+<tbody>{{range .Rows}}<tr>
+<td>{{printf "%v" .id}}</td><td>{{printf "%v" .username}}</td><td>{{printf "%v" .email}}</td>
+<td>{{if eq (printf "%v" .admins) "1"}}管理员{{else}}普通用户{{end}}</td>
+<td>
+  <a class="btn sm" href="/admin/index.php?m=manage&a=mod&id={{printf "%v" .id}}&admins=1">设为管理员</a>
+  <a class="btn sm" href="/admin/index.php?m=manage&a=mod&id={{printf "%v" .id}}&admins=0">取消管理员</a>
+</td>
+</tr>{{else}}<tr><td colspan="5" class="empty">暂无数据</td></tr>{{end}}</tbody></table>
+</div></div></div>
+{{template "_footer" .}}
+{{end}}

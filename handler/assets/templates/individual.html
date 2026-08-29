@@ -1,0 +1,23 @@
+{{define "individual"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card">
+    <h2>👤 个人中心</h2>
+    <div class="body">
+      <div class="ta-center" style="margin-bottom:18px;">
+        <div style="font-size:32px;background:#eef2ff;width:84px;height:84px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;">{{$n := index .User "username" | printf "%v"}}{{$n}}</div>
+        <h3 style="margin:8px 0 0;">{{$n}}</h3>
+        <span class="muted">UID: {{print (index .User "id")}} · {{if eq (index .User "admins" | printf "%v") "1"}}管理员{{else}}普通用户{{end}}</span>
+      </div>
+      <div class="ta-center">
+        <a class="btn primary" href="/home/index.php?m=user&a=basic">编辑资料</a>
+        <a class="btn" href="/home/index.php?m=user&a=safe">修改密码</a>
+        <a class="btn" href="/home/index.php?m=user&a=avatar_remote">远程头像</a>
+        <a class="btn" href="/home/index.php?m=user&a=upload_file">文件上传</a>
+      </div>
+      <p class="muted" style="margin-top:16px;">提示：本系统内置多种漏洞供练习，如「资料编辑」的水平越权、「远程头像」的 SSRF、「文件上传」的上传绕过。</p>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

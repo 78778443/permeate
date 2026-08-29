@@ -1,0 +1,21 @@
+{{define "info"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card" style="max-width:560px;margin:0 auto;">
+    <h2>👤 用户资料 - {{.Uname}}</h2>
+    <div class="body">
+      <div class="stat"><b>{{with .Info.tiezi_count}}{{.}}{{else}}0{{end}}</b><span>发帖</span></div>
+      <div class="stat"><b>{{with .Info.reply_count}}{{.}}{{else}}0{{end}}</b><span>回复</span></div>
+      <div class="stat"><b>{{with .Info.follow_count}}{{.}}{{else}}0{{end}}</b><span>粉丝</span></div>
+      <div class="mt">
+        <p>昵称：<span class="badge">{{with .Info.t_name}}{{.}}{{else}}-{{end}}</span></p>
+        <p>性别：{{.Info.sex_name}}</p>
+        <p>年龄：{{with .Info.age}}{{.}}{{else}}0{{end}}</p>
+        <p>签名：</p><blockquote class="quote">{{with .Info.signed}}{{.}}{{else}}-{{end}}</blockquote>
+      </div>
+      <p class="muted" style="font-size:13px;">提示：本页 UID 参数未做过滤，可能存在 SQL 注入。</p>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

@@ -1,0 +1,13 @@
+{{define "admin_fri"}}
+{{template "_header" .}}
+<div class="wrap">{{template "_adminnav" .}}
+<div class="card"><h2>🔗 友情链接
+<a class="btn sm" style="float:right;margin-top:-4px;" href="/admin/index.php?m=fri&a=add">添加</a></h2><div class="body">
+<table><thead><tr><th>ID</th><th>标题</th><th>链接</th><th>操作</th></tr></thead>
+<tbody>{{range .Rows}}<tr>
+<td>{{printf "%v" .id}}</td><td>{{printf "%v" .title}}</td><td>{{printf "%v" .url}}</td>
+<td><a class="btn sm danger" href="/admin/index.php?m=fri&a=del&id={{printf "%v" .id}}">删除</a></td>
+</tr>{{else}}<tr><td colspan="4" class="empty">暂无数据</td></tr>{{end}}</tbody></table>
+</div></div></div>
+{{template "_footer" .}}
+{{end}}

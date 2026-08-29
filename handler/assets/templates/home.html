@@ -1,0 +1,53 @@
+{{define "home"}}
+{{template "_header" .}}
+<div class="wrap">
+
+  <section class="hero"><div class="hero-in">
+    <span class="kicker">PERMEATE · 关于 Web 安全的一场练习</span>
+    <h1>一场关于<span class="dl">信任边界</span>的无声对弈</h1>
+    <p class="lead">在精心构造的应用里，亲手观察 SQL、脚本与"信任"之间那些微小的空隙。</p>
+    <div class="hero-meta">
+      <span>{{.TotalPosts}} 篇主题</span><i>·</i>
+      <span>{{.TotalCates}} 个领域</span><i>·</i>
+      <span>{{.TotalParts}} 条主线</span>
+    </div>
+  </div></section>
+
+  <div class="board-head">
+    <span class="bh-t">探索 <b>EXPLORE</b></span>
+    <span class="bh-line"></span>
+  </div>
+
+  <div class="board">
+    {{range $i, $p := .Parts}}
+    <section class="panel">
+      <header class="panel-head">
+        <h3>{{if eq $i 0}}基建安全{{else}}业务安全{{end}}<span class="pi">{{if eq $i 0}}０{{else}}１{{end}}</span></h3>
+        <span class="admin">版主 · {{.AdminName}}</span>
+      </header>
+      <div class="panel-body">
+        {{range .Cates}}
+        <a class="row" href="/home/index.php?m=tiezi&a=index&bk={{.ID}}">
+          <span class="row-main">
+            <span class="row-name">{{.CName}}</span>
+            <span class="row-meta">帖 {{.PostCount}} · 回 {{.ReplyCount}}{{if .LastTime}} · {{.LastTime}}{{end}}</span>
+          </span>
+          <span class="row-arrow">→</span>
+        </a>
+        {{end}}
+        {{if not .Cates}}<div class="empty">暂无</div>{{end}}
+      </div>
+    </section>
+    {{end}}
+  </div>
+
+  {{if .Fris}}
+  <div class="links">
+    {{range .Fris}}<a href="{{.Url}}" target="_blank">{{.Title}}</a>{{end}}
+  </div>
+  {{end}}
+
+  <p class="note">演示账号 admin / 123456 · test / 123456</p>
+</div>
+{{template "_footer" .}}
+{{end}}

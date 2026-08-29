@@ -1,0 +1,16 @@
+{{define "admin_index"}}
+{{template "_header" .}}
+<div class="wrap">
+  {{template "_adminnav" .}}
+  <div class="card"><h2>📊 后台仪表盘</h2><div class="body">
+    <div class="stat-grid">
+      <div class="stat"><b>{{.Users}}</b><span>用户</span></div>
+      <div class="stat"><b>{{.Cates}}</b><span>版块</span></div>
+      <div class="stat"><b>{{.Posts}}</b><span>帖子</span></div>
+      <div class="stat"><b>{{.Replies}}</b><span>回复</span></div>
+    </div>
+    <p class="muted mt">教学提醒：后台「备份」与「Ping」工具存在命令执行漏洞，请谨慎练习。</p>
+  </div></div>
+</div>
+{{template "_footer" .}}
+{{end}}

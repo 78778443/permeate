@@ -1,0 +1,16 @@
+{{define "repasswd_old"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card" style="max-width:440px;margin:0 auto;">
+    <h2>🔑 找回密码（旧版入口）</h2>
+    <div class="body">
+      <form method="post" action="/home/index.php?m=repasswd&a=_index">
+        <label>邮箱 / 手机号</label>
+        <input type="text" name="username" required>
+        <div class="form-actions"><button class="btn primary" type="submit">下一步</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

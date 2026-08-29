@@ -1,0 +1,33 @@
+{{define "login"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="auth-card">
+    <div class="auth-head">
+      <span class="brand-mark">🛡️</span>
+      <h2>欢迎回来</h2>
+      <p>登录 Permeate 渗透测试靶场</p>
+    </div>
+    <div class="auth-body">
+      {{with .Note}}<div class="alert info">{{.}}</div>{{end}}
+      <form method="post" action="/home/index.php?m=user&a=login">
+        <label>用户名</label>
+        <input type="text" name="username" required autofocus>
+        <label>密码</label>
+        <input type="password" name="password" required>
+        <div class="form-actions">
+          <button class="btn primary" type="submit" style="flex:1;">登录</button>
+        </div>
+        <div class="mt ta-center" style="display:flex;justify-content:center;gap:10px;font-size:13.5px;">
+          <a href="/home/index.php?m=user&a=register">注册账号</a>
+          <span class="muted">·</span>
+          <a href="/home/index.php?m=repasswd&a=index">找回密码</a>
+        </div>
+      </form>
+      <div class="alert info" style="margin-top:22px;">
+        <div>演示账号：<code>admin / 123456</code>（管理员）· <code>test / 123456</code>（普通用户）</div>
+      </div>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

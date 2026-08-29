@@ -1,0 +1,38 @@
+{{define "tiezi_index"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card">
+    <h2>📄 帖子列表
+      <a class="btn primary sm" style="margin-left:auto;" href="/home/fatie.php?bk={{.Bk}}">+ 发表新帖</a>
+    </h2>
+    <div class="body" style="padding:8px 22px 18px;">
+      <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:50%;">标题</th><th>作者</th><th>时间</th><th>回复</th><th>查看</th></tr></thead>
+        <tbody>
+          {{range .Posts}}
+          <tr>
+            <td><a class="tl" href="/home/index.php?m=tiezi&a=detail&bk={{$.Bk}}&zt={{.ID}}">{{.Title}}</a></td>
+            <td><span class="av">{{slice .Username 0 1}}</span>{{.Username}}</td>
+            <td class="muted-sm">{{.Time}}</td>
+            <td><span class="badge indigo">{{.Replies}}</span></td>
+            <td class="muted-sm">{{.Views}}</td>
+          </tr>
+          {{else}}
+          <tr><td colspan="5" class="empty">暂无帖子，成为第一个发表的人吧✨</td></tr>
+          {{end}}
+        </tbody>
+      </table>
+      </div>
+      <div class="pager">
+        <a href="?m=tiezi&a=index&bk={{.Bk}}&page=1">首页</a>
+        <a href="?m=tiezi&a=index&bk={{.Bk}}&page={{sub .PageNum 1}}">上一页</a>
+        <a href="?m=tiezi&a=index&bk={{.Bk}}&page={{add .PageNum 1}}">下一页</a>
+        <a href="?m=tiezi&a=index&bk={{.Bk}}&page={{.PageCount}}">尾页</a>
+        <span>第 {{.PageNum}} / {{.PageCount}} 页 · 共 {{.Count}} 帖</span>
+      </div>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

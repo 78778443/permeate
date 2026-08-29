@@ -1,0 +1,23 @@
+{{define "fatie"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card" style="max-width:680px;margin:0 auto;">
+    <h2>✍️ 发表新帖</h2>
+    <div class="body">
+      <div class="alert info">发帖内容与标题原样入库展示，可用作存储型 XSS 练习。</div>
+      <form method="post" action="/home/fatie.php?bk={{.Bk}}">
+        <input type="hidden" name="bk" value="{{.Bk}}">
+        <label>帖子标题</label>
+        <input type="text" name="title" required>
+        <label>帖子内容（HTML）</label>
+        <textarea name="content" placeholder="支持 HTML，如 &lt;script&gt;alert(1)&lt;/script&gt;"></textarea>
+        <div class="form-actions">
+          <a class="btn" href="/home/index.php?m=tiezi&a=index&bk={{.Bk}}">返回</a>
+          <button class="btn primary" type="submit">发表帖子</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

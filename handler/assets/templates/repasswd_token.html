@@ -1,0 +1,15 @@
+{{define "repasswd_token"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card" style="max-width:560px;margin:0 auto;">
+    <h2>✉️ 密码重置链接已生成</h2>
+    <div class="body">
+      <p>邮箱：<strong>{{.Email}}</strong></p>
+      <p>Token：<code>{{.Token}}</code></p>
+      <p><a class="btn primary" href="{{.ResetURL}}">点击此处重置密码</a></p>
+      <div class="alert info">教学提示：该 Token 使用 <code>md5(时间戳)</code> 生成，可预测；且携带此 code 访问重置页即可修改邮箱对应账号的密码。</div>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

@@ -1,0 +1,19 @@
+{{define "repasswd_step1"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card" style="max-width:440px;margin:0 auto;">
+    <h2>🔑 找回密码</h2>
+    <div class="body">
+      <div class="alert info">教学提示：本接口验证码校验已省略，且生成的 Token 使用时间戳 MD5（可预测）。</div>
+      <form method="post" action="/home/index.php?m=user&a=_re_passwd_step1">
+        <label>注册邮箱</label>
+        <input type="email" name="email" required>
+        <label>验证码</label>
+        <input type="text" name="captcha" value="1234" placeholder="任意值均可（校验已省略）">
+        <div class="form-actions"><button class="btn primary" type="submit">生成重置链接</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

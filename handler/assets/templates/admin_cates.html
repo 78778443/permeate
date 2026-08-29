@@ -1,0 +1,12 @@
+{{define "admin_cates"}}
+{{template "_header" .}}
+<div class="wrap">{{template "_adminnav" .}}
+<div class="card"><h2>🗂️ 版块管理
+<a class="btn sm" style="float:right;margin-top:-4px;" href="/admin/index.php?m=cate&a=add">添加版块</a></h2><div class="body">
+<table><thead><tr><th>ID</th><th>版块名</th><th>所属分区</th><th>版主</th></tr></thead>
+<tbody>{{range .Rows}}<tr>
+<td>{{printf "%v" .id}}</td><td>{{printf "%v" .cname}}</td><td>{{printf "%v" .pname}}</td><td>{{printf "%v" .moderator}}</td>
+</tr>{{else}}<tr><td colspan="4" class="empty">暂无数据</td></tr>{{end}}</tbody></table>
+</div></div></div>
+{{template "_footer" .}}
+{{end}}

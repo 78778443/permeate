@@ -1,0 +1,12 @@
+{{define "admin_posts"}}
+{{template "_header" .}}
+<div class="wrap">{{template "_adminnav" .}}
+<div class="card"><h2>📄 帖子管理（最新 100 条）</h2><div class="body">
+<table><thead><tr><th>ID</th><th>版块</th><th>标题</th><th>作者</th><th>操作</th></tr></thead>
+<tbody>{{range .Rows}}<tr>
+<td>{{printf "%v" .id}}</td><td>{{printf "%v" .cid}}</td><td>{{printf "%v" .title}}</td><td>{{printf "%v" .username}}</td>
+<td><a class="btn sm danger" href="/admin/index.php?m=post&a=del&id={{printf "%v" .id}}">删除</a></td>
+</tr>{{else}}<tr><td colspan="5" class="empty">暂无数据</td></tr>{{end}}</tbody></table>
+</div></div></div>
+{{template "_footer" .}}
+{{end}}

@@ -1,0 +1,20 @@
+{{define "avatar_remote"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card" style="max-width:520px;margin:0 auto;">
+    <h2>🖼️ 远程头像</h2>
+    <div class="body">
+      <div class="alert info">
+        本功能允许填一个 URL 去抓取远程图片作为头像。<br>
+        <span class="muted">教学提示：该接口未对协议/地址做任何过滤（SSRF），可尝试 http://127.0.0.1:8080/、file:///etc/passwd 等处。</span>
+      </div>
+      <form method="post" action="/home/index.php?m=user&a=_set_remote_avatar">
+        <label>图片 URL</label>
+        <input type="text" name="avatar_url" placeholder="http://example.com/a.jpg">
+        <div class="form-actions"><button class="btn primary" type="submit">获取并设置</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

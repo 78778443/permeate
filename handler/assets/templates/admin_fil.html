@@ -1,0 +1,10 @@
+{{define "admin_fil"}}
+{{template "_header" .}}
+<div class="wrap">{{template "_adminnav" .}}
+<div class="card"><h2>🚫 敏感词
+<a class="btn sm" style="float:right;margin-top:-4px;" href="/admin/index.php?m=fil&a=add">添加</a></h2><div class="body">
+<table><thead><tr><th>ID</th><th>敏感词</th></tr></thead>
+<tbody>{{range .Rows}}<tr><td>{{printf "%v" .id}}</td><td>{{printf "%v" .hinge}}</td></tr>{{else}}<tr><td colspan="2" class="empty">暂无数据</td></tr>{{end}}</tbody></table>
+</div></div></div>
+{{template "_footer" .}}
+{{end}}

@@ -1,0 +1,27 @@
+{{define "_adminnav"}}
+{{if .Admin}}
+<aside class="adm-side">
+  <div class="adm-side-sec">系统</div>
+  <nav class="adm-side-nav">
+    <a href="/admin/index.php" class="{{if eq $.Nav "index"}}on{{end}}"><i class="si">◧</i>总览</a>
+    <a href="/admin/index.php?m=user&a=lists" class="{{if eq $.Nav "user"}}on{{end}}"><i class="si">◖</i>用户管理</a>
+    <a href="/admin/index.php?m=cate&a=lists" class="{{if eq $.Nav "cate"}}on{{end}}"><i class="si">▦</i>版块管理</a>
+    <a href="/admin/index.php?m=part&a=lists" class="{{if eq $.Nav "part"}}on{{end}}"><i class="si">▤</i>分区管理</a>
+    <a href="/admin/index.php?m=post&a=lists" class="{{if eq $.Nav "post"}}on{{end}}"><i class="si">☰</i>帖子管理</a>
+    <a href="/admin/index.php?m=reply&a=lists" class="{{if eq $.Nav "reply"}}on{{end}}"><i class="si">⇄</i>回复管理</a>
+  </nav>
+  <div class="adm-side-sec">安全</div>
+  <nav class="adm-side-nav">
+    <a href="/admin/index.php?m=fil&a=lists" class="{{if eq $.Nav "fil"}}on{{end}}"><i class="si">✕</i>敏感词</a>
+    <a href="/admin/index.php?m=ipre&a=lists" class="{{if eq $.Nav "ipre"}}on{{end}}"><i class="si">▣</i>IP 黑名单</a>
+    <a href="/admin/index.php?m=manage&a=lists" class="{{if eq $.Nav "manage"}}on{{end}}"><i class="si">⚙</i>权限管理</a>
+  </nav>
+  <div class="adm-side-sec">数据</div>
+  <nav class="adm-side-nav">
+    <a href="/admin/index.php?m=fri&a=lists" class="{{if eq $.Nav "fri"}}on{{end}}"><i class="si">↗</i>友情链接</a>
+    <a href="/admin/index.php?m=backup&a=index" class="{{if eq $.Nav "backup"}}on{{end}}"><i class="si">▤</i>数据库备份</a>
+    <a href="/admin/index.php?m=backup&a=ping" class="{{if eq $.Nav "ping"}}on{{end}}"><i class="si">⌂</i>Ping 工具</a>
+  </nav>
+</aside>
+{{end}}
+{{end}}

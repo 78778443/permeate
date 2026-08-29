@@ -1,0 +1,19 @@
+{{define "upload"}}
+{{template "_header" .}}
+<div class="wrap">
+  <div class="card" style="max-width:520px;margin:0 auto;">
+    <h2>📤 文件上传</h2>
+    <div class="body">
+      <div class="alert info">
+        教学提示：上传接口仅校验 MIME 类型（可伪造），且黑名单不完整、保留原始文件名，可用于练习上传绕过。
+      </div>
+      <form method="post" action="/home/index.php?m=user&a=_upload_file" enctype="multipart/form-data">
+        <label>选择文件</label>
+        <input type="file" name="file" required>
+        <div class="form-actions"><button class="btn primary" type="submit">上传</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+{{template "_footer" .}}
+{{end}}

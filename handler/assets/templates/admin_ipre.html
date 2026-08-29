@@ -1,0 +1,10 @@
+{{define "admin_ipre"}}
+{{template "_header" .}}
+<div class="wrap">{{template "_adminnav" .}}
+<div class="card"><h2>🚷 IP 黑名单
+<a class="btn sm" style="float:right;margin-top:-4px;" href="/admin/index.php?m=ipre&a=add">添加</a></h2><div class="body">
+<table><thead><tr><th>ID</th><th>起始 IP</th><th>结束 IP</th></tr></thead>
+<tbody>{{range .Rows}}<tr><td>{{printf "%v" .id}}</td><td>{{printf "%v" .ipmin}}</td><td>{{printf "%v" .ipmax}}</td></tr>{{else}}<tr><td colspan="3" class="empty">暂无数据</td></tr>{{end}}</tbody></table>
+</div></div></div>
+{{template "_footer" .}}
+{{end}}
