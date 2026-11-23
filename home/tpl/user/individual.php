@@ -16,13 +16,15 @@
                                         <div class="upload-img-content mb-3">
                                             <img class="upload-img" src="<?= getAvatar($username['pic'], $username['username']) ?>" alt="头像">
                                         </div>
-                                        <label class="upload-btn d-block mb-3" role="button">
-                                            <input type="file" name="pic" accept="image/*">
-                                            <i class="fas fa-folder-open me-2"></i>选择图片
-                                        </label>
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="fas fa-save me-1"></i>保存头像
-                                        </button>
+                                        <div class="avatar-actions">
+                                            <label class="upload-btn" role="button">
+                                                <input type="file" name="pic" accept="image/*">
+                                                <i class="fas fa-folder-open"></i>选择图片
+                                            </label>
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                <i class="fas fa-save"></i>保存头像
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                                 <div class="flex-grow-1">

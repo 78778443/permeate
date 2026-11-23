@@ -14,14 +14,19 @@ require_once __DIR__."/../../core/common.php";
     <meta name='keywords' content='<?php echo WZ_KEY; ?>'>
     <meta name='description' content='<?php echo WZ_DES; ?>'>
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/vendor/bootstrap-5.3.2/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/public/vendor/fontawesome-6.4.2/css/all.min.css">
     <!-- Custom Styles -->
     <link href="/home/resource/dist/style.css" rel="stylesheet">
 </head>
 
-<body>
+<?php
+$isAuthView = isset($_GET['m'], $_GET['a'])
+    && $_GET['m'] === 'user'
+    && in_array($_GET['a'], array('login', 'register'), true);
+?>
+<body<?= $isAuthView ? ' class="auth-view"' : '' ?>>
 <nav class="navbar navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -29,36 +34,39 @@ require_once __DIR__."/../../core/common.php";
             <span>Permeate</span>
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="切换导航">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarMain">
-            <!-- 搜索框 -->
-            <form action="search.php" class="d-flex mx-lg-4">
-                <div class="navbar-search">
-                    <i class="fas fa-search search-icon"></i>
-                    <input class="form-control" type="search" name="keywords" placeholder="搜索漏洞、帖子..." aria-label="Search">
-                </div>
-            </form>
-
-            <!-- 导航链接 -->
-            <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/"><i class="fas fa-home"></i>首页</a>
+                    <a class="nav-link" href="/home/index.php"><i class="fas fa-home"></i>首页</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/index.php#range-zones"><i class="fas fa-bug"></i>靶场分区</a>
                 </li>
             </ul>
+
+            <!-- 搜索框 -->
+            <form action="/home/search.php" method="get" class="navbar-search ms-lg-auto me-lg-3 my-2 my-lg-0">
+                <i class="fas fa-search search-icon"></i>
+                <input class="form-control" type="search" name="keywords" placeholder="搜索漏洞、帖子..." aria-label="搜索帖子">
+            </form>
         </div>
 
         <!-- 用户区域 -->
-        <div class="d-flex align-items-center">
+        <div class="nav-user">
+            <a class="nav-gh" href="https://github.com/78778443/permeate" target="_blank" rel="noopener" title="GitHub 仓库" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
             <?php
             if (!empty(getCurrentUser())) {
                 $username = getCurrentUser();
             ?>
                 <div class="user-link">
-                    <a href="/home/index.php?m=user&a=individual&id=<?php echo $username['id'] ?>">
-                        <img src="<?= getAvatar($username['pic'], $username['username']) ?>" alt="头像">
+                    <a href="/home/index.php?m=user&a=individual&id=<?php echo $username['id'] ?>" title="<?= h($username['username']) ?>">
+                        <img src="<?= getAvatar($username['pic'], $username['username']) ?>" alt="<?= h($username['username']) ?> 的头像">
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="<?= url('user/individual',['uid'=>$username['id']]) ?>">

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Permeate 后台管理</title>
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/vendor/bootstrap-5.3.2/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/public/vendor/fontawesome-6.4.2/css/all.min.css">
     <style>
         :root {
             --primary-50: #eef2ff;
@@ -332,6 +332,116 @@
             font-weight: 600;
         }
 
+        /* Dashboard */
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stat-card .card-body {
+            padding: 18px 20px;
+        }
+
+        .stat-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 44px;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            font-size: 16px;
+        }
+
+        .icon-users   { background: #eef1ff; color: #4f46e5; }
+        .icon-posts   { background: #e6f8fc; color: #0891b2; }
+        .icon-replies { background: #e8f8f0; color: #047857; }
+        .icon-zones   { background: #fff5e1; color: #b45309; }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--gray-900);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stat-label {
+            margin-top: 2px;
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            color: var(--gray-700);
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .quick-link i {
+            width: 16px;
+            color: var(--primary-600);
+        }
+
+        .quick-link:hover {
+            background: var(--primary-50);
+            border-color: var(--primary-300);
+            color: var(--primary-700);
+        }
+
+        .system-info {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 8px 14px;
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .system-info dt {
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        .system-info dd {
+            margin: 0;
+            color: var(--gray-800);
+            text-align: right;
+        }
+
+        .table td.text-muted {
+            white-space: nowrap;
+        }
+
+        .post-title-link-admin {
+            display: inline-block;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: var(--gray-800);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .post-title-link-admin:hover {
+            color: var(--primary-600);
+        }
+
         /* Responsive */
         @media (max-width: 991.98px) {
             .sidebar {
@@ -360,6 +470,9 @@
 
         <nav class="sidebar-nav">
             <div class="nav-section">导航</div>
+            <a href="./index.php" class="nav-link active">
+                <i class="fas fa-gauge-high"></i>后台首页
+            </a>
             <a href="../index.php" class="nav-link">
                 <i class="fas fa-home"></i>前台首页
             </a>

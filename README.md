@@ -1,20 +1,59 @@
-# Permeate 渗透测试靶场系统
+<div align="center">
+  <img src="doc/screenshots/banner.png" alt="Permeate 渗透测试靶场" width="100%">
+</div>
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![PHP](https://img.shields.io/badge/PHP-%3E%3D7.0-green.svg)](https://php.net)
+<p align="center">
+  <strong>把 8 类 Web 漏洞，亲手打一遍。</strong><br>
+  <span>PHP + SQLite · 零配置启动 · 前端依赖全部内置 · 断网可用</span>
+</p>
 
-一款用于WEB安全教学和漏洞挖掘练习的BBS论坛靶场系统，内置多种常见安全漏洞。
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+  <img src="https://img.shields.io/badge/PHP-%3E%3D7.0-777bb4.svg" alt="PHP">
+  <img src="https://img.shields.io/badge/SQLite-PDO-003b57.svg" alt="SQLite">
+  <img src="https://img.shields.io/badge/Bootstrap-5.3-7952b3.svg" alt="Bootstrap">
+  <img src="https://img.shields.io/badge/offline-ready-10b981.svg" alt="Offline Ready">
+</p>
+
+<p align="center">
+  一条命令启动：<code>php install/init_sqlite.php && php -S localhost:8080</code>
+</p>
 
 ---
 
 ## 项目简介
 
-Permeate（渗透）是一款基于PHP开发的BBS论坛系统，系统故意设计了多种安全漏洞，适合用于：
+Permeate（渗透）是一款基于 PHP 开发的 BBS 论坛靶场，把 **SQL 注入、XSS、命令执行、文件上传、SSRF、越权、密码重置、验证码绕过** 8 类漏洞藏进真实的论坛业务里，适合：
 
 - WEB安全教学演示
 - 渗透测试技能练习
 - 漏洞挖掘能力训练
 - 安全意识培训
+
+## 为什么是 Permeate
+
+| 亮点 | 说明 |
+| --- | --- |
+| **真实业务场景** | 注册登录、发帖回复、搜索、个人中心、关注，漏洞分布在真实功能里，而不是孤立的小 demo |
+| **8 类漏洞 + 配套教程** | 每个版块都配有原理讲解与实战帖子，从理解原理到动手利用一步到位 |
+| **完整后台管理** | 用户、分区、版块、帖子、回复、敏感词、IP 黑名单、数据库备份，后台首页自带数据仪表盘 |
+| **零配置 / 离线可用** | 一条命令初始化 SQLite，无需 MySQL；Bootstrap、Font Awesome、UEditor 全部内置，断网也能跑 |
+| **移动端适配** | 前台与后台均做了响应式处理，手机、平板都能正常浏览与练习 |
+
+## 界面预览
+
+![靶场首页](doc/screenshots/home.png)
+
+|  |  |
+| --- | --- |
+| ![帖子列表](doc/screenshots/post-list.png) | ![帖子详情](doc/screenshots/post-detail.png) |
+| **帖子列表** | **帖子详情** |
+| ![登录页](doc/screenshots/login.png) | ![搜索练习](doc/screenshots/search.png) |
+| **登录页** | **搜索练习** |
+
+后台管理：
+
+![后台管理](doc/screenshots/admin.png)
 
 ## 漏洞清单
 
@@ -35,8 +74,8 @@ Permeate（渗透）是一款基于PHP开发的BBS论坛系统，系统故意设
 
 - **后端**: PHP 7.0+
 - **数据库**: SQLite (PDO)
-- **前端**: Bootstrap 4
-- **编辑器**: UEditor
+- **前端**: Bootstrap 5 + 响应式设计（依赖已内置在 `public/vendor/`，无需外网 CDN）
+- **编辑器**: UEditor（本地内置）
 
 ## 快速安装
 
@@ -44,7 +83,8 @@ Permeate（渗透）是一款基于PHP开发的BBS论坛系统，系统故意设
 
 - PHP >= 7.0
 - PDO SQLite 扩展
-- 无需MySQL数据库
+- GD 扩展（后台登录验证码）
+- 无需 MySQL 数据库
 
 ### 方式一：一键安装（推荐）
 

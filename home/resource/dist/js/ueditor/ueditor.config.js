@@ -30,7 +30,8 @@
         UEDITOR_HOME_URL: URL
 
         // 服务器统一请求接口路径
-        , serverUrl: URL + "php/controller.php"
+        // 回复编辑器仅用于文本排版，不需要上传接口；留空可避免请求不存在的 controller
+        , serverUrl: ""
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的重新定义
         , toolbars: [[

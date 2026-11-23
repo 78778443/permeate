@@ -42,63 +42,82 @@ $row = mysql_func($sql);
 
 <div class="section">
     <div class="container">
-        <div class="paper p-4">
-            <div class="main mb-4">
-                <i class="fas fa-search me-2"></i>
-                为您找到符合 "<strong><?php echo htmlspecialchars($keywords); ?></strong>" 的结果共 <?= $count ?> 条
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home/index.php"><i class="fas fa-home"></i>首页</a></li>
+                <li class="breadcrumb-item active" aria-current="page">搜索</li>
+            </ol>
+        </nav>
+
+        <div class="paper">
+            <div class="post-list-header">
+                <span class="list-icon"><i class="fas fa-search"></i></span>
+                <div class="list-title">
+                    <h3>搜索结果</h3>
+                    <span>共找到 <?= $count ?> 条相关帖子</span>
+                </div>
             </div>
 
-            <?php if ($row) { ?>
-            <div class="list-group list-group-flush">
-                <?php foreach ($row as $post) {
-                    $title = htmlspecialchars($post['title']);
-                ?>
-                <a href="<?= url('tiezi/detail', array('bk' => $post['cid'], 'zt' => $post['id'])); ?>" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">
-                            <i class="fas fa-file-alt text-muted me-2"></i><?= $title ?>
-                        </h6>
-                        <small class="text-muted">
-                            <i class="far fa-clock me-1"></i><?= date("Y-m-d H:i", $post['ptime']) ?>
-                        </small>
-                    </div>
-                </a>
+            <div class="paper-body">
+                <div class="search-summary">
+                    <i class="fas fa-search"></i>
+                    <span>关键词</span>
+                    <strong><?php echo htmlspecialchars($keywords); ?></strong>
+                    <span>· 共 <?= $count ?> 条结果</span>
+                </div>
+
+                <?php if ($row) { ?>
+                <div class="search-results">
+                    <?php foreach ($row as $post) {
+                        $title = htmlspecialchars($post['title']);
+                    ?>
+                    <a href="<?= url('tiezi/detail', array('bk' => $post['cid'], 'zt' => $post['id'])); ?>" class="search-result-item">
+                        <span class="result-icon"><i class="fas fa-file-alt"></i></span>
+                        <span class="result-main">
+                            <span class="result-title"><?= $title ?></span>
+                        </span>
+                        <span class="result-meta">
+                            <i class="far fa-clock"></i><?= date("Y-m-d H:i", $post['ptime']) ?>
+                        </span>
+                    </a>
+                    <?php } ?>
+                </div>
+                <?php } else { ?>
+                <div class="empty-state">
+                    <i class="fas fa-search"></i>
+                    <h5>没有找到相关内容</h5>
+                    <p class="mb-0">换一个关键词试试，或者 <a href="/home/index.php">回到靶场首页</a></p>
+                </div>
+                <?php } ?>
+
+                <?php if ($page_count > 1) { ?>
+                <nav aria-label="分页" class="post-list-controller pt-3 mt-2 border-top">
+                    <span class="page-text">第 <?= $page_num ?> / <?= $page_count ?> 页</span>
+                    <ul class="pagination mb-0">
+                        <li class="page-item">
+                            <a class="page-link <?= $page_num <= 1 ? 'disabled' : '' ?>" href='?page=1<?= $link ?>'>
+                                <i class="fas fa-angle-double-left"></i>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link <?= $page_num <= 1 ? 'disabled' : '' ?>" href='?page=<?= max(1, $page_num - 1) ?><?= $link ?>'>
+                                <i class="fas fa-angle-left"></i>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link <?= $page_num >= $page_count ? 'disabled' : '' ?>" href='?page=<?= min($page_count, $page_num + 1) ?><?= $link ?>'>
+                                <i class="fas fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link <?= $page_num >= $page_count ? 'disabled' : '' ?>" href='?page=<?= $page_count ?><?= $link ?>'>
+                                <i class="fas fa-angle-double-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
                 <?php } ?>
             </div>
-            <?php } else { ?>
-            <div class="text-center py-5 text-muted">
-                <i class="fas fa-search fa-3x mb-3"></i>
-                <p>没有找到相关内容</p>
-            </div>
-            <?php } ?>
-
-            <nav class="mt-4">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href='?page=1<?= $link ?>'>
-                            <i class="fas fa-angle-double-left"></i>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href='?page=<?= ($page_num - 1) ?><?= $link ?>'>
-                            <i class="fas fa-angle-left"></i>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <span class="page-text">第 <?= $page_num ?> / <?= $page_count ?> 页</span>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href='?page=<?= ($page_num + 1) ?><?= $link ?>'>
-                            <i class="fas fa-angle-right"></i>
-                        </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href='?page=<?= $page_count ?><?= $link ?>'>
-                            <i class="fas fa-angle-double-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </div>
 </div>

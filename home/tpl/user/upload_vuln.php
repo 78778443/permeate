@@ -43,7 +43,7 @@
                             if (is_dir($upload_dir)) {
                                 $files = scandir($upload_dir);
                                 foreach ($files as $file) {
-                                    if ($file != '.' && $file != '..') {
+                                    if ($file != '.' && $file != '..' && $file[0] !== '.') {
                                         echo '<a href="/uploads/' . htmlspecialchars($file) . '" target="_blank" class="list-group-item list-group-item-action">';
                                         echo '<i class="fas fa-file me-2"></i>' . htmlspecialchars($file);
                                         echo '</a>';

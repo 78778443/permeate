@@ -1,6 +1,6 @@
 <?php
 
-date_default_timezone_set('PRC');
+date_default_timezone_set('Asia/Shanghai');
 //设置页面字符集为 UTF-8
 header('content-type:text/html;charset=utf-8');
 header('cache-control:no-cache');

@@ -1,52 +1,70 @@
 <section class="auth-page">
-    <div class="auth-container">
-        <div class="auth-header">
-            <div class="logo">
-                <i class="fas fa-shield-alt"></i>
-            </div>
-            <h2>欢迎回来</h2>
-            <p>登录 Permeate 开始安全学习之旅</p>
-        </div>
-
-        <div class="auth-card">
-            <form action="./public/login.php" method="post">
-                <div class="mb-3">
-                    <label class="form-label">账号</label>
-                    <input class="form-control" type="text" name="username" maxlength="16" placeholder="请输入账号" required>
+    <div class="container">
+        <div class="auth-shell">
+            <aside class="auth-aside">
+                <div class="aside-brand">
+                    <span class="brand-icon"><i class="fas fa-shield-alt"></i></span>
+                    Permeate
                 </div>
 
-                <div class="mb-4">
-                    <label class="form-label">密码</label>
-                    <input class="form-control" type="password" name="password" maxlength="16" placeholder="请输入密码" required>
+                <div>
+                    <h3>把 8 类漏洞，<br>亲手打一遍。</h3>
+                    <p class="lead">从 SQL 注入到 SSRF，配套原理教程与实战版块。登录后即可发帖、回复，记录你的练习过程。</p>
                 </div>
 
-                <div class="mb-4">
-                    <button class="btn btn-primary btn-lg w-100" type="submit">
-                        <i class="fas fa-sign-in-alt me-2"></i>登录
-                    </button>
+                <div class="aside-vulns">
+                    <div class="aside-vuln"><span class="idx">01</span><span class="name">SQL 注入</span><span class="sev sev-high">高危</span></div>
+                    <div class="aside-vuln"><span class="idx">02</span><span class="name">XSS 跨站</span><span class="sev sev-high">高危</span></div>
+                    <div class="aside-vuln"><span class="idx">03</span><span class="name">命令执行</span><span class="sev sev-critical">严重</span></div>
+                    <div class="aside-vuln"><span class="idx">04</span><span class="name">文件上传</span><span class="sev sev-high">高危</span></div>
+                    <div class="aside-vuln"><span class="idx">05</span><span class="name">密码找回</span><span class="sev sev-medium">中危</span></div>
+                    <div class="aside-vuln"><span class="idx">06</span><span class="name">越权访问</span><span class="sev sev-medium">中危</span></div>
+                    <div class="aside-vuln"><span class="idx">07</span><span class="name">SSRF 漏洞</span><span class="sev sev-high">高危</span></div>
+                    <div class="aside-vuln"><span class="idx">08</span><span class="name">验证码绕过</span><span class="sev sev-low">低危</span></div>
                 </div>
 
-                <div class="text-center">
-                    <span class="text-muted">还没有账号？</span>
-                    <a href="./index.php?m=user&a=register">立即注册</a>
+                <div class="aside-foot">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    仅供学习研究使用，请部署在隔离的内网环境
                 </div>
-            </form>
-        </div>
+            </aside>
 
-        <div class="auth-features">
-            <h6>学习内容</h6>
-            <div class="feature-item">
-                <i class="fas fa-database sql"></i>
-                <span>SQL注入、XSS跨站、命令执行</span>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-code xss"></i>
-                <span>文件上传、越权访问、SSRF</span>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-terminal cmd"></i>
-                <span>8大漏洞类型，实战演练</span>
-            </div>
+            <main class="auth-container">
+                <div class="auth-header">
+                    <h2>欢迎回来</h2>
+                    <p>登录后即可发帖与参与讨论</p>
+                </div>
+
+                <div class="auth-card">
+                    <form action="./public/login.php" method="post">
+                        <div class="mb-3">
+                            <label class="form-label" for="login-username">账号</label>
+                            <input class="form-control" id="login-username" type="text" name="username" maxlength="16" placeholder="请输入账号" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label" for="login-password">密码</label>
+                            <input class="form-control" id="login-password" type="password" name="password" maxlength="16" placeholder="请输入密码" required>
+                        </div>
+
+                        <button class="btn btn-primary btn-lg w-100" type="submit">
+                            <i class="fas fa-sign-in-alt"></i>登录
+                        </button>
+                    </form>
+
+                    <div class="auth-divider"><span>还没有账号</span></div>
+
+                    <a class="btn btn-ghost w-100" href="./index.php?m=user&a=register">
+                        <i class="fas fa-rocket"></i>注册一个学习账号
+                    </a>
+                </div>
+
+                <div class="auth-points">
+                    <span><i class="fas fa-check-circle"></i>8 个练习版块</span>
+                    <span><i class="fas fa-check-circle"></i>19 篇实战教程</span>
+                    <span><i class="fas fa-check-circle"></i>完整后台管理</span>
+                </div>
+            </main>
         </div>
     </div>
 </section>

@@ -1,4 +1,4 @@
-<div class="col-lg-2">
+<div class="col-lg-2 user-side-menu">
     <div class="list-group list-group-flush">
         <a class="list-group-item list-group-item-action" href="/home/index.php?m=user&a=individual">
             <i class="fas fa-camera me-2"></i>修改头像
